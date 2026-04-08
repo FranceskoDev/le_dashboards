@@ -1,0 +1,740 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Turismo Medico Albania — Agenzie, Cliniche e Ospedali</title>
+<style>
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  :root{--bg:#0b0e14;--surface:#131720;--surface2:#1a1f2e;--border:#252b3b;--border-hl:#3a4260;--text:#e2e8f0;--text-dim:#8892a8;--text-muted:#5a6478;--accent:#6366f1;--accent-glow:rgba(99,102,241,.18);--green:#22c55e;--green-bg:rgba(34,197,94,.12);--green-border:rgba(34,197,94,.3);--blue:#3b82f6;--blue-bg:rgba(59,130,246,.1);--blue-border:rgba(59,130,246,.3);--purple:#a855f7;--purple-bg:rgba(168,85,247,.1);--purple-border:rgba(168,85,247,.3);--cyan:#06b6d4;--cyan-bg:rgba(6,182,212,.1);--cyan-border:rgba(6,182,212,.3);--orange:#f97316;--orange-bg:rgba(249,115,22,.1);--orange-border:rgba(249,115,22,.3);--gold:#d4a017;--gold-bg:rgba(212,160,23,.12);--gold-border:rgba(212,160,23,.3);--teal:#14b8a6;--teal-bg:rgba(20,184,166,.12);--teal-border:rgba(20,184,166,.3);--crimson:#e23e3e;--crimson-bg:rgba(226,62,62,.12);--crimson-border:rgba(226,62,62,.3);--red:#ef4444;--red-bg:rgba(239,68,68,.1);--red-border:rgba(239,68,68,.3);--yellow:#eab308;--yellow-bg:rgba(234,179,8,.1);--yellow-border:rgba(234,179,8,.3);--radius:12px;--radius-sm:8px;--shadow:0 4px 24px rgba(0,0,0,.35);--transition:.25s cubic-bezier(.4,0,.2,1)}
+  html{scroll-behavior:smooth}
+  body{font-family:'Segoe UI',system-ui,-apple-system,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;min-height:100vh}
+  a{color:var(--accent);text-decoration:none}
+  .bg-grid{position:fixed;inset:0;z-index:0;pointer-events:none;background-image:linear-gradient(rgba(20,184,166,.025) 1px,transparent 1px),linear-gradient(90deg,rgba(20,184,166,.025) 1px,transparent 1px);background-size:60px 60px}
+  .bg-glow{position:fixed;top:-200px;right:-200px;width:600px;height:600px;background:radial-gradient(circle,rgba(20,184,166,.06),transparent 70%);z-index:0;pointer-events:none;animation:pulse 8s ease-in-out infinite alternate}
+  .bg-glow-2{position:fixed;bottom:-200px;left:-200px;width:500px;height:500px;background:radial-gradient(circle,rgba(99,102,241,.05),transparent 70%);z-index:0;pointer-events:none;animation:pulse 10s ease-in-out infinite alternate-reverse}
+  @keyframes pulse{from{opacity:.6;transform:scale(1)}to{opacity:1;transform:scale(1.15)}}
+  @keyframes blink{0%,100%{opacity:1}50%{opacity:.3}}
+  .container{max-width:1320px;margin:0 auto;padding:0 24px;position:relative;z-index:1}
+  .hero{padding:56px 0 40px;text-align:center;border-bottom:1px solid var(--border);margin-bottom:0}
+  .hero-badge{display:inline-flex;align-items:center;gap:8px;background:var(--teal-bg);color:var(--teal);padding:6px 16px;border-radius:20px;font-size:.82em;font-weight:600;letter-spacing:.5px;margin-bottom:16px;border:1px solid var(--teal-border)}
+  .hero-badge .dot{width:8px;height:8px;border-radius:50%;background:var(--teal);animation:blink 2s infinite}
+  .hero h1{font-size:2.4em;font-weight:800;letter-spacing:-.02em;margin-bottom:8px}
+  .hero h1 span{background:linear-gradient(135deg,var(--teal),var(--accent));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+  .hero p{color:var(--text-dim);font-size:1.05em;max-width:750px;margin:0 auto}
+  .stats-bar{display:flex;justify-content:center;gap:12px;flex-wrap:wrap;margin-top:28px}
+  .stat{text-align:center;padding:14px 22px;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-sm);min-width:110px}
+  .stat-num{font-size:2em;font-weight:800}
+  .stat-label{font-size:.72em;color:var(--text-muted);text-transform:uppercase;letter-spacing:.5px}
+  .controls{padding:24px 0;display:flex;align-items:center;gap:10px;flex-wrap:wrap;border-bottom:1px solid var(--border);margin-bottom:32px}
+  .controls-label{font-size:.72em;letter-spacing:2px;text-transform:uppercase;color:var(--text-muted);margin-right:4px}
+  .btn{font-family:'Segoe UI',system-ui,sans-serif;font-size:.78em;font-weight:500;padding:6px 14px;border-radius:20px;border:1px solid var(--border);background:transparent;color:var(--text-dim);cursor:pointer;transition:var(--transition);letter-spacing:.3px}
+  .btn:hover{border-color:var(--teal);color:var(--teal)}
+  .btn.active{background:var(--teal-bg);border-color:var(--teal-border);color:var(--teal)}
+  .search-wrap{margin-left:auto;position:relative}
+  .search-wrap input{font-family:'Segoe UI',system-ui,sans-serif;font-size:.82em;background:var(--surface);border:1px solid var(--border);color:var(--text);padding:7px 14px 7px 34px;border-radius:20px;width:240px;outline:none;transition:border-color .2s}
+  .search-wrap input:focus{border-color:var(--teal)}
+  .search-wrap input::placeholder{color:var(--text-muted)}
+  .search-icon{position:absolute;left:12px;top:50%;transform:translateY(-50%);color:var(--text-muted);font-size:.82em;pointer-events:none}
+  #count{font-size:.78em;color:var(--text-muted);margin-left:2px}
+  .region{margin-bottom:40px}
+  .region-header{display:flex;align-items:center;gap:12px;margin-bottom:16px;padding-bottom:10px;border-bottom:1px solid var(--border)}
+  .region-icon{font-size:1.3em}
+  .region-title{font-size:1.15em;font-weight:700}
+  .region-count{font-size:.70em;font-weight:600;padding:3px 10px;border-radius:12px;text-transform:uppercase;letter-spacing:.5px}
+  .country{margin-bottom:20px}
+  .country-name{font-size:.82em;font-weight:600;color:var(--text-dim);margin-bottom:8px;padding-left:4px;letter-spacing:.3px}
+  .cgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:10px}
+  .cc{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-sm);padding:12px 14px;display:flex;align-items:center;gap:10px;transition:var(--transition);position:relative;overflow:hidden}
+  .cc:hover{border-color:var(--border-hl);transform:translateY(-1px);box-shadow:var(--shadow)}
+  .cc::before{content:'';position:absolute;top:0;left:0;bottom:0;width:3px}
+  .cc.t-agenzia::before{background:var(--teal)}
+  .cc.t-dentale::before{background:var(--blue)}
+  .cc.t-estetica::before{background:var(--purple)}
+  .cc.t-ospedale::before{background:var(--crimson)}
+  .cc.t-oculistica::before{background:var(--cyan)}
+  .cc.t-ivf::before{background:var(--orange)}
+  .cc.t-bariatrica::before{background:var(--gold)}
+  .cc.t-piattaforma::before{background:var(--green)}
+  .cc.hidden{display:none}
+  .cc-info{flex:1;min-width:0}
+  .cc-name{font-size:.88em;font-weight:600;color:var(--text);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .cc-city{font-size:.72em;color:var(--text-muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .cc-tag{font-size:.58em;display:inline-block;padding:1px 6px;border-radius:3px;font-weight:600;letter-spacing:.3px;margin-top:2px}
+  .cc-tag.tg-d{background:var(--blue-bg);color:var(--blue);border:1px solid var(--blue-border)}
+  .cc-tag.tg-e{background:var(--purple-bg);color:var(--purple);border:1px solid var(--purple-border)}
+  .cc-tag.tg-o{background:var(--crimson-bg);color:var(--crimson);border:1px solid var(--crimson-border)}
+  .cc-tag.tg-c{background:var(--cyan-bg);color:var(--cyan);border:1px solid var(--cyan-border)}
+  .cc-tag.tg-i{background:var(--orange-bg);color:var(--orange);border:1px solid var(--orange-border)}
+  .cc-tag.tg-b{background:var(--gold-bg);color:var(--gold);border:1px solid var(--gold-border)}
+  .cc-tag.tg-a{background:var(--teal-bg);color:var(--teal);border:1px solid var(--teal-border)}
+  .cc-tag.tg-p{background:var(--green-bg);color:var(--green);border:1px solid var(--green-border)}
+  .cc-link{display:flex;align-items:center;justify-content:center;width:40px;height:40px;min-width:40px;border-radius:10px;background:var(--surface2);border:1px solid var(--border);color:var(--teal);font-size:1.2em;font-weight:700;flex-shrink:0;transition:var(--transition);text-decoration:none}
+  .cc-link:hover{background:var(--teal);color:#fff;border-color:var(--teal);transform:scale(1.1)}
+  /* STATUS & NOTES — Level system 0-3 + Star */
+  .cc-status{position:absolute;top:4px;right:4px;display:flex;gap:3px;align-items:center;background:rgba(0,0,0,.45);padding:3px 6px;border-radius:16px}
+  .cc-lvl{width:16px;height:16px;border-radius:50%;border:2px solid var(--border);cursor:pointer;transition:var(--transition);font-size:9px;font-weight:700;color:var(--text-muted);display:flex;align-items:center;justify-content:center;background:transparent;padding:0;line-height:1;font-family:inherit}
+  .cc-lvl:hover{transform:scale(1.25);border-color:var(--text-dim);color:var(--text)}
+  .cc-lvl.on-0{background:rgba(239,68,68,.25);border-color:var(--red);color:var(--red)}
+  .cc-lvl.on-1{background:rgba(234,179,8,.15);border-color:var(--yellow);color:var(--yellow)}
+  .cc-lvl.on-2{background:rgba(59,130,246,.25);border-color:var(--blue);color:var(--blue);box-shadow:0 0 5px rgba(59,130,246,.4)}
+  .cc-lvl.on-3{background:rgba(34,197,94,.3);border-color:var(--green);color:var(--green);box-shadow:0 0 7px rgba(34,197,94,.5)}
+  .cc.stato-0{opacity:.35;border-color:rgba(239,68,68,.3) !important}
+  .cc.stato-1{opacity:.55;border-color:rgba(234,179,8,.3) !important}
+  .cc.stato-2{border-color:rgba(59,130,246,.4) !important;box-shadow:0 0 8px rgba(59,130,246,.2),0 0 20px rgba(59,130,246,.08)}
+  .cc.stato-3{border-color:var(--green) !important;box-shadow:0 0 12px rgba(34,197,94,.4),0 0 30px rgba(34,197,94,.15),inset 0 0 12px rgba(34,197,94,.06)}
+  .cc-star{width:18px;height:18px;cursor:pointer;transition:var(--transition);font-size:16px;line-height:1;color:var(--border);display:flex;align-items:center;justify-content:center;margin-left:2px}
+  .cc-star:hover{transform:scale(1.3);color:#fbbf24}
+  .cc-star.on{color:#fbbf24;filter:drop-shadow(0 0 8px #fbbf24) drop-shadow(0 0 16px rgba(251,191,36,.5))}
+  .cc.stato-star{border-color:#fbbf24 !important;box-shadow:0 0 16px rgba(251,191,36,.5),0 0 40px rgba(251,191,36,.2),inset 0 0 16px rgba(251,191,36,.08)}
+  .stat-star .stat-num{color:#fbbf24}
+
+  /* NOTES PANEL */
+  .cc-notes{display:none;width:100%;margin-top:6px;grid-column:1/-1}
+  .cc-notes.open{display:block}
+  .cc-notes textarea{width:100%;background:var(--surface2);border:1px solid var(--border);border-radius:6px;color:var(--text);font-family:inherit;font-size:.75em;padding:6px 8px;resize:vertical;min-height:32px;max-height:120px;outline:none;transition:border-color .2s}
+  .cc-notes textarea:focus{border-color:var(--teal)}
+  .cc-notes textarea::placeholder{color:var(--text-muted)}
+  .cc-note-save{margin-top:4px;padding:4px 14px;background:var(--teal);color:#fff;border:none;border-radius:6px;font-size:.75em;font-weight:700;cursor:pointer;transition:.2s;font-family:inherit;letter-spacing:.5px}
+  .cc-note-save:hover{filter:brightness(1.2);transform:scale(1.03)}
+  .cc-note-save.saved{background:var(--green);pointer-events:none}
+
+  /* NOTE TOGGLE */
+  .cc-note-btn{position:absolute;bottom:4px;right:4px;width:18px;height:18px;border-radius:4px;background:transparent;border:1px solid var(--border);color:var(--text-muted);font-size:.6em;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:var(--transition);line-height:1}
+  .cc-note-btn:hover{border-color:var(--teal);color:var(--teal)}
+  .cc-note-btn.has-note{background:rgba(20,184,166,.35);border-color:var(--teal);color:#2dd4bf;box-shadow:0 0 10px rgba(20,184,166,.5),0 0 20px rgba(20,184,166,.25);animation:noteGlow 2s ease-in-out infinite alternate;font-size:.7em}
+  @keyframes noteGlow{from{box-shadow:0 0 8px rgba(20,184,166,.4),0 0 16px rgba(20,184,166,.2)}to{box-shadow:0 0 14px rgba(20,184,166,.6),0 0 28px rgba(20,184,166,.3)}}
+  .cc.has-note-card{border-bottom:3px solid rgba(20,184,166,.5) !important}
+  .cc.has-note-card .cc-note-btn.has-note{width:22px;height:22px;font-size:.75em}
+  .cc.stato-0 .cc-note-btn.has-note{box-shadow:0 0 28px rgba(20,184,166,1),0 0 56px rgba(20,184,166,.7);width:24px;height:24px;font-size:.85em}
+  .cc.stato-1 .cc-note-btn.has-note{box-shadow:0 0 20px rgba(20,184,166,.85),0 0 40px rgba(20,184,166,.5);width:22px;height:22px;font-size:.8em}
+
+  /* FILTER STATUS BUTTONS */
+  .btn-status{font-size:.72em;padding:4px 10px}
+
+  /* STATS BAR EXTRA */
+  .stat-visto .stat-num{color:var(--green)}
+  .stat-rivedere .stat-num{color:#a855f7}
+  .stat-scartare .stat-num{color:var(--red)}
+
+  /* CC FLEX WRAP for notes */
+  .cc{flex-wrap:wrap}
+
+  .empty{text-align:center;padding:60px 20px;color:var(--text-muted);font-size:.9em;display:none}
+  .footer{text-align:center;padding:40px 0 32px;border-top:1px solid var(--border);color:var(--text-muted);font-size:.82em}
+  .footer span{color:var(--teal)}
+  @media(max-width:768px){.hero h1{font-size:1.6em}.cgrid{grid-template-columns:1fr}.stats-bar{gap:8px}.stat{min-width:80px;padding:10px 14px}.stat-num{font-size:1.5em}.controls{gap:6px}.search-wrap{margin-left:0;width:100%}.search-wrap input{width:100%}}
+</style>
+</head>
+<body>
+<div class="bg-grid"></div><div class="bg-glow"></div><div class="bg-glow-2"></div>
+<div class="container">
+
+<header class="hero">
+  <div class="hero-badge"><span class="dot"></span> Mappa completa turismo medico 2025</div>
+  <h1>Turismo Medico<br><span>Albania</span></h1>
+  <p>Agenzie internazionali, piattaforme, cliniche e ospedali che accolgono pazienti stranieri in Albania. Dentale, estetica, fertilit&agrave;, ortopedia e oltre.</p>
+  <div class="stats-bar">
+    <div class="stat"><div class="stat-num" style="color:var(--teal)">219</div><div class="stat-label">Strutture</div></div>
+    <div class="stat"><div class="stat-num" style="color:var(--blue)">30</div><div class="stat-label">Dentale</div></div>
+    <div class="stat"><div class="stat-num" style="color:var(--purple)">12</div><div class="stat-label">Estetica</div></div>
+    <div class="stat"><div class="stat-num" style="color:var(--crimson)">6</div><div class="stat-label">Ospedali</div></div>
+    <div class="stat"><div class="stat-num" style="color:var(--orange)">6</div><div class="stat-label">IVF/Fertilit&agrave;</div></div>
+    <div class="stat"><div class="stat-num" style="color:var(--green)">6</div><div class="stat-label">Piattaforme</div></div>
+    <div class="stat stat-0"><div class="stat-num" id="hero-0" style="color:var(--red)">0</div><div class="stat-label">Lv.0</div></div>
+    <div class="stat stat-1"><div class="stat-num" id="hero-1" style="color:var(--yellow)">0</div><div class="stat-label">Lv.1</div></div>
+    <div class="stat stat-2"><div class="stat-num" id="hero-2" style="color:var(--blue)">0</div><div class="stat-label">Lv.2</div></div>
+    <div class="stat stat-3"><div class="stat-num" id="hero-3" style="color:var(--green)">0</div><div class="stat-label">Lv.3</div></div>
+    <div class="stat stat-star"><div class="stat-num" id="hero-star" style="color:#fbbf24">0</div><div class="stat-label">Top</div></div>
+  </div>
+</header>
+
+<div class="controls">
+  <span class="controls-label">Filtra</span>
+  <button class="btn active" onclick="f('all',this)">Tutte <span id="count">(73)</span></button>
+  <button class="btn" onclick="f('agenzia',this)">Agenzie</button>
+  <button class="btn" onclick="f('piattaforma',this)">Piattaforme</button>
+  <button class="btn" onclick="f('dentale',this)">Dentale</button>
+  <button class="btn" onclick="f('estetica',this)">Estetica</button>
+  <button class="btn" onclick="f('ospedale',this)">Ospedali</button>
+  <button class="btn" onclick="f('ivf',this)">IVF</button>
+  <button class="btn" onclick="f('oculistica',this)">Oculistica</button>
+  <button class="btn" onclick="f('italiano',this)">Sito italiano</button>
+  <button class="btn" onclick="f('tedesco',this)">Mercato DE</button>
+  <button class="btn" onclick="f('francese',this)">Mercato FR</button>
+  <button class="btn" onclick="f('olandese',this)">Mercato NL/Scand</button>
+  <button class="btn" onclick="f('turco',this)">Ponte turco</button>
+  <span class="controls-label" style="margin-left:12px">Stato</span>
+  <button class="btn btn-status" onclick="fs('0',this)" style="color:var(--red);border-color:var(--red-border)"><span style="color:#5a6478">Lv.0 -</span> <span id="cnt-0">0</span></button>
+  <button class="btn btn-status" onclick="fs('1',this)" style="color:var(--yellow);border-color:rgba(234,179,8,.3)"><span style="color:#5a6478">Lv.1 -</span> <span id="cnt-1">0</span></button>
+  <button class="btn btn-status" onclick="fs('2',this)" style="color:var(--blue);border-color:rgba(59,130,246,.3)"><span style="color:#5a6478">Lv.2 -</span> <span id="cnt-2">0</span></button>
+  <button class="btn btn-status" onclick="fs('3',this)" style="color:var(--green);border-color:var(--green-border)"><span style="color:#5a6478">Lv.3 -</span> <span id="cnt-3">0</span></button>
+  <button class="btn btn-status" onclick="fs('star',this)" style="color:#fbbf24;border-color:rgba(251,191,36,.3)"><span style="color:#5a6478">&#9733; Top -</span> <span id="cnt-star">0</span></button>
+  <div class="search-wrap"><span class="search-icon">&#128269;</span><input type="text" id="si" placeholder="Cerca nome, settore, citt&agrave;..." oninput="s()"></div>
+</div>
+
+<div id="main">
+
+<!-- PIATTAFORME INTERNAZIONALI -->
+<section class="region"><div class="region-header"><span class="region-icon">&#127760;</span><span class="region-title">Piattaforme Internazionali</span><span class="region-count" style="background:var(--green-bg);color:var(--green);border:1px solid var(--green-border)">6</span></div>
+<div class="cgrid">
+<div class="cc t-piattaforma" data-t="piattaforma dentale" data-s="dental tourism albania dta londra tirana uk dentale implanti faccette"><div class="cc-info"><div class="cc-name">Dental Tourism Albania (DTA)</div><div class="cc-city">Londra + Tirana &middot; 2.500+ pazienti UK</div><span class="cc-tag tg-d">Dentale</span></div><a class="cc-link" href="https://dentaltourismalbania.com/" target="_blank">&rarr;</a></div>
+<div class="cc t-piattaforma" data-t="piattaforma dentale" data-s="dental departures bangkok globale marketplace dentale albania"><div class="cc-info"><div class="cc-name">Dental Departures</div><div class="cc-city">Globale (Bangkok) &middot; Marketplace dentale</div><span class="cc-tag tg-p">Piattaforma</span></div><a class="cc-link" href="https://www.dentaldepartures.com/info/treatments/albania" target="_blank">&rarr;</a></div>
+<div class="cc t-piattaforma" data-t="piattaforma dentale estetica" data-s="dentavacation medical tourism co usa dentale estetica albania"><div class="cc-info"><div class="cc-name">DentaVacation / MTC</div><div class="cc-city">USA &middot; Dentale + estetica</div><span class="cc-tag tg-p">Piattaforma</span></div><a class="cc-link" href="https://www.dentavacation.com/dental-tourism-in-albania/" target="_blank">&rarr;</a></div>
+<div class="cc t-piattaforma" data-t="piattaforma dentale estetica" data-s="bookimed globale dentale estetica albania dentour dental med"><div class="cc-info"><div class="cc-name">Bookimed</div><div class="cc-city">Globale &middot; Multi-settore</div><span class="cc-tag tg-p">Piattaforma</span></div><a class="cc-link" href="https://us-uk.bookimed.com/clinics/country=albania/" target="_blank">&rarr;</a></div>
+<div class="cc t-piattaforma" data-t="piattaforma dentale estetica bariatrica" data-s="wupdoc globale confronto medici cliniche albania"><div class="cc-info"><div class="cc-name">Wupdoc</div><div class="cc-city">Globale &middot; Confronto cliniche</div><span class="cc-tag tg-p">Piattaforma</span></div><a class="cc-link" href="https://www.wupdoc.com/" target="_blank">&rarr;</a></div>
+<div class="cc t-piattaforma" data-t="piattaforma dentale estetica ortopedia" data-s="placidway albania dentale ortopedia estetica oncologia"><div class="cc-info"><div class="cc-name">PlacidWay Albania</div><div class="cc-city">Globale &middot; Dentale, ortopedia, estetica</div><span class="cc-tag tg-p">Piattaforma</span></div><a class="cc-link" href="https://www.placidway.com/profile/2247/PlacidWay-Albania" target="_blank">&rarr;</a></div>
+</div></section>
+
+<!-- AGENZIE TURISMO MEDICO -->
+<section class="region"><div class="region-header"><span class="region-icon">&#9992;&#65039;</span><span class="region-title">Agenzie &amp; Facilitatori</span><span class="region-count" style="background:var(--teal-bg);color:var(--teal);border:1px solid var(--teal-border)">13</span></div>
+<div class="cgrid">
+<div class="cc t-agenzia" data-t="agenzia dentale estetica ivf bariatrica italiano" data-s="medical tourism albania tirana american hospital hygeia dentale ivf estetica bariatrica"><div class="cc-info"><div class="cc-name">Medical Tourism Albania</div><div class="cc-city">Tirana &middot; Dentale, IVF, estetica, bariatrica</div><span class="cc-tag tg-a">Agenzia multi-settore</span></div><a class="cc-link" href="https://medicaltourismal.com/" target="_blank">&rarr;</a></div>
+<div class="cc t-agenzia" data-t="agenzia dentale estetica bariatrica ortopedia ivf" data-s="health tourism albania hta american hospital vivia hygeia anassa"><div class="cc-info"><div class="cc-name">Health Tourism Albania (HTA)</div><div class="cc-city">Albania &middot; Tutti i settori medici</div><span class="cc-tag tg-a">Facilitatore</span></div><a class="cc-link" href="https://healthtourismalbania.al/" target="_blank">&rarr;</a></div>
+<div class="cc t-agenzia" data-t="agenzia dentale estetica italiano" data-s="medical tourism in albania mta prima agenzia 2015 tirana trustpilot 5.0"><div class="cc-info"><div class="cc-name">Medical Tourism in Albania (MTA)</div><div class="cc-city">Tirana &middot; Prima agenzia (2015) &middot; Trustpilot 5.0</div><span class="cc-tag tg-a">Agenzia</span></div><a class="cc-link" href="https://medicaltourisminalbania.com/" target="_blank">&rarr;</a></div>
+<div class="cc t-agenzia" data-t="agenzia dentale estetica italiano" data-s="albanian health agency aha durres dentale estetica italiano olandese francese"><div class="cc-info"><div class="cc-name">Albanian Health Agency</div><div class="cc-city">Durres &middot; Dentale + estetica &middot; 6 lingue</div><span class="cc-tag tg-a">Agenzia</span></div><a class="cc-link" href="https://albanianhealthagency.com/en/" target="_blank">&rarr;</a></div>
+<div class="cc t-agenzia" data-t="agenzia dentale estetica" data-s="health tourism in albania 50 cliniche accreditate tirana dentale estetica"><div class="cc-info"><div class="cc-name">Health Tourism in Albania</div><div class="cc-city">Tirana &middot; 50+ cliniche accreditate</div><span class="cc-tag tg-a">Piattaforma locale</span></div><a class="cc-link" href="https://healthtourisminalbania.com/" target="_blank">&rarr;</a></div>
+<div class="cc t-agenzia" data-t="agenzia dentale estetica italiano" data-s="albania medical tour emt 2021 confindustria albmedtour tirana italiano"><div class="cc-info"><div class="cc-name">Albania Medical Tour</div><div class="cc-city">Tirana &middot; EMT 2021 &middot; Confindustria</div><span class="cc-tag tg-a">Agenzia premiata</span></div><a class="cc-link" href="https://albmedtour.it/en/" target="_blank">&rarr;</a></div>
+<div class="cc t-agenzia" data-t="agenzia dentale estetica bariatrica italiano" data-s="albania doctor family hospital tirana estetica dentale bariatrica italiano"><div class="cc-info"><div class="cc-name">Albania Doctor</div><div class="cc-city">Tirana &middot; Partner Family Hospital</div><span class="cc-tag tg-a">Tour operator medico</span></div><a class="cc-link" href="https://www.albaniadoctor.net/en/turismo-medico" target="_blank">&rarr;</a></div>
+<div class="cc t-agenzia" data-t="agenzia dentale italiano" data-s="albania dental agency durres class dent medaljon dent 5 cliniche"><div class="cc-info"><div class="cc-name">Albania Dental Agency</div><div class="cc-city">Durres &middot; 5 cliniche certificate</div><span class="cc-tag tg-d">Dentale</span></div><a class="cc-link" href="https://albaniadentalagency.com/" target="_blank">&rarr;</a></div>
+<div class="cc t-agenzia" data-t="agenzia dentale" data-s="dentaventures tirana dentale luxury faccette corone impianti"><div class="cc-info"><div class="cc-name">Dentaventures</div><div class="cc-city">Tirana &middot; Turismo dentale luxury</div><span class="cc-tag tg-d">Dentale luxury</span></div><a class="cc-link" href="https://dentaventures.com/" target="_blank">&rarr;</a></div>
+<div class="cc t-agenzia" data-t="agenzia dentale italiano" data-s="turista sorridente italia dentale albania 20 anni risparmio 70"><div class="cc-info"><div class="cc-name">Turista Sorridente</div><div class="cc-city">Italia &middot; 20 anni di attivit&agrave;</div><span class="cc-tag tg-d">Dentale IT</span></div><a class="cc-link" href="https://turistasorridente.it/en/" target="_blank">&rarr;</a></div>
+<div class="cc t-agenzia" data-t="agenzia dentale" data-s="my dental tourism albania dental tourism service vacanza denti"><div class="cc-info"><div class="cc-name">My Dental Tourism</div><div class="cc-city">Albania &middot; Dental care + vacation</div><span class="cc-tag tg-d">Dentale</span></div><a class="cc-link" href="https://mydentaltourism.com/" target="_blank">&rarr;</a></div>
+<div class="cc t-agenzia" data-t="agenzia dentale estetica italiano" data-s="estetica e sorriso italia dentale estetica albania intermediario"><div class="cc-info"><div class="cc-name">Estetica e Sorriso</div><div class="cc-city">Italia &middot; Dentale + estetica</div><span class="cc-tag tg-a">Intermediario IT</span></div><a class="cc-link" href="https://esteticaesorriso.it" target="_blank">&rarr;</a></div>
+<div class="cc t-agenzia" data-t="agenzia dentale tedesco" data-s="zahnklinik tirana dentale tedesco germania turismo dentale"><div class="cc-info"><div class="cc-name">Zahnklinik Tirana</div><div class="cc-city">Target tedesco &middot; Turismo dentale</div><span class="cc-tag tg-d">Dentale DE</span></div><a class="cc-link" href="https://zahnkliniktirana.de" target="_blank">&rarr;</a></div>
+</div></section>
+
+<!-- OSPEDALI -->
+<section class="region"><div class="region-header"><span class="region-icon">&#127963;&#65039;</span><span class="region-title">Ospedali Multidisciplinari</span><span class="region-count" style="background:var(--crimson-bg);color:var(--crimson);border:1px solid var(--crimson-border)">6</span></div>
+<div class="cgrid">
+<div class="cc t-ospedale" data-t="ospedale dentale estetica ivf oculistica ortopedia italiano" data-s="hygeia hospital tirana 60 milioni cardiologia oncologia ivf pet ct"><div class="cc-info"><div class="cc-name">Hygeia Hospital Tirana</div><div class="cc-city">Tirana &middot; 25+ dipartimenti &middot; IVF &middot; Oncologia</div><span class="cc-tag tg-o">Ospedale</span></div><a class="cc-link" href="https://hygeia.al/en/home-english/" target="_blank">&rarr;</a></div>
+<div class="cc t-ospedale" data-t="ospedale dentale estetica ivf oculistica ortopedia italiano" data-s="american hospital spitali amerikan tirana 33 dipartimenti da vinci dental eye"><div class="cc-info"><div class="cc-name">American Hospital</div><div class="cc-city">Tirana &middot; 33 dipartimenti &middot; Robot Da Vinci</div><span class="cc-tag tg-o">Ospedale #1</span></div><a class="cc-link" href="https://al.spitaliamerikan.com/en/" target="_blank">&rarr;</a></div>
+<div class="cc t-ospedale" data-t="ospedale estetica ortopedia oculistica italiano" data-s="salus hospital tirana kashar italo albanese standard italiani aeromedico"><div class="cc-info"><div class="cc-name">Salus Hospital</div><div class="cc-city">Tirana &middot; Italo-albanese &middot; Standard IT</div><span class="cc-tag tg-o">Ospedale</span></div><a class="cc-link" href="https://salus.al/" target="_blank">&rarr;</a></div>
+<div class="cc t-ospedale" data-t="ospedale" data-s="german hospital spitali gjerman tirana cardiochirurgia cardiovascolare 2010"><div class="cc-info"><div class="cc-name">German Hospital</div><div class="cc-city">Tirana &middot; Cardiochirurgia #1 Balcani</div><span class="cc-tag tg-o">Ospedale</span></div><a class="cc-link" href="https://spitaligjerman.com/" target="_blank">&rarr;</a></div>
+<div class="cc t-ospedale" data-t="ospedale dentale estetica oculistica ortopedia" data-s="starmed hospital tirana 22 dipartimenti primo policlinico accreditato 2118"><div class="cc-info"><div class="cc-name">STARMED Hospital</div><div class="cc-city">Tirana &middot; 22 dipartimenti &middot; Primo accreditato</div><span class="cc-tag tg-o">Policlinico</span></div><a class="cc-link" href="https://starmed-hospital.al/en/home-en/" target="_blank">&rarr;</a></div>
+<div class="cc t-ospedale" data-t="ospedale dentale estetica bariatrica ortopedia italiano" data-s="family hospital ifmc tirana 31 specialita bariatrica estetica odontoiatria"><div class="cc-info"><div class="cc-name">Family Hospital (IFMC)</div><div class="cc-city">Tirana &middot; 31+ specialit&agrave; &middot; Albania Doctor</div><span class="cc-tag tg-o">Ospedale</span></div><a class="cc-link" href="https://ifmc.al/en/" target="_blank">&rarr;</a></div>
+</div></section>
+
+<!-- CLINICHE DENTALI -->
+<section class="region"><div class="region-header"><span class="region-icon">&#129463;</span><span class="region-title">Cliniche Dentali con Travel</span><span class="region-count" style="background:var(--blue-bg);color:var(--blue);border:1px solid var(--blue-border)">18</span></div>
+<div class="cgrid">
+<div class="cc t-dentale" data-t="dentale italiano" data-s="endeta dental kamez tirana hotel proprio allinclusive uk italia"><div class="cc-info"><div class="cc-name">Endeta Dental</div><div class="cc-city">Tirana &middot; Hotel proprio integrato</div><span class="cc-tag tg-d">All-inclusive + hotel</span></div><a class="cc-link" href="https://endetadental.com/" target="_blank">&rarr;</a></div>
+<div class="cc t-dentale" data-t="dentale" data-s="excelentis dental center tirana voli inclusi vip nobel straumann 72 ore"><div class="cc-info"><div class="cc-name">Excelentis Dental</div><div class="cc-city">Tirana &middot; Voli inclusi &middot; Nobel/Straumann</div><span class="cc-tag tg-d">Premium &middot; -75%</span></div><a class="cc-link" href="https://excelentis.org/" target="_blank">&rarr;</a></div>
+<div class="cc t-dentale" data-t="dentale" data-s="tirana dental hospital vacay package hotel 4 stelle guida turistica"><div class="cc-info"><div class="cc-name">Tirana Dental Hospital</div><div class="cc-city">Tirana &middot; VACAY Package &middot; Hotel 4&#9733;</div><span class="cc-tag tg-d">Implantologia</span></div><a class="cc-link" href="https://tiranadentalhospital.com/en/dental-tourism-albania/" target="_blank">&rarr;</a></div>
+<div class="cc t-dentale" data-t="dentale italiano" data-s="dental med travel dental med austria tirana 2119 8000 pazienti"><div class="cc-info"><div class="cc-name">Dental Med Travel</div><div class="cc-city">Tirana &middot; Dal 2119 &middot; 8.000+ pazienti</div><span class="cc-tag tg-d">Dentale + travel</span></div><a class="cc-link" href="https://dentalmedtravel.com/" target="_blank">&rarr;</a></div>
+<div class="cc t-dentale" data-t="dentale italiano" data-s="andent dental clinic skanderbeg tirana 2117 15000 pazienti hotel gratuito"><div class="cc-info"><div class="cc-name">Andent Dental Clinic</div><div class="cc-city">Tirana &middot; Dal 2117 &middot; 15.000+ pazienti</div><span class="cc-tag tg-d">Hotel 4&#9733; gratis</span></div><a class="cc-link" href="https://andent.al/" target="_blank">&rarr;</a></div>
+<div class="cc t-dentale" data-t="dentale" data-s="dentour albania tirana 2500 pazienti anno megagen voli trasporto alloggio gratuito"><div class="cc-info"><div class="cc-name">DenTour Albania</div><div class="cc-city">Tirana &middot; 2.500 pz/anno &middot; Voli organizzati</div><span class="cc-tag tg-d">Volo+hotel gratis</span></div><a class="cc-link" href="https://dentour.al/" target="_blank">&rarr;</a></div>
+<div class="cc t-dentale" data-t="dentale italiano" data-s="dent italia tirana 2118 rimborso volo 211 eur hotel gratuito multilingue"><div class="cc-info"><div class="cc-name">Dent Italia</div><div class="cc-city">Tirana &middot; Rimborso volo A/R &euro;211</div><span class="cc-tag tg-d">Italiano &middot; -70%</span></div><a class="cc-link" href="https://dent-italia.al/en/dental-tourism/" target="_blank">&rarr;</a></div>
+<div class="cc t-dentale" data-t="dentale italiano" data-s="city dental clinic cdc tirana zigomatici pterigoidei maxillo facciale garanzia"><div class="cc-info"><div class="cc-name">City Dental Clinic CDC</div><div class="cc-city">Tirana &middot; Impianti zigomatici &middot; Garanzia</div><span class="cc-tag tg-d">Specializzata</span></div><a class="cc-link" href="https://cdc.com.al/en/" target="_blank">&rarr;</a></div>
+<div class="cc t-dentale" data-t="dentale italiano" data-s="sky dental skydent tirana 15 anni laboratorio interno italiano"><div class="cc-info"><div class="cc-name">Sky Dental</div><div class="cc-city">Tirana &middot; 15+ anni &middot; Lab interno</div><span class="cc-tag tg-d">Italiano</span></div><a class="cc-link" href="https://skydent.al/" target="_blank">&rarr;</a></div>
+<div class="cc t-dentale" data-t="dentale italiano" data-s="dental care albania tirana 15 anni standard ue italiano"><div class="cc-info"><div class="cc-name">Dental Care Albania</div><div class="cc-city">Tirana &middot; 15 anni &middot; Standard UE</div><span class="cc-tag tg-d">Italiano</span></div><a class="cc-link" href="https://dentalcarealbania.com/en/" target="_blank">&rarr;</a></div>
+<div class="cc t-dentale" data-t="dentale italiano" data-s="gremi clinic dentisti in albania tirana low cost francese italiano"><div class="cc-info"><div class="cc-name">Gremi Clinic</div><div class="cc-city">Tirana &middot; Low-cost &middot; FR + IT</div><span class="cc-tag tg-d">Budget</span></div><a class="cc-link" href="https://www.dentistiinalbania.com/en/" target="_blank">&rarr;</a></div>
+<div class="cc t-dentale" data-t="dentale italiano" data-s="union dental clinics tirana centro impianti titanio italiano francese"><div class="cc-info"><div class="cc-name">Union Dental Clinics</div><div class="cc-city">Tirana centro &middot; IT + FR</div><span class="cc-tag tg-d">Risparmio 40-70%</span></div><a class="cc-link" href="https://en.uniondentalclinics.com/" target="_blank">&rarr;</a></div>
+<div class="cc t-dentale" data-t="dentale italiano" data-s="dentisti a tirana premium dental clinic tirana italiano"><div class="cc-info"><div class="cc-name">Dentisti a Tirana</div><div class="cc-city">Tirana &middot; Premium &middot; Target IT</div><span class="cc-tag tg-d">Premium IT</span></div><a class="cc-link" href="https://dentistiatirana.com/" target="_blank">&rarr;</a></div>
+<div class="cc t-dentale" data-t="dentale italiano" data-s="international dental clinic dott dante cerbini tirana italiano 60 risparmio"><div class="cc-info"><div class="cc-name">Int'l Dental Clinic (Dott. Cerbini)</div><div class="cc-city">Tirana &middot; -60% &middot; Target IT</div><span class="cc-tag tg-d">Italiano</span></div><a class="cc-link" href="https://dentista-estero.net/" target="_blank">&rarr;</a></div>
+<div class="cc t-dentale" data-t="dentale italiano" data-s="trio dental center tirana virtus dental endeta elite dental emma platinum"><div class="cc-info"><div class="cc-name">Trio Dental Center</div><div class="cc-city">Tirana</div><span class="cc-tag tg-d">Dentale</span></div><a class="cc-link" href="https://dentaltrio.com/" target="_blank">&rarr;</a></div>
+<div class="cc t-dentale" data-t="dentale" data-s="virtus dental center tirana"><div class="cc-info"><div class="cc-name">Virtus Dental Center</div><div class="cc-city">Tirana</div><span class="cc-tag tg-d">Dentale</span></div><a class="cc-link" href="https://virtus.al/" target="_blank">&rarr;</a></div>
+<div class="cc t-dentale" data-t="dentale" data-s="dental artist durazzo durres albania"><div class="cc-info"><div class="cc-name">Dental Artist</div><div class="cc-city">Durazzo</div><span class="cc-tag tg-d">Dentale</span></div><a class="cc-link" href="https://dentalartist.al/en/" target="_blank">&rarr;</a></div>
+<div class="cc t-dentale" data-t="dentale tedesco" data-s="radiance dental hospital tirana tedesco mercato dach"><div class="cc-info"><div class="cc-name">Radiance Dental Hospital</div><div class="cc-city">Tirana &middot; Target tedesco</div><span class="cc-tag tg-d">Dentale DE</span></div><a class="cc-link" href="https://www.radiance.al" target="_blank">&rarr;</a></div>
+</div></section>
+
+<!-- CHIRURGIA ESTETICA -->
+<section class="region"><div class="region-header"><span class="region-icon">&#10024;</span><span class="region-title">Chirurgia Estetica / Plastica</span><span class="region-count" style="background:var(--purple-bg);color:var(--purple);border:1px solid var(--purple-border)">8</span></div>
+<div class="cgrid">
+<div class="cc t-estetica" data-t="estetica ospedale italiano" data-s="american hospital chirurgia plastica tirana rinoplastica seno bbl mommy makeover"><div class="cc-info"><div class="cc-name">American Hospital &mdash; Plastica</div><div class="cc-city">Tirana &middot; Rino, seno, BBL, mommy makeover</div><span class="cc-tag tg-e">Ospedale</span></div><a class="cc-link" href="https://al.spitaliamerikan.com/plastic-surgery-albania/" target="_blank">&rarr;</a></div>
+<div class="cc t-estetica" data-t="estetica italiano" data-s="family beauty hospital tirana fue dhi estetica ospedale"><div class="cc-info"><div class="cc-name">Family Beauty Hospital</div><div class="cc-city">Tirana &middot; Estetica + capelli</div><span class="cc-tag tg-e">Ospedale estetico</span></div><a class="cc-link" href="https://familybeautyal.com/" target="_blank">&rarr;</a></div>
+<div class="cc t-estetica" data-t="estetica italiano" data-s="keit day hospital tirana 22110 interventi 30 chirurghi italiani estetica capelli"><div class="cc-info"><div class="cc-name">KEIT Day Hospital</div><div class="cc-city">Tirana &middot; 22.000+ interventi &middot; Chirurghi IT</div><span class="cc-tag tg-e">Estetica + capelli</span></div><a class="cc-link" href="https://www.keit.al/en/" target="_blank">&rarr;</a></div>
+<div class="cc t-estetica" data-t="estetica" data-s="clinica davinci tirana micro fue estetica medici turchi"><div class="cc-info"><div class="cc-name">Clinica DaVINCI</div><div class="cc-city">Tirana &middot; Estetica + capelli</div><span class="cc-tag tg-e">Estetica</span></div><a class="cc-link" href="https://davinci.al/en/" target="_blank">&rarr;</a></div>
+<div class="cc t-estetica" data-t="estetica" data-s="silur clinic tirana dr albiona saliaj chirurgia plastica"><div class="cc-info"><div class="cc-name">Silur Clinic</div><div class="cc-city">Tirana &middot; Chirurgia plastica</div><span class="cc-tag tg-e">Plastica</span></div><a class="cc-link" href="https://silurclinic.com/" target="_blank">&rarr;</a></div>
+<div class="cc t-estetica" data-t="estetica" data-s="diva clinic tirana chirurgia estetica"><div class="cc-info"><div class="cc-name">Diva Clinic</div><div class="cc-city">Tirana &middot; Chirurgia estetica</div><span class="cc-tag tg-e">Estetica</span></div><a class="cc-link" href="https://www.diva.al/en/" target="_blank">&rarr;</a></div>
+<div class="cc t-estetica" data-t="estetica" data-s="venere clinic tirana estetica viso corpo"><div class="cc-info"><div class="cc-name">Venere Clinic</div><div class="cc-city">Tirana &middot; Viso + corpo</div><span class="cc-tag tg-e">Estetica</span></div><a class="cc-link" href="https://venereclinic.com/en/" target="_blank">&rarr;</a></div>
+<div class="cc t-estetica" data-t="estetica" data-s="estetik international tirana chirurgia estetica"><div class="cc-info"><div class="cc-name">Estetik International</div><div class="cc-city">Tirana</div><span class="cc-tag tg-e">Estetica</span></div><a class="cc-link" href="https://www.estetikinternational.com/" target="_blank">&rarr;</a></div>
+</div></section>
+
+<!-- IVF / FERTILITÀ -->
+<section class="region"><div class="region-header"><span class="region-icon">&#128118;</span><span class="region-title">IVF / Fertilit&agrave;</span><span class="region-count" style="background:var(--orange-bg);color:var(--orange);border:1px solid var(--orange-border)">6</span></div>
+<div class="cgrid">
+<div class="cc t-ivf" data-t="ivf" data-s="hygeia ivf tirana fertilita temos certificazione fecondazione assistita"><div class="cc-info"><div class="cc-name">Hygeia Hospital &mdash; IVF</div><div class="cc-city">Tirana &middot; TEMOS certificato</div><span class="cc-tag tg-i">IVF &middot; Certificato</span></div><a class="cc-link" href="https://hygeia.al/en/home-english/" target="_blank">&rarr;</a></div>
+<div class="cc t-ivf" data-t="ivf" data-s="ivf american hospital tirana fecondazione assistita"><div class="cc-info"><div class="cc-name">IVF American Hospital</div><div class="cc-city">Tirana</div><span class="cc-tag tg-i">IVF</span></div><a class="cc-link" href="https://ivfalbania.com/en/" target="_blank">&rarr;</a></div>
+<div class="cc t-ivf" data-t="ivf" data-s="tirana ivf fertilita procreazione assistita"><div class="cc-info"><div class="cc-name">Tirana IVF</div><div class="cc-city">Tirana</div><span class="cc-tag tg-i">IVF</span></div><a class="cc-link" href="https://tiranaivf.com/" target="_blank">&rarr;</a></div>
+<div class="cc t-ivf" data-t="ivf" data-s="stem gene art saga clinic tirana fertilita staminali"><div class="cc-info"><div class="cc-name">Stem &amp; Gene ART (SAGA)</div><div class="cc-city">Tirana &middot; Staminali + IVF</div><span class="cc-tag tg-i">IVF avanzato</span></div><a class="cc-link" href="https://sagaclinic.com/" target="_blank">&rarr;</a></div>
+<div class="cc t-ivf" data-t="ivf" data-s="dr invitro tirana fertilita fecondazione"><div class="cc-info"><div class="cc-name">Dr. Invitro</div><div class="cc-city">Tirana</div><span class="cc-tag tg-i">IVF</span></div><a class="cc-link" href="https://drinvitro.com/" target="_blank">&rarr;</a></div>
+<div class="cc t-ivf" data-t="ivf" data-s="egian by intermedica tirana ivf fertilita"><div class="cc-info"><div class="cc-name">Egian by Intermedica</div><div class="cc-city">Tirana</div><span class="cc-tag tg-i">IVF</span></div><a class="cc-link" href="https://egian.al/klinika/ivf/en/" target="_blank">&rarr;</a></div>
+</div></section>
+
+<!-- OCULISTICA -->
+<section class="region"><div class="region-header"><span class="region-icon">&#128065;&#65039;</span><span class="region-title">Centri Oculistici</span><span class="region-count" style="background:var(--cyan-bg);color:var(--cyan);border:1px solid var(--cyan-border)">2</span></div>
+<div class="cgrid">
+<div class="cc t-oculistica" data-t="oculistica" data-s="european eye clinic tirana lasik oculistica"><div class="cc-info"><div class="cc-name">European Eye Clinic</div><div class="cc-city">Tirana &middot; LASIK + oculistica</div><span class="cc-tag tg-c">Oculistica</span></div><a class="cc-link" href="https://europeaneyeclinic.al/" target="_blank">&rarr;</a></div>
+<div class="cc t-oculistica" data-t="oculistica" data-s="tirana eye clinic oculistica"><div class="cc-info"><div class="cc-name">Tirana Eye Clinic</div><div class="cc-city">Tirana</div><span class="cc-tag tg-c">Oculistica</span></div><a class="cc-link" href="https://al.spitaliamerikan.com/en/" target="_blank">&rarr;</a></div>
+</div></section>
+
+<!-- BARIATRICA / ALTRO -->
+<section class="region"><div class="region-header"><span class="region-icon">&#9878;&#65039;</span><span class="region-title">Bariatrica &amp; Multisettoriali</span><span class="region-count" style="background:var(--gold-bg);color:var(--gold);border:1px solid var(--gold-border)">3</span></div>
+<div class="cgrid">
+<div class="cc t-bariatrica" data-t="bariatrica" data-s="sante plus hospital tirana bariatrica gastric sleeve bypass"><div class="cc-info"><div class="cc-name">Sant&eacute; Plus Hospital</div><div class="cc-city">Tirana &middot; Bariatrica + multi</div><span class="cc-tag tg-b">Bariatrica</span></div><a class="cc-link" href="https://www.santeplusgroup.com/sante-plus" target="_blank">&rarr;</a></div>
+<div class="cc t-bariatrica" data-t="bariatrica" data-s="doctors hospital albania 4 sedi multispecialistico"><div class="cc-info"><div class="cc-name">Doctors Hospital Albania</div><div class="cc-city">4 sedi &middot; Multispecialistico</div><span class="cc-tag tg-b">Multi-settore</span></div><a class="cc-link" href="https://doctorshospital.al/" target="_blank">&rarr;</a></div>
+<div class="cc t-bariatrica" data-t="bariatrica dentale estetica italiano" data-s="medicalba tirana italiano dentale estetica bariatrica"><div class="cc-info"><div class="cc-name">MedicAlba</div><div class="cc-city">Tirana &middot; IT &middot; Dentale + estetica + bariatrica</div><span class="cc-tag tg-b">Multi IT</span></div><a class="cc-link" href="https://medicalba.it/" target="_blank">&rarr;</a></div>
+</div></section>
+
+<!-- AGENZIE UK E SPECIFICHE -->
+<section class="region"><div class="region-header"><span class="region-icon">&#127468;&#127463;</span><span class="region-title">Agenzie UK &amp; Specifiche per Mercato</span><span class="region-count" style="background:var(--accent-glow);color:var(--accent);border:1px solid rgba(99,102,241,.3)">5</span></div>
+<div class="cgrid">
+<div class="cc t-agenzia" data-t="agenzia dentale estetica" data-s="dental tourism in albania uk vlore londra dentale estetica capelli"><div class="cc-info"><div class="cc-name">Dental Tourism In Albania UK</div><div class="cc-city">Londra + Vlore &middot; Dentale + estetica</div><span class="cc-tag tg-a">UK market</span></div><a class="cc-link" href="https://dentaltourisminalbania.uk" target="_blank">&rarr;</a></div>
+<div class="cc t-agenzia" data-t="agenzia dentale italiano" data-s="brianza dent impiantidentalialbania.it italia dentale albania"><div class="cc-info"><div class="cc-name">Brianza Dent</div><div class="cc-city">Italia &middot; Impianti dentali Albania</div><span class="cc-tag tg-d">IT intermedio</span></div><a class="cc-link" href="https://www.impiantidentalialbania.it" target="_blank">&rarr;</a></div>
+<div class="cc t-agenzia" data-t="agenzia dentale italiano" data-s="aratravel impiantidentali.clinic italia dentale albania lecce"><div class="cc-info"><div class="cc-name">Aratravel</div><div class="cc-city">Italia (Lecce) &middot; Impianti dentali</div><span class="cc-tag tg-d">IT intermedio</span></div><a class="cc-link" href="https://www.impiantidentali.clinic" target="_blank">&rarr;</a></div>
+<div class="cc t-agenzia" data-t="agenzia dentale estetica italiano" data-s="albamia viaggi roma italia turismo tricologico dentale estetica"><div class="cc-info"><div class="cc-name">AlbaMia Viaggi</div><div class="cc-city">Roma &middot; Tricologico + dentale + estetica</div><span class="cc-tag tg-a">Agenzia IT</span></div><a class="cc-link" href="https://www.albamiaviaggi.com" target="_blank">&rarr;</a></div>
+<div class="cc t-agenzia" data-t="agenzia dentale estetica italiano" data-s="blue agency italia trapianto capelli estetica albania turchia"><div class="cc-info"><div class="cc-name">Blue Agency</div><div class="cc-city">Italia &middot; Capelli + estetica &middot; Albania + Turchia</div><span class="cc-tag tg-a">Multi-dest IT</span></div><a class="cc-link" href="https://www.blueagency.it/trapianto-capelli/" target="_blank">&rarr;</a></div>
+</div></section>
+
+<!-- INTERMEDIARI DENTALE AGGIUNTIVI -->
+<section class="region"><div class="region-header"><span class="region-icon">&#129463;</span><span class="region-title">Altre Cliniche Dentali Verificate</span><span class="region-count" style="background:var(--blue-bg);color:var(--blue);border:1px solid var(--blue-border)">6</span></div>
+<div class="cgrid">
+<div class="cc t-dentale" data-t="dentale italiano" data-s="elite dental dentistalbania.it tirana italiano"><div class="cc-info"><div class="cc-name">Elite Dental</div><div class="cc-city">Tirana &middot; dentistalbania.it</div><span class="cc-tag tg-d">IT</span></div><a class="cc-link" href="https://dentistalbania.it/" target="_blank">&rarr;</a></div>
+<div class="cc t-dentale" data-t="dentale italiano" data-s="platinum dental turismo dentale albania tirana italiano"><div class="cc-info"><div class="cc-name">Platinum Dental</div><div class="cc-city">Tirana &middot; turismo-dentale-albania.it</div><span class="cc-tag tg-d">IT</span></div><a class="cc-link" href="https://turismo-dentale-albania.it/" target="_blank">&rarr;</a></div>
+<div class="cc t-dentale" data-t="dentale" data-s="emma dental center tiranadent tirana"><div class="cc-info"><div class="cc-name">Emma Dental Center</div><div class="cc-city">Tirana</div><span class="cc-tag tg-d">Dentale</span></div><a class="cc-link" href="https://tiranadent.com/" target="_blank">&rarr;</a></div>
+<div class="cc t-dentale" data-t="dentale" data-s="american dental hospital tirana american hospital dental"><div class="cc-info"><div class="cc-name">American Dental Hospital</div><div class="cc-city">Tirana &middot; American Hospital</div><span class="cc-tag tg-d">Ospedaliero</span></div><a class="cc-link" href="https://al.spitaliamerikan.com/dental/" target="_blank">&rarr;</a></div>
+<div class="cc t-dentale" data-t="dentale" data-s="medical tourism albania .com dentale multi-settore"><div class="cc-info"><div class="cc-name">Medical Tourism Albania (.com)</div><div class="cc-city">Albania &middot; Multi-settore</div><span class="cc-tag tg-d">Portale</span></div><a class="cc-link" href="https://www.medicaltourism-albania.com" target="_blank">&rarr;</a></div>
+<div class="cc t-dentale" data-t="dentale" data-s="t-medi.co turismo medico albania tirana"><div class="cc-info"><div class="cc-name">T-Medi.co</div><div class="cc-city">Tirana &middot; Turismo medico</div><span class="cc-tag tg-d">Portale</span></div><a class="cc-link" href="https://www.t-medi.co" target="_blank">&rarr;</a></div>
+</div></section>
+
+<!-- ══════ MERCATO ITALIA (AGENZIE) ══════ -->
+<section class="region"><div class="region-header"><span class="region-icon">&#127470;&#127481;</span><span class="region-title">Mercato Italia &mdash; Agenzie &amp; Intermediari</span><span class="region-count" style="background:var(--green-bg);color:var(--green);border:1px solid var(--green-border)">12</span></div>
+<div class="cgrid">
+<div class="cc t-agenzia" data-t="agenzia dentale italiano" data-s="viaggi del dente tirana valona croazia 2115 pulmino volo hotel gratis"><div class="cc-info"><div class="cc-name">Viaggi del Dente</div><div class="cc-city">Tirana + Valona &middot; Dal 2115 &middot; Pulmino organizzato</div><span class="cc-tag tg-a">Storica IT</span></div><a class="cc-link" href="https://www.viaggideldente.it/" target="_blank">&rarr;</a></div>
+<div class="cc t-agenzia" data-t="agenzia dentale italiano" data-s="turismo dentale albania marco licata 2117 15000 sorrisi biodent tirana"><div class="cc-info"><div class="cc-name">Turismo Dentale Albania (Licata)</div><div class="cc-city">Tirana &middot; Dal 2117 &middot; 15.000+ sorrisi</div><span class="cc-tag tg-a">Storica IT</span></div><a class="cc-link" href="https://turismodentalealbania.eu/" target="_blank">&rarr;</a></div>
+<div class="cc t-agenzia" data-t="agenzia dentale italiano" data-s="turismo dentale italb 2119 tirana accompagnamento pacchetto completo"><div class="cc-info"><div class="cc-name">Turismo Dentale ITALB</div><div class="cc-city">Tirana &middot; Dal 2119 &middot; Pacchetto completo</div><span class="cc-tag tg-a">Agenzia IT</span></div><a class="cc-link" href="https://turismodentaleitalb.com/" target="_blank">&rarr;</a></div>
+<div class="cc t-agenzia" data-t="agenzia dentale italiano" data-s="turisti col sorriso tirana dentisti formati italia autista privato"><div class="cc-info"><div class="cc-name">Turisti col Sorriso</div><div class="cc-city">Tirana &middot; Dentisti formati in Italia</div><span class="cc-tag tg-a">Agenzia IT</span></div><a class="cc-link" href="https://www.turisticolsorriso.it/" target="_blank">&rarr;</a></div>
+<div class="cc t-agenzia" data-t="agenzia dentale italiano" data-s="denti allestero portale comparativo preventivi 24h iso"><div class="cc-info"><div class="cc-name">Denti all'Estero</div><div class="cc-city">Italia/Albania &middot; Comparatore &middot; Preventivi 24h</div><span class="cc-tag tg-a">Portale IT</span></div><a class="cc-link" href="https://dentiallestero.it/" target="_blank">&rarr;</a></div>
+<div class="cc t-agenzia" data-t="agenzia dentale italiano" data-s="mydentalcare assistance durazzo torino milano genova bari napoli catania post operatorio italia"><div class="cc-info"><div class="cc-name">MyDentalCare Assistance</div><div class="cc-city">Durazzo + 6 sedi Italia &middot; Post-op in IT</div><span class="cc-tag tg-a">Follow-up Italia</span></div><a class="cc-link" href="https://www.mydentalcare-assistance.com/" target="_blank">&rarr;</a></div>
+<div class="cc t-agenzia" data-t="agenzia estetica italiano" data-s="tea turismo estetico albania tirana medici italiani rinoplastica lipo mastoplastica"><div class="cc-info"><div class="cc-name">TEA (Turismo Estetico Albania)</div><div class="cc-city">Tirana &middot; Medici italiani &middot; Estetica pura</div><span class="cc-tag tg-e">Estetica IT</span></div><a class="cc-link" href="https://tealbania.com/" target="_blank">&rarr;</a></div>
+<div class="cc t-agenzia" data-t="agenzia estetica dentale italiano" data-s="albania care tirana chirurgia estetica medicina implantologia capelli team italia"><div class="cc-info"><div class="cc-name">Albania Care</div><div class="cc-city">Tirana &middot; Estetica + dentale + capelli</div><span class="cc-tag tg-a">Multi IT</span></div><a class="cc-link" href="https://albaniacare.com/" target="_blank">&rarr;</a></div>
+<div class="cc t-agenzia" data-t="agenzia dentale italiano" data-s="portalba durazzo roma guidonia carsoli fasano vacanza mare dentale"><div class="cc-info"><div class="cc-name">Portalba</div><div class="cc-city">Durazzo + Roma &middot; Dentale + vacanza mare</div><span class="cc-tag tg-a">IT ponte mare</span></div><a class="cc-link" href="https://www.portalba.eu/" target="_blank">&rarr;</a></div>
+<div class="cc t-agenzia" data-t="agenzia dentale italiano" data-s="sorriso a tirana turismo dentale instagram italiano"><div class="cc-info"><div class="cc-name">Sorriso a Tirana</div><div class="cc-city">Tirana &middot; Instagram attivo</div><span class="cc-tag tg-a">Social IT</span></div><a class="cc-link" href="https://sorrisoatirana.it/" target="_blank">&rarr;</a></div>
+<div class="cc t-agenzia" data-t="agenzia dentale estetica italiano" data-s="sos turismo dentale albania tirana 30000 facebook capelli estetica dubai exhibition"><div class="cc-info"><div class="cc-name">SOS Turismo Dentale Albania</div><div class="cc-city">Tirana &middot; 30K Facebook &middot; Dubai Exhibition</div><span class="cc-tag tg-a">Multi IT</span></div><a class="cc-link" href="https://sosturismodentale.al/" target="_blank">&rarr;</a></div>
+<div class="cc t-agenzia" data-t="agenzia dentale italiano" data-s="come to albania portale turistico partnership akesios dental beauty"><div class="cc-info"><div class="cc-name">Come to Albania</div><div class="cc-city">Albania &middot; Portale turistico + medico</div><span class="cc-tag tg-a">Turismo + medico</span></div><a class="cc-link" href="https://cometoalbania.eu/" target="_blank">&rarr;</a></div>
+</div></section>
+
+<!-- ══════ CLINICHE TIRANA (nuove) ══════ -->
+<section class="region"><div class="region-header"><span class="region-icon">&#127963;&#65039;</span><span class="region-title">Cliniche Tirana &mdash; Nuove Trovate</span><span class="region-count" style="background:var(--blue-bg);color:var(--blue);border:1px solid var(--blue-border)">14</span></div>
+<div class="cgrid">
+<div class="cc t-dentale" data-t="dentale italiano" data-s="san marco dental tirana 3500 clienti 15 dentisti garanzia rimborsati 75%"><div class="cc-info"><div class="cc-name">San Marco Dental</div><div class="cc-city">Tirana &middot; 3.500+ clienti &middot; -75% &middot; Garanzia</div><span class="cc-tag tg-d">Premium IT</span></div><a class="cc-link" href="https://sanmarcodental.it/" target="_blank">&rarr;</a></div>
+<div class="cc t-dentale" data-t="dentale italiano" data-s="biodent denti e sorrisi tirana 15000 pazienti tac 3d cad cam"><div class="cc-info"><div class="cc-name">Biodent / Denti e Sorrisi</div><div class="cc-city">Tirana &middot; 15.000+ pazienti &middot; TAC 3D</div><span class="cc-tag tg-d">Storica</span></div><a class="cc-link" href="https://biodent.al/" target="_blank">&rarr;</a></div>
+<div class="cc t-dentale" data-t="dentale italiano" data-s="lela dental prof fatmir lela 35 anni chirurgo maxillo facciale trasporto alloggio gratis"><div class="cc-info"><div class="cc-name">Lela Dental (Prof. Fatmir Lela)</div><div class="cc-city">Tirana &middot; 35+ anni &middot; Maxillo-facciale</div><span class="cc-tag tg-d">Prof. storico</span></div><a class="cc-link" href="https://leladental.com/" target="_blank">&rarr;</a></div>
+<div class="cc t-dentale" data-t="dentale italiano" data-s="family dental care tirana 5000 recensioni dentista formato italia all on 4 volo hotel"><div class="cc-info"><div class="cc-name">Family Dental Care</div><div class="cc-city">Tirana &middot; 5.000+ recensioni &middot; Formato in IT</div><span class="cc-tag tg-d">Top recensioni</span></div><a class="cc-link" href="https://familydentalcareal.com/" target="_blank">&rarr;</a></div>
+<div class="cc t-dentale" data-t="dentale italiano" data-s="sorriso sicuro tirana 500 recensioni cfo pharma numero italiano 039"><div class="cc-info"><div class="cc-name">Sorriso Sicuro</div><div class="cc-city">Tirana &middot; 500+ rec. 5&#9733; &middot; N. italiano +39</div><span class="cc-tag tg-d">Gruppo CFO</span></div><a class="cc-link" href="https://sorrisosicuro.al/" target="_blank">&rarr;</a></div>
+<div class="cc t-dentale" data-t="dentale italiano" data-s="la casa del sorriso tirana 10000 procedure dentisti laureati italia sim gratuita hotel"><div class="cc-info"><div class="cc-name">La Casa del Sorriso</div><div class="cc-city">Tirana &middot; 10.000+ procedure &middot; Laureati IT</div><span class="cc-tag tg-d">Hotel + SIM gratis</span></div><a class="cc-link" href="https://www.lacasadelsorriso.com/" target="_blank">&rarr;</a></div>
+<div class="cc t-dentale" data-t="dentale italiano" data-s="faidant albania tirana 1211 pazienti anno straumann implantswiss 235 recensioni 5 stelle"><div class="cc-info"><div class="cc-name">FaiDent Albania</div><div class="cc-city">Tirana &middot; 1.211 pz/anno &middot; Straumann</div><span class="cc-tag tg-d">235+ rec. 5&#9733;</span></div><a class="cc-link" href="https://dentistaatirana.com/" target="_blank">&rarr;</a></div>
+<div class="cc t-dentale" data-t="dentale italiano" data-s="polaris dental tirana 1500 pazienti europei anno rimborso voli computer assistita"><div class="cc-info"><div class="cc-name">Polaris Dental</div><div class="cc-city">Tirana &middot; 1.500 pz EU/anno &middot; Rimborso voli</div><span class="cc-tag tg-d">Computer-assistita</span></div><a class="cc-link" href="https://dentistainalbania.it/" target="_blank">&rarr;</a></div>
+<div class="cc t-dentale" data-t="dentale italiano" data-s="gaia clinic tirana 650mq 8 sale sirona dentisti formati italia"><div class="cc-info"><div class="cc-name">Gaia Clinic</div><div class="cc-city">Tirana &middot; 650mq &middot; 8 sale &middot; Tecnologia SIRONA</div><span class="cc-tag tg-d">Mega clinica</span></div><a class="cc-link" href="https://gaiaclinic.al/" target="_blank">&rarr;</a></div>
+<div class="cc t-dentale" data-t="dentale italiano" data-s="dca dental center albania tirana 15 anni digital dentistry laboratorio tour"><div class="cc-info"><div class="cc-name">DCA (Dental Center Albania)</div><div class="cc-city">Tirana &middot; 15+ anni &middot; Digital Dentistry</div><span class="cc-tag tg-d">Unica digitale</span></div><a class="cc-link" href="https://www.dca.al/" target="_blank">&rarr;</a></div>
+<div class="cc t-dentale" data-t="dentale italiano" data-s="dentadent tirana dr gianfranco alimena bari cosenza medici italiani"><div class="cc-info"><div class="cc-name">DentaDent</div><div class="cc-city">Tirana &middot; Dr. Alimena (Bari/Cosenza)</div><span class="cc-tag tg-d">Medici IT</span></div><a class="cc-link" href="https://dentadent.al/" target="_blank">&rarr;</a></div>
+<div class="cc t-dentale" data-t="dentale italiano" data-s="empire dental clinic tirana cbct 3d cad cam whatsapp invisalign spedizione"><div class="cc-info"><div class="cc-name">Empire Dental Clinic</div><div class="cc-city">Tirana &middot; CBCT 3D &middot; Invisalign spedito a casa</div><span class="cc-tag tg-d">Hi-tech</span></div><a class="cc-link" href="https://www.empiredentalclinic.al/" target="_blank">&rarr;</a></div>
+<div class="cc t-oculistica" data-t="oculistica italiano" data-s="ueh universal eye hospital tirana 40000 pazienti femto lasik 15 min dr nadon qafa"><div class="cc-info"><div class="cc-name">UEH (Universal Eye Hospital)</div><div class="cc-city">Tirana &middot; 40.000+ pz &middot; Femto-LASIK 15min</div><span class="cc-tag tg-c">Oculistica #1</span></div><a class="cc-link" href="https://ueh.al/" target="_blank">&rarr;</a></div>
+<div class="cc t-dentale" data-t="dentale estetica ivf italiano" data-s="dental beauty tirana 2011 500 nascite ivf dentale estetica capelli"><div class="cc-info"><div class="cc-name">Dental &amp; Beauty</div><div class="cc-city">Tirana &middot; Dentale + estetica + IVF (500 nascite!)</div><span class="cc-tag tg-d">Multi + IVF</span></div><a class="cc-link" href="https://dentalandbeauty.it/" target="_blank">&rarr;</a></div>
+</div></section>
+
+<!-- ══════ CLINICHE DURAZZO ══════ -->
+<section class="region"><div class="region-header"><span class="region-icon">&#9875;</span><span class="region-title">Cliniche Durazzo (Durr&euml;s)</span><span class="region-count" style="background:var(--cyan-bg);color:var(--cyan);border:1px solid var(--cyan-border)">7</span></div>
+<div class="cgrid">
+<div class="cc t-dentale" data-t="dentale italiano" data-s="dential durazzo tirana tor vergata roma impianti bb bologna osstem"><div class="cc-info"><div class="cc-name">Dential</div><div class="cc-city">Durazzo + Tirana &middot; Dr. laureato Tor Vergata Roma</div><span class="cc-tag tg-d">Riferimento IT</span></div><a class="cc-link" href="https://www.dential.it/" target="_blank">&rarr;</a></div>
+<div class="cc t-dentale" data-t="dentale italiano" data-s="akesios dental beauty durazzo roma milano ancona londra zurigo hotel premium"><div class="cc-info"><div class="cc-name">Akesios Dental Beauty</div><div class="cc-city">Durazzo &middot; Uffici Roma, Milano, Ancona, Londra</div><span class="cc-tag tg-d">5 uffici EU</span></div><a class="cc-link" href="https://akesiosdental.com/" target="_blank">&rarr;</a></div>
+<div class="cc t-dentale" data-t="dentale italiano" data-s="hc durazzo guidonia carsoli fasano medici italiani follow-up gratuito italia 1 anno"><div class="cc-info"><div class="cc-name">HC Durazzo</div><div class="cc-city">Durazzo + 3 sedi Italia &middot; Follow-up IT 1 anno</div><span class="cc-tag tg-d">Sedi in Italia</span></div><a class="cc-link" href="https://www.hcdurazzo.com/" target="_blank">&rarr;</a></div>
+<div class="cc t-dentale" data-t="dentale italiano" data-s="class dentist classdent durazzo 22 anni gestione familiare 3 minuti porto"><div class="cc-info"><div class="cc-name">Class Dentist</div><div class="cc-city">Durazzo &middot; 22 anni &middot; 3 min dal porto</div><span class="cc-tag tg-d">Storica Durazzo</span></div><a class="cc-link" href="https://classdentist.com/" target="_blank">&rarr;</a></div>
+<div class="cc t-dentale" data-t="dentale italiano" data-s="dental clinic one durazzo 15 anni turismo dentale chirurgia"><div class="cc-info"><div class="cc-name">Dental Clinic One</div><div class="cc-city">Durazzo &middot; 15 anni turismo dentale</div><span class="cc-tag tg-d">Durazzo</span></div><a class="cc-link" href="https://dentalclinicone.com/" target="_blank">&rarr;</a></div>
+<div class="cc t-dentale" data-t="dentale italiano" data-s="dulo dent durazzo garanzia 5 anni preventivi online 3 giorni"><div class="cc-info"><div class="cc-name">Dulo Dent</div><div class="cc-city">Durazzo &middot; Garanzia 5 anni</div><span class="cc-tag tg-d">Durazzo</span></div><a class="cc-link" href="https://dulodent.com/" target="_blank">&rarr;</a></div>
+<div class="cc t-dentale" data-t="dentale italiano" data-s="eminaj dental clinic durazzo tecnologie innovative implantologia ortodonzia"><div class="cc-info"><div class="cc-name">Eminaj Dental Clinic</div><div class="cc-city">Durazzo &middot; Nuova generazione</div><span class="cc-tag tg-d">Durazzo</span></div><a class="cc-link" href="https://eminajdentalclinic.com/" target="_blank">&rarr;</a></div>
+</div></section>
+
+<!-- ══════ CLINICHE VALONA ══════ -->
+<section class="region"><div class="region-header"><span class="region-icon">&#127965;&#65039;</span><span class="region-title">Cliniche Valona (Vlor&euml;)</span><span class="region-count" style="background:var(--orange-bg);color:var(--orange);border:1px solid var(--orange-border)">7</span></div>
+<div class="cgrid">
+<div class="cc t-dentale" data-t="dentale italiano" data-s="valona dental dr andi zanaj mensilmente italia incontrare pazienti"><div class="cc-info"><div class="cc-name">Valona Dental</div><div class="cc-city">Valona &middot; Dr. mensilmente in Italia</div><span class="cc-tag tg-d">Visite in IT</span></div><a class="cc-link" href="https://www.valonadental.com/" target="_blank">&rarr;</a></div>
+<div class="cc t-dentale" data-t="dentale italiano" data-s="sorriso dental valona 12 impianti 24 denti 6500 eur dr alban haxhiu"><div class="cc-info"><div class="cc-name">Sorriso Dental Valona</div><div class="cc-city">Valona &middot; 12 impianti+24 denti da &euro;6.500</div><span class="cc-tag tg-d">All-on-X</span></div><a class="cc-link" href="https://www.turismodentalevalona.it/" target="_blank">&rarr;</a></div>
+<div class="cc t-dentale" data-t="dentale estetica italiano" data-s="haxhiu medical center valona dentale ginecologia skincare filler capelli"><div class="cc-info"><div class="cc-name">Haxhiu Medical Center</div><div class="cc-city">Valona &middot; Dentale + ginecologia + estetica</div><span class="cc-tag tg-d">Multi Valona</span></div><a class="cc-link" href="https://haxhiumedicalcenter.com/" target="_blank">&rarr;</a></div>
+<div class="cc t-dentale" data-t="dentale italiano" data-s="infinity dental valona 10 anni turismo dentale staff europa turchia"><div class="cc-info"><div class="cc-name">Infinity Dental Valona</div><div class="cc-city">Valona &middot; 10 anni turismo dentale</div><span class="cc-tag tg-d">Valona</span></div><a class="cc-link" href="https://infinitydental.al/" target="_blank">&rarr;</a></div>
+<div class="cc t-dentale" data-t="dentale italiano" data-s="mela dent valona straumann garanzia vita invisalign"><div class="cc-info"><div class="cc-name">Mela Dent</div><div class="cc-city">Valona &middot; Straumann &middot; Garanzia a vita</div><span class="cc-tag tg-d">Premium Valona</span></div><a class="cc-link" href="https://studiodentisticoavalona.com/" target="_blank">&rarr;</a></div>
+<div class="cc t-dentale" data-t="dentale italiano" data-s="balikci dental valona 2110 implantologia ortodonzia trasporto alloggio"><div class="cc-info"><div class="cc-name">Balikci Dental</div><div class="cc-city">Valona &middot; Dal 2110 &middot; Trasporto + alloggio</div><span class="cc-tag tg-d">Storica Valona</span></div><a class="cc-link" href="https://balikcidental.com/" target="_blank">&rarr;</a></div>
+<div class="cc t-dentale" data-t="dentale estetica" data-s="dental tour valona dentale chirurgia estetica trapianto capelli"><div class="cc-info"><div class="cc-name">Dental Tour Valona</div><div class="cc-city">Valona &middot; Dentale + estetica + capelli</div><span class="cc-tag tg-d">Multi Valona</span></div><a class="cc-link" href="https://dentaltourvalona.com/" target="_blank">&rarr;</a></div>
+</div></section>
+
+<!-- ══════ MERCATO UK ══════ -->
+<section class="region"><div class="region-header"><span class="region-icon">&#127468;&#127463;</span><span class="region-title">Mercato UK &amp; Irlanda</span><span class="region-count" style="background:var(--crimson-bg);color:var(--crimson);border:1px solid var(--crimson-border)">14</span></div>
+<div class="cgrid">
+<div class="cc t-agenzia" data-t="agenzia dentale" data-s="travel and smile tirana uk +44 impianti 500 gbp hotel gratis 70% risparmio"><div class="cc-info"><div class="cc-name">Travel And Smile</div><div class="cc-city">Tirana (tel +44 UK) &middot; Impianti da GBP 500</div><span class="cc-tag tg-a">UK .co.uk</span></div><a class="cc-link" href="https://travelandsmile.co.uk/" target="_blank">&rarr;</a></div>
+<div class="cc t-agenzia" data-t="agenzia dentale" data-s="smilequest dental uk impianti 890 gbp corone 145 gbp voli hotel premium"><div class="cc-info"><div class="cc-name">SmileQuest Dental</div><div class="cc-city">UK &middot; Impianti GBP 890 &middot; Corone GBP 145</div><span class="cc-tag tg-a">UK .co.uk</span></div><a class="cc-link" href="https://smilequestdental.co.uk/" target="_blank">&rarr;</a></div>
+<div class="cc t-agenzia" data-t="agenzia dentale" data-s="dentalb ltd witney oxfordshire inghilterra sede fisica registrata uk tirana"><div class="cc-info"><div class="cc-name">DentalAlb Ltd</div><div class="cc-city">Witney, Oxfordshire &middot; Unica sede UK fisica</div><span class="cc-tag tg-a">Sede UK registrata</span></div><a class="cc-link" href="https://dentalb.uk/" target="_blank">&rarr;</a></div>
+<div class="cc t-agenzia" data-t="agenzia dentale" data-s="trustmed elite dental uk tirana tiktok whatsapp +44 2025"><div class="cc-info"><div class="cc-name">TrustMed by Elite Dental</div><div class="cc-city">UK + Tirana &middot; Attiva TikTok &middot; Nuova 2025</div><span class="cc-tag tg-a">UK .co.uk + TikTok</span></div><a class="cc-link" href="https://www.trustmedal.co.uk/" target="_blank">&rarr;</a></div>
+<div class="cc t-agenzia" data-t="agenzia dentale" data-s="dental implants cost abroad uk +44 203 all on 4 6 faccette tirana"><div class="cc-info"><div class="cc-name">Dental Implants Cost Abroad</div><div class="cc-city">UK (+44) &middot; All-on-4/6 &middot; -40/70%</div><span class="cc-tag tg-a">UK .co.uk</span></div><a class="cc-link" href="https://dentalimplantscost.co.uk/" target="_blank">&rarr;</a></div>
+<div class="cc t-agenzia" data-t="agenzia dentale" data-s="opus smile uk multi destinazione albania turchia polonia dentale"><div class="cc-info"><div class="cc-name">Opus Smile</div><div class="cc-city">UK &middot; Multi-dest (Albania+TR+PL)</div><span class="cc-tag tg-a">Multi-dest UK</span></div><a class="cc-link" href="https://opussmile.com/" target="_blank">&rarr;</a></div>
+<div class="cc t-agenzia" data-t="agenzia estetica" data-s="besafe health uk ltd capelli pacchetti 2600 gbp facilitatore"><div class="cc-info"><div class="cc-name">BeSafe Health UK Ltd</div><div class="cc-city">UK &middot; Capelli da GBP 2.600</div><span class="cc-tag tg-e">Capelli UK</span></div><a class="cc-link" href="https://besafehealth.uk/" target="_blank">&rarr;</a></div>
+<div class="cc t-agenzia" data-t="agenzia dentale estetica" data-s="operations abroad worldwide uk 2119 80 ospedali 86000 pazienti storico"><div class="cc-info"><div class="cc-name">Operations Abroad Worldwide</div><div class="cc-city">UK &middot; Dal 2119 &middot; 86.000+ pz &middot; 80 ospedali</div><span class="cc-tag tg-a">Storico UK</span></div><a class="cc-link" href="https://operationsabroadworldwide.co.uk/" target="_blank">&rarr;</a></div>
+<div class="cc t-dentale" data-t="dentale" data-s="albanian dentistry tel +44 uk irlanda focus anglofono"><div class="cc-info"><div class="cc-name">Albanian Dentistry</div><div class="cc-city">Albania (tel +44) &middot; Focus UK/IE</div><span class="cc-tag tg-d">Tel UK</span></div><a class="cc-link" href="https://albaniadentistry.com/" target="_blank">&rarr;</a></div>
+<div class="cc t-dentale" data-t="dentale" data-s="albania dental services prezzi gbp voli uk pacchetti british"><div class="cc-info"><div class="cc-name">Albania Dental Services</div><div class="cc-city">Albania &middot; Prezzi in GBP &middot; Target UK</div><span class="cc-tag tg-d">GBP pricing</span></div><a class="cc-link" href="https://albaniadentalservices.com/" target="_blank">&rarr;</a></div>
+<div class="cc t-dentale" data-t="dentale" data-s="dentravel tirana pacchetti uk all inclusive anglofono"><div class="cc-info"><div class="cc-name">Dentravel</div><div class="cc-city">Tirana &middot; Pacchetti UK all-inclusive</div><span class="cc-tag tg-d">UK packages</span></div><a class="cc-link" href="https://dentravel.al/" target="_blank">&rarr;</a></div>
+<div class="cc t-dentale" data-t="dentale" data-s="glob dental tirana sito inglese marketing uk diretto"><div class="cc-info"><div class="cc-name">Glob Dental</div><div class="cc-city">Tirana &middot; Marketing UK diretto</div><span class="cc-tag tg-d">UK market</span></div><a class="cc-link" href="https://globdental.al/" target="_blank">&rarr;</a></div>
+<div class="cc t-agenzia" data-t="agenzia dentale estetica" data-s="the global clinics internazionale dentale estetica multi destinazione uk"><div class="cc-info"><div class="cc-name">The Global Clinics</div><div class="cc-city">Internazionale &middot; Dentale + estetica multi-dest</div><span class="cc-tag tg-a">Piattaforma EN</span></div><a class="cc-link" href="https://theglobalclinics.com/" target="_blank">&rarr;</a></div>
+<div class="cc t-estetica" data-t="estetica" data-s="lavender clinic tirana estetica pazienti uk internazionali"><div class="cc-info"><div class="cc-name">Lavender Clinic</div><div class="cc-city">Tirana &middot; Estetica &middot; Pazienti UK</div><span class="cc-tag tg-e">Estetica UK</span></div><a class="cc-link" href="https://lavenderclinic.al/" target="_blank">&rarr;</a></div>
+</div></section>
+
+<!-- ══════ MERCATO DACH ══════ -->
+<section class="region"><div class="region-header"><span class="region-icon">&#127465;&#127466;</span><span class="region-title">Mercato DACH (Germania, Austria, Svizzera)</span><span class="region-count" style="background:var(--gold-bg);color:var(--gold);border:1px solid var(--gold-border)">8</span></div>
+<div class="cgrid">
+<div class="cc t-agenzia" data-t="agenzia dentale tedesco" data-s="zahnreise24 germania dentale turismo pacchetti volo hotel tirana"><div class="cc-info"><div class="cc-name">ZahnReise24</div><div class="cc-city">Germania &middot; Leader turismo dentale DACH</div><span class="cc-tag tg-a">Agenzia DE</span></div><a class="cc-link" href="https://zahnreise24.de/" target="_blank">&rarr;</a></div>
+<div class="cc t-agenzia" data-t="agenzia dentale tedesco" data-s="idealezaehne de tirana coordinatore tedesco 80% risparmio garanzia 5 anni"><div class="cc-info"><div class="cc-name">IdealeZaehne.de</div><div class="cc-city">Tirana (dominio .de) &middot; Risparmio 80%</div><span class="cc-tag tg-a">Coordinatore DE</span></div><a class="cc-link" href="https://idealezaehne.de/" target="_blank">&rarr;</a></div>
+<div class="cc t-dentale" data-t="dentale tedesco" data-s="hygeia dent austria wien vienna tirana hygeia hospital dominio .at autista tedescofono"><div class="cc-info"><div class="cc-name">Hygeia Dent (.at)</div><div class="cc-city">Tirana &middot; Dominio austriaco &middot; 5.000 pz/anno</div><span class="cc-tag tg-d">Target Austria</span></div><a class="cc-link" href="https://www.hygeia-dent.at/" target="_blank">&rarr;</a></div>
+<div class="cc t-dentale" data-t="dentale tedesco italiano" data-s="smile provider tirana torino tedesco greco italiano hotel gratuito"><div class="cc-info"><div class="cc-name">Smile Provider</div><div class="cc-city">Tirana + Torino &middot; Sito DE/IT/EL</div><span class="cc-tag tg-d">Multilingue</span></div><a class="cc-link" href="https://smile-provider.com/de/" target="_blank">&rarr;</a></div>
+<div class="cc t-dentale" data-t="dentale tedesco francese italiano" data-s="dentale albania tirana vlora tedesco francese italiano 100 recensioni 5 stelle"><div class="cc-info"><div class="cc-name">Dentale Albania</div><div class="cc-city">Tirana + Vlora &middot; 6 lingue &middot; 100+ rec. 5&#9733;</div><span class="cc-tag tg-d">Multi-mercato</span></div><a class="cc-link" href="https://dentale-albania.com/de/" target="_blank">&rarr;</a></div>
+<div class="cc t-dentale" data-t="dentale tedesco olandese" data-s="dent dinamo tirana tedesco olandese ceco polacco biglietto aereo hotel gratuiti"><div class="cc-info"><div class="cc-name">Dent Dinamo</div><div class="cc-city">Tirana &middot; Sito DE/NL/CZ/PL &middot; Volo+hotel gratis</div><span class="cc-tag tg-d">7 lingue</span></div><a class="cc-link" href="https://dentdinamo.com/de/" target="_blank">&rarr;</a></div>
+<div class="cc t-dentale" data-t="dentale tedesco" data-s="sanus dent albania tirana tedesco materiali tedeschi"><div class="cc-info"><div class="cc-name">Sanus Dent Albania</div><div class="cc-city">Tirana &middot; Materiali tedeschi</div><span class="cc-tag tg-d">Target DE</span></div><a class="cc-link" href="https://sanusdent.al/" target="_blank">&rarr;</a></div>
+<div class="cc t-agenzia" data-t="agenzia dentale tedesco" data-s="leka fio dental tourism tirana tedesco turismo dentale"><div class="cc-info"><div class="cc-name">Leka &amp; Fio Dental Tourism</div><div class="cc-city">Tirana &middot; Supporto tedesco</div><span class="cc-tag tg-a">Intermediario</span></div><a class="cc-link" href="https://lefidental.com/" target="_blank">&rarr;</a></div>
+</div></section>
+
+<!-- ══════ MERCATO FRANCESE ══════ -->
+<section class="region"><div class="region-header"><span class="region-icon">&#127467;&#127479;</span><span class="region-title">Mercato Francofono (Francia, Belgio, Svizzera FR)</span><span class="region-count" style="background:var(--purple-bg);color:var(--purple);border:1px solid var(--purple-border)">12</span></div>
+<div class="cgrid">
+<div class="cc t-agenzia" data-t="agenzia estetica dentale francese" data-s="esthetic planet francia prima agenzia 2114 gremi clinic partner"><div class="cc-info"><div class="cc-name">Esthetic Planet</div><div class="cc-city">Francia &middot; Prima agenzia FR (2114) &middot; Partner Gremi</div><span class="cc-tag tg-a">Unica agenzia FR</span></div><a class="cc-link" href="https://www.estheticplanet.com/" target="_blank">&rarr;</a></div>
+<div class="cc t-agenzia" data-t="agenzia dentale francese" data-s="medentravel chiasso svizzera medent studio tirana francese"><div class="cc-info"><div class="cc-name">Medentravel</div><div class="cc-city">Chiasso, Svizzera &middot; Partner Medent Studio Tirana</div><span class="cc-tag tg-a">Svizzera FR</span></div><a class="cc-link" href="https://medentravel.com/" target="_blank">&rarr;</a></div>
+<div class="cc t-agenzia" data-t="agenzia dentale estetica francese" data-s="dental estetica albania francese dentale estetica"><div class="cc-info"><div class="cc-name">Dental Estetica Albania</div><div class="cc-city">Albania &middot; Dentale + estetica FR</div><span class="cc-tag tg-a">Target FR</span></div><a class="cc-link" href="https://dentalesteticaalbania.com/" target="_blank">&rarr;</a></div>
+<div class="cc t-agenzia" data-t="agenzia dentale francese" data-s="albanian dental tourism francese team dentisti dedicati"><div class="cc-info"><div class="cc-name">Albanian Dental Tourism</div><div class="cc-city">Albania &middot; Team dentisti dedicati</div><span class="cc-tag tg-a">Target FR</span></div><a class="cc-link" href="https://albaniandentaltourism.com/" target="_blank">&rarr;</a></div>
+<div class="cc t-dentale" data-t="dentale francese" data-s="albania dental tour villa bianca alloggio proprio francese"><div class="cc-info"><div class="cc-name">Albania Dental Tour</div><div class="cc-city">Albania &middot; Villa Bianca propria</div><span class="cc-tag tg-d">Con alloggio</span></div><a class="cc-link" href="https://albaniadentaltour.com/" target="_blank">&rarr;</a></div>
+<div class="cc t-dentale" data-t="dentale francese" data-s="dental travel albania 3 day dental travel experience francese"><div class="cc-info"><div class="cc-name">Dental Travel Albania</div><div class="cc-city">Albania &middot; 3-Day Dental &amp; Travel</div><span class="cc-tag tg-d">Pacchetto 3gg</span></div><a class="cc-link" href="https://dentaltravelalbania.com/" target="_blank">&rarr;</a></div>
+<div class="cc t-dentale" data-t="dentale francese" data-s="dr roland zhuka implantus tirana blog francese ricchissimo"><div class="cc-info"><div class="cc-name">Dr. Roland Zhuka / Implantus</div><div class="cc-city">Tirana &middot; Blog FR ricchissimo</div><span class="cc-tag tg-d">Implantologia FR</span></div><a class="cc-link" href="https://implantus.com/" target="_blank">&rarr;</a></div>
+<div class="cc t-dentale" data-t="dentale francese" data-s="albacare smiles tirana homepage francese dedicata"><div class="cc-info"><div class="cc-name">AlbaCare Smiles</div><div class="cc-city">Tirana &middot; Homepage FR dedicata</div><span class="cc-tag tg-d">FR dedicato</span></div><a class="cc-link" href="https://albacaresmiles.com/" target="_blank">&rarr;</a></div>
+<div class="cc t-dentale" data-t="dentale francese" data-s="ledismile tirana 2114 digital smile design francese"><div class="cc-info"><div class="cc-name">LediSmile</div><div class="cc-city">Tirana &middot; Dal 2114 &middot; Digital Smile Design</div><span class="cc-tag tg-d">Storica</span></div><a class="cc-link" href="https://ledismile.com/" target="_blank">&rarr;</a></div>
+<div class="cc t-dentale" data-t="dentale francese" data-s="ksenon dent durazzo durres impianto 600 eur francese"><div class="cc-info"><div class="cc-name">Ksenon Dent</div><div class="cc-city">Durazzo &middot; Impianto da &euro;600</div><span class="cc-tag tg-d">Low-cost Durazzo</span></div><a class="cc-link" href="https://ksenondent.com/" target="_blank">&rarr;</a></div>
+<div class="cc t-dentale" data-t="dentale francese" data-s="hos dent estetic elbasan 2117 pluripremiato francese"><div class="cc-info"><div class="cc-name">Hos Dent Estetic</div><div class="cc-city">Elbasan &middot; Dal 2117 &middot; Pluripremiato</div><span class="cc-tag tg-d">Elbasan</span></div><a class="cc-link" href="https://hosdent.al/" target="_blank">&rarr;</a></div>
+<div class="cc t-dentale" data-t="dentale francese" data-s="emerald dental tirana medici formati italia francia germania francese"><div class="cc-info"><div class="cc-name">Emerald Dental</div><div class="cc-city">Tirana &middot; Medici formati IT/FR/DE</div><span class="cc-tag tg-d">Multi-formato</span></div><a class="cc-link" href="https://emeralddental.al/" target="_blank">&rarr;</a></div>
+</div></section>
+
+<!-- ══════ MERCATO FR EXTRA ══════ -->
+<section class="region"><div class="region-header"><span class="region-icon">&#127467;&#127479;</span><span class="region-title">Mercato FR &mdash; Cliniche &amp; Agenzie Extra</span><span class="region-count" style="background:var(--purple-bg);color:var(--purple);border:1px solid var(--purple-border)">15</span></div>
+<div class="cgrid">
+<div class="cc t-dentale" data-t="dentale francese" data-s="brianza dent implantdentairealbanie tirana 2118 day hospital facebook tourisme dentaire"><div class="cc-info"><div class="cc-name">Brianza Dent (implantdentairealbanie)</div><div class="cc-city">Tirana &middot; Dal 2118 &middot; FB Tourisme Dentaire</div><span class="cc-tag tg-d">FR dedicato</span></div><a class="cc-link" href="https://brianzadent.al/" target="_blank">&rarr;</a></div>
+<div class="cc t-dentale" data-t="dentale francese italiano" data-s="italia dent tirana rimborso volo hotel 4 stelle invisalign certificato"><div class="cc-info"><div class="cc-name">Italia Dent</div><div class="cc-city">Tirana &middot; Rimborso volo &middot; Invisalign</div><span class="cc-tag tg-d">Multi-lingua</span></div><a class="cc-link" href="https://www.italiadent.com/" target="_blank">&rarr;</a></div>
+<div class="cc t-dentale" data-t="dentale francese" data-s="toronto dental tirana standard canadesi cda ada 15 anni microsurgery faccette emax"><div class="cc-info"><div class="cc-name">Toronto Dental</div><div class="cc-city">Tirana &middot; Standard canadesi CDA/ADA</div><span class="cc-tag tg-d">Premium</span></div><a class="cc-link" href="https://torontodental.al/" target="_blank">&rarr;</a></div>
+<div class="cc t-dentale" data-t="dentale francese" data-s="dream dental clinic tirana dr gelda lilo enkeleda jemin 20 anni estetica"><div class="cc-info"><div class="cc-name">Dream Dental Clinic</div><div class="cc-city">Tirana &middot; 20+ anni esperienza</div><span class="cc-tag tg-d">Dentale+estetica</span></div><a class="cc-link" href="https://www.dreamdentaltirana.com/" target="_blank">&rarr;</a></div>
+<div class="cc t-dentale" data-t="dentale francese" data-s="new smile dental clinic tirana servicescore 9.7 243 voti multilingue"><div class="cc-info"><div class="cc-name">New Smile Dental</div><div class="cc-city">Tirana &middot; Score 9.7/10 (243 voti)</div><span class="cc-tag tg-d">Top rated</span></div><a class="cc-link" href="https://newsmile.al/" target="_blank">&rarr;</a></div>
+<div class="cc t-dentale" data-t="dentale francese" data-s="ama dental aesthetic tirana materiali premium italia germania hollywood smile all on 4"><div class="cc-info"><div class="cc-name">Ama Dental Aesthetic</div><div class="cc-city">Tirana &middot; Materiali IT/DE &middot; Hollywood Smile</div><span class="cc-tag tg-d">Premium</span></div><a class="cc-link" href="https://amadentistry.com/" target="_blank">&rarr;</a></div>
+<div class="cc t-dentale" data-t="dentale francese" data-s="neo dental clinic tirana 10 anni laboratorio interno dr edmond kryemadhi"><div class="cc-info"><div class="cc-name">Neo Dental Clinic</div><div class="cc-city">Tirana &middot; 10 anni &middot; Lab interno</div><span class="cc-tag tg-d">Dentale</span></div><a class="cc-link" href="https://www.neodental.al/" target="_blank">&rarr;</a></div>
+<div class="cc t-dentale" data-t="dentale francese" data-s="eurodent vlore vlora 2110 digital smile design faccette"><div class="cc-info"><div class="cc-name">Eurodent Vlore</div><div class="cc-city">Vlore &middot; Dal 2110 &middot; Digital Smile Design</div><span class="cc-tag tg-d">Costa sud</span></div><a class="cc-link" href="https://eurodentvlore.com/" target="_blank">&rarr;</a></div>
+<div class="cc t-dentale" data-t="dentale francese" data-s="smart dental aesthetic durres 2019 1000 pazienti dentale estetica mesoterapia filler"><div class="cc-info"><div class="cc-name">Smart Dental Aesthetic</div><div class="cc-city">Durres &middot; Dal 2019 &middot; 1.000+ pz</div><span class="cc-tag tg-d">Durres dentale+estetica</span></div><a class="cc-link" href="https://smartdentalaesthetic.com/" target="_blank">&rarr;</a></div>
+<div class="cc t-agenzia" data-t="agenzia dentale francese" data-s="medical albania tirana impianti 360 eur faccette 180 voli hotel inclusi"><div class="cc-info"><div class="cc-name">Medical Albania</div><div class="cc-city">Tirana &middot; Impianti da &euro;360 &middot; Voli+hotel</div><span class="cc-tag tg-a">Low-cost</span></div><a class="cc-link" href="https://www.medicalalbania.com/" target="_blank">&rarr;</a></div>
+<div class="cc t-agenzia" data-t="agenzia dentale francese" data-s="albanian dental travel linda dent tirana 60% consulenze online pre viaggio"><div class="cc-info"><div class="cc-name">Albanian Dental Travel</div><div class="cc-city">Tirana &middot; -60% &middot; Consulenze online</div><span class="cc-tag tg-a">Intermediario</span></div><a class="cc-link" href="https://albaniandentaltravel.com/" target="_blank">&rarr;</a></div>
+<div class="cc t-agenzia" data-t="agenzia dentale" data-s="dent tour albania hotel 5 stelle garanzia 15 anni autista privato swiss 220 350"><div class="cc-info"><div class="cc-name">Dent Tour</div><div class="cc-city">Albania &middot; Hotel 5&#9733; &middot; Garanzia 15 anni</div><span class="cc-tag tg-a">Premium</span></div><a class="cc-link" href="https://dent-tour.com/" target="_blank">&rarr;</a></div>
+<div class="cc t-agenzia" data-t="agenzia dentale" data-s="my dental trips tirana 70 garanzia vita partnership hotel"><div class="cc-info"><div class="cc-name">My Dental Trips</div><div class="cc-city">Tirana &middot; -70% &middot; Garanzia vita</div><span class="cc-tag tg-a">Viaggi dentali</span></div><a class="cc-link" href="https://mydentaltrips.com/" target="_blank">&rarr;</a></div>
+<div class="cc t-agenzia" data-t="agenzia dentale" data-s="my dental tour tirana 2021 coordinatori viaggio dedicati"><div class="cc-info"><div class="cc-name">My Dental Tour</div><div class="cc-city">Tirana &middot; Dal 2021 &middot; Coordinatori dedicati</div><span class="cc-tag tg-a">Tour dentale</span></div><a class="cc-link" href="https://mydentaltour.com/" target="_blank">&rarr;</a></div>
+<div class="cc t-agenzia" data-t="agenzia dentale" data-s="dental agency albania cliniche alto livello internazionale"><div class="cc-info"><div class="cc-name">Dental Agency Albania</div><div class="cc-city">Albania &middot; Cliniche alto livello</div><span class="cc-tag tg-a">Intermediario</span></div><a class="cc-link" href="https://www.dentalagencyal.com/" target="_blank">&rarr;</a></div>
+</div></section>
+
+<!-- ══════ MERCATO NL / SCANDINAVIA ══════ -->
+<section class="region"><div class="region-header"><span class="region-icon">&#127475;&#127473;</span><span class="region-title">Mercato Olandese &amp; Scandinavo</span><span class="region-count" style="background:var(--cyan-bg);color:var(--cyan);border:1px solid var(--cyan-border)">5</span></div>
+<div class="cgrid">
+<div class="cc t-agenzia" data-t="agenzia dentale olandese" data-s="tandarts reizen albanie paesi bassi olanda class dent durres rotterdam follow-up 25 anni"><div class="cc-info"><div class="cc-name">Tandarts Reizen Albani&euml;</div><div class="cc-city">Paesi Bassi &middot; Leader NL &middot; Follow-up Rotterdam</div><span class="cc-tag tg-a">N.1 Olanda</span></div><a class="cc-link" href="https://tandartsreizenalbanie.nl/" target="_blank">&rarr;</a></div>
+<div class="cc t-agenzia" data-t="agenzia dentale olandese" data-s="luxmeds element dental beveren anversa belgio dentista albanese visita belgio ogni 10 settimane"><div class="cc-info"><div class="cc-name">LUXMEDS / Element Dental</div><div class="cc-city">Beveren, Belgio &middot; Dentista AL visita BE ogni 10 sett.</div><span class="cc-tag tg-a">Modello unico</span></div><a class="cc-link" href="https://luxmeds.be/" target="_blank">&rarr;</a></div>
+<div class="cc t-agenzia" data-t="agenzia dentale olandese" data-s="dental reizen olanda piattaforma turismo dentale"><div class="cc-info"><div class="cc-name">Dental Reizen</div><div class="cc-city">Paesi Bassi &middot; Piattaforma dentale NL</div><span class="cc-tag tg-a">NL platform</span></div><a class="cc-link" href="https://dentalreizen.com/" target="_blank">&rarr;</a></div>
+<div class="cc t-agenzia" data-t="agenzia dentale olandese" data-s="dentaltravel.no norvegia e-art tirana coordinatore norvegese"><div class="cc-info"><div class="cc-name">DentalTravel.no</div><div class="cc-city">Norvegia &middot; Clinica E'-art Tirana &middot; Coord. NO in loco</div><span class="cc-tag tg-a">Norvegia</span></div><a class="cc-link" href="https://dentaltravel.no/" target="_blank">&rarr;</a></div>
+<div class="cc t-agenzia" data-t="agenzia dentale olandese" data-s="dentalseasight.no norvegia valona dental clinic vlore unica costa albanese"><div class="cc-info"><div class="cc-name">Dentalseasight.no</div><div class="cc-city">Norvegia &middot; Valona Dental, Vlore (costa)</div><span class="cc-tag tg-a">Norvegia &middot; Costa</span></div><a class="cc-link" href="https://dentalseasight.no/" target="_blank">&rarr;</a></div>
+</div></section>
+
+<!-- ══════ MERCATO GRECO ══════ -->
+<section class="region"><div class="region-header"><span class="region-icon">&#127468;&#127479;</span><span class="region-title">Mercato Greco &amp; Gateway Saranda</span><span class="region-count" style="background:var(--blue-bg);color:var(--blue);border:1px solid var(--blue-border)">13</span></div>
+<div class="country"><div class="country-name"><span>&#127468;&#127479;</span> Unica agenzia greca + Cliniche con sito in greco</div><div class="cgrid">
+<div class="cc t-ivf" data-t="ivf agenzia" data-s="pelargos ivf atene grecia unica agenzia greca albania donne 54 56 anni"><div class="cc-info"><div class="cc-name">Pelargos IVF (Atene)</div><div class="cc-city">Atene, Grecia &middot; UNICA agenzia GR &rarr; Albania</div><span class="cc-tag tg-i">IVF cross-border</span></div><a class="cc-link" href="https://pelargos-ivf.gr/" target="_blank">&rarr;</a></div>
+<div class="cc t-ivf" data-t="ivf" data-s="kosmogonia ivf tirana cooperazione mitera hospital atene grecia"><div class="cc-info"><div class="cc-name">Kosmogonia IVF</div><div class="cc-city">Tirana &middot; Cooperazione Mitera Hospital Atene</div><span class="cc-tag tg-i">IVF greco-albanese</span></div><a class="cc-link" href="https://kosmogonia-ivf.com/" target="_blank">&rarr;</a></div>
+<div class="cc t-dentale" data-t="dentale" data-s="sky dental tirana sito greco ellenika language switcher nativo"><div class="cc-info"><div class="cc-name">Sky Dental (sito greco)</div><div class="cc-city">Tirana &middot; Sito in &#917;&#955;&#955;&#951;&#957;&#953;&#954;&#940;</div><span class="cc-tag tg-d">Greco nativo</span></div><a class="cc-link" href="https://skydent.al/" target="_blank">&rarr;</a></div>
+<div class="cc t-dentale" data-t="dentale" data-s="wellcare solutions tirana sito greco inglese"><div class="cc-info"><div class="cc-name">WellCare Solutions</div><div class="cc-city">Tirana &middot; Sito greco + inglese</div><span class="cc-tag tg-d">Greco</span></div><a class="cc-link" href="https://wellcaresolutions.al/" target="_blank">&rarr;</a></div>
+</div></div>
+<div class="country"><div class="country-name"><span>&#9875;</span> Saranda — Gateway greco (30min ferry da Corfu)</div><div class="cgrid">
+<div class="cc t-dentale" data-t="dentale" data-s="ohana dent saranda unica clinica parla greco corfu 30 minuti ferry"><div class="cc-info"><div class="cc-name">Ohana Dent</div><div class="cc-city">Saranda &middot; Unica che PARLA GRECO &middot; 30min Corfu</div><span class="cc-tag tg-d">Grecofono</span></div><a class="cc-link" href="https://ohana-dent.com/" target="_blank">&rarr;</a></div>
+<div class="cc t-dentale" data-t="dentale" data-s="saranda dental center saranda turismo dentale costa"><div class="cc-info"><div class="cc-name">Saranda Dental Center</div><div class="cc-city">Saranda &middot; Turismo dentale costa</div><span class="cc-tag tg-d">Saranda</span></div><a class="cc-link" href="https://sarandadentalcenter.com/" target="_blank">&rarr;</a></div>
+<div class="cc t-dentale" data-t="dentale" data-s="chicago dental studio saranda standard americani"><div class="cc-info"><div class="cc-name">Chicago Dental Studio</div><div class="cc-city">Saranda &middot; Standard americani</div><span class="cc-tag tg-d">Saranda</span></div><a class="cc-link" href="https://chicagodentalstudio.al/" target="_blank">&rarr;</a></div>
+<div class="cc t-dentale" data-t="dentale" data-s="haruni sons dental saranda familiare"><div class="cc-info"><div class="cc-name">Haruni &amp; Sons Dental</div><div class="cc-city">Saranda &middot; Clinica familiare</div><span class="cc-tag tg-d">Saranda</span></div><a class="cc-link" href="https://dentaltourismalbania.com/" target="_blank">&rarr;</a></div>
+<div class="cc t-ospedale" data-t="ospedale" data-s="doctors hospital saranda filiale ospedaliera"><div class="cc-info"><div class="cc-name">Doctors Hospital Saranda</div><div class="cc-city">Saranda &middot; Filiale ospedaliera</div><span class="cc-tag tg-o">Ospedale</span></div><a class="cc-link" href="https://doctorshospital.al/" target="_blank">&rarr;</a></div>
+</div></div>
+<div class="country"><div class="country-name"><span>&#127468;&#127479;</span> Altre citta vicino confine greco</div><div class="cgrid">
+<div class="cc t-dentale" data-t="dentale" data-s="dynamic dental korce vicino valico kapshtica krystallopigi macedonia greca"><div class="cc-info"><div class="cc-name">Dynamic Dental Korce</div><div class="cc-city">Korce &middot; Vicino valico Kapshtica (Macedonia GR)</div><span class="cc-tag tg-d">Confine greco</span></div><a class="cc-link" href="https://dynamicdental.al/" target="_blank">&rarr;</a></div>
+<div class="cc t-dentale" data-t="dentale" data-s="gjirokaster dental clinic gjirokaster vicino confine greco ioannina"><div class="cc-info"><div class="cc-name">Gjirokaster Dental</div><div class="cc-city">Gjirokaster &middot; Vicino Ioannina (GR)</div><span class="cc-tag tg-d">Confine greco</span></div><a class="cc-link" href="https://dentaltourismalbania.com/" target="_blank">&rarr;</a></div>
+<div class="cc t-agenzia" data-t="agenzia dentale" data-s="mta versione greca medicaltourisminalbania el sito completamente greco"><div class="cc-info"><div class="cc-name">MTA (versione greca /el/)</div><div class="cc-city">Tirana &middot; Sito COMPLETO in greco</div><span class="cc-tag tg-a">Sito &#917;&#923;</span></div><a class="cc-link" href="https://medicaltourisminalbania.com/el/" target="_blank">&rarr;</a></div>
+</div></div>
+</section>
+
+<!-- ══════ MERCATO POLACCO / EST EUROPA ══════ -->
+<section class="region"><div class="region-header"><span class="region-icon">&#127477;&#127473;</span><span class="region-title">Mercato Est Europa (PL, CZ, SK, Balcani)</span><span class="region-count" style="background:var(--orange-bg);color:var(--orange);border:1px solid var(--orange-border)">5</span></div>
+<div class="cgrid">
+<div class="cc t-agenzia" data-t="agenzia estetica" data-s="bclinique olsztyn polonia trapianto capelli fue dhi albania turismo medico"><div class="cc-info"><div class="cc-name">BClinique</div><div class="cc-city">Olsztyn, Polonia &middot; Trapianto capelli Albania</div><span class="cc-tag tg-a">Unica PL</span></div><a class="cc-link" href="https://bclinique.pl/" target="_blank">&rarr;</a></div>
+<div class="cc t-agenzia" data-t="agenzia dentale" data-s="infinity dental slovakia kosice slovacchia tirana dentale impianti corone"><div class="cc-info"><div class="cc-name">Infinity Dental Slovakia</div><div class="cc-city">Kosice, Slovacchia + Tirana</div><span class="cc-tag tg-a">Unica SK</span></div><a class="cc-link" href="https://www.infinitydental.sk/" target="_blank">&rarr;</a></div>
+<div class="cc t-agenzia" data-t="agenzia dentale" data-s="albania explorer tour operator dmc tirana turismo medico polacco iata"><div class="cc-info"><div class="cc-name">Albania Explorer TO&amp;DMC</div><div class="cc-city">Tirana &middot; Tour operator IATA &middot; Sez. medica PL</div><span class="cc-tag tg-a">TO + medico</span></div><a class="cc-link" href="https://www.albaniaexplorer.com/pl/" target="_blank">&rarr;</a></div>
+<div class="cc t-agenzia" data-t="agenzia dentale" data-s="go dental abroad croazia albania turchia dentale multi destinazione"><div class="cc-info"><div class="cc-name">Go Dental Abroad</div><div class="cc-city">Croazia &middot; Multi-destinazione (AL+TR+HR)</div><span class="cc-tag tg-a">Balcani</span></div><a class="cc-link" href="https://godentalabroad.com/" target="_blank">&rarr;</a></div>
+<div class="cc t-dentale" data-t="dentale" data-s="denti a vita dentist albania polacco polonia sezione dedicata"><div class="cc-info"><div class="cc-name">Denti a Vita</div><div class="cc-city">Albania &middot; Sezione /poland/ dedicata</div><span class="cc-tag tg-d">Target PL</span></div><a class="cc-link" href="https://dentistalbania.com/poland/" target="_blank">&rarr;</a></div>
+</div></section>
+
+<!-- ══════ PONTE TURCO ══════ -->
+<section class="region"><div class="region-header"><span class="region-icon">&#127481;&#127479;</span><span class="region-title">Ponte Turco (Operatori TR in Albania)</span><span class="region-count" style="background:var(--crimson-bg);color:var(--crimson);border:1px solid var(--crimson-border)">6</span></div>
+<div class="cgrid">
+<div class="cc t-ospedale" data-t="ospedale ivf dentale turco" data-s="international turkish hospital ith tirana ospedale turco ivf dentale multi"><div class="cc-info"><div class="cc-name">International Turkish Hospital (ITH)</div><div class="cc-city">Tirana &middot; Ospedale turco &middot; IVF + Dentale + Multi</div><span class="cc-tag tg-o">Ospedale TR</span></div><a class="cc-link" href="https://ith.al/en/" target="_blank">&rarr;</a></div>
+<div class="cc t-estetica" data-t="estetica turco" data-s="vatanmed clinic tirana istanbul trapianto capelli filiale albanese"><div class="cc-info"><div class="cc-name">VatanMed Clinic Tirana</div><div class="cc-city">Istanbul + Tirana &middot; Capelli</div><span class="cc-tag tg-e">Filiale TR</span></div><a class="cc-link" href="https://vatanmed.com/" target="_blank">&rarr;</a></div>
+<div class="cc t-estetica" data-t="estetica turco" data-s="the istanbul clinic tirana medico estetico filiale turca"><div class="cc-info"><div class="cc-name">The Istanbul Clinic Tirana</div><div class="cc-city">Tirana &middot; Medico-estetico</div><span class="cc-tag tg-e">Brand TR</span></div><a class="cc-link" href="https://www.istanbulclinic.al/" target="_blank">&rarr;</a></div>
+<div class="cc t-dentale" data-t="dentale turco" data-s="dental turk tirana vlore 6000 pazienti anno 211 professionisti turco"><div class="cc-info"><div class="cc-name">Dental Turk</div><div class="cc-city">Tirana + Vlore &middot; 6.000 pz/anno &middot; 211 staff</div><span class="cc-tag tg-d">Mega clinica TR</span></div><a class="cc-link" href="https://www.dentalturk.al/en/" target="_blank">&rarr;</a></div>
+<div class="cc t-agenzia" data-t="agenzia turco" data-s="albgtc turkey istanbul turismo medico completo albania"><div class="cc-info"><div class="cc-name">ALBGTC Turkey</div><div class="cc-city">Istanbul &middot; Turismo medico completo</div><span class="cc-tag tg-a">Ponte Istanbul</span></div><a class="cc-link" href="https://albgtcturkey.com/" target="_blank">&rarr;</a></div>
+<div class="cc t-estetica" data-t="estetica turco" data-s="chimera clinic tirana chirurgia plastica partner albgtc"><div class="cc-info"><div class="cc-name">Chimera Clinic</div><div class="cc-city">Tirana &middot; Chirurgia plastica &middot; Partner ALBGTC</div><span class="cc-tag tg-e">Plastica</span></div><a class="cc-link" href="https://albgtc.com/" target="_blank">&rarr;</a></div>
+</div></section>
+
+<!-- ══════ MERCATO USA / ANGLOFONO ══════ -->
+<section class="region"><div class="region-header"><span class="region-icon">&#127482;&#127480;</span><span class="region-title">Mercato USA / Anglofono Globale</span><span class="region-count" style="background:var(--blue-bg);color:var(--blue);border:1px solid var(--blue-border)">6</span></div>
+<div class="cgrid">
+<div class="cc t-dentale" data-t="dentale" data-s="usa dental clinic tirana 2114 branding americano staff usa canada"><div class="cc-info"><div class="cc-name">USA Dental Clinic</div><div class="cc-city">Tirana &middot; Dal 2114 &middot; Branding USA</div><span class="cc-tag tg-d">Target USA</span></div><a class="cc-link" href="https://usadentalclinic.al/" target="_blank">&rarr;</a></div>
+<div class="cc t-dentale" data-t="dentale" data-s="elar dental tirana guida completa pazienti usa booking"><div class="cc-info"><div class="cc-name">Elar Dental</div><div class="cc-city">Tirana &middot; Guida completa per pazienti USA</div><span class="cc-tag tg-d">USA guide</span></div><a class="cc-link" href="https://elardental.com/" target="_blank">&rarr;</a></div>
+<div class="cc t-dentale" data-t="dentale" data-s="tarja dental clinic durres durazzo guida booking step by step americani"><div class="cc-info"><div class="cc-name">Tarja Dental Clinic</div><div class="cc-city">Durazzo &middot; Step-by-step booking per USA</div><span class="cc-tag tg-d">Durazzo &middot; USA</span></div><a class="cc-link" href="https://tarjadental.com/" target="_blank">&rarr;</a></div>
+<div class="cc t-agenzia" data-t="agenzia estetica dentale" data-s="unlock albania tirana capelli estetica dentale multi settore anglofono"><div class="cc-info"><div class="cc-name">Unlock Albania</div><div class="cc-city">Tirana &middot; Capelli + estetica + dentale</div><span class="cc-tag tg-a">Multi-settore EN</span></div><a class="cc-link" href="https://unlockalbania.com/" target="_blank">&rarr;</a></div>
+<div class="cc t-dentale" data-t="dentale" data-s="hospitalone shkoder ospedale dentale unico fuori tirana alto livello"><div class="cc-info"><div class="cc-name">HospitalOne</div><div class="cc-city">Shkoder &middot; Unico fuori Tirana di alto livello</div><span class="cc-tag tg-d">Shkoder</span></div><a class="cc-link" href="https://hospitalone.al/" target="_blank">&rarr;</a></div>
+<div class="cc t-dentale" data-t="dentale" data-s="cronos dental medical clinic tirana usa canada australia pazienti"><div class="cc-info"><div class="cc-name">Cronos Dental &amp; Medical</div><div class="cc-city">Tirana &middot; Pazienti USA/Canada/Australia</div><span class="cc-tag tg-d">Global EN</span></div><a class="cc-link" href="https://cronosdental.com/" target="_blank">&rarr;</a></div>
+</div></section>
+
+<!-- ══════ MERCATO USA/CANADA EXTRA ══════ -->
+<section class="region"><div class="region-header"><span class="region-icon">&#127482;&#127480;</span><span class="region-title">USA &amp; Canada &mdash; Approfondimento</span><span class="region-count" style="background:var(--crimson-bg);color:var(--crimson);border:1px solid var(--crimson-border)">12</span></div>
+<div class="cgrid">
+<div class="cc t-agenzia" data-t="agenzia dentale estetica" data-s="albania dental tour nyc new york 99 hudson street unica sede usa dentale capelli estetica"><div class="cc-info"><div class="cc-name">Albania Dental Tour NYC</div><div class="cc-city">New York (99 Hudson St) &middot; UNICA sede USA</div><span class="cc-tag tg-a">Sede NYC!</span></div><a class="cc-link" href="https://albaniadentaltour.com/" target="_blank">&rarr;</a></div>
+<div class="cc t-agenzia" data-t="agenzia dentale" data-s="albanian dentistry consulenza indipendente usa target americani"><div class="cc-info"><div class="cc-name">Albanian Dentistry</div><div class="cc-city">Albania &middot; Consulenza indipendente &middot; Target USA</div><span class="cc-tag tg-a">Consulenza</span></div><a class="cc-link" href="https://albaniandentistry.com/" target="_blank">&rarr;</a></div>
+<div class="cc t-agenzia" data-t="agenzia dentale" data-s="albania dental services 200 cliniche partner facilitatore usa"><div class="cc-info"><div class="cc-name">Albania Dental Services</div><div class="cc-city">Albania &middot; 200+ cliniche partner</div><span class="cc-tag tg-a">Network 200+</span></div><a class="cc-link" href="https://albaniadentalservices.com/" target="_blank">&rarr;</a></div>
+<div class="cc t-agenzia" data-t="agenzia estetica" data-s="cosmedic express facilitatore estetico target usa internazionale"><div class="cc-info"><div class="cc-name">Cosmedic Express</div><div class="cc-city">Internazionale &middot; Estetica target USA</div><span class="cc-tag tg-e">Estetica USA</span></div><a class="cc-link" href="https://cosmedicexpress.com/" target="_blank">&rarr;</a></div>
+<div class="cc t-ivf" data-t="ivf" data-s="ifc international fertility company partner dr invitro tirana ivf usa crossborder"><div class="cc-info"><div class="cc-name">IFC (Int'l Fertility Company)</div><div class="cc-city">Internaz. &middot; Partner Dr. Invitro Tirana</div><span class="cc-tag tg-i">IVF USA</span></div><a class="cc-link" href="https://theifc.world/" target="_blank">&rarr;</a></div>
+<div class="cc t-ivf" data-t="ivf" data-s="ifg international fertility group surrogacia partner saga stem gene art tirana"><div class="cc-info"><div class="cc-name">IFG (Int'l Fertility Group)</div><div class="cc-city">Internaz. &middot; Partner SAGA &middot; Surrogacia</div><span class="cc-tag tg-i">IVF + surrogacia</span></div><a class="cc-link" href="https://ifg-ivf.com/" target="_blank">&rarr;</a></div>
+<div class="cc t-ivf" data-t="ivf" data-s="ovogene banca donatori ai rappresentanti usa albania"><div class="cc-info"><div class="cc-name">Ovogene</div><div class="cc-city">USA + Albania &middot; Banca donatori AI</div><span class="cc-tag tg-i">Donatori USA</span></div><a class="cc-link" href="https://ovogenebank.com/" target="_blank">&rarr;</a></div>
+<div class="cc t-dentale" data-t="dentale" data-s="american dental clinic tirana branding americano nome usa"><div class="cc-info"><div class="cc-name">American Dental Clinic</div><div class="cc-city">Tirana &middot; Branding americano</div><span class="cc-tag tg-d">Brand USA</span></div><a class="cc-link" href="https://americandentalclinic.al/" target="_blank">&rarr;</a></div>
+<div class="cc t-ivf" data-t="ivf" data-s="saga stem gene art tirana standard asrm americano ai laboratorio"><div class="cc-info"><div class="cc-name">SAGA (standard ASRM americano)</div><div class="cc-city">Tirana &middot; Aderisce ASRM (standard USA)</div><span class="cc-tag tg-i">Standard USA</span></div><a class="cc-link" href="https://sagaclinic.com/" target="_blank">&rarr;</a></div>
+<div class="cc t-ivf" data-t="ivf" data-s="egian intermedica tirana collabora mayo clinic usa"><div class="cc-info"><div class="cc-name">Egian (collabora Mayo Clinic)</div><div class="cc-city">Tirana &middot; Collaborazione Mayo Clinic!</div><span class="cc-tag tg-i">Mayo Clinic</span></div><a class="cc-link" href="https://egian.al/" target="_blank">&rarr;</a></div>
+<div class="cc t-ivf" data-t="ivf" data-s="ursula ivf tirana 2114 storica pioniera ivf albania"><div class="cc-info"><div class="cc-name">Ursula IVF</div><div class="cc-city">Tirana &middot; Dal 2114 &middot; Pioniera IVF Albania</div><span class="cc-tag tg-i">Storica 2114</span></div><a class="cc-link" href="https://ursulahospital.com/" target="_blank">&rarr;</a></div>
+<div class="cc t-ivf" data-t="ivf" data-s="ana diagnostic center tirana 4 divisioni surrogacia ivf"><div class="cc-info"><div class="cc-name">Ana Diagnostic Center</div><div class="cc-city">Tirana &middot; 4 divisioni &middot; Surrogacia</div><span class="cc-tag tg-i">Multi + surrogacia</span></div><a class="cc-link" href="https://anadiagnostic.al/" target="_blank">&rarr;</a></div>
+</div></section>
+
+<!-- ══════ MERCATO SPAGNOLO ══════ -->
+<section class="region"><div class="region-header"><span class="region-icon">&#127466;&#127480;</span><span class="region-title">Mercato Hispanofono</span><span class="region-count" style="background:var(--green-bg);color:var(--green);border:1px solid var(--green-border)">3</span></div>
+<div class="cgrid">
+<div class="cc t-agenzia" data-t="agenzia dentale" data-s="nuevo puente madrid spagna spagnolo unica agenzia hispanofona albania"><div class="cc-info"><div class="cc-name">Nuevo Puente</div><div class="cc-city">Madrid &middot; UNICA agenzia hispanofona per Albania</div><span class="cc-tag tg-a">Unica ES</span></div><a class="cc-link" href="https://nuevopuente.com/" target="_blank">&rarr;</a></div>
+<div class="cc t-dentale" data-t="dentale" data-s="turismo dental albania sito interamente spagnolo"><div class="cc-info"><div class="cc-name">Turismo Dental Albania</div><div class="cc-city">Albania &middot; Sito interamente in spagnolo</div><span class="cc-tag tg-d">100% ES</span></div><a class="cc-link" href="https://turismodentalalbania.com/" target="_blank">&rarr;</a></div>
+<div class="cc t-dentale" data-t="dentale estetica" data-s="turismo dental estetico albania family beauty spagnolo"><div class="cc-info"><div class="cc-name">Turismo Dental y Est&eacute;tico Albania</div><div class="cc-city">Albania &middot; Collegata Family Beauty</div><span class="cc-tag tg-d">Dentale+estetica ES</span></div><a class="cc-link" href="https://turismodentalyesteticoalbania.com/" target="_blank">&rarr;</a></div>
+</div></section>
+
+<!-- ══════ MERCATO RUSSO / EX-URSS ══════ -->
+<section class="region"><div class="region-header"><span class="region-icon">&#127479;&#127482;</span><span class="region-title">Mercato Russo / Ex-URSS &amp; Surrogacia</span><span class="region-count" style="background:var(--crimson-bg);color:var(--crimson);border:1px solid var(--crimson-border)">8</span></div>
+<div class="cgrid">
+<div class="cc t-dentale" data-t="dentale" data-s="unident clinic tirana unica clinica maggioranza pazienti cis russia mosca pfur"><div class="cc-info"><div class="cc-name">Unident Clinic</div><div class="cc-city">Tirana &middot; UNICA con maggioranza pz CIS &middot; PFUR Mosca</div><span class="cc-tag tg-d">Russia #1</span></div><a class="cc-link" href="https://unidentclinic.com/" target="_blank">&rarr;</a></div>
+<div class="cc t-ivf" data-t="ivf" data-s="genotime platinium clinic tirana ivf russo unica non dentale con russo nel sito"><div class="cc-info"><div class="cc-name">Genotime Platinium Clinic</div><div class="cc-city">Tirana &middot; Unica con RUSSO nel sito</div><span class="cc-tag tg-i">IVF + russo</span></div><a class="cc-link" href="https://genotime.al/" target="_blank">&rarr;</a></div>
+<div class="cc t-ivf" data-t="ivf" data-s="success surrogacy agency israele albania raccomanda esplicitamente per cittadini russi"><div class="cc-info"><div class="cc-name">SUCCESS Surrogacy (Israele)</div><div class="cc-city">Israele + Albania &middot; Raccomanda AL per russi</div><span class="cc-tag tg-i">Surrogacia RU</span></div><a class="cc-link" href="https://success-agency.org/" target="_blank">&rarr;</a></div>
+<div class="cc t-ivf" data-t="ivf" data-s="miracle baby surrogacy albania donatrici russia ucraina bielorussia kazakistan"><div class="cc-info"><div class="cc-name">Miracle Baby Surrogacy</div><div class="cc-city">Albania &middot; Donatrici RU/UA/BY/KZ</div><span class="cc-tag tg-i">Surrogacia CIS</span></div><a class="cc-link" href="https://miraclebabysurrogacy.com/" target="_blank">&rarr;</a></div>
+<div class="cc t-ivf" data-t="ivf" data-s="delivering dreams ucraina albania surrogacia post guerra espansione"><div class="cc-info"><div class="cc-name">Delivering Dreams</div><div class="cc-city">Ucraina + Albania &middot; Post-guerra espansione</div><span class="cc-tag tg-i">Surrogacia UA&rarr;AL</span></div><a class="cc-link" href="https://deliveringdreams.com/" target="_blank">&rarr;</a></div>
+<div class="cc t-ivf" data-t="ivf" data-s="world center of baby ucraina albania surrogacia wcob espansione"><div class="cc-info"><div class="cc-name">World Center of Baby</div><div class="cc-city">Ucraina + Albania &middot; Espansione AL</div><span class="cc-tag tg-i">Surrogacia</span></div><a class="cc-link" href="https://wcob.com.ua/" target="_blank">&rarr;</a></div>
+<div class="cc t-ivf" data-t="ivf" data-s="pons medical group georgia albania surrogacia ivf destinazioni"><div class="cc-info"><div class="cc-name">Pons Medical Group</div><div class="cc-city">Georgia + Albania &middot; Surrogacia/IVF</div><span class="cc-tag tg-i">Georgia+Albania</span></div><a class="cc-link" href="https://ponsmedicalgroup.com/" target="_blank">&rarr;</a></div>
+<div class="cc t-dentale" data-t="dentale" data-s="aratravel versione russa impiantidentali clinic ru dentale albania russo"><div class="cc-info"><div class="cc-name">Aratravel (versione russa)</div><div class="cc-city">Italia/Albania &middot; Sito completo RU</div><span class="cc-tag tg-d">Dentale RU</span></div><a class="cc-link" href="https://www.impiantidentali.clinic/" target="_blank">&rarr;</a></div>
+</div></section>
+
+</div>
+
+<div class="empty" id="emptyMsg">Nessun risultato trovato. Prova con un altro termine.</div>
+
+<footer class="footer">
+  <span>219 strutture verificate</span> &middot; Turismo medico Albania &middot; Agenzie, cliniche e ospedali &middot; 2025
+</footer>
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+<script>
+const SB_BASE='https://zzyjuhbxwsrgttlizlkv.supabase.co';
+const SB_KEY='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Inp6eWp1aGJ4d3NyZ3R0bGl6bGt2Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzU1NjQxMjcsImV4cCI6MjA5MTE0MDEyN30.NIqYoN_8t8M9WCwB4OcVwL2K2YtEAeOFJKZKab4RhZo';
+const DASH='turmed_albania';
+const _sb=window.supabase.createClient(SB_BASE,SB_KEY);
+let _data={},cf='all',cs='',csf='';
+async function sbLoad(){try{const{data:rows,error}=await _sb.from('ext_dashboard_status').select('card_id,status,note').eq('dashboard',DASH);if(error)throw error;rows.forEach(function(row){const o={};if(row.status&&row.status!=='none')o.status=row.status;if(row.note)o.note=row.note;if(o.status||o.note)_data[row.card_id]=o})}catch(e){console.error('Supabase load:',e)}}
+function loadData(){return _data}
+function svCard(id,card){_data[id]=card;if(!card||(!card.status&&!card.note)){delete _data[id];card={}}
+  _sb.from('ext_dashboard_status').upsert({dashboard:DASH,card_id:id,status:card.status||'none',note:card.note||'',updated_at:new Date().toISOString()},{onConflict:'dashboard,card_id'}).then(function(r){if(r.error)console.error('Save error:',r.error)});
+}
+function getCardId(c){
+  const n=c.querySelector('.cc-name');
+  return n?n.textContent.trim().replace(/[^a-zA-Z0-9]/g,'_').substring(0,40):'';
+}
+
+// Inject level buttons + notes into every card
+function initCards(){
+  const data=loadData();
+  document.querySelectorAll('.cc').forEach(function(c){
+    const id=getCardId(c);
+    if(!id)return;
+    c.setAttribute('data-id',id);
+    const saved=data[id]||{};
+
+    // Level buttons 0-3 + star
+    const sd=document.createElement('div');
+    sd.className='cc-status';
+    sd.innerHTML='<button class="cc-lvl'+(saved.status==='0'?' on-0':'')+'" title="Livello 0 — Scartare" onclick="tl(event,\'0\')">0</button>'+
+      '<button class="cc-lvl'+(saved.status==='1'?' on-1':'')+'" title="Livello 1 — Basso" onclick="tl(event,\'1\')">1</button>'+
+      '<button class="cc-lvl'+(saved.status==='2'?' on-2':'')+'" title="Livello 2 — Medio" onclick="tl(event,\'2\')">2</button>'+
+      '<button class="cc-lvl'+(saved.status==='3'?' on-3':'')+'" title="Livello 3 — Alto" onclick="tl(event,\'3\')">3</button>'+
+      '<span class="cc-star'+(saved.status==='star'?' on':'')+'" title="Top!" onclick="tstar(event)">'+(saved.status==='star'?'&#9733;':'&#9734;')+'</span>';
+    c.appendChild(sd);
+
+    // Note button
+    const nb=document.createElement('button');
+    nb.className='cc-note-btn'+(saved.note?' has-note':'');
+    nb.title='Appunti';
+    nb.innerHTML='&#9998;';
+    nb.onclick=function(e){e.stopPropagation();toggleNotes(c)};
+    c.appendChild(nb);
+
+    // Notes panel
+    const np=document.createElement('div');
+    np.className='cc-notes';
+    np.innerHTML='<textarea placeholder="Scrivi appunti...">'+(saved.note||'')+'</textarea><button class="cc-note-save" onclick="saveNote(this)">Salva</button>';
+    np.querySelector('textarea').addEventListener('input',function(){var me=this,cid=id,cc=c;clearTimeout(me._t);me._t=setTimeout(function(){var cur2=(_data[cid]||{});if(me.value.trim()){cur2.note=me.value;cc.querySelector('.cc-note-btn').classList.add('has-note');cc.classList.add('has-note-card')}else{delete cur2.note;cc.querySelector('.cc-note-btn').classList.remove('has-note');cc.classList.remove('has-note-card')}svCard(cid,cur2)},800)});
+    c.appendChild(np);
+
+    // Apply saved status class
+    if(saved.status){
+      c.classList.add('stato-'+saved.status);
+    }
+    if(saved.note){
+      c.classList.add('has-note-card');
+    }
+  });
+  updateStatusCounts();
+}
+
+function tl(e,level){
+  e.stopPropagation();
+  const btn=e.target;
+  const card=btn.closest('.cc');
+  const id=card.getAttribute('data-id');
+  const current=(_data[id]||{});
+
+  card.classList.remove('stato-0','stato-1','stato-2','stato-3','stato-star');
+  card.querySelectorAll('.cc-lvl').forEach(function(b){b.className='cc-lvl'});
+  const star=card.querySelector('.cc-star');if(star){star.classList.remove('on');star.innerHTML='&#9734;'}
+
+  if(current.status===level){
+    delete current.status;
+  } else {
+    current.status=level;
+    btn.classList.add('on-'+level);
+    card.classList.add('stato-'+level);
+  }
+
+  svCard(id,current);
+  updateStatusCounts();
+}
+function tstar(e){
+  e.stopPropagation();const star=e.target.closest('.cc-star'),card=star.closest('.cc'),id=card.getAttribute('data-id'),cur=(_data[id]||{});
+  card.classList.remove('stato-0','stato-1','stato-2','stato-3','stato-star');
+  card.querySelectorAll('.cc-lvl').forEach(function(b){b.className='cc-lvl'});
+  if(cur.status==='star'){delete cur.status;star.classList.remove('on');star.innerHTML='&#9734;'}
+  else{cur.status='star';star.classList.add('on');star.innerHTML='&#9733;';card.classList.add('stato-star')}
+  svCard(id,cur);
+  updateStatusCounts();
+}
+
+function toggleNotes(card){
+  const np=card.querySelector('.cc-notes');
+  np.classList.toggle('open');
+  if(np.classList.contains('open')){
+    np.querySelector('textarea').focus();
+  }
+}
+
+function saveNote(sbtn){
+  sbtn.blur();
+  var card=sbtn.closest('.cc'),id=card.getAttribute('data-id'),cur=(_data[id]||{});
+  var ta=card.querySelector('.cc-notes textarea'),val=ta.value,nb=card.querySelector('.cc-note-btn');
+  if(val.trim()){cur.note=val;nb.classList.add('has-note');card.classList.add('has-note-card')}
+  else{delete cur.note;nb.classList.remove('has-note');card.classList.remove('has-note-card')}
+  svCard(id,cur);
+  sbtn.textContent='\u2713 Salvato!';sbtn.classList.add('saved');
+  setTimeout(function(){sbtn.textContent='Salva';sbtn.classList.remove('saved')},1500);
+}
+
+function updateStatusCounts(){
+  const data=loadData();
+  let c0=0,c1=0,c2=0,c3=0,cs=0;
+  Object.values(data).forEach(function(d){
+    if(d.status==='0')c0++;
+    if(d.status==='1')c1++;
+    if(d.status==='2')c2++;
+    if(d.status==='3')c3++;
+    if(d.status==='star')cs++;
+  });
+  document.getElementById('cnt-0').textContent=c0;
+  document.getElementById('cnt-1').textContent=c1;
+  document.getElementById('cnt-2').textContent=c2;
+  document.getElementById('cnt-3').textContent=c3;
+  document.getElementById('cnt-star').textContent=cs;
+  document.getElementById('hero-0').textContent=c0;
+  document.getElementById('hero-1').textContent=c1;
+  document.getElementById('hero-2').textContent=c2;
+  document.getElementById('hero-3').textContent=c3;
+  document.getElementById('hero-star').textContent=cs;
+}
+
+// Filters
+function uc(){
+  const v=document.querySelectorAll('.cc:not(.hidden)').length;
+  document.getElementById('count').textContent='('+v+')';
+  document.getElementById('emptyMsg').style.display=v===0?'block':'none';
+  document.querySelectorAll('.region').forEach(function(r){const vis=r.querySelectorAll('.cc:not(.hidden)');r.style.display=vis.length===0?'none':''});
+}
+
+function af(){
+  const data=loadData();
+  document.querySelectorAll('.cc').forEach(function(c){
+    const t=c.getAttribute('data-t')||'';
+    const d=c.getAttribute('data-s')||'';
+    const n=c.querySelector('.cc-name');
+    const nt=n?n.textContent.toLowerCase():'';
+    const id=c.getAttribute('data-id')||'';
+    const saved=data[id]||{};
+    const mf=cf==='all'||t.includes(cf);
+    const ms=cs===''||d.includes(cs)||nt.includes(cs);
+    const msf=csf===''||saved.status===csf;
+    if(mf&&ms&&msf){c.classList.remove('hidden')}else{c.classList.add('hidden')}
+  });
+  uc();
+}
+
+function f(t,b){
+  cf=t;csf='';
+  document.querySelectorAll('.btn:not(.btn-status)').forEach(function(x){x.classList.remove('active')});
+  document.querySelectorAll('.btn-status').forEach(function(x){x.classList.remove('active')});
+  b.classList.add('active');
+  af();
+}
+
+function fs(status,b){
+  if(csf===status){csf='';b.classList.remove('active')}
+  else{csf=status;document.querySelectorAll('.btn-status').forEach(function(x){x.classList.remove('active')});b.classList.add('active')}
+  af();
+}
+
+function s(){cs=document.getElementById('si').value.toLowerCase().trim();af()}
+
+function refreshCard(cid){
+  var card=document.querySelector('[data-id="'+cid+'"]');if(!card)return;var s=_data[cid]||{};
+  card.classList.remove('stato-0','stato-1','stato-2','stato-3','stato-star');
+  card.querySelectorAll('.cc-lvl').forEach(function(b){b.className='cc-lvl'});
+  var star=card.querySelector('.cc-star');if(star){star.classList.remove('on');star.innerHTML='&#9734;'}
+  if(s.status){card.classList.add('stato-'+s.status);if(s.status==='star'){if(star){star.classList.add('on');star.innerHTML='&#9733;'}}else{var lvls=card.querySelectorAll('.cc-lvl');var idx=parseInt(s.status);if(lvls[idx])lvls[idx].classList.add('on-'+s.status)}}
+  var nb=card.querySelector('.cc-note-btn'),ta=card.querySelector('.cc-notes textarea');
+  if(s.note){if(nb)nb.classList.add('has-note');card.classList.add('has-note-card');if(ta&&!ta.matches(':focus'))ta.value=s.note}
+  else{if(nb)nb.classList.remove('has-note');card.classList.remove('has-note-card');if(ta&&!ta.matches(':focus'))ta.value=''}
+  updateStatusCounts();
+}
+// Init
+sbLoad().then(function(){initCards();updateStatusCounts();uc();
+  _sb.channel('dash-'+DASH).on('postgres_changes',{event:'*',schema:'public',table:'ext_dashboard_status',filter:'dashboard=eq.'+DASH},function(p){
+    var row=p.new||{};var cid=row.card_id;if(!cid)return;
+    var o={};if(row.status&&row.status!=='none')o.status=row.status;if(row.note)o.note=row.note;
+    if(o.status||o.note)_data[cid]=o;else delete _data[cid];
+    refreshCard(cid);
+  }).subscribe();
+});
+</script>
+</body>
+</html>

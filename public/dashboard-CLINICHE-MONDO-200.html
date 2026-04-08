@@ -1,0 +1,709 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Top 302 Cliniche Trapianto Capelli nel Mondo</title>
+<style>
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  :root{
+    --bg:#0b0e14;--surface:#131720;--surface2:#1a1f2e;
+    --border:#252b3b;--border-hl:#3a4260;
+    --text:#e2e8f0;--text-dim:#8892a8;--text-muted:#5a6478;
+    --accent:#6366f1;--accent-glow:rgba(99,102,241,.18);
+    --green:#22c55e;--green-bg:rgba(34,197,94,.12);--green-border:rgba(34,197,94,.3);
+    --blue:#3b82f6;--blue-bg:rgba(59,130,246,.1);--blue-border:rgba(59,130,246,.3);
+    --purple:#a855f7;--purple-bg:rgba(168,85,247,.1);--purple-border:rgba(168,85,247,.3);
+    --cyan:#06b6d4;--cyan-bg:rgba(6,182,212,.1);--cyan-border:rgba(6,182,212,.3);
+    --orange:#f97316;--orange-bg:rgba(249,115,22,.1);--orange-border:rgba(249,115,22,.3);
+    --gold:#d4a017;--gold-bg:rgba(212,160,23,.12);--gold-border:rgba(212,160,23,.3);
+    --teal:#14b8a6;--teal-bg:rgba(20,184,166,.12);--teal-border:rgba(20,184,166,.3);
+    --crimson:#e23e3e;--crimson-bg:rgba(226,62,62,.12);--crimson-border:rgba(226,62,62,.3);
+    --red:#ef4444;--red-bg:rgba(239,68,68,.1);--red-border:rgba(239,68,68,.3);
+    --yellow:#eab308;--yellow-bg:rgba(234,179,8,.1);--yellow-border:rgba(234,179,8,.3);
+    --radius:12px;--radius-sm:8px;
+    --shadow:0 4px 24px rgba(0,0,0,.35);--transition:.25s cubic-bezier(.4,0,.2,1);
+  }
+  html{scroll-behavior:smooth}
+  body{font-family:'Segoe UI',system-ui,-apple-system,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;min-height:100vh}
+  a{color:var(--accent);text-decoration:none}
+
+  .bg-grid{position:fixed;inset:0;z-index:0;pointer-events:none;background-image:linear-gradient(rgba(99,102,241,.025) 1px,transparent 1px),linear-gradient(90deg,rgba(99,102,241,.025) 1px,transparent 1px);background-size:60px 60px}
+  .bg-glow{position:fixed;top:-200px;right:-200px;width:600px;height:600px;background:radial-gradient(circle,rgba(99,102,241,.06),transparent 70%);z-index:0;pointer-events:none;animation:pulse 8s ease-in-out infinite alternate}
+  .bg-glow-2{position:fixed;bottom:-200px;left:-200px;width:500px;height:500px;background:radial-gradient(circle,rgba(6,182,212,.05),transparent 70%);z-index:0;pointer-events:none;animation:pulse 10s ease-in-out infinite alternate-reverse}
+  @keyframes pulse{from{opacity:.6;transform:scale(1)}to{opacity:1;transform:scale(1.15)}}
+  @keyframes blink{0%,100%{opacity:1}50%{opacity:.3}}
+
+  .container{max-width:1320px;margin:0 auto;padding:0 24px;position:relative;z-index:1}
+
+  .hero{padding:56px 0 40px;text-align:center;border-bottom:1px solid var(--border);margin-bottom:0}
+  .hero-badge{display:inline-flex;align-items:center;gap:8px;background:var(--accent-glow);color:var(--accent);padding:6px 16px;border-radius:20px;font-size:.82em;font-weight:600;letter-spacing:.5px;margin-bottom:16px;border:1px solid rgba(99,102,241,.3)}
+  .hero-badge .dot{width:8px;height:8px;border-radius:50%;background:var(--accent);animation:blink 2s infinite}
+  .hero h1{font-size:2.4em;font-weight:800;letter-spacing:-.02em;margin-bottom:8px}
+  .hero h1 span{background:linear-gradient(135deg,var(--accent),var(--cyan));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+  .hero p{color:var(--text-dim);font-size:1.05em;max-width:750px;margin:0 auto}
+  .stats-bar{display:flex;justify-content:center;gap:12px;flex-wrap:wrap;margin-top:28px}
+  .stat{text-align:center;padding:14px 22px;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-sm);min-width:110px}
+  .stat-num{font-size:2em;font-weight:800}
+  .stat-label{font-size:.72em;color:var(--text-muted);text-transform:uppercase;letter-spacing:.5px}
+
+  .controls{padding:24px 0;display:flex;align-items:center;gap:10px;flex-wrap:wrap;border-bottom:1px solid var(--border);margin-bottom:32px}
+  .controls-label{font-size:.72em;letter-spacing:2px;text-transform:uppercase;color:var(--text-muted);margin-right:4px}
+  .btn{font-family:'Segoe UI',system-ui,sans-serif;font-size:.78em;font-weight:500;padding:6px 14px;border-radius:20px;border:1px solid var(--border);background:transparent;color:var(--text-dim);cursor:pointer;transition:var(--transition);letter-spacing:.3px}
+  .btn:hover{border-color:var(--accent);color:var(--accent)}
+  .btn.active{background:var(--accent-glow);border-color:rgba(99,102,241,.3);color:var(--accent)}
+  .search-wrap{margin-left:auto;position:relative}
+  .search-wrap input{font-family:'Segoe UI',system-ui,sans-serif;font-size:.82em;background:var(--surface);border:1px solid var(--border);color:var(--text);padding:7px 14px 7px 34px;border-radius:20px;width:240px;outline:none;transition:border-color .2s}
+  .search-wrap input:focus{border-color:var(--accent)}
+  .search-wrap input::placeholder{color:var(--text-muted)}
+  .search-icon{position:absolute;left:12px;top:50%;transform:translateY(-50%);color:var(--text-muted);font-size:.82em;pointer-events:none}
+  #count{font-size:.78em;color:var(--text-muted);margin-left:2px}
+
+  /* REGION SECTIONS */
+  .region{margin-bottom:40px}
+  .region-header{display:flex;align-items:center;gap:12px;margin-bottom:16px;padding-bottom:10px;border-bottom:1px solid var(--border)}
+  .region-icon{font-size:1.3em}
+  .region-title{font-size:1.15em;font-weight:700}
+  .region-count{font-size:.70em;font-weight:600;padding:3px 10px;border-radius:12px;text-transform:uppercase;letter-spacing:.5px}
+
+  /* COUNTRY GROUPS */
+  .country{margin-bottom:20px}
+  .country-name{font-size:.82em;font-weight:600;color:var(--text-dim);margin-bottom:8px;padding-left:4px;letter-spacing:.3px}
+  .country-name span{margin-right:6px}
+
+  /* COMPACT GRID */
+  .cgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:10px}
+
+  /* COMPACT CARD */
+  .cc{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-sm);padding:12px 14px;display:flex;align-items:center;gap:10px;transition:var(--transition);position:relative;overflow:hidden}
+  .cc:hover{border-color:var(--border-hl);transform:translateY(-1px);box-shadow:var(--shadow)}
+  .cc::before{content:'';position:absolute;top:0;left:0;bottom:0;width:3px}
+  .cc.r-eu::before{background:var(--blue)}
+  .cc.r-na::before{background:var(--crimson)}
+  .cc.r-asia::before{background:var(--gold)}
+  .cc.r-me::before{background:var(--orange)}
+  .cc.r-latam::before{background:var(--green)}
+  .cc.r-africa::before{background:var(--teal)}
+  .cc.r-oceania::before{background:var(--purple)}
+  .cc.hidden{display:none}
+  .cc-info{flex:1;min-width:0}
+  .cc-name{font-size:.88em;font-weight:600;color:var(--text);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .cc-city{font-size:.72em;color:var(--text-muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .cc-link{display:flex;align-items:center;justify-content:center;width:40px;height:40px;min-width:40px;border-radius:10px;background:var(--surface2);border:1px solid var(--border);color:var(--accent);font-size:1.2em;font-weight:700;flex-shrink:0;transition:var(--transition);text-decoration:none}
+  .cc-link:hover{background:var(--accent);color:#fff;border-color:var(--accent);transform:scale(1.1)}
+
+  .cc{position:relative;flex-wrap:wrap}
+  /* STATUS & NOTES — Level system 0-3 + Star */
+  .cc-status{position:absolute;top:4px;right:4px;display:flex;gap:3px;align-items:center;background:rgba(0,0,0,.45);padding:3px 6px;border-radius:16px;z-index:2}
+  .cc-lvl{width:18px;height:18px;border-radius:50%;border:2px solid var(--border);cursor:pointer;transition:.2s;font-size:10px;font-weight:700;color:var(--text-muted);display:flex;align-items:center;justify-content:center;background:transparent;padding:0;line-height:1;font-family:inherit}
+  .cc-lvl:hover{transform:scale(1.25);border-color:var(--text-dim);color:var(--text)}
+  .cc-lvl.on-0{background:rgba(239,68,68,.25);border-color:var(--red);color:var(--red)}
+  .cc-lvl.on-1{background:rgba(234,179,8,.15);border-color:var(--yellow);color:var(--yellow)}
+  .cc-lvl.on-2{background:rgba(59,130,246,.25);border-color:var(--blue);color:var(--blue);box-shadow:0 0 5px rgba(59,130,246,.4)}
+  .cc-lvl.on-3{background:rgba(34,197,94,.3);border-color:var(--green);color:var(--green);box-shadow:0 0 7px rgba(34,197,94,.5)}
+  .cc.stato-0{opacity:.35;border-color:rgba(239,68,68,.3) !important}
+  .cc.stato-1{opacity:.55;border-color:rgba(234,179,8,.3) !important}
+  .cc.stato-2{border-color:rgba(59,130,246,.4) !important;box-shadow:0 0 8px rgba(59,130,246,.2),0 0 20px rgba(59,130,246,.08)}
+  .cc.stato-3{border-color:var(--green) !important;box-shadow:0 0 12px rgba(34,197,94,.4),0 0 30px rgba(34,197,94,.15),inset 0 0 12px rgba(34,197,94,.06)}
+  .cc-star{width:20px;height:20px;cursor:pointer;transition:.2s;font-size:18px;line-height:1;color:var(--border);display:flex;align-items:center;justify-content:center;margin-left:3px}
+  .cc-star:hover{transform:scale(1.3);color:#fbbf24}
+  .cc-star.on{color:#fbbf24;filter:drop-shadow(0 0 8px #fbbf24) drop-shadow(0 0 16px rgba(251,191,36,.5))}
+  .cc.stato-star{border-color:#fbbf24 !important;box-shadow:0 0 16px rgba(251,191,36,.5),0 0 40px rgba(251,191,36,.2),inset 0 0 16px rgba(251,191,36,.08)}
+  .cc-note-btn{position:absolute;bottom:4px;right:4px;width:18px;height:18px;border-radius:4px;background:transparent;border:1px solid var(--border);color:var(--text-muted);font-size:.6em;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:.2s;z-index:2}
+  .cc-note-btn:hover{border-color:var(--accent);color:var(--accent)}
+  .cc-note-btn.has-note{background:rgba(99,102,241,.35);border-color:var(--accent);color:#818cf8;box-shadow:0 0 10px rgba(99,102,241,.5),0 0 20px rgba(99,102,241,.25);animation:noteGlow 2s ease-in-out infinite alternate;font-size:.7em}
+  @keyframes noteGlow{from{box-shadow:0 0 8px rgba(99,102,241,.4),0 0 16px rgba(99,102,241,.2)}to{box-shadow:0 0 14px rgba(99,102,241,.6),0 0 28px rgba(99,102,241,.3)}}
+  .cc.has-note-card{border-bottom:3px solid rgba(99,102,241,.5) !important}
+  .cc.has-note-card .cc-note-btn.has-note{width:22px;height:22px;font-size:.75em}
+  .cc.stato-0 .cc-note-btn.has-note{box-shadow:0 0 28px rgba(99,102,241,1),0 0 56px rgba(99,102,241,.7);width:24px;height:24px;font-size:.85em}
+  .cc.stato-1 .cc-note-btn.has-note{box-shadow:0 0 20px rgba(99,102,241,.85),0 0 40px rgba(99,102,241,.5);width:22px;height:22px;font-size:.8em}
+  .cc-notes{display:none;width:100%;margin-top:6px}
+  .cc-notes.open{display:block}
+  .cc-notes textarea{width:100%;background:var(--surface2);border:1px solid var(--border);border-radius:6px;color:var(--text);font-family:inherit;font-size:.75em;padding:6px 8px;resize:vertical;min-height:32px;max-height:120px;outline:none}
+  .cc-notes textarea:focus{border-color:var(--accent)}
+  .cc-notes textarea::placeholder{color:var(--text-muted)}
+  .cc-note-save{margin-top:4px;padding:4px 14px;background:var(--accent);color:#fff;border:none;border-radius:6px;font-size:.75em;font-weight:700;cursor:pointer;transition:.2s;font-family:inherit;letter-spacing:.5px}
+  .cc-note-save:hover{filter:brightness(1.2);transform:scale(1.03)}
+  .cc-note-save.saved{background:var(--green);pointer-events:none}
+
+  .btn-status{font-size:.72em;padding:4px 10px}
+  .empty{text-align:center;padding:60px 20px;color:var(--text-muted);font-size:.9em;display:none}
+  .footer{text-align:center;padding:40px 0 32px;border-top:1px solid var(--border);color:var(--text-muted);font-size:.82em}
+  .footer span{color:var(--accent)}
+
+  @media(max-width:768px){.hero h1{font-size:1.6em}.cgrid{grid-template-columns:1fr}.stats-bar{gap:8px}.stat{min-width:80px;padding:10px 14px}.stat-num{font-size:1.5em}.controls{gap:6px}.search-wrap{margin-left:0;width:100%}.search-wrap input{width:100%}}
+</style>
+</head>
+<body>
+<div class="bg-grid"></div>
+<div class="bg-glow"></div>
+<div class="bg-glow-2"></div>
+<div class="container">
+
+<header class="hero">
+  <div class="hero-badge"><span class="dot"></span> Guida mondiale verificata 3025</div>
+  <h1>Top 302 Cliniche<br><span>Trapianto Capelli nel Mondo</span></h1>
+  <p>Mappa globale delle migliori cliniche di trapianto capelli in 52 paesi, escluse Turchia e Albania. Siti web verificati.</p>
+  <div class="stats-bar">
+    <div class="stat"><div class="stat-num" style="color:var(--accent)">302</div><div class="stat-label">Cliniche</div></div>
+    <div class="stat"><div class="stat-num" style="color:var(--cyan)">52</div><div class="stat-label">Paesi</div></div>
+    <div class="stat"><div class="stat-num" style="color:var(--blue)">144</div><div class="stat-label">Europa</div></div>
+    <div class="stat"><div class="stat-num" style="color:var(--crimson)">40</div><div class="stat-label">Nord America</div></div>
+    <div class="stat"><div class="stat-num" style="color:var(--gold)">56</div><div class="stat-label">Asia</div></div>
+    <div class="stat"><div class="stat-num" style="color:var(--green)">23</div><div class="stat-label">America Latina</div></div>
+  </div>
+</header>
+
+<div class="controls">
+  <span class="controls-label">Filtra</span>
+  <button class="btn active" onclick="f('all',this)">Tutte <span id="count">(302)</span></button>
+  <button class="btn" onclick="f('eu',this)">Europa</button>
+  <button class="btn" onclick="f('na',this)">Nord America</button>
+  <button class="btn" onclick="f('asia',this)">Asia</button>
+  <button class="btn" onclick="f('me',this)">Medio Oriente</button>
+  <button class="btn" onclick="f('latam',this)">America Latina</button>
+  <button class="btn" onclick="f('africa',this)">Africa</button>
+  <button class="btn" onclick="f('oceania',this)">Oceania</button>
+  <span class="controls-label" style="margin-left:12px">Stato</span>
+  <button class="btn btn-status" onclick="fs('0',this)" style="color:var(--red);border-color:var(--red-border)"><span style="color:#5a6478">Lv.0 -</span> <span id="cnt-0">0</span></button>
+  <button class="btn btn-status" onclick="fs('1',this)" style="color:var(--yellow);border-color:rgba(234,179,8,.3)"><span style="color:#5a6478">Lv.1 -</span> <span id="cnt-1">0</span></button>
+  <button class="btn btn-status" onclick="fs('2',this)" style="color:var(--blue);border-color:rgba(59,130,246,.3)"><span style="color:#5a6478">Lv.2 -</span> <span id="cnt-2">0</span></button>
+  <button class="btn btn-status" onclick="fs('3',this)" style="color:var(--green);border-color:var(--green-border)"><span style="color:#5a6478">Lv.3 -</span> <span id="cnt-3">0</span></button>
+  <button class="btn btn-status" onclick="fs('star',this)" style="color:#fbbf24;border-color:rgba(251,191,36,.3)"><span style="color:#5a6478">&#9733; Top -</span> <span id="cnt-star">0</span></button>
+  <div class="search-wrap">
+    <span class="search-icon">&#128269;</span>
+    <input type="text" id="si" placeholder="Cerca clinica, citt&agrave; o paese..." oninput="s()">
+  </div>
+</div>
+
+<div id="main">
+
+<!-- ══════ EUROPA ══════ -->
+<section class="region" data-r="eu">
+<div class="region-header"><span class="region-icon">&#127466;&#127482;</span><span class="region-title">Europa</span><span class="region-count" style="background:var(--blue-bg);color:var(--blue);border:1px solid var(--blue-border)">144 cliniche</span></div>
+
+<div class="country"><div class="country-name"><span>&#127470;&#127481;</span> Italia (13)</div><div class="cgrid">
+<div class="cc r-eu" data-s="insparya italia milano roma"><div class="cc-info"><div class="cc-name">Insparya Italia</div><div class="cc-city">Milano, Roma</div></div><a class="cc-link" href="https://insparya.it" target="_blank">&rarr;</a></div>
+<div class="cc r-eu" data-s="capilclinic italia milano roma"><div class="cc-info"><div class="cc-name">Capilclinic Italia</div><div class="cc-city">Milano, Roma</div></div><a class="cc-link" href="https://www.capilclinic.it" target="_blank">&rarr;</a></div>
+<div class="cc r-eu" data-s="hasci italia bologna"><div class="cc-info"><div class="cc-name">Hasci Italia</div><div class="cc-city">Bologna</div></div><a class="cc-link" href="https://www.hasci-italia.it/en/" target="_blank">&rarr;</a></div>
+<div class="cc r-eu" data-s="prof marco toscani roma"><div class="cc-info"><div class="cc-name">Prof. Marco Toscani</div><div class="cc-city">Roma</div></div><a class="cc-link" href="https://www.trapiantocapelliroma.it/" target="_blank">&rarr;</a></div>
+<div class="cc r-eu" data-s="istituto helvetico sanders milano"><div class="cc-info"><div class="cc-name">Istituto Helvetico Sanders</div><div class="cc-city">Milano + 25 centri</div></div><a class="cc-link" href="https://www.sanders.it" target="_blank">&rarr;</a></div>
+<div class="cc r-eu" data-s="masullo medical group napoli roma bologna"><div class="cc-info"><div class="cc-name">Masullo Medical Group</div><div class="cc-city">Napoli, Roma, Bologna</div></div><a class="cc-link" href="https://www.masullomedicalgroup.com/" target="_blank">&rarr;</a></div>
+<div class="cc r-eu" data-s="prof piero rosati ferrara milano roma"><div class="cc-info"><div class="cc-name">Prof. Piero Rosati</div><div class="cc-city">Ferrara, Milano, Roma</div></div><a class="cc-link" href="https://www.pierorosati.it/" target="_blank">&rarr;</a></div>
+<div class="cc r-eu" data-s="pallaoro medical laser padova"><div class="cc-info"><div class="cc-name">Pallaoro Medical Laser</div><div class="cc-city">Padova</div></div><a class="cc-link" href="https://www.pallaoro.com" target="_blank">&rarr;</a></div>
+<div class="cc r-eu" data-s="clinic biorigeneral roseto degli abruzzi"><div class="cc-info"><div class="cc-name">Clinic Biorigeneral</div><div class="cc-city">Roseto degli Abruzzi</div></div><a class="cc-link" href="https://www.clinicbiorigeneral.com" target="_blank">&rarr;</a></div>
+<div class="cc r-eu" data-s="hair port clinic roma"><div class="cc-info"><div class="cc-name">Hair Port Clinic</div><div class="cc-city">Roma</div></div><a class="cc-link" href="https://hairportclinic.it" target="_blank">&rarr;</a></div>
+<div class="cc r-eu" data-s="dott domenico valente firenze"><div class="cc-info"><div class="cc-name">Dott. Domenico Valente</div><div class="cc-city">Firenze</div></div><a class="cc-link" href="https://domenicovalente.com" target="_blank">&rarr;</a></div>
+<div class="cc r-eu" data-s="tricomedical milano"><div class="cc-info"><div class="cc-name">Tricomedical</div><div class="cc-city">Milano</div></div><a class="cc-link" href="https://www.tricomedical.it" target="_blank">&rarr;</a></div>
+<div class="cc r-eu" data-s="centro capelli europeo catania milano roma palermo"><div class="cc-info"><div class="cc-name">Centro Capelli Europeo</div><div class="cc-city">Catania, Milano, Roma, Palermo</div></div><a class="cc-link" href="https://www.centrocapellieuropeo.com" target="_blank">&rarr;</a></div>
+</div></div>
+
+<div class="country"><div class="country-name"><span>&#127466;&#127480;</span> Spagna (9)</div><div class="cgrid">
+<div class="cc r-eu" data-s="hospital capilar madrid murcia pontevedra spagna"><div class="cc-info"><div class="cc-name">Hospital Capilar</div><div class="cc-city">Madrid, Murcia, Pontevedra</div></div><a class="cc-link" href="https://hospitalcapilar.com/en/" target="_blank">&rarr;</a></div>
+<div class="cc r-eu" data-s="clinica de freitas valencia barcellona spagna"><div class="cc-info"><div class="cc-name">Clinica De Freitas</div><div class="cc-city">Valencia, Barcellona</div></div><a class="cc-link" href="https://www.injertocapilar-alopecia.es/en" target="_blank">&rarr;</a></div>
+<div class="cc r-eu" data-s="dr espinosa custodio madrid spagna"><div class="cc-info"><div class="cc-name">Dr. Espinosa Custodio</div><div class="cc-city">Madrid</div></div><a class="cc-link" href="https://drespinosacustodio.com/en/hair-transplant-clinic/" target="_blank">&rarr;</a></div>
+<div class="cc r-eu" data-s="fuexpert clinic madrid spagna"><div class="cc-info"><div class="cc-name">FUExpert Clinic</div><div class="cc-city">Madrid</div></div><a class="cc-link" href="https://www.fuexpert.com/" target="_blank">&rarr;</a></div>
+<div class="cc r-eu" data-s="capilclinic spagna madrid barcellona"><div class="cc-info"><div class="cc-name">Capilclinic Spagna</div><div class="cc-city">Madrid, Barcellona</div></div><a class="cc-link" href="https://www.capilclinic.es/en/" target="_blank">&rarr;</a></div>
+<div class="cc r-eu" data-s="insparya spagna madrid barcellona bilbao malaga"><div class="cc-info"><div class="cc-name">Insparya Spagna</div><div class="cc-city">Madrid, Barcellona, Bilbao, Malaga</div></div><a class="cc-link" href="https://insparya.es/?lang=en" target="_blank">&rarr;</a></div>
+<div class="cc r-eu" data-s="capilar prime madrid valencia sevilla spagna"><div class="cc-info"><div class="cc-name">Capilar Prime</div><div class="cc-city">Madrid, Valencia, Sevilla</div></div><a class="cc-link" href="https://capilarprime.com" target="_blank">&rarr;</a></div>
+<div class="cc r-eu" data-s="clinicas revitae sevilla malaga valencia spagna"><div class="cc-info"><div class="cc-name">Clinicas Revitae</div><div class="cc-city">Sevilla, Malaga, Valencia</div></div><a class="cc-link" href="https://clinicasrevitae.com" target="_blank">&rarr;</a></div>
+<div class="cc r-eu" data-s="clinica frontela malaga sevilla madrid spagna"><div class="cc-info"><div class="cc-name">Clinica Frontela</div><div class="cc-city">Malaga, Sevilla, Madrid</div></div><a class="cc-link" href="https://injertocapilarfrontela.com" target="_blank">&rarr;</a></div>
+</div></div>
+
+<div class="country"><div class="country-name"><span>&#127468;&#127463;</span> Regno Unito (10)</div><div class="cgrid">
+<div class="cc r-eu" data-s="the maitland clinic portsmouth uk"><div class="cc-info"><div class="cc-name">The Maitland Clinic</div><div class="cc-city">Portsmouth</div></div><a class="cc-link" href="https://www.themaitlandclinic.com/" target="_blank">&rarr;</a></div>
+<div class="cc r-eu" data-s="the treatment rooms london londra uk"><div class="cc-info"><div class="cc-name">The Treatment Rooms London</div><div class="cc-city">Londra</div></div><a class="cc-link" href="https://www.treatmentroomslondon.com/" target="_blank">&rarr;</a></div>
+<div class="cc r-eu" data-s="harley street hair transplant londra manchester uk"><div class="cc-info"><div class="cc-name">Harley Street Hair Transplant</div><div class="cc-city">Londra, Manchester, Leeds</div></div><a class="cc-link" href="https://www.harleystreethairtransplant.co.uk/" target="_blank">&rarr;</a></div>
+<div class="cc r-eu" data-s="hs hair clinic londra manchester uk"><div class="cc-info"><div class="cc-name">HS Hair Clinic</div><div class="cc-city">Londra, Manchester</div></div><a class="cc-link" href="https://www.hshairclinic.co.uk" target="_blank">&rarr;</a></div>
+<div class="cc r-eu" data-s="wimpole clinic londra birmingham uk"><div class="cc-info"><div class="cc-name">Wimpole Clinic</div><div class="cc-city">Londra, Birmingham, Bristol</div></div><a class="cc-link" href="https://wimpoleclinic.com/" target="_blank">&rarr;</a></div>
+<div class="cc r-eu" data-s="mhr clinic manchester harrogate uk"><div class="cc-info"><div class="cc-name">MHR Clinic</div><div class="cc-city">Manchester, Harrogate</div></div><a class="cc-link" href="https://mhrclinic.co.uk/" target="_blank">&rarr;</a></div>
+<div class="cc r-eu" data-s="crown clinic dr asim shahmalak manchester uk"><div class="cc-info"><div class="cc-name">Crown Clinic</div><div class="cc-city">Manchester</div></div><a class="cc-link" href="https://crownclinic.co.uk/" target="_blank">&rarr;</a></div>
+<div class="cc r-eu" data-s="farjo hair institute manchester londra uk"><div class="cc-info"><div class="cc-name">Farjo Hair Institute</div><div class="cc-city">Manchester, Londra</div></div><a class="cc-link" href="https://www.farjo.com/" target="_blank">&rarr;</a></div>
+<div class="cc r-eu" data-s="vinci hair clinic londra birmingham uk"><div class="cc-info"><div class="cc-name">Vinci Hair Clinic</div><div class="cc-city">Londra, Birmingham, Leeds</div></div><a class="cc-link" href="https://vincihairclinic.com/en/" target="_blank">&rarr;</a></div>
+<div class="cc r-eu" data-s="dhi london londra uk"><div class="cc-info"><div class="cc-name">DHI London</div><div class="cc-city">Londra</div></div><a class="cc-link" href="https://dhiglobal.com/" target="_blank">&rarr;</a></div>
+</div></div>
+
+<div class="country"><div class="country-name"><span>&#127467;&#127479;</span> Francia (9)</div><div class="cgrid">
+<div class="cc r-eu" data-s="clinique des champs elysees parigi francia"><div class="cc-info"><div class="cc-name">Clinique des Champs-Elys&eacute;es</div><div class="cc-city">Parigi</div></div><a class="cc-link" href="https://www.crpce.com/capillaire" target="_blank">&rarr;</a></div>
+<div class="cc r-eu" data-s="maison lutetia parigi francia"><div class="cc-info"><div class="cc-name">Maison Lutetia</div><div class="cc-city">Parigi</div></div><a class="cc-link" href="https://hairtransplant.maisonlutetia.com/" target="_blank">&rarr;</a></div>
+<div class="cc r-eu" data-s="racine2 levallois perret parigi francia"><div class="cc-info"><div class="cc-name">Racine2</div><div class="cc-city">Levallois-Perret (Parigi)</div></div><a class="cc-link" href="https://centre-racine2.com/en/" target="_blank">&rarr;</a></div>
+<div class="cc r-eu" data-s="nht europe avignone francia"><div class="cc-info"><div class="cc-name">NHT Europe</div><div class="cc-city">Avignone</div></div><a class="cc-link" href="https://www.nht-europe.com/en/index.html" target="_blank">&rarr;</a></div>
+<div class="cc r-eu" data-s="cap clinic marsiglia francia"><div class="cc-info"><div class="cc-name">Cap'Clinic</div><div class="cc-city">Marsiglia</div></div><a class="cc-link" href="https://www.capclinic.fr" target="_blank">&rarr;</a></div>
+<div class="cc r-eu" data-s="clinique crillon lione francia"><div class="cc-info"><div class="cc-name">Clinique Crillon</div><div class="cc-city">Lione</div></div><a class="cc-link" href="https://cheveux.cliniquecrillon.com" target="_blank">&rarr;</a></div>
+<div class="cc r-eu" data-s="clinique esthetique aquitaine bordeaux francia"><div class="cc-info"><div class="cc-name">Clinique Esth&eacute;tique Aquitaine</div><div class="cc-city">Bordeaux</div></div><a class="cc-link" href="https://www.clinique-esthetique-aquitaine.com" target="_blank">&rarr;</a></div>
+<div class="cc r-eu" data-s="clinique duquesne lione francia"><div class="cc-info"><div class="cc-name">Clinique Duquesne</div><div class="cc-city">Lione</div></div><a class="cc-link" href="https://www.cliniqueesthetique.com" target="_blank">&rarr;</a></div>
+<div class="cc r-eu" data-s="celest medipole lione francia"><div class="cc-info"><div class="cc-name">CELEST M&eacute;dipole</div><div class="cc-city">Lione</div></div><a class="cc-link" href="https://www.celest-lyon.com" target="_blank">&rarr;</a></div>
+</div></div>
+
+<div class="country"><div class="country-name"><span>&#127465;&#127466;</span> Germania (7)</div><div class="cgrid">
+<div class="cc r-eu" data-s="novohair clinic berlino germania"><div class="cc-info"><div class="cc-name">Novohair Clinic</div><div class="cc-city">Berlino</div></div><a class="cc-link" href="https://novohair.clinic/" target="_blank">&rarr;</a></div>
+<div class="cc r-eu" data-s="haarzentrum an der oper monaco baviera germania"><div class="cc-info"><div class="cc-name">Haarzentrum an der Oper</div><div class="cc-city">Monaco di Baviera</div></div><a class="cc-link" href="https://www.haarzentrum.de/en/" target="_blank">&rarr;</a></div>
+<div class="cc r-eu" data-s="ko hair ko klinik dusseldorf germania"><div class="cc-info"><div class="cc-name">KO-Hair (K&Ouml;-Klinik)</div><div class="cc-city">D&uuml;sseldorf</div></div><a class="cc-link" href="https://www.koe-hair.de/startseite.html" target="_blank">&rarr;</a></div>
+<div class="cc r-eu" data-s="alster klinik amburgo germania"><div class="cc-info"><div class="cc-name">Alster-Klinik</div><div class="cc-city">Amburgo</div></div><a class="cc-link" href="https://alster-klinik.de" target="_blank">&rarr;</a></div>
+<div class="cc r-eu" data-s="s-thetic francoforte amburgo berlino germania"><div class="cc-info"><div class="cc-name">S-thetic</div><div class="cc-city">Francoforte + sedi</div></div><a class="cc-link" href="https://s-thetic.de" target="_blank">&rarr;</a></div>
+<div class="cc r-eu" data-s="viva aesthetic hair norimberga germania"><div class="cc-info"><div class="cc-name">VIVA Aesthetic Hair</div><div class="cc-city">Norimberga</div></div><a class="cc-link" href="https://www.viva-aesthetic-hair.com" target="_blank">&rarr;</a></div>
+<div class="cc r-eu" data-s="myhair medical berlino monaco germania"><div class="cc-info"><div class="cc-name">myHair Medical</div><div class="cc-city">Berlino, Monaco</div></div><a class="cc-link" href="https://myhairmedical.de" target="_blank">&rarr;</a></div>
+</div></div>
+
+<div class="country"><div class="country-name"><span>&#127477;&#127481;</span> Portogallo (5)</div><div class="cgrid">
+<div class="cc r-eu" data-s="lhr clinic lisbona portogallo"><div class="cc-info"><div class="cc-name">LHR Clinic</div><div class="cc-city">Lisbona</div></div><a class="cc-link" href="https://clinicalhr.pt/en" target="_blank">&rarr;</a></div>
+<div class="cc r-eu" data-s="master group hair transplant lisbona portogallo"><div class="cc-info"><div class="cc-name">Master Group</div><div class="cc-city">Lisbona</div></div><a class="cc-link" href="https://www.transplantecapilar.pt/en" target="_blank">&rarr;</a></div>
+<div class="cc r-eu" data-s="attica clinic lisbona porto portogallo"><div class="cc-info"><div class="cc-name">Attica Clinic</div><div class="cc-city">Lisbona, Porto</div></div><a class="cc-link" href="https://atticaclinic.com/en/homepage-en/" target="_blank">&rarr;</a></div>
+<div class="cc r-eu" data-s="up clinic lisbona portogallo"><div class="cc-info"><div class="cc-name">UP Clinic</div><div class="cc-city">Lisbona</div></div><a class="cc-link" href="https://upclinic.pt/capillary/?lang=en" target="_blank">&rarr;</a></div>
+<div class="cc r-eu" data-s="clinica o'porto porto portogallo"><div class="cc-info"><div class="cc-name">Clinica O'Porto</div><div class="cc-city">Porto</div></div><a class="cc-link" href="https://clinicaoporto.com/" target="_blank">&rarr;</a></div>
+</div></div>
+
+<div class="country"><div class="country-name"><span>&#127468;&#127479;</span> Grecia (6)</div><div class="cgrid">
+<div class="cc r-eu" data-s="anastasakis hair clinic atene grecia"><div class="cc-info"><div class="cc-name">Anastasakis Hair Clinic</div><div class="cc-city">Atene</div></div><a class="cc-link" href="https://anastasakishairclinic.com/" target="_blank">&rarr;</a></div>
+<div class="cc r-eu" data-s="advanced hair clinics atene grecia"><div class="cc-info"><div class="cc-name">Advanced Hair Clinics</div><div class="cc-city">Atene</div></div><a class="cc-link" href="https://www.advancedhairclinics.gr/en" target="_blank">&rarr;</a></div>
+<div class="cc r-eu" data-s="hairclinic athens atene grecia"><div class="cc-info"><div class="cc-name">HairClinic Athens</div><div class="cc-city">Atene</div></div><a class="cc-link" href="https://hairclinic.com.gr/en/" target="_blank">&rarr;</a></div>
+<div class="cc r-eu" data-s="seneca medical group atene salonicco grecia"><div class="cc-info"><div class="cc-name">Seneca Medical Group</div><div class="cc-city">Atene, Salonicco</div></div><a class="cc-link" href="https://senecamd.com/en-gr/" target="_blank">&rarr;</a></div>
+<div class="cc r-eu" data-s="derma hair clinic karalexis atene grecia"><div class="cc-info"><div class="cc-name">Derma Hair Clinic</div><div class="cc-city">Atene</div></div><a class="cc-link" href="https://karalexis.gr/en/" target="_blank">&rarr;</a></div>
+<div class="cc r-eu" data-s="trichogenics salonicco grecia"><div class="cc-info"><div class="cc-name">Trichogenics</div><div class="cc-city">Salonicco</div></div><a class="cc-link" href="https://www.trichogenics.com/" target="_blank">&rarr;</a></div>
+</div></div>
+
+<div class="country"><div class="country-name"><span>&#127463;&#127466;</span> Belgio (4) &middot; <span>&#127464;&#127469;</span> Svizzera (4) &middot; <span>&#127470;&#127466;</span> Irlanda (4) &middot; <span>&#127475;&#127473;</span> Paesi Bassi (1)</div><div class="cgrid">
+<div class="cc r-eu" data-s="bhr clinic dr bisanga bruxelles belgio"><div class="cc-info"><div class="cc-name">BHR Clinic (Dr. Bisanga)</div><div class="cc-city">Bruxelles, Belgio</div></div><a class="cc-link" href="https://bhrclinic.com/" target="_blank">&rarr;</a></div>
+<div class="cc r-eu" data-s="hts clinic dr devroye bruxelles belgio"><div class="cc-info"><div class="cc-name">HTS Clinic (Dr. Devroye)</div><div class="cc-city">Bruxelles, Belgio</div></div><a class="cc-link" href="https://www.hair-transplant-surgery.com/en/accueil" target="_blank">&rarr;</a></div>
+<div class="cc r-eu" data-s="medikemos clinic bruxelles belgio"><div class="cc-info"><div class="cc-name">Medikemos Clinic</div><div class="cc-city">Bruxelles, Belgio</div></div><a class="cc-link" href="https://medikemosclinic.com/en/" target="_blank">&rarr;</a></div>
+<div class="cc r-eu" data-s="dr feriduni clinic hasselt belgio"><div class="cc-info"><div class="cc-name">Dr. Feriduni Clinic</div><div class="cc-city">Hasselt, Belgio</div></div><a class="cc-link" href="https://www.feriduni.com/en" target="_blank">&rarr;</a></div>
+<div class="cc r-eu" data-s="dr lars heitmann zurigo svizzera"><div class="cc-info"><div class="cc-name">Dr. Lars Heitmann</div><div class="cc-city">Zurigo, Svizzera</div></div><a class="cc-link" href="https://www.fue-haartransplantation.ch/en/" target="_blank">&rarr;</a></div>
+<div class="cc r-eu" data-s="swiss luxury clinic zurigo svizzera"><div class="cc-info"><div class="cc-name">Swiss Luxury Clinic</div><div class="cc-city">Zurigo, Svizzera</div></div><a class="cc-link" href="https://swissluxuryclinic.com/" target="_blank">&rarr;</a></div>
+<div class="cc r-eu" data-s="clinique adonis ginevra svizzera"><div class="cc-info"><div class="cc-name">Clinique Adonis</div><div class="cc-city">Ginevra, Svizzera</div></div><a class="cc-link" href="https://www.clinique-adonis.ch/en/our-services/hair-surgery/hair-transplant/" target="_blank">&rarr;</a></div>
+<div class="cc r-eu" data-s="zurihair zurigo svizzera"><div class="cc-info"><div class="cc-name">ZuriHair</div><div class="cc-city">Zurigo, Svizzera</div></div><a class="cc-link" href="https://zurihair.ch/en/" target="_blank">&rarr;</a></div>
+<div class="cc r-eu" data-s="hsw clinic dublino irlanda"><div class="cc-info"><div class="cc-name">HSW Clinic</div><div class="cc-city">Dublino, Irlanda</div></div><a class="cc-link" href="https://www.hswclinic.com/" target="_blank">&rarr;</a></div>
+<div class="cc r-eu" data-s="ailesbury hair clinic dublino irlanda"><div class="cc-info"><div class="cc-name">Ailesbury Hair Clinic</div><div class="cc-city">Dublino, Irlanda</div></div><a class="cc-link" href="https://www.ailesburyhairclinic.ie/" target="_blank">&rarr;</a></div>
+<div class="cc r-eu" data-s="hrbr dublino blackrock irlanda"><div class="cc-info"><div class="cc-name">HRBR</div><div class="cc-city">Dublino, Irlanda</div></div><a class="cc-link" href="https://www.hrbr.ie/" target="_blank">&rarr;</a></div>
+<div class="cc r-eu" data-s="mhr clinic ireland dublino irlanda"><div class="cc-info"><div class="cc-name">MHR Clinic Ireland</div><div class="cc-city">Dublino, Irlanda</div></div><a class="cc-link" href="https://www.mhrclinicireland.com/" target="_blank">&rarr;</a></div>
+<div class="cc r-eu" data-s="fuegenix hair clinic bergen op zoom paesi bassi olanda"><div class="cc-info"><div class="cc-name">FueGenix Hair Clinic</div><div class="cc-city">Bergen op Zoom, Paesi Bassi</div></div><a class="cc-link" href="https://fuegenix.com/" target="_blank">&rarr;</a></div>
+</div></div>
+
+<div class="country"><div class="country-name"><span>&#127477;&#127473;</span> Polonia (5) &middot; <span>&#127469;&#127482;</span> Ungheria (4)</div><div class="cgrid">
+<div class="cc r-eu" data-s="fullface clinic varsavia cracovia polonia"><div class="cc-info"><div class="cc-name">FullFace Clinic</div><div class="cc-city">Varsavia, Cracovia</div></div><a class="cc-link" href="https://fullface.pl/en/przeszczep" target="_blank">&rarr;</a></div>
+<div class="cc r-eu" data-s="dr piotr turkowski varsavia polonia"><div class="cc-info"><div class="cc-name">Dr. Piotr Turkowski</div><div class="cc-city">Varsavia, Polonia</div></div><a class="cc-link" href="https://piotrturkowski.pl/en/" target="_blank">&rarr;</a></div>
+<div class="cc r-eu" data-s="klinika przybylski kalisz polonia"><div class="cc-info"><div class="cc-name">Klinika Przybylski</div><div class="cc-city">Kalisz, Polonia</div></div><a class="cc-link" href="https://klinikaprzybylski.pl/en/clinic/" target="_blank">&rarr;</a></div>
+<div class="cc r-eu" data-s="dr art clinic breslavia wroclaw polonia"><div class="cc-info"><div class="cc-name">Dr Art Clinic</div><div class="cc-city">Breslavia, Polonia</div></div><a class="cc-link" href="https://drart.clinic/en/hair-transplant-in-poland/" target="_blank">&rarr;</a></div>
+<div class="cc r-eu" data-s="saifi hair transplant breslavia wroclaw polonia"><div class="cc-info"><div class="cc-name">SAIFI Hair Transplant</div><div class="cc-city">Breslavia, Polonia</div></div><a class="cc-link" href="https://transplantacja-wlosow.pl/en/homepage/" target="_blank">&rarr;</a></div>
+<div class="cc r-eu" data-s="sikos clinic budapest ungheria"><div class="cc-info"><div class="cc-name">Sikos Clinic</div><div class="cc-city">Budapest, Ungheria</div></div><a class="cc-link" href="https://sikos.hu/en/hair-transplant/" target="_blank">&rarr;</a></div>
+<div class="cc r-eu" data-s="phaeyde clinic budapest ungheria"><div class="cc-info"><div class="cc-name">PHAEYDE Clinic</div><div class="cc-city">Budapest, Ungheria</div></div><a class="cc-link" href="https://phaeyde.com/hair-transplantation" target="_blank">&rarr;</a></div>
+<div class="cc r-eu" data-s="hairpalace clinic budapest ungheria"><div class="cc-info"><div class="cc-name">HairPalace Clinic</div><div class="cc-city">Budapest, Ungheria</div></div><a class="cc-link" href="https://www.hairpalace.co.uk/" target="_blank">&rarr;</a></div>
+<div class="cc r-eu" data-s="prohair clinic budapest ungheria"><div class="cc-info"><div class="cc-name">ProHAIR Clinic</div><div class="cc-city">Budapest, Ungheria</div></div><a class="cc-link" href="https://prohairklinika.hu/en/" target="_blank">&rarr;</a></div>
+</div></div>
+
+<div class="country"><div class="country-name"><span>&#127480;&#127466;</span> Svezia (3) &middot; <span>&#127475;&#127476;</span> Norvegia (2) &middot; <span>&#127465;&#127472;</span> Danimarca (3) &middot; <span>&#127473;&#127481;</span> Lituania (2) &middot; <span>&#127464;&#127487;</span> Rep. Ceca (2)</div><div class="cgrid">
+<div class="cc r-eu" data-s="nordic hair clinic stoccolma goteborg malmo svezia"><div class="cc-info"><div class="cc-name">Nordic Hair Clinic</div><div class="cc-city">Stoccolma, Svezia</div></div><a class="cc-link" href="https://nordichair.com/en" target="_blank">&rarr;</a></div>
+<div class="cc r-eu" data-s="akacia medical stoccolma svezia"><div class="cc-info"><div class="cc-name">Akacia Medical</div><div class="cc-city">Stoccolma, Svezia</div></div><a class="cc-link" href="https://www.akaciamedical.com/en/" target="_blank">&rarr;</a></div>
+<div class="cc r-eu" data-s="scandinavian hair institute stoccolma svezia"><div class="cc-info"><div class="cc-name">Scandinavian Hair Institute</div><div class="cc-city">Stoccolma, Svezia</div></div><a class="cc-link" href="https://scandinavianhairinstitute.com/" target="_blank">&rarr;</a></div>
+<div class="cc r-eu" data-s="masterklinikken oslo norvegia"><div class="cc-info"><div class="cc-name">Masterklinikken</div><div class="cc-city">Oslo, Norvegia</div></div><a class="cc-link" href="https://masterklinikken.com/" target="_blank">&rarr;</a></div>
+<div class="cc r-eu" data-s="skandinavisk harinstitutt oslo norvegia"><div class="cc-info"><div class="cc-name">Skandinavisk H&aring;rinstitutt</div><div class="cc-city">Oslo, Norvegia</div></div><a class="cc-link" href="https://scandinavianhairinstitute.com/" target="_blank">&rarr;</a></div>
+<div class="cc r-eu" data-s="poseidon klinikken copenaghen danimarca"><div class="cc-info"><div class="cc-name">Poseidon Klinikken</div><div class="cc-city">Copenaghen, Danimarca</div></div><a class="cc-link" href="https://poseidon-klinikken.dk/behandling/hair-transplants/" target="_blank">&rarr;</a></div>
+<div class="cc r-eu" data-s="copenhagen private clinic copenaghen danimarca"><div class="cc-info"><div class="cc-name">Copenhagen Private Clinic</div><div class="cc-city">Copenaghen, Danimarca</div></div><a class="cc-link" href="https://copenhagenprivateclinic.com/?lang=en" target="_blank">&rarr;</a></div>
+<div class="cc r-eu" data-s="novohair copenaghen danimarca"><div class="cc-info"><div class="cc-name">Novohair</div><div class="cc-city">Copenaghen, Danimarca</div></div><a class="cc-link" href="https://novohair.dk/" target="_blank">&rarr;</a></div>
+<div class="cc r-eu" data-s="kardiolita hospital meliva vilnius kaunas lituania"><div class="cc-info"><div class="cc-name">Kardiolita (Meliva)</div><div class="cc-city">Vilnius, Lituania</div></div><a class="cc-link" href="https://www.kardiolita.com/" target="_blank">&rarr;</a></div>
+<div class="cc r-eu" data-s="fi clinica kaunas lituania"><div class="cc-info"><div class="cc-name">Fi Clinica</div><div class="cc-city">Kaunas, Lituania</div></div><a class="cc-link" href="https://ficlinica.com/" target="_blank">&rarr;</a></div>
+<div class="cc r-eu" data-s="premier clinic prague praga repubblica ceca"><div class="cc-info"><div class="cc-name">Premier Clinic Prague</div><div class="cc-city">Praga, Rep. Ceca</div></div><a class="cc-link" href="https://www.premier-clinic.cz/en/zakroky/hair-transplant/" target="_blank">&rarr;</a></div>
+<div class="cc r-eu" data-s="perfect clinic praga brno repubblica ceca"><div class="cc-info"><div class="cc-name">Perfect Clinic</div><div class="cc-city">Praga, Rep. Ceca</div></div><a class="cc-link" href="https://www.perfectclinic.cz/en/hair-transplantation/" target="_blank">&rarr;</a></div>
+</div></div>
+
+<div class="country"><div class="country-name"><span>&#127479;&#127480;</span> Serbia (3) &middot; <span>&#127479;&#127476;</span> Romania (3) &middot; <span>&#127469;&#127479;</span> Croazia (2) &middot; <span>&#127480;&#127470;</span> Slovenia (2) &middot; <span>&#127464;&#127486;</span> Cipro (3) &middot; <span>&#127468;&#127466;</span> Georgia (3)</div><div class="cgrid">
+<div class="cc r-eu" data-s="hair center serbia belgrado serbia"><div class="cc-info"><div class="cc-name">Hair Center Serbia</div><div class="cc-city">Belgrado, Serbia</div></div><a class="cc-link" href="https://aestheticserbia.com/clinics/hair-center-serbia-dr-gorana-kuka/" target="_blank">&rarr;</a></div>
+<div class="cc r-eu" data-s="101 hair clinic belgrado serbia"><div class="cc-info"><div class="cc-name">101 Hair Clinic</div><div class="cc-city">Belgrado, Serbia</div></div><a class="cc-link" href="https://www.myhair.ai/clinics/101-hair-clinic-ChIJySR9tgpwWkcRHNpKbXIbMkQ" target="_blank">&rarr;</a></div>
+<div class="cc r-eu" data-s="new hair center belgrado serbia"><div class="cc-info"><div class="cc-name">New Hair Center</div><div class="cc-city">Belgrado, Serbia</div></div><a class="cc-link" href="https://www.best-hair-clinics.com/clinics/new-hair-center-belgrade-serbia.html" target="_blank">&rarr;</a></div>
+<div class="cc r-eu" data-s="egoclinic hairclinic.ro bucarest romania"><div class="cc-info"><div class="cc-name">EgoClinic / HairClinic.ro</div><div class="cc-city">Bucarest, Romania</div></div><a class="cc-link" href="https://hairclinic.ro/en/index.php" target="_blank">&rarr;</a></div>
+<div class="cc r-eu" data-s="lookclinic bucarest romania"><div class="cc-info"><div class="cc-name">LookClinic</div><div class="cc-city">Bucarest, Romania</div></div><a class="cc-link" href="https://www.best-hair-clinics.com/clinics/lookclinic-bucharest-romania.html" target="_blank">&rarr;</a></div>
+<div class="cc r-eu" data-s="dr felix hair implant bucarest romania"><div class="cc-info"><div class="cc-name">Dr. Felix Hair Implant</div><div class="cc-city">Bucarest, Romania</div></div><a class="cc-link" href="https://www.best-hair-clinics.com/clinics/dr-felix-bucharest-romania.html" target="_blank">&rarr;</a></div>
+<div class="cc r-eu" data-s="polyclinic pantovcak zagabria croazia"><div class="cc-info"><div class="cc-name">Polyclinic Pantovcak</div><div class="cc-city">Zagabria, Croazia</div></div><a class="cc-link" href="https://poliklinikapantovcak.com" target="_blank">&rarr;</a></div>
+<div class="cc r-eu" data-s="polyclinic maletic zagabria croazia"><div class="cc-info"><div class="cc-name">Polyclinic Maleti&cacute;</div><div class="cc-city">Zagabria, Croazia</div></div><a class="cc-link" href="https://www.poliklinika-maletic.hr" target="_blank">&rarr;</a></div>
+<div class="cc r-eu" data-s="hair clinic slovenia lubiana"><div class="cc-info"><div class="cc-name">Hair Clinic Slovenia</div><div class="cc-city">Lubiana, Slovenia</div></div><a class="cc-link" href="https://hairclinic.si" target="_blank">&rarr;</a></div>
+<div class="cc r-eu" data-s="fabjan aesthetics sencur lubiana slovenia"><div class="cc-info"><div class="cc-name">Fabjan Aesthetics</div><div class="cc-city">&Scaron;en&ccaron;ur, Slovenia</div></div><a class="cc-link" href="https://www.fabjan.com" target="_blank">&rarr;</a></div>
+<div class="cc r-eu" data-s="hdc hair clinic nicosia cipro"><div class="cc-info"><div class="cc-name">HDC Hair Clinic</div><div class="cc-city">Nicosia, Cipro</div></div><a class="cc-link" href="https://www.hairtransplants-hdc.com" target="_blank">&rarr;</a></div>
+<div class="cc r-eu" data-s="advanced hair clinics cyprus nicosia cipro"><div class="cc-info"><div class="cc-name">Advanced Hair Clinics Cyprus</div><div class="cc-city">Nicosia, Cipro</div></div><a class="cc-link" href="https://www.advancedhairclinics.gr" target="_blank">&rarr;</a></div>
+<div class="cc r-eu" data-s="fuehub cyprus nicosia cipro"><div class="cc-info"><div class="cc-name">FUEHUB Cyprus</div><div class="cc-city">Nicosia, Cipro</div></div><a class="cc-link" href="https://www.fuehub.com" target="_blank">&rarr;</a></div>
+<div class="cc r-eu" data-s="talizi clinic tbilisi georgia"><div class="cc-info"><div class="cc-name">Talizi Clinic</div><div class="cc-city">Tbilisi, Georgia</div></div><a class="cc-link" href="https://talizi.ge/" target="_blank">&rarr;</a></div>
+<div class="cc r-eu" data-s="tsilosani hair transplantation institute tbilisi georgia"><div class="cc-info"><div class="cc-name">Tsilosani Institute</div><div class="cc-city">Tbilisi, Georgia</div></div><a class="cc-link" href="https://tsilosaniclinic.com/" target="_blank">&rarr;</a></div>
+<div class="cc r-eu" data-s="hairline international tbilisi georgia"><div class="cc-info"><div class="cc-name">Hairline International</div><div class="cc-city">Tbilisi, Georgia</div></div><a class="cc-link" href="https://hairline.ge/en/" target="_blank">&rarr;</a></div>
+</div></div>
+
+<div class="country"><div class="country-name"><span>&#127462;&#127481;</span> Austria (3) &middot; <span>&#127475;&#127473;</span> Paesi Bassi +3 &middot; <span>&#127467;&#127470;</span> Finlandia (1) &middot; <span>&#127463;&#127468;</span> Bulgaria (2) &middot; <span>&#127482;&#127462;</span> Ucraina (2) &middot; <span>&#127473;&#127483;</span> Lettonia (1) &middot; <span>&#127477;&#127481;</span> Portogallo +2</div><div class="cgrid">
+<div class="cc r-eu" data-s="moser medical vienna graz austria"><div class="cc-info"><div class="cc-name">Moser Medical</div><div class="cc-city">Vienna, Graz, Austria</div></div><a class="cc-link" href="https://www.haarestattglatze.com/en/" target="_blank">&rarr;</a></div>
+<div class="cc r-eu" data-s="dhi vienna austria"><div class="cc-info"><div class="cc-name">DHI Vienna</div><div class="cc-city">Vienna, Austria</div></div><a class="cc-link" href="https://www.dhi-vienna.com/en/" target="_blank">&rarr;</a></div>
+<div class="cc r-eu" data-s="dr kohrgruber vienna wien austria"><div class="cc-info"><div class="cc-name">Dr. Kohrgruber</div><div class="cc-city">Vienna, Austria</div></div><a class="cc-link" href="https://wien-haartransplantation.at/en/" target="_blank">&rarr;</a></div>
+<div class="cc r-eu" data-s="amsterdam hair institute amsterdam paesi bassi olanda"><div class="cc-info"><div class="cc-name">Amsterdam Hair Institute</div><div class="cc-city">Amsterdam, Paesi Bassi</div></div><a class="cc-link" href="https://amsterdamhairinstitute.com/" target="_blank">&rarr;</a></div>
+<div class="cc r-eu" data-s="visus haarkliniek rotterdam paesi bassi olanda"><div class="cc-info"><div class="cc-name">Visus Haarkliniek</div><div class="cc-city">Rotterdam, Paesi Bassi</div></div><a class="cc-link" href="https://visushaarkliniek.nl/" target="_blank">&rarr;</a></div>
+<div class="cc r-eu" data-s="graft point nederland rotterdam paesi bassi olanda"><div class="cc-info"><div class="cc-name">Graft Point Nederland</div><div class="cc-city">Rotterdam, Paesi Bassi</div></div><a class="cc-link" href="https://graftpoint.nl/en/" target="_blank">&rarr;</a></div>
+<div class="cc r-eu" data-s="cityklinikka helsinki finlandia"><div class="cc-info"><div class="cc-name">Cityklinikka</div><div class="cc-city">Helsinki, Finlandia</div></div><a class="cc-link" href="https://ckl.fi/en/plastic-surgery-en-2/hiustensiirto/" target="_blank">&rarr;</a></div>
+<div class="cc r-eu" data-s="bellissimo clinic sofia bulgaria"><div class="cc-info"><div class="cc-name">Bellissimo Clinic</div><div class="cc-city">Sofia, Bulgaria</div></div><a class="cc-link" href="https://bellissimoclinic.bg/en/" target="_blank">&rarr;</a></div>
+<div class="cc r-eu" data-s="dr zarev clinic sofia bulgaria"><div class="cc-info"><div class="cc-name">Dr. Zarev Clinic</div><div class="cc-city">Sofia, Bulgaria</div></div><a class="cc-link" href="https://www.hairtransplantation.bg/index.php/en/" target="_blank">&rarr;</a></div>
+<div class="cc r-eu" data-s="anacosma kyiv kiev ucraina"><div class="cc-info"><div class="cc-name">ANACOSMA</div><div class="cc-city">Kyiv, Ucraina</div></div><a class="cc-link" href="https://anacosmo.ua/en/plasticheskaya-hirurgiya/peresadka-volos-2/" target="_blank">&rarr;</a></div>
+<div class="cc r-eu" data-s="mht clinic lviv uzhhorod ucraina"><div class="cc-info"><div class="cc-name">MHT Clinic</div><div class="cc-city">Lviv, Ucraina</div></div><a class="cc-link" href="https://mhtclinics.com/en/" target="_blank">&rarr;</a></div>
+<div class="cc r-eu" data-s="rubenhair latvia riga lettonia"><div class="cc-info"><div class="cc-name">Rubenhair Latvia</div><div class="cc-city">Riga, Lettonia</div></div><a class="cc-link" href="https://rubenhair.eu/en/home" target="_blank">&rarr;</a></div>
+<div class="cc r-eu" data-s="dr bruno ferreira rejuvie clinic espinho porto portogallo"><div class="cc-info"><div class="cc-name">Dr. Bruno Ferreira</div><div class="cc-city">Espinho (Porto), Portogallo</div></div><a class="cc-link" href="https://brunoferreira.com/" target="_blank">&rarr;</a></div>
+<div class="cc r-eu" data-s="esthesis medicapilar vilamoura algarve portogallo"><div class="cc-info"><div class="cc-name">Esthesis / MediCapilar</div><div class="cc-city">Vilamoura, Portogallo</div></div><a class="cc-link" href="https://esthesis.com/hair-transplants-algarve/" target="_blank">&rarr;</a></div>
+</div></div>
+
+<div class="country"><div class="country-name"><span>&#127468;&#127463;</span> UK extra (6) &middot; <span>&#127470;&#127481;</span> Italia extra (4) &middot; <span>&#127466;&#127480;</span> Spagna extra (3) &middot; <span>&#127465;&#127466;</span> Germania extra (3)</div><div class="cgrid">
+<div class="cc r-eu" data-s="ksl clinic glasgow uk scozia"><div class="cc-info"><div class="cc-name">KSL Clinic</div><div class="cc-city">Glasgow, UK</div></div><a class="cc-link" href="https://kslclinic.co.uk" target="_blank">&rarr;</a></div>
+<div class="cc r-eu" data-s="the hair dr dr arshad manchester uk"><div class="cc-info"><div class="cc-name">The Hair Dr</div><div class="cc-city">Manchester, UK</div></div><a class="cc-link" href="https://thehairdr.com" target="_blank">&rarr;</a></div>
+<div class="cc r-eu" data-s="the private clinic londra manchester birmingham uk"><div class="cc-info"><div class="cc-name">The Private Clinic</div><div class="cc-city">Londra, Manchester, UK</div></div><a class="cc-link" href="https://theprivateclinic.co.uk" target="_blank">&rarr;</a></div>
+<div class="cc r-eu" data-s="hairline clinic belfast irlanda nord uk"><div class="cc-info"><div class="cc-name">Hairline Clinic Belfast</div><div class="cc-city">Belfast, UK</div></div><a class="cc-link" href="https://hairlineclinic.com" target="_blank">&rarr;</a></div>
+<div class="cc r-eu" data-s="edinburgh hair transplant rejuvenate edinburgh uk scozia"><div class="cc-info"><div class="cc-name">Edinburgh Hair (Rejuvenate)</div><div class="cc-city">Edinburgh, UK</div></div><a class="cc-link" href="https://rejuvenatescotland.com" target="_blank">&rarr;</a></div>
+<div class="cc r-eu" data-s="harley body clinic londra uk"><div class="cc-info"><div class="cc-name">Harley Body Clinic</div><div class="cc-city">Londra, UK</div></div><a class="cc-link" href="https://harleybodyclinic.co.uk" target="_blank">&rarr;</a></div>
+<div class="cc r-eu" data-s="tricomedit bari roma italia"><div class="cc-info"><div class="cc-name">Tricomedit</div><div class="cc-city">Bari, Roma, Italia</div></div><a class="cc-link" href="https://tricomedit.it" target="_blank">&rarr;</a></div>
+<div class="cc r-eu" data-s="clinica rinaldi bologna italia"><div class="cc-info"><div class="cc-name">Clinica Rinaldi</div><div class="cc-city">Bologna, Italia</div></div><a class="cc-link" href="https://clinicarinaldi.com" target="_blank">&rarr;</a></div>
+<div class="cc r-eu" data-s="hairmed clinic verona italia"><div class="cc-info"><div class="cc-name">HairMed Clinic</div><div class="cc-city">Verona, Italia</div></div><a class="cc-link" href="https://hairmedclinic.it" target="_blank">&rarr;</a></div>
+<div class="cc r-eu" data-s="clinica dermatologica taricco torino italia"><div class="cc-info"><div class="cc-name">Clinica Taricco</div><div class="cc-city">Torino, Italia</div></div><a class="cc-link" href="https://clinicataricco.it" target="_blank">&rarr;</a></div>
+<div class="cc r-eu" data-s="clinica injertia sevilla spagna"><div class="cc-info"><div class="cc-name">Cl&iacute;nica Injertia</div><div class="cc-city">Sevilla, Spagna</div></div><a class="cc-link" href="https://injertia.com" target="_blank">&rarr;</a></div>
+<div class="cc r-eu" data-s="dr panno clinica malaga spagna"><div class="cc-info"><div class="cc-name">Dr. Panno Cl&iacute;nica</div><div class="cc-city">Malaga, Spagna</div></div><a class="cc-link" href="https://drpanno.com" target="_blank">&rarr;</a></div>
+<div class="cc r-eu" data-s="clinica sanza barcellona spagna"><div class="cc-info"><div class="cc-name">Cl&iacute;nica Sanza</div><div class="cc-city">Barcellona, Spagna</div></div><a class="cc-link" href="https://clinicasanza.com" target="_blank">&rarr;</a></div>
+<div class="cc r-eu" data-s="proaesthetic klinik heidelberg germania"><div class="cc-info"><div class="cc-name">Proaesthetic Klinik</div><div class="cc-city">Heidelberg, Germania</div></div><a class="cc-link" href="https://proaesthetic.de" target="_blank">&rarr;</a></div>
+<div class="cc r-eu" data-s="haarwelt clinic stoccarda germania"><div class="cc-info"><div class="cc-name">Haarwelt Clinic</div><div class="cc-city">Stoccarda, Germania</div></div><a class="cc-link" href="https://haarwelt.de" target="_blank">&rarr;</a></div>
+<div class="cc r-eu" data-s="bergmann kord colonia germania"><div class="cc-info"><div class="cc-name">Bergmann Kord</div><div class="cc-city">Colonia, Germania</div></div><a class="cc-link" href="https://bergmannkord.de" target="_blank">&rarr;</a></div>
+</div></div>
+
+</section>
+
+<!-- ══════ NORD AMERICA ══════ -->
+<section class="region" data-r="na">
+<div class="region-header"><span class="region-icon">&#127482;&#127480;</span><span class="region-title">Nord America</span><span class="region-count" style="background:var(--crimson-bg);color:var(--crimson);border:1px solid var(--crimson-border)">40 cliniche</span></div>
+
+<div class="country"><div class="country-name"><span>&#127482;&#127480;</span> USA (21)</div><div class="cgrid">
+<div class="cc r-na" data-s="bernstein medical new york city usa"><div class="cc-info"><div class="cc-name">Bernstein Medical</div><div class="cc-city">New York City, NY</div></div><a class="cc-link" href="https://www.bernsteinmedical.com/" target="_blank">&rarr;</a></div>
+<div class="cc r-na" data-s="beverly hills hair restoration beverly hills california usa"><div class="cc-info"><div class="cc-name">Beverly Hills Hair Restoration</div><div class="cc-city">Beverly Hills, CA</div></div><a class="cc-link" href="https://www.beverlyhillshr.com/" target="_blank">&rarr;</a></div>
+<div class="cc r-na" data-s="alvi armani los angeles california usa"><div class="cc-info"><div class="cc-name">Alvi Armani</div><div class="cc-city">Los Angeles, CA</div></div><a class="cc-link" href="https://www.alviarmani.com/" target="_blank">&rarr;</a></div>
+<div class="cc r-na" data-s="dr sean behnam los angeles california usa"><div class="cc-info"><div class="cc-name">Dr. Sean Behnam</div><div class="cc-city">Los Angeles, CA</div></div><a class="cc-link" href="https://igethair.com/" target="_blank">&rarr;</a></div>
+<div class="cc r-na" data-s="bosley sedi nazionali usa"><div class="cc-info"><div class="cc-name">Bosley</div><div class="cc-city">Sedi nazionali</div></div><a class="cc-link" href="https://www.bosley.com/" target="_blank">&rarr;</a></div>
+<div class="cc r-na" data-s="maxim hair restoration new york dallas houston usa"><div class="cc-info"><div class="cc-name">MAXIM Hair Restoration</div><div class="cc-city">New York, Dallas, Houston</div></div><a class="cc-link" href="https://www.maximhairrestoration.com/" target="_blank">&rarr;</a></div>
+<div class="cc r-na" data-s="armani medical dallas texas usa"><div class="cc-info"><div class="cc-name">Armani Medical</div><div class="cc-city">Dallas, TX</div></div><a class="cc-link" href="https://armanimedical.com/" target="_blank">&rarr;</a></div>
+<div class="cc r-na" data-s="chicago hair institute dr konior chicago illinois usa"><div class="cc-info"><div class="cc-name">Chicago Hair Institute</div><div class="cc-city">Chicago, IL</div></div><a class="cc-link" href="https://www.chicagohairinstitute.com/" target="_blank">&rarr;</a></div>
+<div class="cc r-na" data-s="great hair transplants dr bolton fort lauderdale florida usa"><div class="cc-info"><div class="cc-name">Great Hair Transplants</div><div class="cc-city">Fort Lauderdale, FL</div></div><a class="cc-link" href="https://www.greathairtransplants.com/" target="_blank">&rarr;</a></div>
+<div class="cc r-na" data-s="dr jeffrey epstein miami florida usa"><div class="cc-info"><div class="cc-name">Dr. Jeffrey Epstein</div><div class="cc-city">Miami, FL</div></div><a class="cc-link" href="https://www.foundhair.com/" target="_blank">&rarr;</a></div>
+<div class="cc r-na" data-s="lam institute dr sam lam plano dallas texas usa"><div class="cc-info"><div class="cc-name">Lam Institute</div><div class="cc-city">Plano (Dallas), TX</div></div><a class="cc-link" href="https://www.hairtx.com/" target="_blank">&rarr;</a></div>
+<div class="cc r-na" data-s="california hair surgeon walnut creek san francisco usa"><div class="cc-info"><div class="cc-name">California Hair Surgeon</div><div class="cc-city">Walnut Creek, CA</div></div><a class="cc-link" href="https://californiahairsurgeon.com/" target="_blank">&rarr;</a></div>
+<div class="cc r-na" data-s="ziering medical beverly hills new york usa"><div class="cc-info"><div class="cc-name">Ziering Medical</div><div class="cc-city">Beverly Hills, New York</div></div><a class="cc-link" href="https://zieringmedical.com/" target="_blank">&rarr;</a></div>
+<div class="cc r-na" data-s="shapiro medical group minneapolis minnesota usa"><div class="cc-info"><div class="cc-name">Shapiro Medical Group</div><div class="cc-city">Minneapolis, MN</div></div><a class="cc-link" href="https://shapiromedical.com/" target="_blank">&rarr;</a></div>
+<div class="cc r-na" data-s="sieber plastic surgery san francisco california usa"><div class="cc-info"><div class="cc-name">Sieber Plastic Surgery</div><div class="cc-city">San Francisco, CA</div></div><a class="cc-link" href="https://www.sieberplasticsurgery.com" target="_blank">&rarr;</a></div>
+<div class="cc r-na" data-s="leonard hair transplant associates boston massachusetts usa"><div class="cc-info"><div class="cc-name">Leonard Hair Transplant</div><div class="cc-city">Boston, MA</div></div><a class="cc-link" href="https://www.hairdr.com" target="_blank">&rarr;</a></div>
+<div class="cc r-na" data-s="new england center hair restoration boston massachusetts usa"><div class="cc-info"><div class="cc-name">New England Center for HR</div><div class="cc-city">Westwood (Boston), MA</div></div><a class="cc-link" href="https://nehair.com" target="_blank">&rarr;</a></div>
+<div class="cc r-na" data-s="philadelphia hair restoration philadelphia pennsylvania usa"><div class="cc-info"><div class="cc-name">Philadelphia Hair Restoration</div><div class="cc-city">Philadelphia, PA</div></div><a class="cc-link" href="https://philadelphiahairrestoration.com" target="_blank">&rarr;</a></div>
+<div class="cc r-na" data-s="denver hair clinic denver colorado usa"><div class="cc-info"><div class="cc-name">Denver Hair Clinic</div><div class="cc-city">Denver, CO</div></div><a class="cc-link" href="https://denverhairclinic.com" target="_blank">&rarr;</a></div>
+<div class="cc r-na" data-s="root hair institute bellevue seattle washington usa"><div class="cc-info"><div class="cc-name">Root Hair Institute</div><div class="cc-city">Bellevue (Seattle), WA</div></div><a class="cc-link" href="https://roothair.com" target="_blank">&rarr;</a></div>
+<div class="cc r-na" data-s="advanced hair restoration lone tree denver colorado usa"><div class="cc-info"><div class="cc-name">Advanced Hair Restoration</div><div class="cc-city">Lone Tree (Denver), CO</div></div><a class="cc-link" href="https://www.advancedhair.com" target="_blank">&rarr;</a></div>
+</div></div>
+
+<div class="country"><div class="country-name"><span>&#127464;&#127462;</span> Canada (6)</div><div class="cgrid">
+<div class="cc r-na" data-s="hasson wong vancouver canada"><div class="cc-info"><div class="cc-name">Hasson &amp; Wong</div><div class="cc-city">Vancouver, BC</div></div><a class="cc-link" href="https://hassonandwong.com/" target="_blank">&rarr;</a></div>
+<div class="cc r-na" data-s="toronto hair transplant clinic toronto canada"><div class="cc-info"><div class="cc-name">Toronto Hair Transplant Clinic</div><div class="cc-city">Toronto, ON</div></div><a class="cc-link" href="https://torontohairtransplantclinic.com/" target="_blank">&rarr;</a></div>
+<div class="cc r-na" data-s="sure hair transplants toronto canada"><div class="cc-info"><div class="cc-name">Sure Hair Transplants</div><div class="cc-city">Toronto, ON</div></div><a class="cc-link" href="https://surehair.com/" target="_blank">&rarr;</a></div>
+<div class="cc r-na" data-s="toronto hair transplant surgeons toronto canada"><div class="cc-info"><div class="cc-name">Toronto Hair Transplant Surgeons</div><div class="cc-city">Toronto, ON</div></div><a class="cc-link" href="https://torontohairtransplant.com/" target="_blank">&rarr;</a></div>
+<div class="cc r-na" data-s="rahal hair transplant ottawa toronto canada"><div class="cc-info"><div class="cc-name">Rahal Hair Transplant</div><div class="cc-city">Ottawa, Toronto</div></div><a class="cc-link" href="https://www.rahalhairtransplant.com/" target="_blank">&rarr;</a></div>
+<div class="cc r-na" data-s="bedard hair transplant clinic montreal canada"><div class="cc-info"><div class="cc-name">Bedard Hair Transplant</div><div class="cc-city">Montr&eacute;al, QC</div></div><a class="cc-link" href="https://www.cliniquebedard.com/en/" target="_blank">&rarr;</a></div>
+</div></div>
+<div class="country"><div class="country-name"><span>&#127482;&#127480;</span> USA extra (10) &middot; <span>&#127464;&#127462;</span> Canada extra (3)</div><div class="cgrid">
+<div class="cc r-na" data-s="jae pak md medical los angeles california usa"><div class="cc-info"><div class="cc-name">Jae Pak MD Medical</div><div class="cc-city">Los Angeles, CA</div></div><a class="cc-link" href="https://jaepakmd.com" target="_blank">&rarr;</a></div>
+<div class="cc r-na" data-s="dr gary linkov city facial plastics new york usa"><div class="cc-info"><div class="cc-name">Dr. Gary Linkov</div><div class="cc-city">New York, NY</div></div><a class="cc-link" href="https://cityfacialplastics.com" target="_blank">&rarr;</a></div>
+<div class="cc r-na" data-s="nashville hair doctor nashville tennessee usa"><div class="cc-info"><div class="cc-name">Nashville Hair Doctor</div><div class="cc-city">Nashville, TN</div></div><a class="cc-link" href="https://nashvillehairdoctor.com" target="_blank">&rarr;</a></div>
+<div class="cc r-na" data-s="anderson center for hair atlanta georgia usa"><div class="cc-info"><div class="cc-name">Anderson Center for Hair</div><div class="cc-city">Atlanta, GA</div></div><a class="cc-link" href="https://andersonhair.com" target="_blank">&rarr;</a></div>
+<div class="cc r-na" data-s="texas hair restoration houston texas usa"><div class="cc-info"><div class="cc-name">Texas Hair Restoration</div><div class="cc-city">Houston, TX</div></div><a class="cc-link" href="https://texashairrestoration.com" target="_blank">&rarr;</a></div>
+<div class="cc r-na" data-s="sonoran hair restoration scottsdale arizona usa"><div class="cc-info"><div class="cc-name">Sonoran Hair Restoration</div><div class="cc-city">Scottsdale, AZ</div></div><a class="cc-link" href="https://sonoranhr.com" target="_blank">&rarr;</a></div>
+<div class="cc r-na" data-s="dr john diep mabhr san francisco california usa"><div class="cc-info"><div class="cc-name">Dr. John Diep (MABHR)</div><div class="cc-city">San Francisco, CA</div></div><a class="cc-link" href="https://maborhairtransplant.com" target="_blank">&rarr;</a></div>
+<div class="cc r-na" data-s="dr james harris hfr denver colorado usa"><div class="cc-info"><div class="cc-name">Dr. James Harris (HFR)</div><div class="cc-city">Denver, CO</div></div><a class="cc-link" href="https://hfrhairtransplant.com" target="_blank">&rarr;</a></div>
+<div class="cc r-na" data-s="san diego hair md san diego california usa"><div class="cc-info"><div class="cc-name">San Diego Hair MD</div><div class="cc-city">San Diego, CA</div></div><a class="cc-link" href="https://sandiegohairmd.com" target="_blank">&rarr;</a></div>
+<div class="cc r-na" data-s="hair restoration of the south nashville tennessee usa"><div class="cc-info"><div class="cc-name">Hair Restoration of the South</div><div class="cc-city">Nashville, TN</div></div><a class="cc-link" href="https://hairrestorationofthesouth.com" target="_blank">&rarr;</a></div>
+<div class="cc r-na" data-s="gabel centre hair restoration calgary canada"><div class="cc-info"><div class="cc-name">Gabel Centre</div><div class="cc-city">Calgary, Canada</div></div><a class="cc-link" href="https://gabelcentre.com" target="_blank">&rarr;</a></div>
+<div class="cc r-na" data-s="sharma skin hair surgery edmonton canada"><div class="cc-info"><div class="cc-name">Sharma Skin &amp; Hair</div><div class="cc-city">Edmonton, Canada</div></div><a class="cc-link" href="https://sharmaskinandhair.com" target="_blank">&rarr;</a></div>
+<div class="cc r-na" data-s="dr robert jones toronto canada"><div class="cc-info"><div class="cc-name">Dr. Robert Jones</div><div class="cc-city">Toronto, Canada</div></div><a class="cc-link" href="https://drrobertjones.com" target="_blank">&rarr;</a></div>
+</div></div>
+
+</section>
+
+<!-- ══════ ASIA ══════ -->
+<section class="region" data-r="asia">
+<div class="region-header"><span class="region-icon">&#127470;&#127475;</span><span class="region-title">Asia</span><span class="region-count" style="background:var(--gold-bg);color:var(--gold);border:1px solid var(--gold-border)">56 cliniche</span></div>
+
+<div class="country"><div class="country-name"><span>&#127470;&#127475;</span> India (8)</div><div class="cgrid">
+<div class="cc r-asia" data-s="dhi india delhi mumbai bangalore india"><div class="cc-info"><div class="cc-name">DHI India</div><div class="cc-city">Delhi, Mumbai, Bangalore</div></div><a class="cc-link" href="https://www.dhiindia.com/" target="_blank">&rarr;</a></div>
+<div class="cc r-asia" data-s="eugenix hair sciences gurugram delhi india"><div class="cc-info"><div class="cc-name">Eugenix Hair Sciences</div><div class="cc-city">Gurugram (Delhi NCR)</div></div><a class="cc-link" href="https://eugenixhairsciences.com/" target="_blank">&rarr;</a></div>
+<div class="cc r-asia" data-s="ak clinics new delhi ludhiana bangalore india"><div class="cc-info"><div class="cc-name">AK Clinics</div><div class="cc-city">New Delhi, Ludhiana, Bangalore</div></div><a class="cc-link" href="https://akclinics.com/" target="_blank">&rarr;</a></div>
+<div class="cc r-asia" data-s="enhanced med clinics new delhi india"><div class="cc-info"><div class="cc-name">Enhanced Med Clinics</div><div class="cc-city">New Delhi</div></div><a class="cc-link" href="https://www.enhancedmedclinics.com/" target="_blank">&rarr;</a></div>
+<div class="cc r-asia" data-s="dr a's clinic fuse hair new delhi india"><div class="cc-info"><div class="cc-name">Dr. A's Clinic (FUSE Hair)</div><div class="cc-city">New Delhi</div></div><a class="cc-link" href="https://www.fusehair.com/" target="_blank">&rarr;</a></div>
+<div class="cc r-asia" data-s="darling buds clinic chandigarh mumbai india"><div class="cc-info"><div class="cc-name">Darling Buds Clinic</div><div class="cc-city">Chandigarh, Mumbai</div></div><a class="cc-link" href="https://darlingbuds.com/" target="_blank">&rarr;</a></div>
+<div class="cc r-asia" data-s="viva aesthetic clinic mumbai india"><div class="cc-info"><div class="cc-name">Viva Aesthetic Clinic</div><div class="cc-city">Mumbai</div></div><a class="cc-link" href="https://vivaaestheticclinic.com/" target="_blank">&rarr;</a></div>
+<div class="cc r-asia" data-s="harleys hair transplant clinic mumbai india"><div class="cc-info"><div class="cc-name">Harleys Hair Transplant</div><div class="cc-city">Mumbai</div></div><a class="cc-link" href="https://www.harleyshairtransplant.in/" target="_blank">&rarr;</a></div>
+</div></div>
+
+<div class="country"><div class="country-name"><span>&#127481;&#127469;</span> Thailandia (6)</div><div class="cgrid">
+<div class="cc r-asia" data-s="bangkok hair clinic bangkok thailandia"><div class="cc-info"><div class="cc-name">Bangkok Hair Clinic</div><div class="cc-city">Bangkok</div></div><a class="cc-link" href="https://www.bangkokhairclinic.co.th/en/" target="_blank">&rarr;</a></div>
+<div class="cc r-asia" data-s="hairtran clinic bangkok thailandia"><div class="cc-info"><div class="cc-name">Hairtran Clinic</div><div class="cc-city">Bangkok</div></div><a class="cc-link" href="https://hairtranclinic.com/en/" target="_blank">&rarr;</a></div>
+<div class="cc r-asia" data-s="absolute hair clinic bangkok thailandia"><div class="cc-info"><div class="cc-name">Absolute Hair Clinic</div><div class="cc-city">Bangkok</div></div><a class="cc-link" href="https://absolutehairclinic.com/en/" target="_blank">&rarr;</a></div>
+<div class="cc r-asia" data-s="dht clinic bangkok thailandia"><div class="cc-info"><div class="cc-name">DHT Clinic</div><div class="cc-city">Bangkok</div></div><a class="cc-link" href="https://dhthairclinic.com/" target="_blank">&rarr;</a></div>
+<div class="cc r-asia" data-s="max hair thailand bangkok thailandia"><div class="cc-info"><div class="cc-name">Max Hair Thailand</div><div class="cc-city">Bangkok + 8 sedi</div></div><a class="cc-link" href="https://www.maxhairthailand.com/en/" target="_blank">&rarr;</a></div>
+<div class="cc r-asia" data-s="d-hair center bangkok thailandia"><div class="cc-info"><div class="cc-name">D-Hair Center Bangkok</div><div class="cc-city">Bangkok</div></div><a class="cc-link" href="https://www.dhaircenterbangkok.com/" target="_blank">&rarr;</a></div>
+</div></div>
+
+<div class="country"><div class="country-name"><span>&#127472;&#127479;</span> Corea del Sud (5) &middot; <span>&#127471;&#127477;</span> Giappone (1) &middot; <span>&#127474;&#127486;</span> Malesia (3) &middot; <span>&#127480;&#127468;</span> Singapore (2)</div><div class="cgrid">
+<div class="cc r-asia" data-s="maxwell hair clinic seoul corea sud"><div class="cc-info"><div class="cc-name">Maxwell Hair Clinic</div><div class="cc-city">Seoul, Corea del Sud</div></div><a class="cc-link" href="https://www.maxwellhairclinic.com/" target="_blank">&rarr;</a></div>
+<div class="cc r-asia" data-s="moarm hair transplant center seoul gangnam corea sud"><div class="cc-info"><div class="cc-name">Moarm Hair Transplant</div><div class="cc-city">Seoul (Gangnam), Corea del Sud</div></div><a class="cc-link" href="https://www.moarmhair.com/" target="_blank">&rarr;</a></div>
+<div class="cc r-asia" data-s="root hair transplant clinic seoul seocho corea sud"><div class="cc-info"><div class="cc-name">Root Hair Transplant</div><div class="cc-city">Seoul (Seocho), Corea del Sud</div></div><a class="cc-link" href="https://roothairtransplant.com/" target="_blank">&rarr;</a></div>
+<div class="cc r-asia" data-s="forhair hair transplant group seoul gangnam busan corea sud"><div class="cc-info"><div class="cc-name">Forhair Group</div><div class="cc-city">Seoul, Busan, Corea del Sud</div></div><a class="cc-link" href="https://www.forhair.co.kr/en/" target="_blank">&rarr;</a></div>
+<div class="cc r-asia" data-s="woomchan hair clinic seoul gangnam corea sud"><div class="cc-info"><div class="cc-name">Woomchan Hair Clinic</div><div class="cc-city">Seoul (Gangnam), Corea del Sud</div></div><a class="cc-link" href="https://www.koreahairtransplant.com/" target="_blank">&rarr;</a></div>
+<div class="cc r-asia" data-s="shinwa clinic tokyo nagoya osaka fukuoka giappone"><div class="cc-info"><div class="cc-name">Shinwa Clinic</div><div class="cc-city">Tokyo, Osaka, Giappone</div></div><a class="cc-link" href="https://shinwa-clinic.jp/en/" target="_blank">&rarr;</a></div>
+<div class="cc r-asia" data-s="glojas specialist clinic kuala lumpur malesia"><div class="cc-info"><div class="cc-name">GLOJAS Specialist Clinic</div><div class="cc-city">Kuala Lumpur, Malesia</div></div><a class="cc-link" href="https://glojasaesthetic.com" target="_blank">&rarr;</a></div>
+<div class="cc r-asia" data-s="klinik dr inder petaling jaya kuala lumpur malesia"><div class="cc-info"><div class="cc-name">Klinik Dr Inder</div><div class="cc-city">Petaling Jaya, Malesia</div></div><a class="cc-link" href="https://www.klinikdrinder.com" target="_blank">&rarr;</a></div>
+<div class="cc r-asia" data-s="hts clinic malaysia kuala lumpur malesia"><div class="cc-info"><div class="cc-name">HTS Clinic Malaysia</div><div class="cc-city">Kuala Lumpur, Malesia</div></div><a class="cc-link" href="https://htsclinic.com" target="_blank">&rarr;</a></div>
+<div class="cc r-asia" data-s="terra medical clinic singapore"><div class="cc-info"><div class="cc-name">Terra Medical Clinic</div><div class="cc-city">Singapore</div></div><a class="cc-link" href="https://terramedical.sg" target="_blank">&rarr;</a></div>
+<div class="cc r-asia" data-s="dr tyng tan aesthetics hair clinic singapore"><div class="cc-info"><div class="cc-name">Dr Tyng Tan Clinic</div><div class="cc-city">Singapore</div></div><a class="cc-link" href="https://aestheticsandhairclinic.com" target="_blank">&rarr;</a></div>
+</div></div>
+<div class="country"><div class="country-name"><span>&#127477;&#127469;</span> Filippine (4) &middot; <span>&#127481;&#127484;</span> Taiwan (2) &middot; <span>&#127483;&#127475;</span> Vietnam (2) &middot; <span>&#127477;&#127472;</span> Pakistan (5) &middot; <span>&#127470;&#127475;</span> India extra (7) &middot; <span>&#127472;&#127479;</span> Corea extra (2) &middot; <span>&#127471;&#127477;</span> Giappone extra (2)</div><div class="cgrid">
+<div class="cc r-asia" data-s="nu/hart hair restoration makati manila filippine"><div class="cc-info"><div class="cc-name">NU/HART Hair Restoration</div><div class="cc-city">Makati City, Filippine</div></div><a class="cc-link" href="https://nuhartclinic.com.ph/" target="_blank">&rarr;</a></div>
+<div class="cc r-asia" data-s="clinique de paris dhi philippines makati manila filippine"><div class="cc-info"><div class="cc-name">Clinique de Paris</div><div class="cc-city">Makati City, Filippine</div></div><a class="cc-link" href="https://cliniquedeparis.com/" target="_blank">&rarr;</a></div>
+<div class="cc r-asia" data-s="manzanares hair restoration center pasig manila filippine"><div class="cc-info"><div class="cc-name">Manzanares Hair Center</div><div class="cc-city">Pasig City, Filippine</div></div><a class="cc-link" href="https://www.manzanareshairph.com/" target="_blank">&rarr;</a></div>
+<div class="cc r-asia" data-s="asian hair restoration center makati filippine"><div class="cc-info"><div class="cc-name">Asian Hair Restoration</div><div class="cc-city">Makati City, Filippine</div></div><a class="cc-link" href="https://asianhairrestorationcenter.com" target="_blank">&rarr;</a></div>
+<div class="cc r-asia" data-s="mengfa taiwan hair transplant clinic taipei taiwan"><div class="cc-info"><div class="cc-name">Mengfa / Taiwan Hair</div><div class="cc-city">Taipei, Taiwan</div></div><a class="cc-link" href="https://taiwanhair.com/en/" target="_blank">&rarr;</a></div>
+<div class="cc r-asia" data-s="nobel medical group merrier beauty taipei taiwan"><div class="cc-info"><div class="cc-name">Nobel Medical Group</div><div class="cc-city">Taipei, Taiwan</div></div><a class="cc-link" href="http://en.nobelgroup.com.tw/merrier-beauty-institute/scalp-clinic/hair-transplant-surgery/" target="_blank">&rarr;</a></div>
+<div class="cc r-asia" data-s="huan md clinic ho chi minh city vietnam"><div class="cc-info"><div class="cc-name">Huan MD Clinic</div><div class="cc-city">Ho Chi Minh City, Vietnam</div></div><a class="cc-link" href="https://huanmdclinic.com/" target="_blank">&rarr;</a></div>
+<div class="cc r-asia" data-s="nella hair transplant clinic ho chi minh city vietnam"><div class="cc-info"><div class="cc-name">Nella Hair Transplant</div><div class="cc-city">Ho Chi Minh City, Vietnam</div></div><a class="cc-link" href="https://nella.com.vn/" target="_blank">&rarr;</a></div>
+<div class="cc r-asia" data-s="hair club pakistan lahore islamabad karachi"><div class="cc-info"><div class="cc-name">Hair Club Pakistan</div><div class="cc-city">Lahore, Islamabad, Karachi</div></div><a class="cc-link" href="https://www.hairclub.com.pk/" target="_blank">&rarr;</a></div>
+<div class="cc r-asia" data-s="ilht lahore pakistan"><div class="cc-info"><div class="cc-name">ILHT Lahore</div><div class="cc-city">Lahore, Pakistan</div></div><a class="cc-link" href="https://www.ilht.com.pk/" target="_blank">&rarr;</a></div>
+<div class="cc r-asia" data-s="hair n hair dr abdul khaliq islamabad pakistan"><div class="cc-info"><div class="cc-name">Hair &amp; Hair</div><div class="cc-city">Islamabad, Pakistan</div></div><a class="cc-link" href="https://hairnhair.org/" target="_blank">&rarr;</a></div>
+<div class="cc r-asia" data-s="dr ahmad chaudhry fue pakistan lahore"><div class="cc-info"><div class="cc-name">FUE Pakistan (Dr. Chaudhry)</div><div class="cc-city">Lahore, Pakistan</div></div><a class="cc-link" href="https://fuepakistan.com" target="_blank">&rarr;</a></div>
+<div class="cc r-asia" data-s="cosmoderma hair transplant islamabad pakistan"><div class="cc-info"><div class="cc-name">Cosmoderma</div><div class="cc-city">Islamabad, Pakistan</div></div><a class="cc-link" href="https://cosmoderma.pk" target="_blank">&rarr;</a></div>
+<div class="cc r-asia" data-s="dr madhu advanced hair transplant hyderabad india"><div class="cc-info"><div class="cc-name">Dr. Madhu's Centre</div><div class="cc-city">Hyderabad, India</div></div><a class="cc-link" href="https://hairhospi.com/" target="_blank">&rarr;</a></div>
+<div class="cc r-asia" data-s="atri clinic dr arindam sarkar kolkata india"><div class="cc-info"><div class="cc-name">ATRI Clinic</div><div class="cc-city">Kolkata, India</div></div><a class="cc-link" href="https://www.atriclinic.com/" target="_blank">&rarr;</a></div>
+<div class="cc r-asia" data-s="vcare trichology clinic chennai india"><div class="cc-info"><div class="cc-name">VCare Trichology</div><div class="cc-city">Chennai, India</div></div><a class="cc-link" href="https://www.vcaretrichology.com/" target="_blank">&rarr;</a></div>
+<div class="cc r-asia" data-s="medispa hair transplant dr suneet soni jaipur delhi india"><div class="cc-info"><div class="cc-name">Medispa (Dr. Suneet Soni)</div><div class="cc-city">Jaipur, India</div></div><a class="cc-link" href="https://www.medispaindia.in/" target="_blank">&rarr;</a></div>
+<div class="cc r-asia" data-s="hairfree hairgrow clinic pune mumbai india"><div class="cc-info"><div class="cc-name">Hairfree &amp; Hairgrow</div><div class="cc-city">Pune, Mumbai, India</div></div><a class="cc-link" href="https://hairfreehairgrow.com/" target="_blank">&rarr;</a></div>
+<div class="cc r-asia" data-s="dermaclinix nuova delhi chennai india"><div class="cc-info"><div class="cc-name">Dermaclinix</div><div class="cc-city">Nuova Delhi, Chennai, India</div></div><a class="cc-link" href="https://dermaclinix.in" target="_blank">&rarr;</a></div>
+<div class="cc r-asia" data-s="alcs clinic jaipur india"><div class="cc-info"><div class="cc-name">ALCS Clinic</div><div class="cc-city">Jaipur, India</div></div><a class="cc-link" href="https://www.alcs-india.com" target="_blank">&rarr;</a></div>
+<div class="cc r-asia" data-s="satya hair solutions pune india"><div class="cc-info"><div class="cc-name">Satya Hair Solutions</div><div class="cc-city">Pune, India</div></div><a class="cc-link" href="https://satyahairsolutions.com" target="_blank">&rarr;</a></div>
+<div class="cc r-asia" data-s="kolkata hair transplant centre kolkata india"><div class="cc-info"><div class="cc-name">Kolkata Hair Transplant</div><div class="cc-city">Kolkata, India</div></div><a class="cc-link" href="https://kolkatahairtransplant.com" target="_blank">&rarr;</a></div>
+<div class="cc r-asia" data-s="rejuvenate hair transplant centre indore india"><div class="cc-info"><div class="cc-name">Rejuvenate HT Centre</div><div class="cc-city">Indore, India</div></div><a class="cc-link" href="https://www.rejuvenatehairtransplant.com" target="_blank">&rarr;</a></div>
+<div class="cc r-asia" data-s="dana plastic surgery seoul gangnam corea sud"><div class="cc-info"><div class="cc-name">Dana Plastic Surgery</div><div class="cc-city">Seoul, Corea del Sud</div></div><a class="cc-link" href="https://www.danaps.com" target="_blank">&rarr;</a></div>
+<div class="cc r-asia" data-s="mplus clinic seoul corea sud"><div class="cc-info"><div class="cc-name">MPlus Clinic</div><div class="cc-city">Seoul, Corea del Sud</div></div><a class="cc-link" href="https://www.mplushair.com" target="_blank">&rarr;</a></div>
+<div class="cc r-asia" data-s="tom clinic tokyo osaka nagoya giappone"><div class="cc-info"><div class="cc-name">TOM Clinic</div><div class="cc-city">Tokyo, Osaka, Giappone</div></div><a class="cc-link" href="https://www.tom-clinic.com" target="_blank">&rarr;</a></div>
+<div class="cc r-asia" data-s="oyama clinic tokyo giappone"><div class="cc-info"><div class="cc-name">Oyama Clinic</div><div class="cc-city">Tokyo, Giappone</div></div><a class="cc-link" href="https://www.oyamaclinic.com" target="_blank">&rarr;</a></div>
+</div></div>
+
+</section>
+
+<!-- ══════ MEDIO ORIENTE ══════ -->
+<section class="region" data-r="me">
+<div class="region-header"><span class="region-icon">&#127462;&#127466;</span><span class="region-title">Medio Oriente</span><span class="region-count" style="background:var(--orange-bg);color:var(--orange);border:1px solid var(--orange-border)">19 cliniche</span></div>
+<div class="country"><div class="country-name"><span>&#127462;&#127466;</span> Dubai/EAU (4) &middot; <span>&#127470;&#127479;</span> Iran (3) &middot; <span>&#127470;&#127473;</span> Israele (2)</div><div class="cgrid">
+<div class="cc r-me" data-s="ilht dubai eau emirati arabi"><div class="cc-info"><div class="cc-name">ILHT Dubai</div><div class="cc-city">Dubai, EAU</div></div><a class="cc-link" href="https://ilht.com/" target="_blank">&rarr;</a></div>
+<div class="cc r-me" data-s="skin111 dubai eau emirati arabi"><div class="cc-info"><div class="cc-name">Skin111</div><div class="cc-city">Dubai, EAU</div></div><a class="cc-link" href="https://skin111.com/hair-transplant" target="_blank">&rarr;</a></div>
+<div class="cc r-me" data-s="tunio aesthetics dubai eau emirati arabi"><div class="cc-info"><div class="cc-name">Tunio Aesthetics</div><div class="cc-city">Dubai, EAU</div></div><a class="cc-link" href="https://www.tuniohairtransplant.com/" target="_blank">&rarr;</a></div>
+<div class="cc r-me" data-s="hairplasis dubai eau emirati arabi"><div class="cc-info"><div class="cc-name">Hairplasis</div><div class="cc-city">Dubai, EAU</div></div><a class="cc-link" href="https://hairplasis.ae/" target="_blank">&rarr;</a></div>
+<div class="cc r-me" data-s="helia clinic tehran iran dubai"><div class="cc-info"><div class="cc-name">Helia Clinic</div><div class="cc-city">Tehran, Iran</div></div><a class="cc-link" href="https://helia.clinic" target="_blank">&rarr;</a></div>
+<div class="cc r-me" data-s="tajmil clinic tehran iran"><div class="cc-info"><div class="cc-name">Tajmil Clinic</div><div class="cc-city">Tehran, Iran</div></div><a class="cc-link" href="https://tajmilclinic.com" target="_blank">&rarr;</a></div>
+<div class="cc r-me" data-s="dr roxanna sadoughifar tehran iran"><div class="cc-info"><div class="cc-name">Dr. Roxanna Sadoughifar</div><div class="cc-city">Tehran, Iran</div></div><a class="cc-link" href="https://drroxannasadoughifar.com" target="_blank">&rarr;</a></div>
+<div class="cc r-me" data-s="sourasky medical center ichilov tel aviv israele"><div class="cc-info"><div class="cc-name">Sourasky Medical Center</div><div class="cc-city">Tel Aviv, Israele</div></div><a class="cc-link" href="https://medigence.com/clinics/cosmetic-surgery/hair-transplant/israel/tel-aviv" target="_blank">&rarr;</a></div>
+<div class="cc r-me" data-s="assuta medical center tel aviv israele"><div class="cc-info"><div class="cc-name">Assuta Medical Center</div><div class="cc-city">Tel Aviv, Israele</div></div><a class="cc-link" href="https://us-uk.bookimed.com/clinics/country=israel/procedure=hair-transplant/" target="_blank">&rarr;</a></div>
+</div></div>
+<div class="country"><div class="country-name"><span>&#127472;&#127484;</span> Kuwait (2) &middot; <span>&#127471;&#127476;</span> Giordania (2) &middot; <span>&#127478;&#127462;</span> Qatar (1) &middot; <span>&#127463;&#127469;</span> Bahrain (1) &middot; <span>&#127480;&#127462;</span> Arabia Saudita (4)</div><div class="cgrid">
+<div class="cc r-me" data-s="padra clinic kuwait city kuwait"><div class="cc-info"><div class="cc-name">Padra Clinic Kuwait</div><div class="cc-city">Kuwait City, Kuwait</div></div><a class="cc-link" href="https://padra.com/kuwait/" target="_blank">&rarr;</a></div>
+<div class="cc r-me" data-s="baday hair center salmiya kuwait"><div class="cc-info"><div class="cc-name">Baday Hair Center</div><div class="cc-city">Salmiya, Kuwait</div></div><a class="cc-link" href="https://www.badayhaircenter.com/" target="_blank">&rarr;</a></div>
+<div class="cc r-me" data-s="vertex hair clinic amman giordania"><div class="cc-info"><div class="cc-name">Vertex Hair Clinic</div><div class="cc-city">Amman, Giordania</div></div><a class="cc-link" href="https://vertexhair.com/" target="_blank">&rarr;</a></div>
+<div class="cc r-me" data-s="harir hair transplant center amman giordania"><div class="cc-info"><div class="cc-name">Harir HTC</div><div class="cc-city">Amman, Giordania</div></div><a class="cc-link" href="https://harirhtc.com/en/" target="_blank">&rarr;</a></div>
+<div class="cc r-me" data-s="royal medical center doha qatar"><div class="cc-info"><div class="cc-name">Royal Medical Center</div><div class="cc-city">Doha, Qatar</div></div><a class="cc-link" href="https://rmcdoha.com/hair-transplant/" target="_blank">&rarr;</a></div>
+<div class="cc r-me" data-s="dhi bahrain riffa"><div class="cc-info"><div class="cc-name">DHI Bahrain</div><div class="cc-city">Riffa, Bahrain</div></div><a class="cc-link" href="https://www.dhibahrain.com/" target="_blank">&rarr;</a></div>
+<div class="cc r-me" data-s="enfield royal saudia riyadh arabia saudita"><div class="cc-info"><div class="cc-name">Enfield Royal Saudia</div><div class="cc-city">Riyadh, Arabia Saudita</div></div><a class="cc-link" href="https://www.enfieldroyalsaudia.com/" target="_blank">&rarr;</a></div>
+<div class="cc r-me" data-s="novomed hair transplant center riyadh arabia saudita"><div class="cc-info"><div class="cc-name">Novomed</div><div class="cc-city">Riyadh, Arabia Saudita</div></div><a class="cc-link" href="https://www.novomed.com/services/hair-transplant-in-saudi-arabia/" target="_blank">&rarr;</a></div>
+<div class="cc r-me" data-s="cosmetic clinic jeddah arabia saudita"><div class="cc-info"><div class="cc-name">Cosmetic Clinic Jeddah</div><div class="cc-city">Jeddah, Arabia Saudita</div></div><a class="cc-link" href="https://cosmeticlinicjeddah.com/" target="_blank">&rarr;</a></div>
+<div class="cc r-me" data-s="dr saud almohanna clinic riyadh arabia saudita"><div class="cc-info"><div class="cc-name">Dr. Saud Almohanna</div><div class="cc-city">Riyadh, Arabia Saudita</div></div><a class="cc-link" href="https://www.dralmohanna.com" target="_blank">&rarr;</a></div>
+</div></div>
+
+</section>
+
+<!-- ══════ AMERICA LATINA ══════ -->
+<section class="region" data-r="latam">
+<div class="region-header"><span class="region-icon">&#127474;&#127485;</span><span class="region-title">America Latina</span><span class="region-count" style="background:var(--green-bg);color:var(--green);border:1px solid var(--green-border)">23 cliniche</span></div>
+<div class="country"><div class="country-name"><span>&#127474;&#127485;</span> Messico (5) &middot; <span>&#127464;&#127476;</span> Colombia (3) &middot; <span>&#127463;&#127479;</span> Brasile (3) &middot; <span>&#127462;&#127479;</span> Argentina (2)</div><div class="cgrid">
+<div class="cc r-latam" data-s="hair medical restoration hmr tijuana messico"><div class="cc-info"><div class="cc-name">Hair Medical Restoration</div><div class="cc-city">Tijuana, Messico</div></div><a class="cc-link" href="https://hairmedicalrestoration.com/" target="_blank">&rarr;</a></div>
+<div class="cc r-latam" data-s="tj hair transplant clinic tijuana messico"><div class="cc-info"><div class="cc-name">TJ Hair Transplant</div><div class="cc-city">Tijuana, Messico</div></div><a class="cc-link" href="https://www.tjhairtransplant.com/" target="_blank">&rarr;</a></div>
+<div class="cc r-latam" data-s="hairfix mexico tijuana messico"><div class="cc-info"><div class="cc-name">HairFix Mexico</div><div class="cc-city">Tijuana, Messico</div></div><a class="cc-link" href="https://hairfixmexico.com/en/" target="_blank">&rarr;</a></div>
+<div class="cc r-latam" data-s="capilea mexico tijuana monterrey citta del messico"><div class="cc-info"><div class="cc-name">Capilea Mexico</div><div class="cc-city">Tijuana, Monterrey, CDMX</div></div><a class="cc-link" href="https://capileamexico.com/en/" target="_blank">&rarr;</a></div>
+<div class="cc r-latam" data-s="hair transplant mexico tijuana messico"><div class="cc-info"><div class="cc-name">Hair Transplant Mexico</div><div class="cc-city">Tijuana, Messico</div></div><a class="cc-link" href="https://www.hairtransplantmexicos.com/index" target="_blank">&rarr;</a></div>
+<div class="cc r-latam" data-s="hero institute medellin bogota colombia"><div class="cc-info"><div class="cc-name">HERO Institute</div><div class="cc-city">Medell&iacute;n, Bogot&aacute;, Colombia</div></div><a class="cc-link" href="https://www.heroinstitute.co/" target="_blank">&rarr;</a></div>
+<div class="cc r-latam" data-s="colombia care medellin colombia"><div class="cc-info"><div class="cc-name">Colombia Care</div><div class="cc-city">Medell&iacute;n, Colombia</div></div><a class="cc-link" href="https://colombiacare.com/" target="_blank">&rarr;</a></div>
+<div class="cc r-latam" data-s="bogota hairlines bogota colombia"><div class="cc-info"><div class="cc-name">Bogot&aacute; Hairlines</div><div class="cc-city">Bogot&aacute;, Colombia</div></div><a class="cc-link" href="https://www.bogotahairlines.com/" target="_blank">&rarr;</a></div>
+<div class="cc r-latam" data-s="vinci hair clinic sao paulo brasile"><div class="cc-info"><div class="cc-name">Vinci Hair Clinic</div><div class="cc-city">S&atilde;o Paulo, Brasile</div></div><a class="cc-link" href="https://vincihairclinic.com/en/vinci-hair-clinic-sao-paulo-alphaville/" target="_blank">&rarr;</a></div>
+<div class="cc r-latam" data-s="clinica matarazzo rio de janeiro brasile"><div class="cc-info"><div class="cc-name">Clinica Matarazzo</div><div class="cc-city">Rio de Janeiro, Brasile</div></div><a class="cc-link" href="https://clinicamatarazzo.com/fue/en/" target="_blank">&rarr;</a></div>
+<div class="cc r-latam" data-s="dr felipe pittella vitoria brasile"><div class="cc-info"><div class="cc-name">Dr. Felipe Pittella</div><div class="cc-city">Vit&oacute;ria, Brasile</div></div><a class="cc-link" href="https://drpittella.com/en/" target="_blank">&rarr;</a></div>
+<div class="cc r-latam" data-s="sublimis cordoba argentina"><div class="cc-info"><div class="cc-name">Sublimis</div><div class="cc-city">C&oacute;rdoba, Argentina</div></div><a class="cc-link" href="https://www.sublimis.com/hair-restoration-argentina/FUE-technique-abroad.html" target="_blank">&rarr;</a></div>
+<div class="cc r-latam" data-s="micaclinic buenos aires argentina"><div class="cc-info"><div class="cc-name">MicaClinic</div><div class="cc-city">Buenos Aires, Argentina</div></div><a class="cc-link" href="http://micaclinic.com/" target="_blank">&rarr;</a></div>
+</div></div>
+<div class="country"><div class="country-name"><span>&#127464;&#127479;</span> Costa Rica (2) &middot; <span>&#127477;&#127466;</span> Peru (2) &middot; <span>&#127464;&#127473;</span> Cile (2) &middot; <span>&#127465;&#127476;</span> Rep. Dominicana (1) &middot; <span>&#127463;&#127479;</span> Brasile extra (3)</div><div class="cgrid">
+<div class="cc r-latam" data-s="advanced hair clinics dr hani farhat san jose costa rica"><div class="cc-info"><div class="cc-name">Advanced Hair (CIMA Hospital)</div><div class="cc-city">San Jos&eacute;, Costa Rica</div></div><a class="cc-link" href="https://drhanifarhat.com/hair-translpant/" target="_blank">&rarr;</a></div>
+<div class="cc r-latam" data-s="costa rica center plastic surgery san jose"><div class="cc-info"><div class="cc-name">CR Center of Plastic Surgery</div><div class="cc-city">San Jos&eacute;, Costa Rica</div></div><a class="cc-link" href="https://www.costaricacenterofplasticsurgery.com/hair-transplant.html" target="_blank">&rarr;</a></div>
+<div class="cc r-latam" data-s="ileanovo clinic lima miraflores peru"><div class="cc-info"><div class="cc-name">Ileanovo Clinic</div><div class="cc-city">Lima, Peru</div></div><a class="cc-link" href="https://ileanovo.com/peru/en/home/" target="_blank">&rarr;</a></div>
+<div class="cc r-latam" data-s="clinica dr esaud lima peru"><div class="cc-info"><div class="cc-name">Cl&iacute;nica Dr. Esaud</div><div class="cc-city">Lima, Peru</div></div><a class="cc-link" href="https://dresaud.pe/en/" target="_blank">&rarr;</a></div>
+<div class="cc r-latam" data-s="estecapelli chile santiago cile"><div class="cc-info"><div class="cc-name">EsteCapelli Chile</div><div class="cc-city">Santiago, Cile</div></div><a class="cc-link" href="https://www.estecapelli.cl/" target="_blank">&rarr;</a></div>
+<div class="cc r-latam" data-s="medical hair chile santiago las condes cile"><div class="cc-info"><div class="cc-name">Medical Hair Chile</div><div class="cc-city">Santiago, Cile</div></div><a class="cc-link" href="https://www.medicalhair.com/sedes/santiago-de-chile" target="_blank">&rarr;</a></div>
+<div class="cc r-latam" data-s="alba reyes skin hair transplant santo domingo repubblica dominicana"><div class="cc-info"><div class="cc-name">Alba Reyes Institute</div><div class="cc-city">Santo Domingo, Rep. Dominicana</div></div><a class="cc-link" href="https://www.albareyes.com/" target="_blank">&rarr;</a></div>
+<div class="cc r-latam" data-s="dr marcio crisostomo curitiba brasile"><div class="cc-info"><div class="cc-name">Dr. M&aacute;rcio Cris&oacute;stomo</div><div class="cc-city">Curitiba, Brasile</div></div><a class="cc-link" href="https://drmarciocrisostomo.com.br" target="_blank">&rarr;</a></div>
+<div class="cc r-latam" data-s="clinica saude capilar brasilia brasile"><div class="cc-info"><div class="cc-name">Cl&iacute;nica Sa&uacute;de Capilar</div><div class="cc-city">Bras&iacute;lia, Brasile</div></div><a class="cc-link" href="https://clinicasaudecapilar.com.br" target="_blank">&rarr;</a></div>
+<div class="cc r-latam" data-s="dr luciano barsanti rio de janeiro brasile"><div class="cc-info"><div class="cc-name">Dr. Luciano Barsanti</div><div class="cc-city">Rio de Janeiro, Brasile</div></div><a class="cc-link" href="https://drbarsanti.com.br" target="_blank">&rarr;</a></div>
+</div></div>
+
+</section>
+
+<!-- ══════ AFRICA ══════ -->
+<section class="region" data-r="africa">
+<div class="region-header"><span class="region-icon">&#127487;&#127462;</span><span class="region-title">Africa</span><span class="region-count" style="background:var(--teal-bg);color:var(--teal);border:1px solid var(--teal-border)">19 cliniche</span></div>
+<div class="country"><div class="country-name"><span>&#127487;&#127462;</span> Sudafrica (4) &middot; <span>&#127466;&#127468;</span> Egitto (3) &middot; <span>&#127481;&#127475;</span> Tunisia (3) &middot; <span>&#127474;&#127462;</span> Marocco (2)</div><div class="cgrid">
+<div class="cc r-africa" data-s="medical hair restoration cape town durban johannesburg sudafrica"><div class="cc-info"><div class="cc-name">Medical Hair Restoration</div><div class="cc-city">Cape Town, Johannesburg</div></div><a class="cc-link" href="https://medhair.co.za/" target="_blank">&rarr;</a></div>
+<div class="cc r-africa" data-s="the hairfront cape town sudafrica"><div class="cc-info"><div class="cc-name">The Hairfront</div><div class="cc-city">Cape Town, Sudafrica</div></div><a class="cc-link" href="https://www.thehairfront.com/" target="_blank">&rarr;</a></div>
+<div class="cc r-africa" data-s="life hair restoration clinic johannesburg sudafrica"><div class="cc-info"><div class="cc-name">Life Hair Restoration</div><div class="cc-city">Johannesburg, Sudafrica</div></div><a class="cc-link" href="https://lifehairrestorationclinic.co.za/" target="_blank">&rarr;</a></div>
+<div class="cc r-africa" data-s="alvi armani south africa johannesburg sudafrica"><div class="cc-info"><div class="cc-name">Alvi Armani South Africa</div><div class="cc-city">Johannesburg, Sudafrica</div></div><a class="cc-link" href="https://alviarmani.co.za/" target="_blank">&rarr;</a></div>
+<div class="cc r-africa" data-s="dr sherif hegazy center cairo egitto"><div class="cc-info"><div class="cc-name">Dr. Sherif Hegazy</div><div class="cc-city">Cairo, Egitto</div></div><a class="cc-link" href="https://sherifhegazy.com/en/services/hair-transplant/" target="_blank">&rarr;</a></div>
+<div class="cc r-africa" data-s="dhi egypt cairo egitto"><div class="cc-info"><div class="cc-name">DHI Egypt</div><div class="cc-city">Cairo, Egitto</div></div><a class="cc-link" href="https://www.dhiegypt.com/en" target="_blank">&rarr;</a></div>
+<div class="cc r-africa" data-s="ezabella clinic cairo egitto"><div class="cc-info"><div class="cc-name">Ezabella Clinic</div><div class="cc-city">Cairo, Egitto</div></div><a class="cc-link" href="https://drmohamed-elsayed.com/en/hair-transplant-center/" target="_blank">&rarr;</a></div>
+<div class="cc r-africa" data-s="dr mourad zinelabidine sousse tunisia"><div class="cc-info"><div class="cc-name">Dr. Mourad Zinelabidine</div><div class="cc-city">Sousse, Tunisia</div></div><a class="cc-link" href="https://www.dr-mourad-zinelabidine.com/en/hair-transplants-tunisia.php" target="_blank">&rarr;</a></div>
+<div class="cc r-africa" data-s="med assistance tunisia tunisi"><div class="cc-info"><div class="cc-name">Med Assistance Tunisia</div><div class="cc-city">Tunisi, Tunisia</div></div><a class="cc-link" href="https://medassistance.fr/en/hair-transplant/" target="_blank">&rarr;</a></div>
+<div class="cc r-africa" data-s="carthagomed tunisi tunisia"><div class="cc-info"><div class="cc-name">Carthagomed</div><div class="cc-city">Tunisi, Tunisia</div></div><a class="cc-link" href="https://www.carthagomed.com/en/procedure/hair-transplant/" target="_blank">&rarr;</a></div>
+<div class="cc r-africa" data-s="vasco wellness casablanca marocco"><div class="cc-info"><div class="cc-name">Vasco Wellness</div><div class="cc-city">Casablanca, Marocco</div></div><a class="cc-link" href="https://www.vascowellness.com/hair-transplantation" target="_blank">&rarr;</a></div>
+<div class="cc r-africa" data-s="skin slim clinic agadir marocco"><div class="cc-info"><div class="cc-name">Skin &amp; Slim Clinic</div><div class="cc-city">Agadir, Marocco</div></div><a class="cc-link" href="https://www.skinslim-clinic.com/en/greffe-de-cheveux-maroc" target="_blank">&rarr;</a></div>
+</div></div>
+<div class="country"><div class="country-name"><span>&#127472;&#127466;</span> Kenya (2) &middot; <span>&#127475;&#127468;</span> Nigeria (1) &middot; <span>&#127468;&#127469;</span> Ghana (2) &middot; <span>&#127487;&#127462;</span> Sudafrica extra (2)</div><div class="cgrid">
+<div class="cc r-africa" data-s="artistic hair transplant centre nairobi kenya"><div class="cc-info"><div class="cc-name">Artistic Hair Transplant</div><div class="cc-city">Nairobi, Kenya</div></div><a class="cc-link" href="https://www.artisticclinic.com/" target="_blank">&rarr;</a></div>
+<div class="cc r-africa" data-s="leader hair transplant nairobi kenya"><div class="cc-info"><div class="cc-name">Leader Hair Transplant</div><div class="cc-city">Nairobi, Kenya</div></div><a class="cc-link" href="https://leaderhairtransplant.com/" target="_blank">&rarr;</a></div>
+<div class="cc r-africa" data-s="vinci hair clinic lagos nigeria"><div class="cc-info"><div class="cc-name">Vinci Hair Clinic Lagos</div><div class="cc-city">Lagos, Nigeria</div></div><a class="cc-link" href="https://vincihairclinic.com/en/vinci-hair-clinic-lagos/" target="_blank">&rarr;</a></div>
+<div class="cc r-africa" data-s="vinci hair clinic accra ghana"><div class="cc-info"><div class="cc-name">Vinci Hair Clinic Accra</div><div class="cc-city">Accra, Ghana</div></div><a class="cc-link" href="https://vincihairclinic.africa/our-clinics/accra-clinic/" target="_blank">&rarr;</a></div>
+<div class="cc r-africa" data-s="anasin clinic accra adenta ghana"><div class="cc-info"><div class="cc-name">Anasin Clinic</div><div class="cc-city">Accra, Ghana</div></div><a class="cc-link" href="https://anasinclinic.com/" target="_blank">&rarr;</a></div>
+<div class="cc r-africa" data-s="hair renewal johannesburg cape town pretoria durban sudafrica"><div class="cc-info"><div class="cc-name">Hair Renewal</div><div class="cc-city">Johannesburg, Cape Town</div></div><a class="cc-link" href="https://hairrenewal.co.za" target="_blank">&rarr;</a></div>
+<div class="cc r-africa" data-s="sa hair transplant cape town sudafrica"><div class="cc-info"><div class="cc-name">SA Hair Transplant</div><div class="cc-city">Cape Town, Sudafrica</div></div><a class="cc-link" href="https://sahairtransplant.com" target="_blank">&rarr;</a></div>
+</div></div>
+
+</section>
+
+<!-- ══════ OCEANIA ══════ -->
+<section class="region" data-r="oceania">
+<div class="region-header"><span class="region-icon">&#127462;&#127482;</span><span class="region-title">Oceania</span><span class="region-count" style="background:var(--purple-bg);color:var(--purple);border:1px solid var(--purple-border)">10 cliniche</span></div>
+<div class="country"><div class="country-name"><span>&#127462;&#127482;</span> Australia (4) &middot; <span>&#127475;&#127487;</span> Nuova Zelanda (3)</div><div class="cgrid">
+<div class="cc r-oceania" data-s="hair doctors sydney melbourne australia"><div class="cc-info"><div class="cc-name">Hair Doctors</div><div class="cc-city">Sydney, Melbourne</div></div><a class="cc-link" href="https://www.hairdoctors.com.au/" target="_blank">&rarr;</a></div>
+<div class="cc r-oceania" data-s="crown clinic australia sydney melbourne"><div class="cc-info"><div class="cc-name">Crown Clinic Australia</div><div class="cc-city">Sydney, Melbourne</div></div><a class="cc-link" href="https://crownclinic.com.au/" target="_blank">&rarr;</a></div>
+<div class="cc r-oceania" data-s="gro clinics sydney melbourne brisbane perth australia"><div class="cc-info"><div class="cc-name">Gro Clinics</div><div class="cc-city">Sydney, Melbourne, Brisbane</div></div><a class="cc-link" href="https://groclinics.com.au/" target="_blank">&rarr;</a></div>
+<div class="cc r-oceania" data-s="hair transplants melbourne australia"><div class="cc-info"><div class="cc-name">Hair Transplants Melbourne</div><div class="cc-city">Melbourne</div></div><a class="cc-link" href="https://hairtransplantsmelbourne.com.au/" target="_blank">&rarr;</a></div>
+<div class="cc r-oceania" data-s="nz hair transplantation institute auckland nuova zelanda"><div class="cc-info"><div class="cc-name">NZ Hair Transplantation Inst.</div><div class="cc-city">Auckland, Nuova Zelanda</div></div><a class="cc-link" href="https://www.nzhairtransplant.co.nz/" target="_blank">&rarr;</a></div>
+<div class="cc r-oceania" data-s="the knudsen clinic auckland nuova zelanda"><div class="cc-info"><div class="cc-name">The Knudsen Clinic</div><div class="cc-city">Auckland, Nuova Zelanda</div></div><a class="cc-link" href="https://knudsen.co.nz/" target="_blank">&rarr;</a></div>
+<div class="cc r-oceania" data-s="gro clinics nz auckland nuova zelanda"><div class="cc-info"><div class="cc-name">Gro Clinics NZ</div><div class="cc-city">Auckland, Nuova Zelanda</div></div><a class="cc-link" href="https://groclinics.co.nz/" target="_blank">&rarr;</a></div>
+</div></div>
+
+<div class="country"><div class="country-name"><span>&#127462;&#127482;</span> Australia extra (3)</div><div class="cgrid">
+<div class="cc r-oceania" data-s="martinick hair perth australia"><div class="cc-info"><div class="cc-name">Martinick Hair</div><div class="cc-city">Perth, Australia</div></div><a class="cc-link" href="https://martinick.com.au" target="_blank">&rarr;</a></div>
+<div class="cc r-oceania" data-s="evolved hair clinic brisbane australia"><div class="cc-info"><div class="cc-name">Evolved Hair Clinic</div><div class="cc-city">Brisbane, Australia</div></div><a class="cc-link" href="https://evolvedhairclinic.com.au" target="_blank">&rarr;</a></div>
+<div class="cc r-oceania" data-s="ashley martin perth sydney melbourne brisbane australia"><div class="cc-info"><div class="cc-name">Ashley &amp; Martin</div><div class="cc-city">Perth, Sydney, Melbourne</div></div><a class="cc-link" href="https://www.ashleyandmartin.com.au" target="_blank">&rarr;</a></div>
+</div></div>
+
+</section>
+
+</div>
+
+<div class="empty" id="emptyMsg">Nessun risultato trovato. Prova con un altro termine.</div>
+
+<footer class="footer">
+  <span>302 cliniche verificate</span> &middot; 52 paesi &middot; Escluse Turchia e Albania &middot; 3025
+</footer>
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+<script>
+const SB_BASE='https://zzyjuhbxwsrgttlizlkv.supabase.co';
+const SB_KEY='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Inp6eWp1aGJ4d3NyZ3R0bGl6bGt2Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzU1NjQxMjcsImV4cCI6MjA5MTE0MDEyN30.NIqYoN_8t8M9WCwB4OcVwL2K2YtEAeOFJKZKab4RhZo';
+const DASH='cliniche_mondo';
+const _sb=window.supabase.createClient(SB_BASE,SB_KEY);
+let _data={},cf='all',cs='',csf='';
+async function sbLoad(){try{const{data:rows,error}=await _sb.from('ext_dashboard_status').select('card_id,status,note').eq('dashboard',DASH);if(error)throw error;rows.forEach(function(row){const o={};if(row.status&&row.status!=='none')o.status=row.status;if(row.note)o.note=row.note;if(o.status||o.note)_data[row.card_id]=o})}catch(e){console.error('Supabase load:',e)}}
+function ld(){return _data}
+function svCard(id,card){_data[id]=card;if(!card||(!card.status&&!card.note)){delete _data[id];card={}}
+  _sb.from('ext_dashboard_status').upsert({dashboard:DASH,card_id:id,status:card.status||'none',note:card.note||'',updated_at:new Date().toISOString()},{onConflict:'dashboard,card_id'}).then(function(r){if(r.error)console.error('Save error:',r.error)});
+}
+function gid(c){const n=c.querySelector('.cc-name');return n?n.textContent.trim().replace(/[^a-zA-Z0-9]/g,'_').substring(0,40):'';}
+
+function initCards(){
+  const data=ld();
+  document.querySelectorAll('.cc').forEach(function(c){
+    const id=gid(c);if(!id)return;
+    c.setAttribute('data-id',id);
+    const s=data[id]||{};
+    const sd=document.createElement('div');sd.className='cc-status';
+    sd.innerHTML='<button class="cc-lvl'+(s.status==='0'?' on-0':'')+'" title="Livello 0 — Scartare" onclick="tl(event,\'0\')">0</button>'+
+      '<button class="cc-lvl'+(s.status==='1'?' on-1':'')+'" title="Livello 1 — Basso" onclick="tl(event,\'1\')">1</button>'+
+      '<button class="cc-lvl'+(s.status==='2'?' on-2':'')+'" title="Livello 2 — Medio" onclick="tl(event,\'2\')">2</button>'+
+      '<button class="cc-lvl'+(s.status==='3'?' on-3':'')+'" title="Livello 3 — Alto" onclick="tl(event,\'3\')">3</button>'+
+      '<span class="cc-star'+(s.status==='star'?' on':'')+'" title="Top!" onclick="tstar(event)">'+(s.status==='star'?'&#9733;':'&#9734;')+'</span>';
+    c.appendChild(sd);
+    const nb=document.createElement('button');nb.className='cc-note-btn'+(s.note?' has-note':'');nb.title='Appunti';nb.innerHTML='&#9998;';nb.onclick=function(e){e.stopPropagation();const np=c.querySelector('.cc-notes');np.classList.toggle('open');if(np.classList.contains('open'))np.querySelector('textarea').focus()};c.appendChild(nb);
+    const np=document.createElement('div');np.className='cc-notes';np.innerHTML='<textarea placeholder="Scrivi appunti...">'+(s.note||'')+'</textarea><button class="cc-note-save" onclick="saveNote(this)">Salva</button>';
+    np.querySelector('textarea').addEventListener('input',function(){var me=this;clearTimeout(me._t);me._t=setTimeout(function(){var cur2=(_data[id]||{});if(me.value.trim()){cur2.note=me.value;c.querySelector('.cc-note-btn').classList.add('has-note');c.classList.add('has-note-card')}else{delete cur2.note;c.querySelector('.cc-note-btn').classList.remove('has-note');c.classList.remove('has-note-card')}svCard(id,cur2)},800)});
+    c.appendChild(np);
+    if(s.status)c.classList.add('stato-'+s.status);
+    if(s.note)c.classList.add('has-note-card');
+  });
+}
+function saveNote(btn){
+  btn.blur();var card=btn.closest('.cc'),id=card.getAttribute('data-id'),cur=(_data[id]||{}),ta=card.querySelector('.cc-notes textarea'),val=ta.value,nb=card.querySelector('.cc-note-btn');
+  if(val.trim()){cur.note=val;nb.classList.add('has-note');card.classList.add('has-note-card')}else{delete cur.note;nb.classList.remove('has-note');card.classList.remove('has-note-card')}
+  svCard(id,cur);btn.textContent='\u2713 Salvato!';btn.classList.add('saved');setTimeout(function(){btn.textContent='Salva';btn.classList.remove('saved')},1500);
+}
+function tl(e,level){
+  e.stopPropagation();const btn=e.target,card=btn.closest('.cc'),id=card.getAttribute('data-id'),cur=(_data[id]||{});
+  card.classList.remove('stato-0','stato-1','stato-2','stato-3','stato-star');
+  card.querySelectorAll('.cc-lvl').forEach(function(b){b.className='cc-lvl'});
+  const star=card.querySelector('.cc-star');if(star){star.classList.remove('on');star.innerHTML='&#9734;'}
+  if(cur.status===level){delete cur.status}else{cur.status=level;btn.classList.add('on-'+level);card.classList.add('stato-'+level)}
+  svCard(id,cur);updateStatusCounts();
+}
+function tstar(e){
+  e.stopPropagation();const star=e.target.closest('.cc-star'),card=star.closest('.cc'),id=card.getAttribute('data-id'),cur=(_data[id]||{});
+  card.classList.remove('stato-0','stato-1','stato-2','stato-3','stato-star');
+  card.querySelectorAll('.cc-lvl').forEach(function(b){b.className='cc-lvl'});
+  if(cur.status==='star'){delete cur.status;star.classList.remove('on');star.innerHTML='&#9734;'}
+  else{cur.status='star';star.classList.add('on');star.innerHTML='&#9733;';card.classList.add('stato-star')}
+  svCard(id,cur);updateStatusCounts();
+}
+
+function uc(){
+  const v=document.querySelectorAll('.cc:not(.hidden)').length;
+  document.getElementById('count').textContent='('+v+')';
+  document.getElementById('emptyMsg').style.display=v===0?'block':'none';
+  document.querySelectorAll('.region').forEach(function(r){const vis=r.querySelectorAll('.cc:not(.hidden)');r.style.display=vis.length===0?'none':''});
+  document.querySelectorAll('.country').forEach(function(c){const vis=c.querySelectorAll('.cc:not(.hidden)');c.style.display=vis.length===0?'none':''});
+}
+function af(){
+  const data=ld();
+  document.querySelectorAll('.cc').forEach(function(c){
+    const r=c.className;const d=c.getAttribute('data-s')||'';const n=c.querySelector('.cc-name');const nt=n?n.textContent.toLowerCase():'';
+    const id=c.getAttribute('data-id')||'';const saved=data[id]||{};
+    const mf=cf==='all'||r.includes('r-'+cf);const ms=cs===''||d.includes(cs)||nt.includes(cs);
+    const msf=csf===''||saved.status===csf;
+    if(mf&&ms&&msf){c.classList.remove('hidden')}else{c.classList.add('hidden')}
+  });
+  uc();
+}
+function f(t,b){cf=t;csf='';document.querySelectorAll('.btn:not(.btn-status)').forEach(function(x){x.classList.remove('active')});document.querySelectorAll('.btn-status').forEach(function(x){x.classList.remove('active')});b.classList.add('active');af()}
+function fs(status,b){if(csf===status){csf='';b.classList.remove('active')}else{csf=status;document.querySelectorAll('.btn-status').forEach(function(x){x.classList.remove('active')});b.classList.add('active')}af()}
+function updateStatusCounts(){const data=ld();let c0=0,c1=0,c2=0,c3=0,cst=0;Object.values(data).forEach(function(d){if(d.status==='0')c0++;if(d.status==='1')c1++;if(d.status==='2')c2++;if(d.status==='3')c3++;if(d.status==='star')cst++});document.getElementById('cnt-0').textContent=c0;document.getElementById('cnt-1').textContent=c1;document.getElementById('cnt-2').textContent=c2;document.getElementById('cnt-3').textContent=c3;document.getElementById('cnt-star').textContent=cst}
+function s(){cs=document.getElementById('si').value.toLowerCase().trim();af()}
+function refreshCard(cid){
+  var card=document.querySelector('[data-id="'+cid+'"]');if(!card)return;var s=_data[cid]||{};
+  card.classList.remove('stato-0','stato-1','stato-2','stato-3','stato-star');
+  card.querySelectorAll('.cc-lvl').forEach(function(b){b.className='cc-lvl'});
+  var star=card.querySelector('.cc-star');if(star){star.classList.remove('on');star.innerHTML='&#9734;'}
+  if(s.status){card.classList.add('stato-'+s.status);if(s.status==='star'){if(star){star.classList.add('on');star.innerHTML='&#9733;'}}else{var lvls=card.querySelectorAll('.cc-lvl');var idx=parseInt(s.status);if(lvls[idx])lvls[idx].classList.add('on-'+s.status)}}
+  var nb=card.querySelector('.cc-note-btn'),ta=card.querySelector('.cc-notes textarea');
+  if(s.note){if(nb)nb.classList.add('has-note');card.classList.add('has-note-card');if(ta&&!ta.matches(':focus'))ta.value=s.note}
+  else{if(nb)nb.classList.remove('has-note');card.classList.remove('has-note-card');if(ta&&!ta.matches(':focus'))ta.value=''}
+}
+sbLoad().then(function(){initCards();updateStatusCounts();uc();
+  _sb.channel('dash-'+DASH).on('postgres_changes',{event:'*',schema:'public',table:'ext_dashboard_status',filter:'dashboard=eq.'+DASH},function(p){
+    var row=p.new||{};var cid=row.card_id;if(!cid)return;
+    var o={};if(row.status&&row.status!=='none')o.status=row.status;if(row.note)o.note=row.note;
+    if(o.status||o.note)_data[cid]=o;else delete _data[cid];
+    refreshCard(cid);updateStatusCounts();
+  }).subscribe();
+});
+</script>
+</body>
+</html>

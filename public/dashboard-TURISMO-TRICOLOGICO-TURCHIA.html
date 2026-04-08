@@ -1,0 +1,1021 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Turismo Tricologico — Italia → Turchia</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --bg: #0b0e14;
+    --surface: #131720;
+    --surface2: #1a1f2e;
+    --border: #252b3b;
+    --border-hl: #3a4260;
+    --text: #e2e8f0;
+    --text-dim: #8892a8;
+    --text-muted: #5a6478;
+    --accent: #e23e3e;
+    --accent-glow: rgba(226,62,62,0.18);
+    --green: #22c55e;
+    --green-bg: rgba(34,197,94,0.12);
+    --green-border: rgba(34,197,94,0.3);
+    --yellow: #eab308;
+    --yellow-bg: rgba(234,179,8,0.1);
+    --yellow-border: rgba(234,179,8,0.3);
+    --red: #ef4444;
+    --red-bg: rgba(239,68,68,0.1);
+    --red-border: rgba(239,68,68,0.3);
+    --blue: #3b82f6;
+    --blue-bg: rgba(59,130,246,0.1);
+    --blue-border: rgba(59,130,246,0.3);
+    --purple: #a855f7;
+    --purple-bg: rgba(168,85,247,0.1);
+    --purple-border: rgba(168,85,247,0.3);
+    --cyan: #06b6d4;
+    --cyan-bg: rgba(6,182,212,0.1);
+    --cyan-border: rgba(6,182,212,0.3);
+    --orange: #f97316;
+    --orange-bg: rgba(249,115,22,0.1);
+    --orange-border: rgba(249,115,22,0.3);
+    --gold: #d4a017;
+    --gold-bg: rgba(212,160,23,0.12);
+    --gold-border: rgba(212,160,23,0.3);
+    --teal: #14b8a6;
+    --teal-bg: rgba(20,184,166,0.12);
+    --teal-border: rgba(20,184,166,0.3);
+    --crimson: #e23e3e;
+    --crimson-bg: rgba(226,62,62,0.12);
+    --crimson-border: rgba(226,62,62,0.3);
+    --radius: 12px;
+    --radius-sm: 8px;
+    --shadow: 0 4px 24px rgba(0,0,0,0.35);
+    --transition: .25s cubic-bezier(.4,0,.2,1);
+  }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Segoe UI', system-ui, -apple-system, sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; min-height: 100vh; }
+  a { color: var(--accent); text-decoration: none; }
+  code { font-family: 'Cascadia Code','Fira Code','Consolas',monospace; background: var(--surface2); padding: 1px 6px; border-radius: 4px; font-size: .85em; color: var(--cyan); }
+
+  .bg-grid { position: fixed; inset: 0; z-index: 0; pointer-events: none; background-image: linear-gradient(rgba(226,62,62,0.025) 1px, transparent 1px), linear-gradient(90deg, rgba(226,62,62,0.025) 1px, transparent 1px); background-size: 60px 60px; }
+  .bg-glow { position: fixed; top: -200px; right: -200px; width: 600px; height: 600px; background: radial-gradient(circle, rgba(226,62,62,0.06), transparent 70%); z-index: 0; pointer-events: none; animation: pulse 8s ease-in-out infinite alternate; }
+  .bg-glow-2 { position: fixed; bottom: -200px; left: -200px; width: 500px; height: 500px; background: radial-gradient(circle, rgba(6,182,212,0.05), transparent 70%); z-index: 0; pointer-events: none; animation: pulse 10s ease-in-out infinite alternate-reverse; }
+  @keyframes pulse { from { opacity: .6; transform: scale(1); } to { opacity: 1; transform: scale(1.15); } }
+  @keyframes blink { 0%,100% { opacity: 1; } 50% { opacity: .3; } }
+
+  .container { max-width: 1320px; margin: 0 auto; padding: 0 24px; position: relative; z-index: 1; }
+
+  .hero { padding: 56px 0 40px; text-align: center; border-bottom: 1px solid var(--border); margin-bottom: 0; }
+  .hero-badge { display: inline-flex; align-items: center; gap: 8px; background: var(--crimson-bg); color: var(--crimson); padding: 6px 16px; border-radius: 20px; font-size: .82em; font-weight: 600; letter-spacing: .5px; margin-bottom: 16px; border: 1px solid var(--crimson-border); }
+  .hero-badge .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--crimson); animation: blink 2s infinite; }
+  .hero h1 { font-size: 2.4em; font-weight: 800; letter-spacing: -.02em; margin-bottom: 8px; }
+  .hero h1 span { background: linear-gradient(135deg, var(--crimson), var(--cyan)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+  .hero p { color: var(--text-dim); font-size: 1.05em; max-width: 750px; margin: 0 auto; }
+  .stats-bar { display: flex; justify-content: center; gap: 12px; flex-wrap: wrap; margin-top: 28px; }
+  .stat { text-align: center; padding: 14px 22px; background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-sm); min-width: 110px; }
+  .stat-num { font-size: 2em; font-weight: 800; }
+  .stat-label { font-size: .72em; color: var(--text-muted); text-transform: uppercase; letter-spacing: .5px; }
+
+  .controls { padding: 24px 0; display: flex; align-items: center; gap: 10px; flex-wrap: wrap; border-bottom: 1px solid var(--border); margin-bottom: 32px; }
+  .controls-label { font-size: .72em; letter-spacing: 2px; text-transform: uppercase; color: var(--text-muted); margin-right: 4px; }
+  .btn { font-family: 'Segoe UI',system-ui,sans-serif; font-size: .78em; font-weight: 500; padding: 6px 14px; border-radius: 20px; border: 1px solid var(--border); background: transparent; color: var(--text-dim); cursor: pointer; transition: var(--transition); letter-spacing: .3px; }
+  .btn:hover { border-color: var(--crimson); color: var(--crimson); }
+  .btn.active { background: var(--crimson-bg); border-color: var(--crimson-border); color: var(--crimson); }
+  .search-wrap { margin-left: auto; position: relative; }
+  .search-wrap input { font-family: 'Segoe UI',system-ui,sans-serif; font-size: .82em; background: var(--surface); border: 1px solid var(--border); color: var(--text); padding: 7px 14px 7px 34px; border-radius: 20px; width: 220px; outline: none; transition: border-color .2s; }
+  .search-wrap input:focus { border-color: var(--crimson); }
+  .search-wrap input::placeholder { color: var(--text-muted); }
+  .search-icon { position: absolute; left: 12px; top: 50%; transform: translateY(-50%); color: var(--text-muted); font-size: .82em; pointer-events: none; }
+  #count { font-size: .78em; color: var(--text-muted); margin-left: 2px; }
+
+  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: 16px; padding-bottom: 48px; }
+
+  .card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 20px; display: flex; flex-direction: column; gap: 10px; position: relative; overflow: hidden; transition: var(--transition); }
+  .card:hover { border-color: var(--border-hl); transform: translateY(-2px); box-shadow: var(--shadow); }
+  .card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; }
+  .card.c-crimson::before { background: var(--crimson); }
+  .card.c-gold::before { background: var(--gold); }
+  .card.c-teal::before { background: var(--teal); }
+  .card.c-blue::before { background: var(--blue); }
+  .card.c-green::before { background: var(--green); }
+  .card.c-purple::before { background: var(--purple); }
+  .card.c-cyan::before { background: var(--cyan); }
+  .card.c-orange::before { background: var(--orange); }
+  .card.c-dim::before { background: var(--text-muted); }
+  .card.hidden { display: none; }
+
+  .card-header { display: flex; align-items: flex-start; gap: 12px; }
+  .avatar { width: 44px; height: 44px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: .72em; font-weight: 700; flex-shrink: 0; letter-spacing: .5px; }
+  .av-crimson { background: var(--crimson-bg); color: var(--crimson); border: 1px solid var(--crimson-border); }
+  .av-gold { background: var(--gold-bg); color: var(--gold); border: 1px solid var(--gold-border); }
+  .av-teal { background: var(--teal-bg); color: var(--teal); border: 1px solid var(--teal-border); }
+  .av-blue { background: var(--blue-bg); color: var(--blue); border: 1px solid var(--blue-border); }
+  .av-green { background: var(--green-bg); color: var(--green); border: 1px solid var(--green-border); }
+  .av-purple { background: var(--purple-bg); color: var(--purple); border: 1px solid var(--purple-border); }
+  .av-cyan { background: var(--cyan-bg); color: var(--cyan); border: 1px solid var(--cyan-border); }
+  .av-orange { background: var(--orange-bg); color: var(--orange); border: 1px solid var(--orange-border); }
+  .av-dim { background: rgba(255,255,255,0.05); color: var(--text-muted); border: 1px solid var(--border); }
+
+  .card-title { font-size: 1em; font-weight: 700; color: var(--text); margin: 0; }
+  .card-type { font-size: .78em; color: var(--text-muted); margin: 2px 0 0; letter-spacing: .3px; }
+  .badge { display: inline-flex; align-items: center; font-size: .70em; padding: 3px 10px; border-radius: 20px; letter-spacing: .3px; font-weight: 600; align-self: flex-start; }
+  .badge-crimson { background: var(--crimson-bg); color: var(--crimson); border: 1px solid var(--crimson-border); }
+  .badge-gold { background: var(--gold-bg); color: var(--gold); border: 1px solid var(--gold-border); }
+  .badge-teal { background: var(--teal-bg); color: var(--teal); border: 1px solid var(--teal-border); }
+  .badge-blue { background: var(--blue-bg); color: var(--blue); border: 1px solid var(--blue-border); }
+  .badge-green { background: var(--green-bg); color: var(--green); border: 1px solid var(--green-border); }
+  .badge-purple { background: var(--purple-bg); color: var(--purple); border: 1px solid var(--purple-border); }
+  .badge-cyan { background: var(--cyan-bg); color: var(--cyan); border: 1px solid var(--cyan-border); }
+  .badge-orange { background: var(--orange-bg); color: var(--orange); border: 1px solid var(--orange-border); }
+  .badge-dim { background: rgba(255,255,255,0.04); color: var(--text-muted); border: 1px solid var(--border); }
+
+  .card-desc { font-size: .84em; color: var(--text-dim); line-height: 1.6; }
+  .card-desc strong { color: var(--text); }
+  .tags { display: flex; flex-wrap: wrap; gap: 6px; }
+  .tag { font-size: .70em; padding: 3px 9px; border-radius: 4px; background: var(--surface2); color: var(--text-dim); border: 1px solid var(--border); letter-spacing: .2px; }
+  .card-footer { border-top: 1px solid var(--border); padding-top: 12px; display: flex; align-items: center; justify-content: space-between; margin-top: auto; }
+  .contact { font-size: .78em; color: var(--text-muted); }
+  .visit-link { font-size: .82em; color: var(--crimson); text-decoration: none; font-weight: 600; display: flex; align-items: center; gap: 4px; transition: var(--transition); }
+  .visit-link:hover { color: var(--text); }
+
+  .year-tag { position: absolute; top: 12px; right: 12px; font-size: .62em; font-weight: 700; padding: 2px 8px; border-radius: 4px; background: rgba(255,255,255,0.05); color: var(--text-muted); border: 1px solid var(--border); letter-spacing: .5px; }
+
+  .empty { grid-column: 1/-1; text-align: center; padding: 60px 20px; color: var(--text-muted); font-size: .9em; display: none; }
+  .btn-status{font-size:.72em;padding:4px 10px}
+  .footer { text-align: center; padding: 40px 0 32px; border-top: 1px solid var(--border); color: var(--text-muted); font-size: .82em; }
+  .footer span { color: var(--crimson); }
+  .card{position:relative;flex-wrap:wrap}
+  /* STATUS & NOTES — Level system 0-3 + Star */
+  .cc-status{position:absolute;top:8px;right:8px;display:flex;gap:4px;align-items:center;background:rgba(0,0,0,.45);padding:4px 7px;border-radius:20px;z-index:2}
+  .cc-lvl{width:22px;height:22px;border-radius:50%;border:2px solid var(--border);cursor:pointer;transition:.2s;font-size:11px;font-weight:700;color:var(--text-muted);display:flex;align-items:center;justify-content:center;background:transparent;padding:0;line-height:1;font-family:inherit}
+  .cc-lvl:hover{transform:scale(1.25);border-color:var(--text-dim);color:var(--text)}
+  .cc-lvl.on-0{background:rgba(239,68,68,.25);border-color:var(--red);color:var(--red)}
+  .cc-lvl.on-1{background:rgba(234,179,8,.15);border-color:var(--yellow);color:var(--yellow)}
+  .cc-lvl.on-2{background:rgba(59,130,246,.25);border-color:var(--blue);color:var(--blue);box-shadow:0 0 6px rgba(59,130,246,.4)}
+  .cc-lvl.on-3{background:rgba(34,197,94,.3);border-color:var(--green);color:var(--green);box-shadow:0 0 8px rgba(34,197,94,.5)}
+  .card.stato-0{opacity:.35;border-color:rgba(239,68,68,.3) !important}
+  .card.stato-1{opacity:.55;border-color:rgba(234,179,8,.3) !important}
+  .card.stato-2{border-color:rgba(59,130,246,.4) !important;box-shadow:0 0 10px rgba(59,130,246,.2),0 0 25px rgba(59,130,246,.08)}
+  .card.stato-3{border-color:var(--green) !important;box-shadow:0 0 14px rgba(34,197,94,.45),0 0 35px rgba(34,197,94,.15),inset 0 0 14px rgba(34,197,94,.07)}
+  .cc-star{width:22px;height:22px;cursor:pointer;transition:.2s;font-size:20px;line-height:1;color:var(--border);display:flex;align-items:center;justify-content:center;margin-left:3px}
+  .cc-star:hover{transform:scale(1.3);color:#fbbf24}
+  .cc-star.on{color:#fbbf24;filter:drop-shadow(0 0 8px #fbbf24) drop-shadow(0 0 16px rgba(251,191,36,.5))}
+  .card.stato-star{border-color:#fbbf24 !important;box-shadow:0 0 18px rgba(251,191,36,.55),0 0 45px rgba(251,191,36,.2),inset 0 0 18px rgba(251,191,36,.1)}
+  .cc-note-btn{position:absolute;bottom:8px;right:8px;width:22px;height:22px;border-radius:5px;background:transparent;border:1px solid var(--border);color:var(--text-muted);font-size:.7em;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:.2s;z-index:2}
+  .cc-note-btn:hover{border-color:var(--crimson);color:var(--crimson)}
+  .cc-note-btn.has-note{background:rgba(227,62,62,.35);border-color:var(--crimson);color:#ff6b6b;box-shadow:0 0 10px rgba(227,62,62,.5),0 0 20px rgba(227,62,62,.25);animation:noteGlow 2s ease-in-out infinite alternate;font-size:.85em}
+  @keyframes noteGlow{from{box-shadow:0 0 8px rgba(227,62,62,.4),0 0 16px rgba(227,62,62,.2)}to{box-shadow:0 0 14px rgba(227,62,62,.6),0 0 28px rgba(227,62,62,.3)}}
+  .card.has-note-card{border-bottom:3px solid rgba(227,62,62,.5) !important}
+  .card.has-note-card .cc-note-btn.has-note{width:28px;height:28px;font-size:1em}
+  .card.stato-0 .cc-note-btn.has-note{box-shadow:0 0 28px rgba(227,62,62,1),0 0 56px rgba(227,62,62,.7);width:32px;height:32px;font-size:1.1em}
+  .card.stato-1 .cc-note-btn.has-note{box-shadow:0 0 20px rgba(227,62,62,.85),0 0 40px rgba(227,62,62,.5);width:30px;height:30px;font-size:1em}
+  .cc-notes{display:none;width:100%;margin-top:8px}
+  .cc-notes.open{display:block}
+  .cc-notes textarea{width:100%;background:var(--surface2);border:1px solid var(--border);border-radius:6px;color:var(--text);font-family:inherit;font-size:.78em;padding:8px;resize:vertical;min-height:36px;max-height:140px;outline:none}
+  .cc-notes textarea:focus{border-color:var(--crimson)}
+  .cc-notes textarea::placeholder{color:var(--text-muted)}
+  .cc-note-save{margin-top:5px;padding:5px 16px;background:var(--crimson);color:#fff;border:none;border-radius:6px;font-size:.78em;font-weight:700;cursor:pointer;transition:.2s;font-family:inherit;letter-spacing:.5px}
+  .cc-note-save:hover{filter:brightness(1.2);transform:scale(1.03)}
+  .cc-note-save.saved{background:var(--green);pointer-events:none}
+
+  @media (max-width: 768px) { .hero h1 { font-size: 1.6em; } .grid { grid-template-columns: 1fr; } .stats-bar { gap: 8px; } .stat { min-width: 90px; padding: 10px 14px; } .stat-num { font-size: 1.5em; } .controls { gap: 6px; } .search-wrap { margin-left: 0; width: 100%; } .search-wrap input { width: 100%; } }
+</style>
+</head>
+<body>
+<div class="bg-grid"></div>
+<div class="bg-glow"></div>
+<div class="bg-glow-2"></div>
+
+<div class="container">
+
+  <header class="hero">
+    <div class="hero-badge"><span class="dot"></span> Guida verificata 2025</div>
+    <h1>Turismo Tricologico<br><span>Italia &rarr; Turchia</span></h1>
+    <p>70 cliniche e agenzie verificate per il trapianto di capelli in Turchia (Istanbul, Ankara, Antalya), con dati raccolti dai siti ufficiali e fonti terze.</p>
+    <div class="stats-bar">
+      <div class="stat"><div class="stat-num" style="color:var(--crimson);">70</div><div class="stat-label">Strutture</div></div>
+      <div class="stat"><div class="stat-num" style="color:var(--green);">&euro;1.490</div><div class="stat-label">Prezzo minimo</div></div>
+      <div class="stat"><div class="stat-num" style="color:var(--cyan);">60%+</div><div class="stat-label">Risparmio vs Italia</div></div>
+      <div class="stat"><div class="stat-num" style="color:var(--purple);">15</div><div class="stat-label">JCI accreditate</div></div>
+      <div class="stat"><div class="stat-num" style="color:var(--gold);">32</div><div class="stat-label">Sito in italiano</div></div>
+    </div>
+  </header>
+
+  <div class="controls">
+    <span class="controls-label">Filtra</span>
+    <button class="btn active" onclick="setFilter('all',this)">Tutte <span id="count">(30)</span></button>
+    <button class="btn" onclick="setFilter('clinica',this)">Cliniche turche</button>
+    <button class="btn" onclick="setFilter('agenzia',this)">Agenzie / Sedi IT</button>
+    <button class="btn" onclick="setFilter('jci',this)">JCI accreditate</button>
+    <button class="btn" onclick="setFilter('italiano',this)">Sito italiano</button>
+    <button class="btn" onclick="setFilter('premium',this)">Premium</button>
+    <button class="btn" onclick="setFilter('boutique',this)">Boutique</button>
+    <button class="btn" onclick="setFilter('ankara',this)">Ankara</button>
+    <button class="btn" onclick="setFilter('antalya',this)">Antalya</button>
+    <button class="btn" onclick="setFilter('ospedale',this)">Ospedali</button>
+    <span class="controls-label" style="margin-left:12px">Stato</span>
+    <button class="btn btn-status" onclick="fs('0',this)" style="color:var(--red);border-color:var(--red-border)"><span style="color:#5a6478">Lv.0 -</span> <span id="cnt-0">0</span></button>
+    <button class="btn btn-status" onclick="fs('1',this)" style="color:var(--yellow);border-color:rgba(234,179,8,.3)"><span style="color:#5a6478">Lv.1 -</span> <span id="cnt-1">0</span></button>
+    <button class="btn btn-status" onclick="fs('2',this)" style="color:var(--blue);border-color:rgba(59,130,246,.3)"><span style="color:#5a6478">Lv.2 -</span> <span id="cnt-2">0</span></button>
+    <button class="btn btn-status" onclick="fs('3',this)" style="color:var(--green);border-color:var(--green-border)"><span style="color:#5a6478">Lv.3 -</span> <span id="cnt-3">0</span></button>
+    <button class="btn btn-status" onclick="fs('star',this)" style="color:#fbbf24;border-color:rgba(251,191,36,.3)"><span style="color:#5a6478">&#9733; Top -</span> <span id="cnt-star">0</span></button>
+    <div class="search-wrap">
+      <span class="search-icon">&#128269;</span>
+      <input type="text" id="searchInput" placeholder="Cerca per nome o tecnica..." oninput="doSearch()">
+    </div>
+  </div>
+
+  <div class="grid" id="grid">
+
+    <!-- 1 — Cosmedica -->
+    <div class="card c-crimson" data-tags="clinica jci italiano premium" data-name="cosmedica dr levent acar micro sapphire dhi fue jci istanbul sisli 2007">
+      <span class="year-tag">Est. 2007</span>
+      <div class="card-header"><div class="avatar av-crimson">CM</div><div><p class="card-title">Cosmedica &mdash; Dr. Levent Acar</p><p class="card-type">Clinica turca &middot; Sisli, Istanbul</p></div></div>
+      <span class="badge badge-crimson">JCI Gold &middot; 20.000+ trapianti</span>
+      <p class="card-desc">Fondata nel 2007 dal Dr. Levent Acar, tra i chirurghi pi&ugrave; seguiti al mondo. Tecnica Micro Sapphire DHI esclusiva. JCI Gold Medal, ISO, ISHRS. Hotel 5&#9733;, interprete personale e anestesia needle-free inclusi.</p>
+      <div class="tags"><span class="tag">Micro Sapphire DHI</span><span class="tag">Sapphire FUE</span><span class="tag">&euro;2.450&ndash;3.190</span></div>
+      <div class="card-footer"><span class="contact">cosmedica.com</span><a class="visit-link" href="https://cosmedica.com/" target="_blank">Visita &rarr;</a></div>
+    </div>
+
+    <!-- 2 — Dr. Serkan Aygin -->
+    <div class="card c-gold" data-tags="clinica jci italiano premium" data-name="dr serkan aygin clinic dhi sapphire fue staminali jci istanbul sisli 1996 2013">
+      <span class="year-tag">Est. 1996</span>
+      <div class="card-header"><div class="avatar av-gold">SA</div><div><p class="card-title">Dr. Serkan Aygin Clinic</p><p class="card-type">Clinica turca &middot; Sisli, Istanbul</p></div></div>
+      <span class="badge badge-gold">Best Hair Transplant Doctor Europe 2019 &amp; 2022</span>
+      <p class="card-desc">Oltre 25 anni di esperienza. JCI, ISO 9001. European Awards in Medicine 2019 e 2022. DHI con penna Choi, Sapphire FUE, trattamenti con cellule staminali. Tasso sopravvivenza innesti 98%+. Sito in italiano.</p>
+      <div class="tags"><span class="tag">DHI Choi</span><span class="tag">Sapphire FUE</span><span class="tag">Staminali</span><span class="tag">&euro;2.400&ndash;4.000</span></div>
+      <div class="card-footer"><span class="contact">drserkanaygin.com</span><a class="visit-link" href="https://www.drserkanaygin.com/" target="_blank">Visita &rarr;</a></div>
+    </div>
+
+    <!-- 3 — Vera Clinic -->
+    <div class="card c-teal" data-tags="clinica italiano" data-name="vera clinic sapphire fue stem cell dhi istanbul 2013 oxycure 40000">
+      <span class="year-tag">Est. 2013</span>
+      <div class="card-header"><div class="avatar av-teal">VC</div><div><p class="card-title">Vera Clinic</p><p class="card-type">Clinica internazionale &middot; Istanbul</p></div></div>
+      <span class="badge badge-teal">40.000+ trapianti &middot; Stem Cell FUE</span>
+      <p class="card-desc">Pionieri della Sapphire FUE. 40.000+ trapianti, pazienti da 40+ paesi. Best Hair Transplant Clinic Europe 2021. Tecnica Stem Cell FUE con cellule staminali. ISO certificata. Sito in italiano.</p>
+      <div class="tags"><span class="tag">Sapphire FUE</span><span class="tag">DHI</span><span class="tag">Stem Cell FUE</span><span class="tag">&euro;2.500&ndash;6.000</span></div>
+      <div class="card-footer"><span class="contact">veraclinic.net</span><a class="visit-link" href="https://www.veraclinic.net/" target="_blank">Visita &rarr;</a></div>
+    </div>
+
+    <!-- 4 — ASMED -->
+    <div class="card c-purple" data-tags="clinica italiano premium boutique" data-name="asmed dr koray erdogan fue sequential technique ishrs ke-bot istanbul atasehir 2001">
+      <span class="year-tag">Est. 2001</span>
+      <div class="card-header"><div class="avatar av-purple">AS</div><div><p class="card-title">ASMED &mdash; Dr. Koray Erdogan</p><p class="card-type">Clinica premium &middot; Atasehir, Istanbul</p></div></div>
+      <span class="badge badge-purple">ISHRS &middot; Tra i migliori chirurghi al mondo</span>
+      <p class="card-desc">Riferimento mondiale nel trapianto FUE. Membro ISHRS, ESHRS, IAHRS. Inventore della Sequential Technique e del sistema robotico KE-Bot. Relatore a congressi internazionali. Fascia super-premium.</p>
+      <div class="tags"><span class="tag">FUE Sequential</span><span class="tag">KE-Bot</span><span class="tag">ISHRS</span><span class="tag">&euro;7.500&ndash;13.500</span></div>
+      <div class="card-footer"><span class="contact">hairtransplantfue.org</span><a class="visit-link" href="https://www.hairtransplantfue.org/" target="_blank">Visita &rarr;</a></div>
+    </div>
+
+    <!-- 5 — Elithair -->
+    <div class="card c-crimson" data-tags="clinica italiano" data-name="elithair dr balwi neo fue sleep deep 150000 pazienti istanbul 2013 13 piani">
+      <span class="year-tag">Est. 2013</span>
+      <div class="card-header"><div class="avatar av-crimson">EL</div><div><p class="card-title">Elithair &mdash; Dr. Balwi</p><p class="card-type">Clinica internazionale &middot; Istanbul</p></div></div>
+      <span class="badge badge-crimson">150.000+ pazienti &middot; 13 piani</span>
+      <p class="card-desc">La pi&ugrave; grande clinica al mondo dedicata al trapianto capelli: 13 piani, 200+ staff. 150.000+ pazienti. Tecnica NEO FUE e Sleep-Deep (indolore). Partner ufficiale Tottenham Hotspur. Sito italiano dedicato.</p>
+      <div class="tags"><span class="tag">FUE</span><span class="tag">DHI</span><span class="tag">NEO FUE</span><span class="tag">&euro;2.800&ndash;3.300</span></div>
+      <div class="card-footer"><span class="contact">elithair.it</span><a class="visit-link" href="https://elithair.it/" target="_blank">Visita &rarr;</a></div>
+    </div>
+
+    <!-- 6 — Smile Hair Clinic -->
+    <div class="card c-green" data-tags="clinica italiano" data-name="smile hair clinic mehmet erdogan gokay bilgin sapphire fue dhi temos istanbul 2018">
+      <span class="year-tag">Est. 2018</span>
+      <div class="card-header"><div class="avatar av-green">SH</div><div><p class="card-title">Smile Hair Clinic</p><p class="card-type">Clinica turca &middot; Umraniye, Istanbul</p></div></div>
+      <span class="badge badge-green">TEMOS Classe A &middot; 5.000+ recensioni Google</span>
+      <p class="card-desc">Prima e unica clinica trapianto al mondo con accreditamento TEMOS Classe A. Fondata dai Dr. Mehmet Erdogan e Dr. Gokay Bilgin che operano personalmente. Sapphire FUE di serie, anestesia senza ago. 3.000+ recensioni Trustpilot.</p>
+      <div class="tags"><span class="tag">Sapphire FUE</span><span class="tag">DHI</span><span class="tag">Body Hair</span><span class="tag">&euro;1.100&ndash;6.000</span></div>
+      <div class="card-footer"><span class="contact">smilehairclinic.com</span><a class="visit-link" href="https://www.smilehairclinic.com/" target="_blank">Visita &rarr;</a></div>
+    </div>
+
+    <!-- 7 — Estethica -->
+    <div class="card c-blue" data-tags="clinica jci" data-name="estethica atasehir hospital jci dhi plus gold sapphire fue istanbul 2008 garanzia vita">
+      <span class="year-tag">Est. 2008</span>
+      <div class="card-header"><div class="avatar av-blue">ET</div><div><p class="card-title">Estethica Atasehir Hospital</p><p class="card-type">Ospedale polispecialistico &middot; Atasehir, Istanbul</p></div></div>
+      <span class="badge badge-blue">JCI &middot; Garanzia a vita &middot; Da &euro;1.490</span>
+      <p class="card-desc">Ospedale multidisciplinare con accreditamento JCI. Tra i prezzi pi&ugrave; accessibili di Istanbul: da &euro;1.490. DHI Plus Gold (ago con punta in oro), ozonoterapia. Garanzia a vita dichiarata. Hotel 4&#9733; incluso.</p>
+      <div class="tags"><span class="tag">Sapphire FUE</span><span class="tag">DHI Plus Gold</span><span class="tag">Ozono</span><span class="tag">&euro;1.490&ndash;1.870</span></div>
+      <div class="card-footer"><span class="contact">estethica.com.tr</span><a class="visit-link" href="https://estethica.com.tr/" target="_blank">Visita &rarr;</a></div>
+    </div>
+
+    <!-- 8 — Clinicana -->
+    <div class="card c-gold" data-tags="clinica jci italiano" data-name="clinicana acibadem taksim hospital jci soner tatlidede harvard dhi sapphire fue istanbul">
+      <span class="year-tag">Osp. Acibadem</span>
+      <div class="card-header"><div class="avatar av-gold">CL</div><div><p class="card-title">Clinicana</p><p class="card-type">Clinica turca &middot; Acibadem Taksim, Istanbul</p></div></div>
+      <span class="badge badge-gold">JCI (Acibadem) &middot; Prof. ex Harvard</span>
+      <p class="card-desc">Opera all'interno dell'Ospedale Acibadem Taksim (accreditato JCI). Direttore medico: Prof. Dr. Soner Tatlidede (ex Harvard). 20.000+ pazienti. 4.9/5 su 3.938 recensioni. Pacchetti all-inclusive.</p>
+      <div class="tags"><span class="tag">FUE</span><span class="tag">DHI Choi</span><span class="tag">Sapphire FUE</span><span class="tag">&euro;2.700&ndash;2.850</span></div>
+      <div class="card-footer"><span class="contact">clinicana.com</span><a class="visit-link" href="https://www.clinicana.com/" target="_blank">Visita &rarr;</a></div>
+    </div>
+
+    <!-- 9 — Hair of Istanbul -->
+    <div class="card c-teal" data-tags="clinica italiano" data-name="hair of istanbul fue dhi sapphire regenera activa scalp micropigmentation dubai istanbul 2013">
+      <span class="year-tag">Est. 2013</span>
+      <div class="card-header"><div class="avatar av-teal">HI</div><div><p class="card-title">Hair of Istanbul</p><p class="card-type">Clinica turca &middot; Istanbul + Dubai</p></div></div>
+      <span class="badge badge-teal">19.000+ procedure &middot; Sedi Istanbul + Dubai</span>
+      <p class="card-desc">19.000+ procedure, 70 dipendenti, 4+ medici specialisti. Nessun tetto massimo innesti. Regenera Activa e Scalp Micropigmentation disponibili. Supporto in 8 lingue incluso italiano. Ufficio consulenze a Dubai.</p>
+      <div class="tags"><span class="tag">FUE</span><span class="tag">DHI</span><span class="tag">Regenera Activa</span><span class="tag">&euro;3.250&ndash;4.000</span></div>
+      <div class="card-footer"><span class="contact">hairofistanbul.com</span><a class="visit-link" href="https://www.hairofistanbul.com/" target="_blank">Visita &rarr;</a></div>
+    </div>
+
+    <!-- 10 — Dr. Cinik -->
+    <div class="card c-orange" data-tags="clinica jci italiano" data-name="dr cinik emrah cinik hair hospital ishrs jci sapphire fue dhi regenera esosomi istanbul besiktas 2007">
+      <span class="year-tag">Est. 2007</span>
+      <div class="card-header"><div class="avatar av-orange">DC</div><div><p class="card-title">Dr. Cinik Hair Hospital</p><p class="card-type">Ospedale dedicato &middot; Besiktas, Istanbul</p></div></div>
+      <span class="badge badge-orange">ISHRS &middot; JCI &middot; 28 sale operatorie</span>
+      <p class="card-desc">Ospedale interamente dedicato al trapianto. 65 professionisti medici, 28 sale operatorie con illuminazione microchirurgica. ISHRS e JCI. Sapphire FUE, DHI, Regenera Activa, terapia esosomiale. Hotel 5&#9733; incluso. Sito italiano.</p>
+      <div class="tags"><span class="tag">Sapphire FUE</span><span class="tag">DHI</span><span class="tag">Esosomi</span><span class="tag">&euro;1.990&ndash;3.490</span></div>
+      <div class="card-footer"><span class="contact">drcinik.com</span><a class="visit-link" href="https://drcinik.com/" target="_blank">Visita &rarr;</a></div>
+    </div>
+
+    <!-- 11 — Turkeyana -->
+    <div class="card c-blue" data-tags="clinica" data-name="turkeyana clinic fue dhi iso temos 110000 pazienti bakirkoy istanbul 2012">
+      <span class="year-tag">Est. 2012</span>
+      <div class="card-header"><div class="avatar av-blue">TK</div><div><p class="card-title">Turkeyana Clinic</p><p class="card-type">Clinica turca &middot; Bakirkoy, Istanbul</p></div></div>
+      <span class="badge badge-blue">110.000+ pazienti &middot; ISO &middot; TEMOS</span>
+      <p class="card-desc">110.000+ pazienti da 87 paesi. Certificata ISO, TEMOS e SKS (Ministero Salute). Certificato di Autorizzazione al Turismo Sanitario. FUE e DHI. Pacchetti all-inclusive.</p>
+      <div class="tags"><span class="tag">FUE</span><span class="tag">DHI</span><span class="tag">ISO</span><span class="tag">&euro;2.750&ndash;4.600</span></div>
+      <div class="card-footer"><span class="contact">turkeyanaclinic.com</span><a class="visit-link" href="https://turkeyanaclinic.com" target="_blank">Visita &rarr;</a></div>
+    </div>
+
+    <!-- 12 — Sapphire Hair Clinic -->
+    <div class="card c-cyan" data-tags="clinica jci italiano" data-name="sapphire hair clinic jci iso fue dhi sapphire sisli istanbul 2012 10000">
+      <span class="year-tag">Est. 2012</span>
+      <div class="card-header"><div class="avatar av-cyan">SHC</div><div><p class="card-title">Sapphire Hair Clinic</p><p class="card-type">Clinica turca &middot; Sisli, Istanbul</p></div></div>
+      <span class="badge badge-cyan">JCI &middot; ISO 9001 &middot; Da &euro;1.400</span>
+      <p class="card-desc">10.000+ procedure completate. Accreditamenti JCI e ISO 9001. Specializzazione nella tecnica Sapphire FUE. Prezzi tra i pi&ugrave; competitivi a Istanbul. Sito multilingue con italiano.</p>
+      <div class="tags"><span class="tag">Sapphire FUE</span><span class="tag">DHI</span><span class="tag">FUE</span><span class="tag">&euro;1.400&ndash;4.100</span></div>
+      <div class="card-footer"><span class="contact">sapphirehairclinic.com</span><a class="visit-link" href="https://www.sapphirehairclinic.com" target="_blank">Visita &rarr;</a></div>
+    </div>
+
+    <!-- 13 — Capilclinic -->
+    <div class="card c-green" data-tags="agenzia italiano" data-name="capilclinic milano roma istanbul fue zaffiro min time dhi sede italiana 2014">
+      <span class="year-tag">Est. ~2014</span>
+      <div class="card-header"><div class="avatar av-green">CC</div><div><p class="card-title">Capilclinic</p><p class="card-type">Agenzia con sedi IT &middot; Milano, Roma + Istanbul</p></div></div>
+      <span class="badge badge-green">Sedi Milano &amp; Roma &middot; Traduttrice IT inclusa</span>
+      <p class="card-desc">Sedi fisiche a Milano e Roma per consulenze. Operazioni a Istanbul con traduttrice italiana e hotel 5&#9733; incluso. Tecnica Min Time FUE brevettata. Listino prezzi trasparente. European Awards 2024.</p>
+      <div class="tags"><span class="tag">FUE Zaffiro</span><span class="tag">Min Time FUE</span><span class="tag">DHI</span><span class="tag">&euro;2.290&ndash;5.200</span></div>
+      <div class="card-footer"><span class="contact">capilclinic.it</span><a class="visit-link" href="https://www.capilclinic.it" target="_blank">Visita &rarr;</a></div>
+    </div>
+
+    <!-- 14 — Dr. Resul Yaman -->
+    <div class="card c-purple" data-tags="clinica italiano premium boutique" data-name="dr resul yaman manual punch fue dhi ishrs iahrs istanbul 2009 boutique artigianale">
+      <span class="year-tag">Est. 2009</span>
+      <div class="card-header"><div class="avatar av-purple">RY</div><div><p class="card-title">Dr. Resul Yaman</p><p class="card-type">Clinica boutique &middot; Istanbul</p></div></div>
+      <span class="badge badge-purple">ISHRS &middot; IAHRS &middot; Qualit&agrave; artigianale</span>
+      <p class="card-desc">Membro ISHRS e IAHRS (tra i pochissimi in Turchia). Approccio artigianale: punch manuali, il dottore interviene personalmente. Molto apprezzato nei forum specializzati. Health Turkiye accreditato. Sito in 9 lingue con italiano.</p>
+      <div class="tags"><span class="tag">Manual FUE</span><span class="tag">DHI</span><span class="tag">Sapphire FUE</span><span class="tag">Da &euro;2.670</span></div>
+      <div class="card-footer"><span class="contact">resulyaman.com</span><a class="visit-link" href="https://resulyaman.com" target="_blank">Visita &rarr;</a></div>
+    </div>
+
+    <!-- 15 — Hermest Hair Clinic -->
+    <div class="card c-gold" data-tags="clinica italiano" data-name="hermest hair clinic unique fue garanzia vita 12000 pazienti istanbul 2002">
+      <span class="year-tag">Est. ~2002</span>
+      <div class="card-header"><div class="avatar av-gold">HH</div><div><p class="card-title">Hermest Hair Clinic</p><p class="card-type">Clinica turca &middot; Istanbul</p></div></div>
+      <span class="badge badge-gold">22+ anni &middot; UNIQUE FUE &middot; Garanzia vita</span>
+      <p class="card-desc">Tra le pi&ugrave; longeve di Istanbul (~22 anni). 12.000+ pazienti da 62 paesi. Tecnica UNIQUE FUE brevettata con 99% ritenzione dichiarata. Premio Best Clinic Europe 2018 (Die Welt). Garanzia a vita. Sito in italiano.</p>
+      <div class="tags"><span class="tag">UNIQUE FUE</span><span class="tag">Sapphire FUE</span><span class="tag">DHI</span><span class="tag">&euro;2.750&ndash;4.600</span></div>
+      <div class="card-footer"><span class="contact">hermestclinic.com</span><a class="visit-link" href="https://www.hermestclinic.com" target="_blank">Visita &rarr;</a></div>
+    </div>
+
+    <!-- 16 — Now Hair Time -->
+    <div class="card c-dim" data-tags="clinica italiano" data-name="now hair time sapphire fue dhi fi fio unshaven istanbul">
+      <div class="card-header"><div class="avatar av-dim">NHT</div><div><p class="card-title">Now Hair Time</p><p class="card-type">Clinica turca &middot; Istanbul</p></div></div>
+      <span class="badge badge-dim">Prezzo fisso per max graft</span>
+      <p class="card-desc">Politica "prezzo fisso per massimo numero di graft". Sapphire FUE, DHI, Unshaven, Fi e Fio Hair Transplant. Sito disponibile in 10 lingue con italiano. Preventivo personalizzato.</p>
+      <div class="tags"><span class="tag">Sapphire FUE</span><span class="tag">DHI</span><span class="tag">Unshaven</span><span class="tag">&euro;2.000&ndash;3.500</span></div>
+      <div class="card-footer"><span class="contact">nowhairtime.com</span><a class="visit-link" href="https://nowhairtime.com" target="_blank">Visita &rarr;</a></div>
+    </div>
+
+    <!-- 17 — Long Hair Center -->
+    <div class="card c-teal" data-tags="clinica boutique" data-name="long hair center dhi sapphire fue prp unshaved istanbul 2008 boutique 1 paziente">
+      <span class="year-tag">Est. 2008</span>
+      <div class="card-header"><div class="avatar av-teal">LH</div><div><p class="card-title">Long Hair Center</p><p class="card-type">Clinica boutique &middot; Istanbul</p></div></div>
+      <span class="badge badge-teal">Max 1&ndash;2 interventi/giorno</span>
+      <p class="card-desc">Clinica boutique: massimo 1&ndash;2 interventi al giorno, politica "one patient at a time". 2.200+ trapianti in 13+ anni. Dr. Ahmet Yildirim. DHI, Sapphire FUE, PRP, Unshaved Transplant.</p>
+      <div class="tags"><span class="tag">DHI</span><span class="tag">Sapphire FUE</span><span class="tag">PRP</span><span class="tag">Boutique</span></div>
+      <div class="card-footer"><span class="contact">longhaircenter.com</span><a class="visit-link" href="https://www.longhaircenter.com/en" target="_blank">Visita &rarr;</a></div>
+    </div>
+
+    <!-- 18 — TecniFUE International -->
+    <div class="card c-blue" data-tags="clinica boutique" data-name="tecnifue international sapphire fue dhi barba afro istanbul bahcelievler 2012 8000">
+      <span class="year-tag">Est. 2012</span>
+      <div class="card-header"><div class="avatar av-blue">TF</div><div><p class="card-title">TecniFUE International</p><p class="card-type">Clinica turca &middot; Bahcelievler, Istanbul</p></div></div>
+      <span class="badge badge-blue">Max 3&ndash;4 pazienti/giorno &middot; 8.000+</span>
+      <p class="card-desc">8.000+ pazienti da 28+ paesi. Max 3&ndash;4 pazienti al giorno per approccio VIP. Sapphire FUE, DHI, trapianto barba, sopracciglia, Afro hair. Pacchetti personalizzati.</p>
+      <div class="tags"><span class="tag">Sapphire FUE</span><span class="tag">DHI</span><span class="tag">Afro</span><span class="tag">&euro;2.670&ndash;3.180</span></div>
+      <div class="card-footer"><span class="contact">tecnifueinternational.com</span><a class="visit-link" href="https://tecnifueinternational.com" target="_blank">Visita &rarr;</a></div>
+    </div>
+
+    <!-- 19 — Sule Hair Transplant -->
+    <div class="card c-green" data-tags="clinica italiano boutique" data-name="sule hair transplant sule karatas olmez trustpilot 5.0 3170 recensioni istanbul 2016">
+      <span class="year-tag">Est. 2016</span>
+      <div class="card-header"><div class="avatar av-green">SU</div><div><p class="card-title">Sule Hair Transplant</p><p class="card-type">Clinica turca &middot; Eyupsultan, Istanbul</p></div></div>
+      <span class="badge badge-green">5.0 Trustpilot &middot; 3.170+ recensioni</span>
+      <p class="card-desc">Fondata da Sule Karatas Olmez. 10.000+ interventi. Valutazione perfetta 5.0 su Trustpilot (3.170+ recensioni) e 4.9 su Google (1.700+). Max 4&ndash;5 pazienti/giorno. Hybrid DHI+Sapphire FUE. Mega sessions fino a 7.000 graft.</p>
+      <div class="tags"><span class="tag">Hybrid DHI+Sapphire</span><span class="tag">Mega Session</span><span class="tag">&euro;2.990&ndash;4.500</span></div>
+      <div class="card-footer"><span class="contact">sule-hairtransplant.com</span><a class="visit-link" href="https://sule-hairtransplant.com/" target="_blank">Visita &rarr;</a></div>
+    </div>
+
+    <!-- 20 — ClinMedica -->
+    <div class="card c-crimson" data-tags="clinica jci italiano" data-name="clinmedica jci istanbul 2013 50000 procedure hotel 5 stelle anestesia senza ago fue dhi sapphire">
+      <span class="year-tag">Est. 2013</span>
+      <div class="card-header"><div class="avatar av-crimson">CM2</div><div><p class="card-title">ClinMedica</p><p class="card-type">Clinica turca &middot; Bakirkoy, Istanbul</p></div></div>
+      <span class="badge badge-crimson">JCI-USA &middot; 50.000+ procedure</span>
+      <p class="card-desc">Accreditamento JCI-USA. 50.000+ procedure, 70% pazienti da passaparola. Dottori coinvolti direttamente. Hotel 5&#9733;, trasporto VIP, traduttore, anestesia senza ago, PRP e analisi sangue inclusi. Sito in italiano.</p>
+      <div class="tags"><span class="tag">FUE</span><span class="tag">DHI Sapphire</span><span class="tag">Ago-free</span><span class="tag">&euro;2.850&ndash;3.550</span></div>
+      <div class="card-footer"><span class="contact">clinmedica.com</span><a class="visit-link" href="https://clinmedica.com/" target="_blank">Visita &rarr;</a></div>
+    </div>
+
+    <!-- 21 — Memorial Hospital -->
+    <div class="card c-purple" data-tags="clinica jci premium" data-name="memorial hospital hair transplant center jci primo turchia advfue istanbul 2000">
+      <span class="year-tag">Est. 2000</span>
+      <div class="card-header"><div class="avatar av-purple">MH</div><div><p class="card-title">Memorial Hospital HTC</p><p class="card-type">Gruppo ospedaliero &middot; Istanbul</p></div></div>
+      <span class="badge badge-purple">Primo ospedale JCI in Turchia</span>
+      <p class="card-desc">Primo ospedale in Turchia a ottenere l'accreditamento JCI. Membro American Hospital Association. AdvFUE (Advanced FUE) perfezionata internamente. 154 posti letto. Standard ospedalieri di massimo livello.</p>
+      <div class="tags"><span class="tag">AdvFUE</span><span class="tag">DHI</span><span class="tag">Sapphire FUE</span><span class="tag">&euro;2.000&ndash;4.000</span></div>
+      <div class="card-footer"><span class="contact">memorial.com.tr</span><a class="visit-link" href="https://www.memorial.com.tr/en/hair-transplant-turkey" target="_blank">Visita &rarr;</a></div>
+    </div>
+
+    <!-- 22 — MedHair Clinic -->
+    <div class="card c-gold" data-tags="clinica jci italiano" data-name="medhair clinic dr vedat tosun liv hospital jci tuv istanbul 2011 14000">
+      <span class="year-tag">Est. 2011</span>
+      <div class="card-header"><div class="avatar av-gold">MH2</div><div><p class="card-title">MedHair Clinic &mdash; Dr. Vedat Tosun</p><p class="card-type">Clinica turca &middot; Liv Hospital, Istanbul</p></div></div>
+      <span class="badge badge-gold">JCI (Liv Hospital) &middot; TUV SUD</span>
+      <p class="card-desc">14.000+ procedure. Opera all'interno del Liv Hospital (JCI e TUV SUD certificato). Team di 3 dermatologi. Il dottore disegna personalmente l'hairline. Sito in italiano. Prezzi trasparenti.</p>
+      <div class="tags"><span class="tag">Sapphire FUE</span><span class="tag">DHI</span><span class="tag">Senza rasatura</span><span class="tag">&euro;1.890&ndash;2.490</span></div>
+      <div class="card-footer"><span class="contact">medhairclinic.eu</span><a class="visit-link" href="https://www.medhairclinic.eu/en/" target="_blank">Visita &rarr;</a></div>
+    </div>
+
+    <!-- 23 — Avrupa Hair Transplant -->
+    <div class="card c-teal" data-tags="clinica italiano" data-name="avrupa hair transplant sac ekimi 2006 40000 trapianti istanbul bahcelievler fue dhi sapphire afro premi">
+      <span class="year-tag">Est. 2006</span>
+      <div class="card-header"><div class="avatar av-teal">AV</div><div><p class="card-title">Avrupa Hair Transplant</p><p class="card-type">Clinica turca &middot; Bahcelievler, Istanbul</p></div></div>
+      <span class="badge badge-teal">Dal 2006 &middot; 40.000+ trapianti &middot; 10+ premi</span>
+      <p class="card-desc">Una delle pi&ugrave; longeve di Istanbul (dal 2006). 40.000+ trapianti. 10+ premi internazionali: Golden Palm, Int'l Quality Summit (Francia). FUE, DHI, Sapphire, Afro hair. Sito in italiano. Prezzi molto competitivi.</p>
+      <div class="tags"><span class="tag">FUE</span><span class="tag">DHI Choi</span><span class="tag">Sapphire</span><span class="tag">&euro;1.750&ndash;2.050</span></div>
+      <div class="card-footer"><span class="contact">avrupahairtransplant.com</span><a class="visit-link" href="https://avrupahairtransplant.com/" target="_blank">Visita &rarr;</a></div>
+    </div>
+
+    <!-- 24 — Esthetic Hair Turkey -->
+    <div class="card c-orange" data-tags="clinica jci italiano" data-name="esthetic hair turkey gold dhi sapphire fue staminali ozono 50000 pazienti istanbul 2013">
+      <span class="year-tag">Est. ~2013</span>
+      <div class="card-header"><div class="avatar av-orange">EHT</div><div><p class="card-title">Esthetic Hair Turkey</p><p class="card-type">Clinica turca &middot; Zeytinburnu, Istanbul</p></div></div>
+      <span class="badge badge-orange">JCI &middot; 50.000+ pazienti &middot; Garanzia 12 mesi</span>
+      <p class="card-desc">50.000+ pazienti. JCI e TURSAB certificata. Gold DHI, Sapphire FUE, Stem Cell, Mesotherapy, Ozone e Red Light Therapy. Certificato di garanzia ufficiale incluso con follow-up 12 mesi. Consulenti 24/7. Sito in italiano.</p>
+      <div class="tags"><span class="tag">Gold DHI</span><span class="tag">Staminali</span><span class="tag">Ozono</span><span class="tag">&euro;1.500&ndash;3.500</span></div>
+      <div class="card-footer"><span class="contact">esthetichairturkey.com</span><a class="visit-link" href="https://www.esthetichairturkey.com/" target="_blank">Visita &rarr;</a></div>
+    </div>
+
+    <!-- 25 — Este Medical Group -->
+    <div class="card c-green" data-tags="agenzia italiano" data-name="este medical group istanbul milano sede italiana sam cinkir fue dhi 20000 2004 18 sedi">
+      <span class="year-tag">Est. 2004</span>
+      <div class="card-header"><div class="avatar av-green">EM</div><div><p class="card-title">Este Medical Group</p><p class="card-type">Clinica internaz. &middot; Istanbul + Milano</p></div></div>
+      <span class="badge badge-green">Sede fisica a Milano &middot; 18 sedi nel mondo</span>
+      <p class="card-desc">Tra le prime in Turchia ad adottare la FUE (dal 2004). 18 sedi nel mondo, inclusa Milano. 20.000+ procedure. 300+ dipendenti. 4.9/5 su Google (560 recensioni). Tasso successo 98%. Sito italiano.</p>
+      <div class="tags"><span class="tag">FUE</span><span class="tag">DHI</span><span class="tag">Afro</span><span class="tag">&euro;2.000&ndash;2.500</span></div>
+      <div class="card-footer"><span class="contact">estemedicalgroup.com</span><a class="visit-link" href="https://www.estemedicalgroup.com/" target="_blank">Visita &rarr;</a></div>
+    </div>
+
+    <!-- 26 — EstePera -->
+    <div class="card c-blue" data-tags="clinica italiano" data-name="estepera hair clinic florence nightingale hospital sapphire fue dhi fut istanbul sisli 2009">
+      <span class="year-tag">Est. ~2009</span>
+      <div class="card-header"><div class="avatar av-blue">EP</div><div><p class="card-title">EstePera Hair Clinic</p><p class="card-type">Clinica turca &middot; Sisli, Istanbul</p></div></div>
+      <span class="badge badge-blue">Opera nel Florence Nightingale Hospital</span>
+      <p class="card-desc">Opera all'interno del Florence Nightingale Hospital (ospedale 5 stelle). 15+ anni, pazienti da 40+ paesi. Nessun acconto: pagamento solo all'arrivo. Sapphire FUE, DHI, FUT. Sito in italiano. 4.6 su Trustpilot.</p>
+      <div class="tags"><span class="tag">Sapphire FUE</span><span class="tag">DHI</span><span class="tag">FUT</span><span class="tag">&euro;2.000&ndash;4.000</span></div>
+      <div class="card-footer"><span class="contact">estepera.com</span><a class="visit-link" href="https://www.estepera.com/" target="_blank">Visita &rarr;</a></div>
+    </div>
+
+    <!-- 27 — Istanbul Vita -->
+    <div class="card c-cyan" data-tags="clinica italiano" data-name="istanbul vita hair clinic vita technique hasan basol 25 sale 200 professionisti 3500 anno istanbul 2015">
+      <span class="year-tag">Est. 2015</span>
+      <div class="card-header"><div class="avatar av-cyan">IV</div><div><p class="card-title">Istanbul Vita Hair Clinic</p><p class="card-type">Clinica turca &middot; Esentepe, Istanbul</p></div></div>
+      <span class="badge badge-cyan">Best Hair Transplantation Europe 2023</span>
+      <p class="card-desc">25 sale, 200+ professionisti, 3.500+ interventi/anno. Fondatore Hasan Basol, inventore della Vita Technique (zone D1&ndash;D4). Premio Best Hair Transplantation Service Europe 2023. Supporto in 13 lingue con italiano.</p>
+      <div class="tags"><span class="tag">Vita Technique</span><span class="tag">Sapphire FUE</span><span class="tag">DHI</span><span class="tag">&euro;3.200</span></div>
+      <div class="card-footer"><span class="contact">istanbulvita.com</span><a class="visit-link" href="https://istanbulvita.com/" target="_blank">Visita &rarr;</a></div>
+    </div>
+
+    <!-- 28 — IdealofMeD -->
+    <div class="card c-gold" data-tags="clinica premium" data-name="idealofmed ice fue sapphire ice dhi academic hospital istanbul stoccolma 6000 graft hair back app">
+      <div class="card-header"><div class="avatar av-gold">IM</div><div><p class="card-title">IdealofMeD</p><p class="card-type">Clinica internaz. &middot; Istanbul + Stoccolma</p></div></div>
+      <span class="badge badge-gold">ICE FUE &middot; Fino a 6.000 graft</span>
+      <p class="card-desc">Opera presso l'Academic Hospital Istanbul. Uffici a Stoccolma. Tecnica ICE FUE Sapphire e ICE DHI (fino a 6.000 graft in sessione singola). App "Hair Back" per aftercare post-op. Hotel 5&#9733; 4 notti incluso.</p>
+      <div class="tags"><span class="tag">ICE FUE Sapphire</span><span class="tag">ICE DHI</span><span class="tag">Da &euro;4.490</span></div>
+      <div class="card-footer"><span class="contact">idealofmed.com</span><a class="visit-link" href="https://idealofmed.com" target="_blank">Visita &rarr;</a></div>
+    </div>
+
+    <!-- 29 — Hair Upload Dr. Caymaz -->
+    <div class="card c-purple" data-tags="clinica boutique" data-name="hair upload dr erkam caymaz sapphire micro fue vip 1 2 operazioni giorno istanbul 2012 fue europe">
+      <span class="year-tag">Est. 2012</span>
+      <div class="card-header"><div class="avatar av-purple">HU</div><div><p class="card-title">Hair Upload &mdash; Dr. Erkam Caymaz</p><p class="card-type">Clinica VIP boutique &middot; Istanbul</p></div></div>
+      <span class="badge badge-purple">FUE Europe &middot; Solo 1&ndash;2 op/giorno</span>
+      <p class="card-desc">Clinica VIP: solo 1&ndash;2 operazioni al giorno. Membro FUE Europe e World FUE Institute. Tra i primi in Turchia e Europa con la Sapphire FUE. Background in chirurgia cardiovascolare. Apertura canali eseguita personalmente con lama in zaffiro.</p>
+      <div class="tags"><span class="tag">Sapphire Micro FUE</span><span class="tag">DHI</span><span class="tag">VIP</span><span class="tag">Da &euro;2.300</span></div>
+      <div class="card-footer"><span class="contact">hairupload.com</span><a class="visit-link" href="https://www.hairupload.com/" target="_blank">Visita &rarr;</a></div>
+    </div>
+
+    <!-- 30 — Heva Clinic -->
+    <div class="card c-dim" data-tags="clinica italiano" data-name="heva clinic istanbul umraniye atasehir 7 piani fue dhi sapphire afro 2010 app aftercare dentale">
+      <span class="year-tag">Est. 2010</span>
+      <div class="card-header"><div class="avatar av-dim">HV</div><div><p class="card-title">Heva Clinic</p><p class="card-type">Clinica turca &middot; Umraniye, Istanbul</p></div></div>
+      <span class="badge badge-dim">7 piani &middot; ISHRS &middot; App Aftercare</span>
+      <p class="card-desc">Struttura moderna su 7 piani. Direttore medico membro ISHRS. FUE, DHI, Sapphire FUE, specializzazione capelli Afro. App mobile per aftercare post-operatorio. Anche trattamenti dentali. Servizi VIP con trasporto e hotel lusso.</p>
+      <div class="tags"><span class="tag">FUE</span><span class="tag">DHI</span><span class="tag">Sapphire</span><span class="tag">Afro</span><span class="tag">~&euro;2.000</span></div>
+      <div class="card-footer"><span class="contact">dentalhairclinicturkey.com</span><a class="visit-link" href="https://www.dentalhairclinicturkey.com/" target="_blank">Visita &rarr;</a></div>
+    </div>
+
+    <!-- ═══════════════════════════════════════ -->
+    <!-- NUOVE 30 STRUTTURE (31-60)             -->
+    <!-- ═══════════════════════════════════════ -->
+
+    <!-- 31 — Amantide (agenzia IT) -->
+    <div class="card c-green" data-tags="agenzia italiano" data-name="amantide agenzia italiana vicenza medical park istanbul turchia albania trapianto capelli">
+      <span class="year-tag">Agenzia IT</span>
+      <div class="card-header"><div class="avatar av-green">AM</div><div><p class="card-title">Amantide</p><p class="card-type">Agenzia italiana &middot; Vicenza</p></div></div>
+      <span class="badge badge-green">Partner Medical Park (JCI)</span>
+      <p class="card-desc">Agenzia italiana di turismo tricologico (Vicenza). Collabora con il gruppo ospedaliero Medical Park (JCI). 400+ pazienti seguiti. Serate informative in Italia. Assistenza italiana completa: interpretariato, viaggio, alloggio e transfer inclusi.</p>
+      <div class="tags"><span class="tag">FUE</span><span class="tag">DHI</span><span class="tag">Sapphire FUE</span><span class="tag">&euro;2.500&ndash;3.500</span></div>
+      <div class="card-footer"><span class="contact">amantide.it</span><a class="visit-link" href="https://amantide.it/" target="_blank">Visita &rarr;</a></div>
+    </div>
+
+    <!-- 32 — New Hair Italia -->
+    <div class="card c-green" data-tags="agenzia italiano" data-name="new hair italia phoenix srl trapiantocapelliturchia gianluca pappalardo dr serkan aygin partner">
+      <span class="year-tag">Est. 2013</span>
+      <div class="card-header"><div class="avatar av-green">NH</div><div><p class="card-title">New Hair Italia</p><p class="card-type">Agenzia italiana &middot; San Severino Marche</p></div></div>
+      <span class="badge badge-green">20.000+ italiani assistiti &middot; Partner Dr. Serkan Aygin</span>
+      <p class="card-desc">Prima agenzia italiana specializzata in trapianti in Turchia. Partner ufficiale Dr. Serkan Aygin. 20.000+ italiani assistiti. Due volte al mese accompagna gruppi a Istanbul per 4 giorni. Spedizione prodotti post-trapianto in Italia.</p>
+      <div class="tags"><span class="tag">FUE</span><span class="tag">DHI</span><span class="tag">PRP</span><span class="tag">Da &euro;2.650</span></div>
+      <div class="card-footer"><span class="contact">trapiantocapelliturchia.com</span><a class="visit-link" href="https://www.trapiantocapelliturchia.com/" target="_blank">Visita &rarr;</a></div>
+    </div>
+
+    <!-- 33 — Turchia Trapianto Capelli -->
+    <div class="card c-dim" data-tags="agenzia italiano" data-name="turchia trapianto capelli luca montanari agenzia intermediaria fue dhi zaffiro prp mesoterapia">
+      <span class="year-tag">Agenzia</span>
+      <div class="card-header"><div class="avatar av-dim">TTC</div><div><p class="card-title">Turchia Trapianto Capelli</p><p class="card-type">Agenzia intermediaria &middot; Internazionale</p></div></div>
+      <span class="badge badge-dim">Approccio individuale &middot; Patient manager</span>
+      <p class="card-desc">Agenzia con approccio individuale, fondata da Luca Montanari. Rete di cliniche selezionate a Istanbul. Gestione completa dalla partenza dall'Italia al rientro. Patient manager dedicato per ogni paziente. Sito interamente in italiano.</p>
+      <div class="tags"><span class="tag">FUE</span><span class="tag">Zaffiro</span><span class="tag">DHI</span><span class="tag">PRP</span><span class="tag">Tricopigmentazione</span></div>
+      <div class="card-footer"><span class="contact">turchiatrapiantocapelli.com</span><a class="visit-link" href="https://www.turchiatrapiantocapelli.com/" target="_blank">Visita &rarr;</a></div>
+    </div>
+
+    <!-- 34 — EsteNove -->
+    <div class="card c-crimson" data-tags="clinica italiano" data-name="estenove nove mic ice sapphire fue stem cell prp istanbul sisli 2005 10000 pazienti trustpilot 5.0">
+      <span class="year-tag">Est. ~2005</span>
+      <div class="card-header"><div class="avatar av-crimson">EN</div><div><p class="card-title">EsteNove</p><p class="card-type">Clinica turca &middot; Sisli, Istanbul</p></div></div>
+      <span class="badge badge-crimson">Trustpilot 5.0 (1.002+ rec.) &middot; ISO</span>
+      <p class="card-desc">10.000+ pazienti da 80+ paesi. Trustpilot 5.0/5 con 1.002+ recensioni. Tecniche proprietarie NOVE MIC e Ice Sapphire FUE. Stem Cell Hair Transplant. Comfort-in Painless Anesthesia. Pacchetto 3 giorni all-inclusive. Sito in italiano.</p>
+      <div class="tags"><span class="tag">NOVE MIC</span><span class="tag">Ice Sapphire FUE</span><span class="tag">Stem Cell</span><span class="tag">&euro;2.500&ndash;4.000</span></div>
+      <div class="card-footer"><span class="contact">estenove.com</span><a class="visit-link" href="https://www.estenove.com/en/" target="_blank">Visita &rarr;</a></div>
+    </div>
+
+    <!-- 35 — MedArt Hair -->
+    <div class="card c-gold" data-tags="clinica italiano boutique" data-name="medart hair busra yakupoglu fatih koroglu boutique 3 pazienti giorno istanbul kadikoy sisli 25000">
+      <span class="year-tag">Boutique</span>
+      <div class="card-header"><div class="avatar av-gold">MA</div><div><p class="card-title">MedArt Hair</p><p class="card-type">Clinica boutique &middot; Kadikoy + Sisli, Istanbul</p></div></div>
+      <span class="badge badge-gold">Max 3 pazienti/giorno &middot; 25.000+ pazienti</span>
+      <p class="card-desc">Clinica boutique: max 3 pazienti al giorno. 25.000+ pazienti, 50M+ innesti impiantati. La Dr.ssa Busra Yakupoglu esegue personalmente l'intera procedura. Sapphire FUE, DHI, Stem Cell, Long FUE. Sito in italiano. Trustpilot 5.0.</p>
+      <div class="tags"><span class="tag">Sapphire FUE</span><span class="tag">DHI</span><span class="tag">Stem Cell</span><span class="tag">Da &euro;1.880</span></div>
+      <div class="card-footer"><span class="contact">medarthair.com</span><a class="visit-link" href="https://www.medarthair.com/" target="_blank">Visita &rarr;</a></div>
+    </div>
+
+    <!-- 36 — BlueMagic Group -->
+    <div class="card c-blue" data-tags="clinica jci" data-name="bluemagic group clinic istanbul bakirkoy londra dubai 35000 procedure garanzia vita jci forbes bloomberg">
+      <div class="card-header"><div class="avatar av-blue">BM</div><div><p class="card-title">BlueMagic Group</p><p class="card-type">Clinica internaz. &middot; Istanbul + Londra + Dubai</p></div></div>
+      <span class="badge badge-blue">JCI &middot; 35.000+ procedure &middot; 7x Best Clinic</span>
+      <p class="card-desc">35.000+ procedure, pazienti da 120+ paesi. Struttura JCI accreditata. 7 volte "Best Hair Transplant Clinic of the Year". Citata da Bloomberg, Forbes, The Guardian. Garanzia medica a vita. Pacchetto Platinum &euro;3.400.</p>
+      <div class="tags"><span class="tag">Sapphire FUE</span><span class="tag">DHI Choi</span><span class="tag">PRP</span><span class="tag">&euro;3.400</span></div>
+      <div class="card-footer"><span class="contact">bluemagiclinic.com</span><a class="visit-link" href="https://www.bluemagiclinic.com/" target="_blank">Visita &rarr;</a></div>
+    </div>
+
+    <!-- 37 — Dr. Terziler -->
+    <div class="card c-purple" data-tags="clinica premium boutique" data-name="dr terziler servet terziler picasso hair robotic dhi sapphire 0.75mm istanbul besiktas etiler">
+      <div class="card-header"><div class="avatar av-purple">DT</div><div><p class="card-title">Dr. Terziler Exclusive Clinic</p><p class="card-type">Clinica premium &middot; Etiler, Istanbul</p></div></div>
+      <span class="badge badge-purple">&ldquo;Picasso dei Capelli&rdquo; &middot; Punta zaffiro 0.75mm</span>
+      <p class="card-desc">Clinica esclusiva del Dr. Servet Terziler, detto "Picasso dei Capelli". 35+ anni di esperienza. Unico al mondo con penna implantatrice zaffiro da 0.75mm. Picasso Robotic DHI proprietaria. Fascia ultra-premium.</p>
+      <div class="tags"><span class="tag">Robotic DHI</span><span class="tag">Sapphire 0.75mm</span><span class="tag">&euro;3.000&ndash;6.000</span></div>
+      <div class="card-footer"><span class="contact">drterziler.com</span><a class="visit-link" href="https://drterziler.com/" target="_blank">Visita &rarr;</a></div>
+    </div>
+
+    <!-- 38 — Esteworld -->
+    <div class="card c-orange" data-tags="clinica" data-name="esteworld istanbul bahcelievler altunizade artas robotic fue dhi iso 2004 1994 80 paesi 235 staff">
+      <span class="year-tag">Est. 2004</span>
+      <div class="card-header"><div class="avatar av-orange">EW</div><div><p class="card-title">Esteworld</p><p class="card-type">Gruppo clinico &middot; Istanbul (3 sedi)</p></div></div>
+      <span class="badge badge-orange">ARTAS Robotic &middot; ISO 9001 &middot; 3 sedi</span>
+      <p class="card-desc">Uno dei pi&ugrave; grandi gruppi di estetica in Turchia (dal 1994 in estetica, dal 2004 clinica). 3 sedi a Istanbul, 235 staff, pazienti da 80+ paesi. Offre trapianto robotico ARTAS, raro in Turchia. ISO certificata.</p>
+      <div class="tags"><span class="tag">ARTAS Robotic</span><span class="tag">FUE</span><span class="tag">DHI</span><span class="tag">&euro;1.700&ndash;2.350</span></div>
+      <div class="card-footer"><span class="contact">esteworldturkey.com</span><a class="visit-link" href="https://www.esteworldturkey.com/" target="_blank">Visita &rarr;</a></div>
+    </div>
+
+    <!-- 39 — Asli Tarcan -->
+    <div class="card c-teal" data-tags="clinica" data-name="asli tarcan clinic istanbul zeytinburnu 2005 fue dhi robotic dhi sapphire afro donna 10000">
+      <span class="year-tag">Est. 2005</span>
+      <div class="card-header"><div class="avatar av-teal">AT</div><div><p class="card-title">Asli Tarcan Clinic</p><p class="card-type">Gruppo sanitario &middot; Zeytinburnu, Istanbul</p></div></div>
+      <span class="badge badge-teal">Dal 2005 &middot; 10.000+ pazienti</span>
+      <p class="card-desc">Centro multidisciplinare attivo dal 2005. 10.000+ pazienti. DHI, Sapphire FUE, Robotic DHI, trapianto Afro e donna. Fondato da Asli Tarcan. Autorizzazione Ministero Salute turco (AK-0086). TURSAB.</p>
+      <div class="tags"><span class="tag">DHI</span><span class="tag">Sapphire FUE</span><span class="tag">Robotic DHI</span><span class="tag">&euro;1.800&ndash;3.500</span></div>
+      <div class="card-footer"><span class="contact">aslitarcanclinic.com</span><a class="visit-link" href="https://aslitarcanclinic.com/" target="_blank">Visita &rarr;</a></div>
+    </div>
+
+    <!-- 40 — HayatMed -->
+    <div class="card c-blue" data-tags="clinica jci italiano" data-name="hayatmed clinic istanbul sisli jci gurkan albayrak 19 anni fue dhi sapphire revisione 2.1%">
+      <div class="card-header"><div class="avatar av-blue">HM</div><div><p class="card-title">HayatMed Clinic</p><p class="card-type">Clinica turca &middot; Sisli, Istanbul</p></div></div>
+      <span class="badge badge-blue">JCI &middot; Tasso revisione solo 2,1%</span>
+      <p class="card-desc">Accreditamento JCI. Dr. Gurkan Albayrak (19 anni esperienza) esegue personalmente estrazione e design. Tasso revisione 2,1% (vs media settore 5&ndash;8%). 12 mesi di aftercare remoto incluso. Sito in italiano.</p>
+      <div class="tags"><span class="tag">FUE</span><span class="tag">DHI</span><span class="tag">Sapphire FUE</span><span class="tag">&euro;1.850&ndash;3.950</span></div>
+      <div class="card-footer"><span class="contact">hayatmed.com</span><a class="visit-link" href="https://www.hayatmed.com/" target="_blank">Visita &rarr;</a></div>
+    </div>
+
+    <!-- 41 — Este Favor -->
+    <div class="card c-crimson" data-tags="clinica jci boutique" data-name="este favor istanbul bakirkoy atakoy jci ospedale a+++ boutique 1 2 pazienti giorno premio 2026">
+      <span class="year-tag">Premio 2026</span>
+      <div class="card-header"><div class="avatar av-crimson">EF</div><div><p class="card-title">Este Favor</p><p class="card-type">Clinica boutique &middot; Bakirkoy, Istanbul</p></div></div>
+      <span class="badge badge-crimson">Most Successful Hair Transplant Center 2026</span>
+      <p class="card-desc">Opera in ospedale JCI classe A+++. Max 1&ndash;2 pazienti al giorno. Premiata "Most Successful Hair Transplant Center" agli International Istanbul Awards (febbraio 2026). Il medico senior supervisiona ogni fase direttamente.</p>
+      <div class="tags"><span class="tag">Sapphire FUE</span><span class="tag">DHI</span><span class="tag">Hybrid</span><span class="tag">&euro;1.800&ndash;3.500</span></div>
+      <div class="card-footer"><span class="contact">estefavor.com</span><a class="visit-link" href="https://estefavor.com/" target="_blank">Visita &rarr;</a></div>
+    </div>
+
+    <!-- 42 — Hairmedico -->
+    <div class="card c-gold" data-tags="clinica boutique" data-name="hairmedico dr arslan musbeh ishrs istanbul besiktas levent boutique 1 paziente giorno 10000">
+      <div class="card-header"><div class="avatar av-gold">HM2</div><div><p class="card-title">Hairmedico &mdash; Dr. Arslan Musbeh</p><p class="card-type">Clinica boutique &middot; Levent, Istanbul</p></div></div>
+      <span class="badge badge-gold">ISHRS &middot; Solo 1 paziente/giorno</span>
+      <p class="card-desc">Membro ISHRS. 10.000+ trapianti. Solo 1 paziente al giorno (2 in casi eccezionali). Il Dr. Arslan esegue personalmente incisioni e estrazione. Focus massimo su precisione e risultati naturali. Approccio VIP.</p>
+      <div class="tags"><span class="tag">FUE</span><span class="tag">Sapphire FUE</span><span class="tag">DHI</span><span class="tag">&euro;2.500&ndash;4.500</span></div>
+      <div class="card-footer"><span class="contact">hairmedico.com</span><a class="visit-link" href="https://hairmedico.com/" target="_blank">Visita &rarr;</a></div>
+    </div>
+
+    <!-- 43 — NIM Clinic -->
+    <div class="card c-cyan" data-tags="clinica" data-name="nim clinic dr musa yetim revital fue istanbul besiktas 2006 4000 trapianti google 4.99">
+      <span class="year-tag">Est. 2006</span>
+      <div class="card-header"><div class="avatar av-cyan">NM</div><div><p class="card-title">NIM Clinic &mdash; Dr. Musa Yetim</p><p class="card-type">Clinica turca &middot; Besiktas, Istanbul</p></div></div>
+      <span class="badge badge-cyan">Revital FUE &middot; Google 4.99/5</span>
+      <p class="card-desc">Fondata nel 2006 dal Dr. Musa Yetim. 4.000+ trapianti. Tecnica proprietaria Revital FUE: 100% trasferimento dei graft prelevati. Rating Google 4.99/5. Premiato per innovazione. Sapphire FUE, DHI, Long Hair FUE.</p>
+      <div class="tags"><span class="tag">Revital FUE</span><span class="tag">Sapphire FUE</span><span class="tag">DHI</span><span class="tag">&euro;2.800&ndash;3.600</span></div>
+      <div class="card-footer"><span class="contact">nimclinic.com</span><a class="visit-link" href="https://www.nimclinic.com/" target="_blank">Visita &rarr;</a></div>
+    </div>
+
+    <!-- 44 — Dr. Ilker Apaydin -->
+    <div class="card c-purple" data-tags="clinica premium" data-name="dr ilker apaydin ishrs nisantasi istanbul 2006 fue fut combinata riparatrice chirurgo plastico 10000">
+      <span class="year-tag">Est. 2006</span>
+      <div class="card-header"><div class="avatar av-purple">IA</div><div><p class="card-title">Dr. Ilker Apaydin</p><p class="card-type">Clinica premium &middot; Nisantasi, Istanbul</p></div></div>
+      <span class="badge badge-purple">ISHRS dal 2003 &middot; Specialista FUT+FUE</span>
+      <p class="card-desc">Chirurgo plastico, membro ISHRS dal 2003. 10.000+ pazienti. Tra i pochi in Turchia con FUT e procedura combinata FUT+FUE. Specializzato in chirurgia riparatrice per trapianti falliti. Top Rated su RealSelf.</p>
+      <div class="tags"><span class="tag">FUE</span><span class="tag">FUT</span><span class="tag">FUT+FUE</span><span class="tag">Riparatrice</span></div>
+      <div class="card-footer"><span class="contact">drilkerapaydin.com</span><a class="visit-link" href="https://drilkerapaydin.com/" target="_blank">Visita &rarr;</a></div>
+    </div>
+
+    <!-- 45 — Dr. Ziya Yavuz -->
+    <div class="card c-teal" data-tags="clinica" data-name="dr ziya yavuz istanbul sisli londra dhi sapphire exosome cold plasma bbc 7500 pazienti garanzia">
+      <div class="card-header"><div class="avatar av-teal">ZY</div><div><p class="card-title">Dr. Ziya Yavuz Hair Clinic</p><p class="card-type">Clinica turca &middot; Istanbul + Londra</p></div></div>
+      <span class="badge badge-teal">Featured BBC ONE &middot; Garanzia certificata</span>
+      <p class="card-desc">7.500+ pazienti. Cliniche a Istanbul e Londra. Featured su BBC ONE. 2.000+ recensioni, 4.89/5. Certificato di garanzia incluso. Trattamenti innovativi: Exosome Therapy, Cold Plasma, oltre a DHI e Sapphire FUE.</p>
+      <div class="tags"><span class="tag">DHI</span><span class="tag">Sapphire FUE</span><span class="tag">Exosome</span><span class="tag">Cold Plasma</span><span class="tag">&euro;2.000&ndash;3.000</span></div>
+      <div class="card-footer"><span class="contact">drziyayavuz.com</span><a class="visit-link" href="https://www.drziyayavuz.com/" target="_blank">Visita &rarr;</a></div>
+    </div>
+
+    <!-- 46 — Cosmeticium -->
+    <div class="card c-gold" data-tags="clinica jci" data-name="cosmeticium nisantasi tesvikiye istanbul jci tuv iso sapphire ice fue dhi hilton doubletree 1499">
+      <div class="card-header"><div class="avatar av-gold">CO</div><div><p class="card-title">Cosmeticium</p><p class="card-type">Clinica turca &middot; Nisantasi, Istanbul</p></div></div>
+      <span class="badge badge-gold">JCI + TUV + ISO (ospedale) &middot; Hotel Hilton incluso</span>
+      <p class="card-desc">Opera in ospedali con tripla certificazione JCI/TUV/ISO. Sapphire ICE FUE e DHI. Pacchetto molto competitivo da ~&euro;1.750 che include 2 notti Hilton DoubleTree e trasferimenti VIP. Dr. Batu (10+ anni, Istanbul University).</p>
+      <div class="tags"><span class="tag">Sapphire ICE FUE</span><span class="tag">DHI</span><span class="tag">Hilton incluso</span><span class="tag">Da &euro;1.750</span></div>
+      <div class="card-footer"><span class="contact">cosmeticium.com</span><a class="visit-link" href="https://cosmeticium.com/" target="_blank">Visita &rarr;</a></div>
+    </div>
+
+    <!-- 47 — Suzermed -->
+    <div class="card c-green" data-tags="agenzia jci italiano" data-name="suzermed clinic istanbul roma londra dubai acibadem altunizade jci sede roma consulenze">
+      <div class="card-header"><div class="avatar av-green">SM</div><div><p class="card-title">Suzermed Clinic</p><p class="card-type">Clinica internaz. &middot; Istanbul + Roma + Londra</p></div></div>
+      <span class="badge badge-green">Sede a Roma &middot; JCI (Acibadem)</span>
+      <p class="card-desc">Gruppo internazionale con sedi a Istanbul, Roma, Londra e Dubai. Opera presso l'Ospedale Acibadem Altunizade (JCI, 60.000+ mq). La sede di Roma offre consulenze pre-intervento per pazienti italiani. Protocolli clinici unificati.</p>
+      <div class="tags"><span class="tag">DHI</span><span class="tag">FUE</span><span class="tag">Sapphire FUE</span><span class="tag">&euro;2.500&ndash;5.000</span></div>
+      <div class="card-footer"><span class="contact">suzermedclinic.com</span><a class="visit-link" href="https://www.suzermedclinic.com/" target="_blank">Visita &rarr;</a></div>
+    </div>
+
+    <!-- 48 — HWT Clinic -->
+    <div class="card c-blue" data-tags="clinica" data-name="hwt clinic hair world turkey istanbul kartal 2014 dhi fue fut manchester city 4000 anno 60 team">
+      <span class="year-tag">Est. 2014</span>
+      <div class="card-header"><div class="avatar av-blue">HW</div><div><p class="card-title">HWT Clinic (Hair World Turkey)</p><p class="card-type">Clinica turca &middot; Kartal, Istanbul</p></div></div>
+      <span class="badge badge-blue">Sponsor Manchester City &middot; 4.000+ op/anno</span>
+      <p class="card-desc">4.000+ procedure annuali. Team di 60 persone con 2 chirurghi e 30 infermieri. Health sponsor ufficiale del Manchester City FC. DHI come tecnica primaria. FUE, FUT, Unshaven, trapianto Afro e donna.</p>
+      <div class="tags"><span class="tag">DHI</span><span class="tag">FUE</span><span class="tag">FUT</span><span class="tag">Afro</span><span class="tag">&euro;2.000&ndash;4.000</span></div>
+      <div class="card-footer"><span class="contact">hwtclinic.com</span><a class="visit-link" href="https://www.hwtclinic.com/" target="_blank">Visita &rarr;</a></div>
+    </div>
+
+    <!-- 49 — Este Surgery -->
+    <div class="card c-dim" data-tags="clinica" data-name="este surgery dr alp aslan chirurgo plastico ishrs istanbul sisli fulya 2008 20000 20 anni">
+      <span class="year-tag">Est. 2008</span>
+      <div class="card-header"><div class="avatar av-dim">ES</div><div><p class="card-title">Este Surgery &mdash; Dr. Alp Aslan</p><p class="card-type">Clinica turca &middot; Sisli, Istanbul</p></div></div>
+      <span class="badge badge-dim">ISHRS dal 2014 &middot; Chirurgo plastico</span>
+      <p class="card-desc">Fondata nel 2008 dal chirurgo plastico Dr. Alp Aslan. Membro associato ISHRS dal 2014. 20.000+ pazienti. Ogni procedura eseguita da un chirurgo plastico con 20+ anni di esperienza. 17 certificati. Focus su risultati naturali.</p>
+      <div class="tags"><span class="tag">FUE</span><span class="tag">DHI</span><span class="tag">ISHRS</span><span class="tag">&euro;2.000&ndash;4.000</span></div>
+      <div class="card-footer"><span class="contact">estesurgery.com</span><a class="visit-link" href="https://www.estesurgery.com/" target="_blank">Visita &rarr;</a></div>
+    </div>
+
+    <!-- 50 — HTI Dr. Yaylaci -->
+    <div class="card c-orange" data-tags="clinica" data-name="hti hair transplant istanbul dr cengiz yaylaci 20000 oxygenated therapy besiktas sisli 2014">
+      <span class="year-tag">Est. 2014</span>
+      <div class="card-header"><div class="avatar av-orange">HT</div><div><p class="card-title">HTI &mdash; Dr. Cengiz Yaylaci</p><p class="card-type">Clinica turca &middot; Besiktas, Istanbul</p></div></div>
+      <span class="badge badge-orange">20.000+ procedure &middot; Oxygenated Therapy</span>
+      <p class="card-desc">20.000+ procedure dal 2014. Il Dr. Cengiz Yaylaci ha introdotto la Oxygenated Therapy in Turchia. Opera in ospedale classe A-plus. Pacchetto all-inclusive con hotel 5&#9733;, PRP e trasferimenti da &euro;2.200.</p>
+      <div class="tags"><span class="tag">FUE</span><span class="tag">DHI</span><span class="tag">Sapphire FUE</span><span class="tag">Da &euro;2.200</span></div>
+      <div class="card-footer"><span class="contact">hairtransplantsistanbul.com</span><a class="visit-link" href="https://hairtransplantsistanbul.com/" target="_blank">Visita &rarr;</a></div>
+    </div>
+
+    <!-- 51 — Medical of Istanbul -->
+    <div class="card c-teal" data-tags="clinica" data-name="medical of istanbul 12300 operazioni garanzia vita radisson blu hepa fue dhi sapphire 15 anni">
+      <div class="card-header"><div class="avatar av-teal">MI</div><div><p class="card-title">Medical of Istanbul</p><p class="card-type">Clinica turca &middot; Kucukcekmece, Istanbul</p></div></div>
+      <span class="badge badge-teal">12.300+ operazioni &middot; Garanzia a vita</span>
+      <p class="card-desc">15+ anni di esperienza, 12.300+ operazioni. Tasso successo 98%. Certificato di garanzia a vita. Sale HEPA-filtrate. Partnership con hotel Radisson Blu e Elite World Florya. Supporto in 9+ lingue.</p>
+      <div class="tags"><span class="tag">FUE</span><span class="tag">DHI</span><span class="tag">Sapphire FUE</span><span class="tag">Garanzia vita</span></div>
+      <div class="card-footer"><span class="contact">medicalofistanbul.com</span><a class="visit-link" href="https://medicalofistanbul.com/" target="_blank">Visita &rarr;</a></div>
+    </div>
+
+    <!-- 52 — Hair Center of Turkey -->
+    <div class="card c-dim" data-tags="clinica" data-name="hair center of turkey sinan ozer rasime erkan istanbul atakoy 2014 5000 fue hybrid sapphire dhi">
+      <span class="year-tag">Est. 2014</span>
+      <div class="card-header"><div class="avatar av-dim">HC</div><div><p class="card-title">Hair Center of Turkey</p><p class="card-type">Clinica turca &middot; Atakoy, Istanbul</p></div></div>
+      <span class="badge badge-dim">5.000+ operazioni &middot; Doctor-led</span>
+      <p class="card-desc">Fondata nel 2014 da Sinan Ozer. 5.000+ operazioni. Approccio "doctor-led": il fondatore coordina personalmente tutte le fasi. Dr. Rasime Erkan (dermatologa, 35+ anni esperienza). FUE Hybrid, Sapphire FUE, DHI.</p>
+      <div class="tags"><span class="tag">FUE Hybrid</span><span class="tag">Sapphire FUE</span><span class="tag">DHI</span><span class="tag">&euro;2.000&ndash;4.000</span></div>
+      <div class="card-footer"><span class="contact">haircenterofturkey.com</span><a class="visit-link" href="https://haircenterofturkey.com/" target="_blank">Visita &rarr;</a></div>
+    </div>
+
+    <!-- 53 — Longevita -->
+    <div class="card c-dim" data-tags="agenzia" data-name="longevita londra chelsea istanbul sisli mecidiyekoy facilitatore 40000 clienti 100 paesi 2012 3500 recensioni">
+      <span class="year-tag">Est. 2012</span>
+      <div class="card-header"><div class="avatar av-dim">LV</div><div><p class="card-title">Longevita</p><p class="card-type">Facilitatore UK &middot; Londra + Istanbul</p></div></div>
+      <span class="badge badge-dim">40.000+ clienti &middot; 3.500+ rec. 5&#9733;</span>
+      <p class="card-desc">Facilitatore medico UK (Chelsea, Londra). 40.000+ clienti da 100+ paesi. 3.500+ recensioni 5 stelle. Collega pazienti con cliniche accreditate a Istanbul. Non e' una clinica ma un intermediario con standard di selezione.</p>
+      <div class="tags"><span class="tag">FUE</span><span class="tag">DHI</span><span class="tag">Sapphire FUE</span><span class="tag">Da &euro;2.040</span></div>
+      <div class="card-footer"><span class="contact">longevita.co.uk</span><a class="visit-link" href="https://www.longevita.co.uk/" target="_blank">Visita &rarr;</a></div>
+    </div>
+
+    <!-- 54 — Acibadem -->
+    <div class="card c-crimson" data-tags="clinica jci ospedale" data-name="acibadem healthcare group hair transplant jci istanbul atasehir 1991 43542 trapianti 3500 medici 29 ospedali">
+      <span class="year-tag">Est. 1991</span>
+      <div class="card-header"><div class="avatar av-crimson">AC</div><div><p class="card-title">Acibadem Healthcare Group</p><p class="card-type">Gruppo ospedaliero &middot; Atasehir, Istanbul</p></div></div>
+      <span class="badge badge-crimson">JCI &middot; 29 ospedali &middot; 43.500+ trapianti</span>
+      <p class="card-desc">Il gruppo ospedaliero pi&ugrave; prestigioso della Turchia. 29 ospedali, 3.500+ medici, 4.500+ infermieri. 43.542 trapianti capillari + 12.564 trapianti barba. Sapphire FUE e DHI Plus senza rasatura. Ospedale A++. Traduzione in 25 lingue.</p>
+      <div class="tags"><span class="tag">Sapphire FUE</span><span class="tag">DHI Plus</span><span class="tag">Ospedale A++</span><span class="tag">&euro;2.300&ndash;3.200</span></div>
+      <div class="card-footer"><span class="contact">acibademhairtransplant.com</span><a class="visit-link" href="https://acibademhairtransplant.com/" target="_blank">Visita &rarr;</a></div>
+    </div>
+
+    <!-- 55 — Liv Hospital -->
+    <div class="card c-purple" data-tags="clinica jci ospedale" data-name="liv hospital istinye university jci artas robotic fue dhi choi istanbul ulus bahcesehir 2013">
+      <span class="year-tag">Est. 2013</span>
+      <div class="card-header"><div class="avatar av-purple">LH2</div><div><p class="card-title">Liv Hospital (Istinye University)</p><p class="card-type">Ospedale universitario &middot; Istanbul</p></div></div>
+      <span class="badge badge-purple">JCI &middot; Unico con ARTAS Robotic</span>
+      <p class="card-desc">Ospedale universitario JCI e ISO. Unico in Turchia ad offrire il trapianto robotico ARTAS. Dr. Hamid Aydin (25+ anni). Sale con filtrazione HEPA e autoclavaggio. Accesso a reparti emergenza e anestesiologia. 2 sedi Istanbul.</p>
+      <div class="tags"><span class="tag">ARTAS Robotic</span><span class="tag">Sapphire FUE</span><span class="tag">DHI Choi</span><span class="tag">&euro;45&ndash;4.100</span></div>
+      <div class="card-footer"><span class="contact">int.livhospital.com</span><a class="visit-link" href="https://int.livhospital.com/hair-transplant/" target="_blank">Visita &rarr;</a></div>
+    </div>
+
+    <!-- 56 — Medipol Mega -->
+    <div class="card c-blue" data-tags="clinica jci ospedale" data-name="medipol mega university hospital jci istanbul bagcilar 2012 1500 letti 5000 dipendenti staminali">
+      <span class="year-tag">Est. 2012</span>
+      <div class="card-header"><div class="avatar av-blue">MP</div><div><p class="card-title">Medipol Mega University Hospital</p><p class="card-type">Ospedale universitario &middot; Bagcilar, Istanbul</p></div></div>
+      <span class="badge badge-blue">JCI &middot; 1.500 letti &middot; 5.000 dipendenti</span>
+      <p class="card-desc">Mega complesso ospedaliero JCI accreditato. 1.500 letti, 5.000 dipendenti, 400+ medici. FUE, FUT, DHI, Sapphire FUE, trapianto robotico e trattamento con cellule staminali contro alopecia. Standard ospedalieri completi.</p>
+      <div class="tags"><span class="tag">FUE</span><span class="tag">FUT</span><span class="tag">DHI</span><span class="tag">Staminali</span><span class="tag">Robotico</span></div>
+      <div class="card-footer"><span class="contact">medipolglobal.com</span><a class="visit-link" href="https://medipolglobal.com/hair-transplant" target="_blank">Visita &rarr;</a></div>
+    </div>
+
+    <!-- 57 — EstePera (aggiunto sede Istanbul) — GIÀ PRESENTE, skip -->
+
+    <!-- 57 — HLC Hairline Clinic (Ankara) -->
+    <div class="card c-gold" data-tags="clinica premium boutique ankara" data-name="hlc hairline clinic dr ozgur oztan ankara cankaya fue manuale fishrs 2002 stick and place boutique 2 pazienti">
+      <span class="year-tag">Est. 2002</span>
+      <div class="card-header"><div class="avatar av-gold">HLC</div><div><p class="card-title">HLC Hairline Clinic &mdash; Dr. Ozgur Oztan</p><p class="card-type">Clinica boutique premium &middot; Ankara</p></div></div>
+      <span class="badge badge-gold">FISHRS &middot; Pioniere FUE Turchia &middot; Solo 2 pz/giorno</span>
+      <p class="card-desc">Solo FUE manuale (NO motorizzata). Tecnica "Stick and Place" unica al mondo. Membro FISHRS (Fellow ISHRS). Max 2 pazienti al giorno. Tutti medici, nessun tecnico sui passaggi critici. Medihair 9.1/10. Fascia super-premium: &euro;2,70/graft.</p>
+      <div class="tags"><span class="tag">FUE manuale</span><span class="tag">Stick &amp; Place</span><span class="tag">FISHRS</span><span class="tag">&euro;8.100&ndash;9.000</span></div>
+      <div class="card-footer"><span class="contact">fue-hlc.com</span><a class="visit-link" href="https://www.fue-hlc.com/" target="_blank">Visita &rarr;</a></div>
+    </div>
+
+    <!-- 58 — DK Klinik (Antalya) -->
+    <div class="card c-teal" data-tags="clinica antalya" data-name="dk klinik antalya lara muratpasa 2002 ishrs dhi fue 10000 senturk prima clinica accreditata antalya">
+      <span class="year-tag">Est. 2002</span>
+      <div class="card-header"><div class="avatar av-teal">DK</div><div><p class="card-title">DK Klinik</p><p class="card-type">Clinica dermatologica &middot; Antalya</p></div></div>
+      <span class="badge badge-teal">ISHRS &middot; Prima accreditata ad Antalya &middot; 23 anni</span>
+      <p class="card-desc">Prima clinica trapianto ad Antalya accreditata dal Ministero Salute (2002). 10.000+ casi. Membro ISHRS, affiliata EADV/ESCAD. Max 2 pazienti al giorno. Prof. Dr. Umit Kemal Senturk. Prezzo fisso: ~&euro;2.600 all-inclusive.</p>
+      <div class="tags"><span class="tag">DHI</span><span class="tag">FUE</span><span class="tag">ISHRS</span><span class="tag">~&euro;2.600 fisso</span></div>
+      <div class="card-footer"><span class="contact">en.dk-klinik.com.tr</span><a class="visit-link" href="https://en.dk-klinik.com.tr/" target="_blank">Visita &rarr;</a></div>
+    </div>
+
+    <!-- 59 — GETFUE (Antalya) -->
+    <div class="card c-orange" data-tags="clinica antalya" data-name="getfue clinic dr ayhan colak antalya kemer 2012 ishrs pioniere dhi implanter pen 10000 trapianti">
+      <span class="year-tag">Est. 2012</span>
+      <div class="card-header"><div class="avatar av-orange">GF</div><div><p class="card-title">GETFUE &mdash; Dr. Ayhan Colak</p><p class="card-type">Clinica specializzata &middot; Antalya</p></div></div>
+      <span class="badge badge-orange">ISHRS &middot; Pioniere DHI/Implanter Pen</span>
+      <p class="card-desc">10.000+ trapianti dal 2012. Dr. Ayhan Colak, membro associato ISHRS dal 2016. Tra i primi in Turchia ad adottare il metodo DHI con Implanter Pen. Tasso ricrescita 90&ndash;95%. Pacchetti all-inclusive con alloggio.</p>
+      <div class="tags"><span class="tag">DHI Implanter</span><span class="tag">Sapphire FUE</span><span class="tag">ISHRS</span><span class="tag">Da &euro;1.800</span></div>
+      <div class="card-footer"><span class="contact">getfue.com</span><a class="visit-link" href="https://www.getfue.com/" target="_blank">Visita &rarr;</a></div>
+    </div>
+
+    <!-- 60 — AHD Clinic Dr. Doganay (Antalya) -->
+    <div class="card c-cyan" data-tags="clinica antalya premium boutique" data-name="ahd clinic dr hakan doganay antalya muratpasa 2003 iahrs pioniere dhi turchia bht body hair">
+      <span class="year-tag">Est. 2003</span>
+      <div class="card-header"><div class="avatar av-cyan">AHD</div><div><p class="card-title">AHD Clinic &mdash; Dr. Hakan Doganay</p><p class="card-type">Clinica boutique &middot; Antalya</p></div></div>
+      <span class="badge badge-cyan">IAHRS &middot; Pioniere DHI in Turchia</span>
+      <p class="card-desc">Pioniere della tecnica DHI (Implanter Pen) in Turchia, attivo dal 2003. Membro raccomandato IAHRS. Molto rispettato nei forum specializzati (HairLossTalk, HairRestorationNetwork). Modello &euro;3/graft. Body Hair Transplant disponibile.</p>
+      <div class="tags"><span class="tag">DHI</span><span class="tag">FUE</span><span class="tag">BHT</span><span class="tag">IAHRS</span><span class="tag">&euro;3/graft</span></div>
+      <div class="card-footer"><span class="contact">drhakandoganay.com</span><a class="visit-link" href="https://www.drhakandoganay.com/en/" target="_blank">Visita &rarr;</a></div>
+    </div>
+
+    <!-- ═══════════════════════════════════════ -->
+    <!-- ULTIME 10 STRUTTURE (61-70)            -->
+    <!-- ═══════════════════════════════════════ -->
+
+    <!-- 61 — Hairneva -->
+    <div class="card c-crimson" data-tags="clinica jci premium" data-name="hairneva dr guncel ozturk ebopras yale acibadem fulya istanbul besiktas 2014 8500 garanzia vita esosomi staminali">
+      <span class="year-tag">Est. 2014</span>
+      <div class="card-header"><div class="avatar av-crimson">HN</div><div><p class="card-title">Hairneva &mdash; Dr. G&uuml;ncel &Ouml;zt&uuml;rk</p><p class="card-type">Clinica premium &middot; Besiktas, Istanbul</p></div></div>
+      <span class="badge badge-crimson">EBOPRAS &middot; Yale &middot; Google 4.9 (950+ rec.)</span>
+      <p class="card-desc">Opera all'interno dell'Acibadem Fulya Hospital. 8.500+ interventi. Dr. &Ouml;zt&uuml;rk: chirurgo plastico certificato europeo (EBOPRAS), fellowship Yale e Miami. 29+ pubblicazioni peer-reviewed. Garanzia a vita + follow-up 1 anno.</p>
+      <div class="tags"><span class="tag">Sapphire FUE</span><span class="tag">DHI</span><span class="tag">Esosomi</span><span class="tag">Staminali</span><span class="tag">&euro;1.890&ndash;3.090</span></div>
+      <div class="card-footer"><span class="contact">hairneva.com</span><a class="visit-link" href="https://www.hairneva.com/" target="_blank">Visita &rarr;</a></div>
+    </div>
+
+    <!-- 62 — Adem & Havva -->
+    <div class="card c-gold" data-tags="clinica italiano" data-name="adem havva medical center istanbul sisli 2011 16000 interventi 45 nazionalita garanzia vita robotico">
+      <span class="year-tag">Est. 2011</span>
+      <div class="card-header"><div class="avatar av-gold">AH</div><div><p class="card-title">Adem &amp; Havva Medical Center</p><p class="card-type">Clinica turca &middot; Sisli, Istanbul</p></div></div>
+      <span class="badge badge-gold">16.000+ interventi &middot; Garanzia a vita</span>
+      <p class="card-desc">Fondata nel 2011. 16.000+ procedure, pazienti da 45 nazionalit&agrave;. Garanzia a vita sugli innesti. FUE, Sapphire FUE, DHI, trapianto robotico. Staff che parla italiano confermato. Pacchetti all-inclusive con prodotti post-op.</p>
+      <div class="tags"><span class="tag">FUE</span><span class="tag">DHI</span><span class="tag">Sapphire</span><span class="tag">Robotico</span><span class="tag">~&euro;2.450</span></div>
+      <div class="card-footer"><span class="contact">ademhavva.com.tr</span><a class="visit-link" href="https://www.ademhavva.com.tr/" target="_blank">Visita &rarr;</a></div>
+    </div>
+
+    <!-- 63 — LaViva Cliniche -->
+    <div class="card c-green" data-tags="clinica italiano" data-name="laviva cliniche istanbul sisli sito italiano wahid katkhuda 15 anni fue sapphire dhi whatsapp italiano 547 recensioni">
+      <span class="year-tag">Est. ~2019</span>
+      <div class="card-header"><div class="avatar av-green">LV</div><div><p class="card-title">LaViva Cliniche</p><p class="card-type">Clinica turca &middot; Sisli, Istanbul</p></div></div>
+      <span class="badge badge-green">Sito 100% italiano &middot; 547 recensioni 5/5</span>
+      <p class="card-desc">Sito e assistenza WhatsApp interamente in italiano. Dr. Wahid Katkhuda (15 anni esperienza). 547 recensioni verificate 5/5. FUE Sapphire, DHI, trapianto senza rasatura. Hotel 4&ndash;5&#9733; e trasferimenti VIP inclusi. Da &euro;1.200.</p>
+      <div class="tags"><span class="tag">FUE Sapphire</span><span class="tag">DHI</span><span class="tag">Senza rasatura</span><span class="tag">Da &euro;1.200</span></div>
+      <div class="card-footer"><span class="contact">lavivacliniche.com</span><a class="visit-link" href="https://lavivacliniche.com/" target="_blank">Visita &rarr;</a></div>
+    </div>
+
+    <!-- 64 — Istanbul Care -->
+    <div class="card c-blue" data-tags="clinica italiano" data-name="istanbul care hair clinic atasehir gaziosmanpasa istanbul 2000 25 anni fue sapphire dhi fut artas robotica 1200 4200">
+      <span class="year-tag">25+ anni</span>
+      <div class="card-header"><div class="avatar av-blue">IC</div><div><p class="card-title">Istanbul Care Hair Clinic</p><p class="card-type">Clinica internaz. &middot; Atasehir, Istanbul</p></div></div>
+      <span class="badge badge-blue">25+ anni &middot; Da &euro;1.200 &middot; Sito italiano</span>
+      <p class="card-desc">Marchio globale con 3 sedi nel mondo, 25+ anni di esperienza. Tra i pacchetti pi&ugrave; accessibili di Istanbul (da &euro;1.200). FUE, Sapphire, DHI, FUT e ARTAS Robotica. Assistenza in 10 lingue con italiano. Hotel e transfer VIP inclusi.</p>
+      <div class="tags"><span class="tag">FUE</span><span class="tag">DHI</span><span class="tag">Sapphire</span><span class="tag">ARTAS</span><span class="tag">&euro;1.200&ndash;4.200</span></div>
+      <div class="card-footer"><span class="contact">istanbul-care.com</span><a class="visit-link" href="https://istanbul-care.com/" target="_blank">Visita &rarr;</a></div>
+    </div>
+
+    <!-- 65 — Turk Health Expert -->
+    <div class="card c-teal" data-tags="clinica" data-name="turk health expert istanbul pendik 2008 20000 procedure 40 paesi fue dhi surgeon led zekeriya kevser turk">
+      <span class="year-tag">Est. 2008</span>
+      <div class="card-header"><div class="avatar av-teal">THE</div><div><p class="card-title">Turk Health Expert</p><p class="card-type">Clinica turca &middot; Pendik, Istanbul</p></div></div>
+      <span class="badge badge-teal">20.000+ procedure &middot; Surgeon-led</span>
+      <p class="card-desc">Fondata nel 2008 da Zekeriya e Kevser Turk. 20.000+ procedure, pazienti da 40+ paesi. Approccio "surgeon-led": i chirurghi seguono personalmente ogni fase. Lato asiatico di Istanbul (Pendik), transfer da aeroporti IST e SAW.</p>
+      <div class="tags"><span class="tag">FUE</span><span class="tag">DHI</span><span class="tag">Da &euro;1.990</span><span class="tag">DHI da &euro;2.490</span></div>
+      <div class="card-footer"><span class="contact">turkhealthexpert.com</span><a class="visit-link" href="https://turkhealthexpert.com/" target="_blank">Visita &rarr;</a></div>
+    </div>
+
+    <!-- 66 — Turk Hair Institute -->
+    <div class="card c-dim" data-tags="clinica" data-name="turk hair institute istanbul olanda germania 2005 dhi pro laser assistita senza dolore ago">
+      <span class="year-tag">Est. 2005</span>
+      <div class="card-header"><div class="avatar av-dim">THI</div><div><p class="card-title">Turk Hair Institute</p><p class="card-type">Clinica internaz. &middot; Istanbul + Olanda + Germania</p></div></div>
+      <span class="badge badge-dim">DHI Pro laser-assistita &middot; Sedi in Europa</span>
+      <p class="card-desc">Attiva dal 2005. Sedi in Olanda e Germania oltre Istanbul. Tecnica proprietaria DHI Pro laser-assistita: senza dolore e senza ago. FUE, DHI, trapianto senza rasatura. Presenza internazionale consolidata.</p>
+      <div class="tags"><span class="tag">DHI Pro Laser</span><span class="tag">FUE</span><span class="tag">Senza rasatura</span></div>
+      <div class="card-footer"><span class="contact">turkhairinstitute.com</span><a class="visit-link" href="https://turkhairinstitute.com/en/" target="_blank">Visita &rarr;</a></div>
+    </div>
+
+    <!-- 67 — Turkey Hair Center -->
+    <div class="card c-orange" data-tags="clinica boutique" data-name="turkey hair center besiktas istanbul 2014 1 paziente chirurgo sapphire fue dhi afro donna cicatrici 2000 operazioni">
+      <span class="year-tag">Est. ~2014</span>
+      <div class="card-header"><div class="avatar av-orange">THC</div><div><p class="card-title">Turkey Hair Center</p><p class="card-type">Clinica boutique &middot; Besiktas, Istanbul</p></div></div>
+      <span class="badge badge-orange">1 paziente/chirurgo &middot; 4.9/5 (624 rec.)</span>
+      <p class="card-desc">Clinica boutique: un solo paziente per chirurgo al giorno. 2.000+ operazioni. Specializzata anche in trapianto Afro, donna e su cicatrici. Sapphire FUE e DHI. Consulenze gratuite 1-a-1 senza pressioni commerciali. 4.9/5 su 624 recensioni.</p>
+      <div class="tags"><span class="tag">Sapphire FUE</span><span class="tag">DHI</span><span class="tag">Afro</span><span class="tag">Donna</span></div>
+      <div class="card-footer"><span class="contact">turkeyhaircenter.com</span><a class="visit-link" href="https://turkeyhaircenter.com/" target="_blank">Visita &rarr;</a></div>
+    </div>
+
+    <!-- 68 — Soraca Med (Antalya) -->
+    <div class="card c-cyan" data-tags="clinica italiano antalya" data-name="soraca med antalya konyaalti 2021 8000 trapianti garanzia vita 1800 sito italiano fue sapphire dhi">
+      <span class="year-tag">Est. 2021</span>
+      <div class="card-header"><div class="avatar av-cyan">SR</div><div><p class="card-title">Soraca Med</p><p class="card-type">Clinica turca &middot; Konyaalti, Antalya</p></div></div>
+      <span class="badge badge-cyan">Garanzia a vita &middot; Da ~&euro;1.800 &middot; Sito IT</span>
+      <p class="card-desc">8.000+ trapianti dal 2021, nella zona turistica di Konyaalti. Garanzia a vita sugli innesti. Pacchetto da ~&euro;1.800 per fino a 4.000 innesti con hotel e transfer VIP inclusi. Sito disponibile in italiano tra 11 lingue.</p>
+      <div class="tags"><span class="tag">FUE</span><span class="tag">Sapphire FUE</span><span class="tag">DHI</span><span class="tag">~&euro;1.800</span></div>
+      <div class="card-footer"><span class="contact">soracamed.com</span><a class="visit-link" href="https://soracamed.com/" target="_blank">Visita &rarr;</a></div>
+    </div>
+
+    <!-- 69 — PROFUE (Antalya) -->
+    <div class="card c-gold" data-tags="clinica antalya boutique" data-name="profue clinic dr erhan aydogan antalya kepez chirurgo plastico germania sapphire slit dhi impianto manuale">
+      <span class="year-tag">Est. ~2014</span>
+      <div class="card-header"><div class="avatar av-gold">PF</div><div><p class="card-title">PROFUE &mdash; Dr. Erhan Aydogan</p><p class="card-type">Clinica 5&#9733; &middot; Antalya</p></div></div>
+      <span class="badge badge-gold">Chirurgo plastico formatosi in Germania</span>
+      <p class="card-desc">Clinica 5 stelle ad Antalya del Dr. Erhan Aydogan, chirurgo plastico con 20+ anni di pratica in Germania prima di trasferirsi in Turchia. Impianto degli innesti eseguito manualmente (no dispositivi automatici). Sapphire Slit FUE e DHI.</p>
+      <div class="tags"><span class="tag">Sapphire Slit FUE</span><span class="tag">DHI</span><span class="tag">Impianto manuale</span></div>
+      <div class="card-footer"><span class="contact">profue.com</span><a class="visit-link" href="https://www.profue.com/" target="_blank">Visita &rarr;</a></div>
+    </div>
+
+    <!-- 70 — Buk Clinic -->
+    <div class="card c-dim" data-tags="clinica" data-name="buk clinic beauty hair center istanbul kucukcekmece fue avanzata sapphire dhi pro fatih eroglu">
+      <div class="card-header"><div class="avatar av-dim">BK</div><div><p class="card-title">Buk Clinic</p><p class="card-type">Clinica turca &middot; Kucukcekmece, Istanbul</p></div></div>
+      <span class="badge badge-dim">FUE avanzata &middot; Risultati naturali</span>
+      <p class="card-desc">Clinica nel quartiere Kucukcekmece (lato europeo). Dr. Fatih Eroglu (Istanbul University). FUE avanzata con posizionamento preciso degli innesti, Sapphire FUE e DHI Pro. Enfasi su recupero rapido e risultati dall'aspetto naturale duraturo.</p>
+      <div class="tags"><span class="tag">FUE avanzata</span><span class="tag">Sapphire FUE</span><span class="tag">DHI Pro</span></div>
+      <div class="card-footer"><span class="contact">bukclinic.com</span><a class="visit-link" href="https://www.bukclinic.com/" target="_blank">Visita &rarr;</a></div>
+    </div>
+
+    <div class="empty" id="emptyMsg">Nessun risultato trovato. Prova con un altro termine.</div>
+  </div>
+
+  <footer class="footer">
+    <span>70 strutture verificate</span> &middot; Guida al turismo tricologico Italia &rarr; Turchia &middot; 2025
+  </footer>
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+<script>
+  const SB_BASE='https://zzyjuhbxwsrgttlizlkv.supabase.co';
+  const SB_KEY='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Inp6eWp1aGJ4d3NyZ3R0bGl6bGt2Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzU1NjQxMjcsImV4cCI6MjA5MTE0MDEyN30.NIqYoN_8t8M9WCwB4OcVwL2K2YtEAeOFJKZKab4RhZo';
+  const DASH='trico_turchia';
+  const _sb=window.supabase.createClient(SB_BASE,SB_KEY);
+  let _data={},currentFilter='all',currentSearch='',csf='';
+  async function sbLoad(){try{const{data:rows,error}=await _sb.from('ext_dashboard_status').select('card_id,status,note').eq('dashboard',DASH);if(error)throw error;rows.forEach(function(row){const o={};if(row.status&&row.status!=='none')o.status=row.status;if(row.note)o.note=row.note;if(o.status||o.note)_data[row.card_id]=o})}catch(e){console.error('Supabase load:',e)}}
+  function ld(){return _data}
+  function svCard(id,card){_data[id]=card;if(!card||(!card.status&&!card.note)){delete _data[id];card={}}
+    _sb.from('ext_dashboard_status').upsert({dashboard:DASH,card_id:id,status:card.status||'none',note:card.note||'',updated_at:new Date().toISOString()},{onConflict:'dashboard,card_id'}).then(function(r){if(r.error)console.error('Save error:',r.error)});
+  }
+  function gid(c){const n=c.querySelector('.card-title');return n?n.textContent.trim().replace(/[^a-zA-Z0-9]/g,'_').substring(0,40):'';}
+
+  function initCards(){
+    const data=ld();
+    document.querySelectorAll('.card').forEach(function(c){
+      const id=gid(c);if(!id)return;
+      c.setAttribute('data-id',id);
+      const s=data[id]||{};
+      const sd=document.createElement('div');sd.className='cc-status';
+      sd.innerHTML='<button class="cc-lvl'+(s.status==='0'?' on-0':'')+'" title="Livello 0 — Scartare" onclick="tl(event,\'0\')">0</button>'+
+        '<button class="cc-lvl'+(s.status==='1'?' on-1':'')+'" title="Livello 1 — Basso" onclick="tl(event,\'1\')">1</button>'+
+        '<button class="cc-lvl'+(s.status==='2'?' on-2':'')+'" title="Livello 2 — Medio" onclick="tl(event,\'2\')">2</button>'+
+        '<button class="cc-lvl'+(s.status==='3'?' on-3':'')+'" title="Livello 3 — Alto" onclick="tl(event,\'3\')">3</button>'+
+        '<span class="cc-star'+(s.status==='star'?' on':'')+'" title="Top!" onclick="tstar(event)">'+(s.status==='star'?'&#9733;':'&#9734;')+'</span>';
+      c.appendChild(sd);
+      const nb=document.createElement('button');nb.className='cc-note-btn'+(s.note?' has-note':'');nb.title='Appunti';nb.innerHTML='&#9998;';nb.onclick=function(e){e.stopPropagation();const np=c.querySelector('.cc-notes');np.classList.toggle('open');if(np.classList.contains('open'))np.querySelector('textarea').focus()};c.appendChild(nb);
+      const np=document.createElement('div');np.className='cc-notes';np.innerHTML='<textarea placeholder="Scrivi appunti...">'+(s.note||'')+'</textarea><button class="cc-note-save" onclick="saveNote(this)">Salva</button>';
+      np.querySelector('textarea').addEventListener('input',function(){var me=this;clearTimeout(me._t);me._t=setTimeout(function(){var cur2=(_data[id]||{});if(me.value.trim()){cur2.note=me.value;c.querySelector('.cc-note-btn').classList.add('has-note');c.classList.add('has-note-card')}else{delete cur2.note;c.querySelector('.cc-note-btn').classList.remove('has-note');c.classList.remove('has-note-card')}svCard(id,cur2)},800)});
+      c.appendChild(np);
+      if(s.status)c.classList.add('stato-'+s.status);
+      if(s.note)c.classList.add('has-note-card');
+    });
+  }
+  function saveNote(btn){
+    btn.blur();var card=btn.closest('.card'),id=card.getAttribute('data-id'),cur=(_data[id]||{}),ta=card.querySelector('.cc-notes textarea'),val=ta.value,nb=card.querySelector('.cc-note-btn');
+    if(val.trim()){cur.note=val;nb.classList.add('has-note');card.classList.add('has-note-card')}else{delete cur.note;nb.classList.remove('has-note');card.classList.remove('has-note-card')}
+    svCard(id,cur);btn.textContent='\u2713 Salvato!';btn.classList.add('saved');setTimeout(function(){btn.textContent='Salva';btn.classList.remove('saved')},1500);
+  }
+  function tl(e,level){
+    e.stopPropagation();const btn=e.target,card=btn.closest('.card'),id=card.getAttribute('data-id'),cur=(_data[id]||{});
+    card.classList.remove('stato-0','stato-1','stato-2','stato-3','stato-star');
+    card.querySelectorAll('.cc-lvl').forEach(function(b){b.className='cc-lvl'});
+    const star=card.querySelector('.cc-star');if(star){star.classList.remove('on');star.innerHTML='&#9734;'}
+    if(cur.status===level){delete cur.status}else{cur.status=level;btn.classList.add('on-'+level);card.classList.add('stato-'+level)}
+    svCard(id,cur);updateStatusCounts();
+  }
+  function tstar(e){
+    e.stopPropagation();const star=e.target.closest('.cc-star'),card=star.closest('.card'),id=card.getAttribute('data-id'),cur=(_data[id]||{});
+    card.classList.remove('stato-0','stato-1','stato-2','stato-3','stato-star');
+    card.querySelectorAll('.cc-lvl').forEach(function(b){b.className='cc-lvl'});
+    if(cur.status==='star'){delete cur.status;star.classList.remove('on');star.innerHTML='&#9734;'}
+    else{cur.status='star';star.classList.add('on');star.innerHTML='&#9733;';card.classList.add('stato-star')}
+    svCard(id,cur);updateStatusCounts();
+  }
+
+  function updateCount(){const v=document.querySelectorAll('.card:not(.hidden)').length;document.getElementById('count').textContent='('+v+')';document.getElementById('emptyMsg').style.display=v===0?'block':'none'}
+  function applyFilters(){const data=ld();document.querySelectorAll('.card').forEach(function(card){const tags=card.getAttribute('data-tags')||'';const name=card.getAttribute('data-name')||'';const title=card.querySelector('.card-title');const titleText=title?title.textContent.toLowerCase():'';const id=card.getAttribute('data-id')||'';const saved=data[id]||{};const matchFilter=currentFilter==='all'||tags.includes(currentFilter);const matchSearch=currentSearch===''||name.includes(currentSearch)||titleText.includes(currentSearch);const matchStatus=csf===''||saved.status===csf;if(matchFilter&&matchSearch&&matchStatus){card.classList.remove('hidden')}else{card.classList.add('hidden')}});updateCount()}
+  function setFilter(type,btn){currentFilter=type;csf='';document.querySelectorAll('.btn:not(.btn-status)').forEach(function(b){b.classList.remove('active')});document.querySelectorAll('.btn-status').forEach(function(b){b.classList.remove('active')});btn.classList.add('active');applyFilters()}
+  function fs(status,b){if(csf===status){csf='';b.classList.remove('active')}else{csf=status;document.querySelectorAll('.btn-status').forEach(function(x){x.classList.remove('active')});b.classList.add('active')}applyFilters()}
+  function doSearch(){currentSearch=document.getElementById('searchInput').value.toLowerCase().trim();applyFilters()}
+  function updateStatusCounts(){const data=ld();let c0=0,c1=0,c2=0,c3=0,cs=0;Object.values(data).forEach(function(d){if(d.status==='0')c0++;if(d.status==='1')c1++;if(d.status==='2')c2++;if(d.status==='3')c3++;if(d.status==='star')cs++});document.getElementById('cnt-0').textContent=c0;document.getElementById('cnt-1').textContent=c1;document.getElementById('cnt-2').textContent=c2;document.getElementById('cnt-3').textContent=c3;document.getElementById('cnt-star').textContent=cs}
+  function refreshCard(cid){
+    var card=document.querySelector('[data-id="'+cid+'"]');if(!card)return;var s=_data[cid]||{};
+    card.classList.remove('stato-0','stato-1','stato-2','stato-3','stato-star');
+    card.querySelectorAll('.cc-lvl').forEach(function(b){b.className='cc-lvl'});
+    var star=card.querySelector('.cc-star');if(star){star.classList.remove('on');star.innerHTML='&#9734;'}
+    if(s.status){card.classList.add('stato-'+s.status);if(s.status==='star'){if(star){star.classList.add('on');star.innerHTML='&#9733;'}}else{var lvls=card.querySelectorAll('.cc-lvl');var idx=parseInt(s.status);if(lvls[idx])lvls[idx].classList.add('on-'+s.status)}}
+    var nb=card.querySelector('.cc-note-btn'),ta=card.querySelector('.cc-notes textarea');
+    if(s.note){if(nb)nb.classList.add('has-note');card.classList.add('has-note-card');if(ta&&!ta.matches(':focus'))ta.value=s.note}
+    else{if(nb)nb.classList.remove('has-note');card.classList.remove('has-note-card');if(ta&&!ta.matches(':focus'))ta.value=''}
+  }
+  sbLoad().then(function(){initCards();updateStatusCounts();updateCount();
+    _sb.channel('dash-'+DASH).on('postgres_changes',{event:'*',schema:'public',table:'ext_dashboard_status',filter:'dashboard=eq.'+DASH},function(p){
+      var row=p.new||{};var cid=row.card_id;if(!cid)return;
+      var o={};if(row.status&&row.status!=='none')o.status=row.status;if(row.note)o.note=row.note;
+      if(o.status||o.note)_data[cid]=o;else delete _data[cid];
+      refreshCard(cid);updateStatusCounts();
+    }).subscribe();
+  });
+</script>
+</body>
+</html>

@@ -1,0 +1,926 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Turismo Tricologico — Italia → Albania</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --bg: #0b0e14;
+    --surface: #131720;
+    --surface2: #1a1f2e;
+    --border: #252b3b;
+    --border-hl: #3a4260;
+    --text: #e2e8f0;
+    --text-dim: #8892a8;
+    --text-muted: #5a6478;
+    --accent: #d4a017;
+    --accent-glow: rgba(212,160,23,0.20);
+    --green: #22c55e;
+    --green-bg: rgba(34,197,94,0.12);
+    --green-border: rgba(34,197,94,0.3);
+    --yellow: #eab308;
+    --yellow-bg: rgba(234,179,8,0.1);
+    --yellow-border: rgba(234,179,8,0.3);
+    --red: #ef4444;
+    --red-bg: rgba(239,68,68,0.1);
+    --red-border: rgba(239,68,68,0.3);
+    --blue: #3b82f6;
+    --blue-bg: rgba(59,130,246,0.1);
+    --blue-border: rgba(59,130,246,0.3);
+    --purple: #a855f7;
+    --purple-bg: rgba(168,85,247,0.1);
+    --purple-border: rgba(168,85,247,0.3);
+    --cyan: #06b6d4;
+    --cyan-bg: rgba(6,182,212,0.1);
+    --cyan-border: rgba(6,182,212,0.3);
+    --orange: #f97316;
+    --orange-bg: rgba(249,115,22,0.1);
+    --orange-border: rgba(249,115,22,0.3);
+    --gold: #d4a017;
+    --gold-bg: rgba(212,160,23,0.12);
+    --gold-border: rgba(212,160,23,0.3);
+    --teal: #14b8a6;
+    --teal-bg: rgba(20,184,166,0.12);
+    --teal-border: rgba(20,184,166,0.3);
+    --radius: 12px;
+    --radius-sm: 8px;
+    --shadow: 0 4px 24px rgba(0,0,0,0.35);
+    --transition: .25s cubic-bezier(.4,0,.2,1);
+  }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+    min-height: 100vh;
+  }
+  a { color: var(--accent); text-decoration: none; }
+  code {
+    font-family: 'Cascadia Code', 'Fira Code', 'Consolas', monospace;
+    background: var(--surface2);
+    padding: 1px 6px;
+    border-radius: 4px;
+    font-size: .85em;
+    color: var(--cyan);
+  }
+
+  /* BG EFFECTS */
+  .bg-grid {
+    position: fixed; inset: 0; z-index: 0; pointer-events: none;
+    background-image:
+      linear-gradient(rgba(212,160,23,0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(212,160,23,0.03) 1px, transparent 1px);
+    background-size: 60px 60px;
+  }
+  .bg-glow {
+    position: fixed; top: -200px; right: -200px;
+    width: 600px; height: 600px;
+    background: radial-gradient(circle, rgba(212,160,23,0.07), transparent 70%);
+    z-index: 0; pointer-events: none;
+    animation: pulse 8s ease-in-out infinite alternate;
+  }
+  .bg-glow-2 {
+    position: fixed; bottom: -200px; left: -200px;
+    width: 500px; height: 500px;
+    background: radial-gradient(circle, rgba(6,182,212,0.06), transparent 70%);
+    z-index: 0; pointer-events: none;
+    animation: pulse 10s ease-in-out infinite alternate-reverse;
+  }
+  @keyframes pulse { from { opacity: .6; transform: scale(1); } to { opacity: 1; transform: scale(1.15); } }
+  @keyframes blink { 0%,100% { opacity: 1; } 50% { opacity: .3; } }
+
+  /* LAYOUT */
+  .container {
+    max-width: 1320px;
+    margin: 0 auto;
+    padding: 0 24px;
+    position: relative;
+    z-index: 1;
+  }
+
+  /* HERO */
+  .hero {
+    padding: 56px 0 40px;
+    text-align: center;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 0;
+  }
+  .hero-badge {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: var(--gold-bg); color: var(--gold);
+    padding: 6px 16px; border-radius: 20px; font-size: .82em;
+    font-weight: 600; letter-spacing: .5px; margin-bottom: 16px;
+    border: 1px solid var(--gold-border);
+  }
+  .hero-badge .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--gold); animation: blink 2s infinite; }
+  .hero h1 { font-size: 2.4em; font-weight: 800; letter-spacing: -.02em; margin-bottom: 8px; }
+  .hero h1 span { background: linear-gradient(135deg, var(--gold), var(--cyan)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+  .hero p { color: var(--text-dim); font-size: 1.05em; max-width: 750px; margin: 0 auto; }
+  .stats-bar {
+    display: flex; justify-content: center; gap: 12px; flex-wrap: wrap;
+    margin-top: 28px;
+  }
+  .stat {
+    text-align: center; padding: 14px 22px;
+    background: var(--surface); border: 1px solid var(--border);
+    border-radius: var(--radius-sm); min-width: 120px;
+  }
+  .stat-num { font-size: 2em; font-weight: 800; }
+  .stat-label { font-size: .72em; color: var(--text-muted); text-transform: uppercase; letter-spacing: .5px; }
+
+  /* CONTROLS */
+  .controls {
+    padding: 24px 0;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 32px;
+  }
+  .controls-label {
+    font-size: .72em;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-right: 4px;
+  }
+  .btn {
+    font-family: 'Segoe UI', system-ui, sans-serif;
+    font-size: .78em;
+    font-weight: 500;
+    padding: 6px 14px;
+    border-radius: 20px;
+    border: 1px solid var(--border);
+    background: transparent;
+    color: var(--text-dim);
+    cursor: pointer;
+    transition: var(--transition);
+    letter-spacing: .3px;
+  }
+  .btn:hover { border-color: var(--gold); color: var(--gold); }
+  .btn.active {
+    background: var(--gold-bg);
+    border-color: var(--gold-border);
+    color: var(--gold);
+  }
+  .search-wrap {
+    margin-left: auto;
+    position: relative;
+  }
+  .search-wrap input {
+    font-family: 'Segoe UI', system-ui, sans-serif;
+    font-size: .82em;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    color: var(--text);
+    padding: 7px 14px 7px 34px;
+    border-radius: 20px;
+    width: 220px;
+    outline: none;
+    transition: border-color .2s;
+  }
+  .search-wrap input:focus { border-color: var(--gold); }
+  .search-wrap input::placeholder { color: var(--text-muted); }
+  .search-icon {
+    position: absolute; left: 12px; top: 50%;
+    transform: translateY(-50%);
+    color: var(--text-muted); font-size: .82em;
+    pointer-events: none;
+  }
+  #count {
+    font-size: .78em;
+    color: var(--text-muted);
+    margin-left: 2px;
+  }
+
+  /* GRID */
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+    gap: 16px;
+    padding-bottom: 48px;
+  }
+
+  /* CARD */
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    position: relative;
+    overflow: hidden;
+    transition: var(--transition);
+  }
+  .card:hover { border-color: var(--border-hl); transform: translateY(-2px); box-shadow: var(--shadow); }
+  .card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+  }
+  .card.c-gold::before   { background: var(--gold); }
+  .card.c-teal::before   { background: var(--teal); }
+  .card.c-blue::before   { background: var(--blue); }
+  .card.c-green::before  { background: var(--green); }
+  .card.c-purple::before { background: var(--purple); }
+  .card.c-cyan::before   { background: var(--cyan); }
+  .card.c-orange::before { background: var(--orange); }
+  .card.c-dim::before    { background: var(--text-muted); }
+  .card.hidden { display: none; }
+
+  .card-header {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+  }
+  .avatar {
+    width: 44px; height: 44px;
+    border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: .78em;
+    font-weight: 700;
+    flex-shrink: 0;
+    letter-spacing: .5px;
+  }
+  .av-gold { background: var(--gold-bg); color: var(--gold); border: 1px solid var(--gold-border); }
+  .av-teal { background: var(--teal-bg); color: var(--teal); border: 1px solid var(--teal-border); }
+  .av-blue { background: var(--blue-bg); color: var(--blue); border: 1px solid var(--blue-border); }
+  .av-green { background: var(--green-bg); color: var(--green); border: 1px solid var(--green-border); }
+  .av-purple { background: var(--purple-bg); color: var(--purple); border: 1px solid var(--purple-border); }
+  .av-cyan { background: var(--cyan-bg); color: var(--cyan); border: 1px solid var(--cyan-border); }
+  .av-orange { background: var(--orange-bg); color: var(--orange); border: 1px solid var(--orange-border); }
+  .av-dim  { background: rgba(255,255,255,0.05); color: var(--text-muted); border: 1px solid var(--border); }
+
+  .card-title {
+    font-size: 1em;
+    font-weight: 700;
+    color: var(--text);
+    margin: 0;
+  }
+  .card-type {
+    font-size: .78em;
+    color: var(--text-muted);
+    margin: 2px 0 0;
+    letter-spacing: .3px;
+  }
+
+  .badge {
+    display: inline-flex;
+    align-items: center;
+    font-size: .70em;
+    padding: 3px 10px;
+    border-radius: 20px;
+    letter-spacing: .3px;
+    font-weight: 600;
+    align-self: flex-start;
+  }
+  .badge-gold { background: var(--gold-bg); color: var(--gold); border: 1px solid var(--gold-border); }
+  .badge-teal { background: var(--teal-bg); color: var(--teal); border: 1px solid var(--teal-border); }
+  .badge-blue { background: var(--blue-bg); color: var(--blue); border: 1px solid var(--blue-border); }
+  .badge-green { background: var(--green-bg); color: var(--green); border: 1px solid var(--green-border); }
+  .badge-purple { background: var(--purple-bg); color: var(--purple); border: 1px solid var(--purple-border); }
+  .badge-cyan { background: var(--cyan-bg); color: var(--cyan); border: 1px solid var(--cyan-border); }
+  .badge-orange { background: var(--orange-bg); color: var(--orange); border: 1px solid var(--orange-border); }
+  .badge-dim  { background: rgba(255,255,255,0.04); color: var(--text-muted); border: 1px solid var(--border); }
+
+  .card-desc {
+    font-size: .84em;
+    color: var(--text-dim);
+    line-height: 1.6;
+  }
+  .card-desc strong { color: var(--text); }
+
+  .tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+  .tag {
+    font-size: .70em;
+    padding: 3px 9px;
+    border-radius: 4px;
+    background: var(--surface2);
+    color: var(--text-dim);
+    border: 1px solid var(--border);
+    letter-spacing: .2px;
+  }
+
+  .card-footer {
+    border-top: 1px solid var(--border);
+    padding-top: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: auto;
+  }
+  .contact { font-size: .78em; color: var(--text-muted); }
+  .visit-link {
+    font-size: .82em;
+    color: var(--gold);
+    text-decoration: none;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    transition: var(--transition);
+  }
+  .visit-link:hover { color: var(--text); }
+
+  /* NEW badge */
+  .new-tag {
+    position: absolute;
+    top: 12px; right: 12px;
+    font-size: .62em;
+    font-weight: 700;
+    padding: 2px 8px;
+    border-radius: 4px;
+    background: var(--green-bg);
+    color: var(--green);
+    border: 1px solid var(--green-border);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+
+  /* EMPTY */
+  .empty {
+    grid-column: 1/-1;
+    text-align: center;
+    padding: 60px 20px;
+    color: var(--text-muted);
+    font-size: .9em;
+    display: none;
+  }
+
+  /* STATUS & NOTES — Level system 0-3 + Star */
+  .card{position:relative;flex-wrap:wrap}
+  .cc-status{position:absolute;top:8px;right:8px;display:flex;gap:4px;align-items:center;background:rgba(0,0,0,.45);padding:4px 7px;border-radius:20px;z-index:2}
+  .cc-lvl{width:22px;height:22px;border-radius:50%;border:2px solid var(--border);cursor:pointer;transition:.2s;font-size:11px;font-weight:700;color:var(--text-muted);display:flex;align-items:center;justify-content:center;background:transparent;padding:0;line-height:1;font-family:inherit}
+  .cc-lvl:hover{transform:scale(1.25);border-color:var(--text-dim);color:var(--text)}
+  .cc-lvl.on-0{background:rgba(239,68,68,.25);border-color:var(--red);color:var(--red)}
+  .cc-lvl.on-1{background:rgba(234,179,8,.15);border-color:var(--yellow);color:var(--yellow)}
+  .cc-lvl.on-2{background:rgba(59,130,246,.25);border-color:var(--blue);color:var(--blue);box-shadow:0 0 6px rgba(59,130,246,.4)}
+  .cc-lvl.on-3{background:rgba(34,197,94,.3);border-color:var(--green);color:var(--green);box-shadow:0 0 8px rgba(34,197,94,.5)}
+  .card.stato-0{opacity:.35;border-color:rgba(239,68,68,.3) !important}
+  .card.stato-1{opacity:.55;border-color:rgba(234,179,8,.3) !important}
+  .card.stato-2{border-color:rgba(59,130,246,.4) !important;box-shadow:0 0 10px rgba(59,130,246,.2),0 0 25px rgba(59,130,246,.08)}
+  .card.stato-3{border-color:var(--green) !important;box-shadow:0 0 14px rgba(34,197,94,.45),0 0 35px rgba(34,197,94,.15),inset 0 0 14px rgba(34,197,94,.07)}
+  .cc-star{width:22px;height:22px;cursor:pointer;transition:.2s;font-size:20px;line-height:1;color:var(--border);display:flex;align-items:center;justify-content:center;margin-left:3px}
+  .cc-star:hover{transform:scale(1.3);color:#fbbf24}
+  .cc-star.on{color:#fbbf24;filter:drop-shadow(0 0 8px #fbbf24) drop-shadow(0 0 16px rgba(251,191,36,.5))}
+  .card.stato-star{border-color:#fbbf24 !important;box-shadow:0 0 18px rgba(251,191,36,.55),0 0 45px rgba(251,191,36,.2),inset 0 0 18px rgba(251,191,36,.1)}
+  .cc-note-btn{position:absolute;bottom:8px;right:8px;width:22px;height:22px;border-radius:5px;background:transparent;border:1px solid var(--border);color:var(--text-muted);font-size:.7em;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:.2s;z-index:2}
+  .cc-note-btn:hover{border-color:var(--gold);color:var(--gold)}
+  .cc-note-btn.has-note{background:rgba(212,160,23,.35);border-color:var(--gold);color:#fbbf24;box-shadow:0 0 10px rgba(212,160,23,.5),0 0 20px rgba(212,160,23,.25);animation:noteGlow 2s ease-in-out infinite alternate;font-size:.85em}
+  @keyframes noteGlow{from{box-shadow:0 0 8px rgba(212,160,23,.4),0 0 16px rgba(212,160,23,.2)}to{box-shadow:0 0 14px rgba(212,160,23,.6),0 0 28px rgba(212,160,23,.3)}}
+  .card.has-note-card{border-bottom:3px solid rgba(212,160,23,.5) !important}
+  .card.has-note-card .cc-note-btn.has-note{width:28px;height:28px;font-size:1em}
+  .card.stato-0 .cc-note-btn.has-note{box-shadow:0 0 28px rgba(212,160,23,1),0 0 56px rgba(212,160,23,.7);width:32px;height:32px;font-size:1.1em}
+  .card.stato-1 .cc-note-btn.has-note{box-shadow:0 0 20px rgba(212,160,23,.85),0 0 40px rgba(212,160,23,.5);width:30px;height:30px;font-size:1em}
+  .cc-notes{display:none;width:100%;margin-top:8px}
+  .cc-notes.open{display:block}
+  .cc-notes textarea{width:100%;background:var(--surface2);border:1px solid var(--border);border-radius:6px;color:var(--text);font-family:inherit;font-size:.78em;padding:8px;resize:vertical;min-height:36px;max-height:140px;outline:none}
+  .cc-notes textarea:focus{border-color:var(--gold)}
+  .cc-notes textarea::placeholder{color:var(--text-muted)}
+  .cc-note-save{margin-top:5px;padding:5px 16px;background:var(--gold);color:#000;border:none;border-radius:6px;font-size:.78em;font-weight:700;cursor:pointer;transition:.2s;font-family:inherit;letter-spacing:.5px}
+  .cc-note-save:hover{filter:brightness(1.2);transform:scale(1.03)}
+  .cc-note-save.saved{background:var(--green);color:#fff;pointer-events:none}
+
+  .btn-status{font-size:.72em;padding:4px 10px}
+
+  /* FOOTER */
+  .footer {
+    text-align: center;
+    padding: 40px 0 32px;
+    border-top: 1px solid var(--border);
+    color: var(--text-muted);
+    font-size: .82em;
+  }
+  .footer span { color: var(--gold); }
+
+  @media (max-width: 768px) {
+    .hero h1 { font-size: 1.6em; }
+    .grid { grid-template-columns: 1fr; }
+    .stats-bar { gap: 8px; }
+    .stat { min-width: 90px; padding: 10px 14px; }
+    .stat-num { font-size: 1.5em; }
+    .controls { gap: 6px; }
+    .search-wrap { margin-left: 0; width: 100%; }
+    .search-wrap input { width: 100%; }
+  }
+</style>
+</head>
+<body>
+
+<div class="bg-grid"></div>
+<div class="bg-glow"></div>
+<div class="bg-glow-2"></div>
+
+<div class="container">
+
+  <header class="hero">
+    <div class="hero-badge"><span class="dot"></span> Guida verificata 2025</div>
+    <h1>Turismo Tricologico<br><span>Italia &rarr; Albania</span></h1>
+    <p>39 agenzie e cliniche reali per il trapianto di capelli a Tirana, selezionate e verificate per i pazienti italiani.</p>
+    <div class="stats-bar">
+      <div class="stat"><div class="stat-num" style="color:var(--gold);">39</div><div class="stat-label">Strutture</div></div>
+      <div class="stat"><div class="stat-num" style="color:var(--green);">&euro;1.200</div><div class="stat-label">Prezzo minimo</div></div>
+      <div class="stat"><div class="stat-num" style="color:var(--cyan);">50%+</div><div class="stat-label">Risparmio vs Italia</div></div>
+      <div class="stat"><div class="stat-num" style="color:var(--purple);">14</div><div class="stat-label">Nuove trovate</div></div>
+    </div>
+  </header>
+
+  <div class="controls">
+    <span class="controls-label">Filtra</span>
+    <button class="btn active" onclick="setFilter('all',this)">Tutte <span id="count">(39)</span></button>
+    <button class="btn" onclick="setFilter('agenzia',this)">Agenzie italiane</button>
+    <button class="btn" onclick="setFilter('clinica',this)">Cliniche albanesi</button>
+    <button class="btn" onclick="setFilter('garanzia',this)">Con garanzia</button>
+    <button class="btn" onclick="setFilter('italiano',this)">Staff italiano</button>
+    <button class="btn" onclick="setFilter('nuova',this)">&#9733; Nuove</button>
+    <span class="controls-label" style="margin-left:12px">Stato</span>
+    <button class="btn btn-status" onclick="fs('0',this)" style="color:var(--red);border-color:var(--red-border)"><span style="color:#5a6478">Lv.0 -</span> <span id="cnt-0">0</span></button>
+    <button class="btn btn-status" onclick="fs('1',this)" style="color:var(--yellow);border-color:rgba(234,179,8,.3)"><span style="color:#5a6478">Lv.1 -</span> <span id="cnt-1">0</span></button>
+    <button class="btn btn-status" onclick="fs('2',this)" style="color:var(--blue);border-color:rgba(59,130,246,.3)"><span style="color:#5a6478">Lv.2 -</span> <span id="cnt-2">0</span></button>
+    <button class="btn btn-status" onclick="fs('3',this)" style="color:var(--green);border-color:var(--green-border)"><span style="color:#5a6478">Lv.3 -</span> <span id="cnt-3">0</span></button>
+    <button class="btn btn-status" onclick="fs('star',this)" style="color:#fbbf24;border-color:rgba(251,191,36,.3)"><span style="color:#5a6478">&#9733; Top -</span> <span id="cnt-star">0</span></button>
+    <div class="search-wrap">
+      <span class="search-icon">&#128269;</span>
+      <input type="text" id="searchInput" placeholder="Cerca per nome o tecnica..." oninput="doSearch()">
+    </div>
+  </div>
+
+  <div class="grid" id="grid">
+
+    <!-- ═══════════════════════════════════════ -->
+    <!-- ORIGINALI (25)                          -->
+    <!-- ═══════════════════════════════════════ -->
+
+    <!-- 1 — Trav Med -->
+    <div class="card c-gold" data-tags="agenzia italiano garanzia" data-name="trav med hair solution clinic micro fue dhi roma">
+      <div class="card-header"><div class="avatar av-gold">TM</div><div><p class="card-title">Trav Med</p><p class="card-type">Agenzia italiana &middot; Roma</p></div></div>
+      <span class="badge badge-gold">Coordinatore unico Italia</span>
+      <p class="card-desc">Partner esclusivo di Hair Solution Clinic a Tirana. Tecnica Micro FUE HD07 + DHI fino a 100 capelli/cm&sup2;. Garanzia ricrescita 12 mesi o ripetizione gratuita.</p>
+      <div class="tags"><span class="tag">Micro FUE</span><span class="tag">DHI</span><span class="tag">Garanzia 12 mesi</span></div>
+      <div class="card-footer"><span class="contact">329.8380445</span><a class="visit-link" href="https://www.travmed.it/" target="_blank">Visita &rarr;</a></div>
+    </div>
+
+    <!-- 2 — Albania Medical Tour -->
+    <div class="card c-teal" data-tags="clinica italiano garanzia" data-name="albania medical tour fue dhi confindustria assicurazione hotel">
+      <div class="card-header"><div class="avatar av-teal">AM</div><div><p class="card-title">Albania Medical Tour</p><p class="card-type">Clinica + agenzia &middot; Tirana</p></div></div>
+      <span class="badge badge-teal">Vincitore EMT 2021</span>
+      <p class="card-desc">Assicurazione &euro;1M. Unica clinica albanese in Confindustria. Hotel nello stesso edificio. Centinaia di recensioni 5 stelle da pazienti italiani.</p>
+      <div class="tags"><span class="tag">FUE</span><span class="tag">DHI</span><span class="tag">Hotel annesso</span><span class="tag">Assicurazione &euro;1M</span></div>
+      <div class="card-footer"><span class="contact">albmedtour.it</span><a class="visit-link" href="https://albmedtour.it/it/trapianto-capelli" target="_blank">Visita &rarr;</a></div>
+    </div>
+
+    <!-- 3 — AlbaMia Viaggi -->
+    <div class="card c-blue" data-tags="agenzia italiano" data-name="albamia viaggi turismo tricologico fue roma follow-up">
+      <div class="card-header"><div class="avatar av-blue">AV</div><div><p class="card-title">AlbaMia Viaggi</p><p class="card-type">Agenzia italiana &middot; Roma</p></div></div>
+      <span class="badge badge-blue">Rete agenzie in Italia</span>
+      <p class="card-desc">Guida italiana per tutto il soggiorno. Visita tricologica pre e post-op a Roma. 200 trapianti/mese nelle cliniche partner. Chirurghi con 15+ anni di esperienza.</p>
+      <div class="tags"><span class="tag">FUE</span><span class="tag">Guida italiana</span><span class="tag">Follow-up Roma</span><span class="tag">Hotel 4&#9733;</span></div>
+      <div class="card-footer"><span class="contact">+355 69 874 7646</span><a class="visit-link" href="https://www.albamiaviaggi.com/turismo-tricologico-ricrescere/" target="_blank">Visita &rarr;</a></div>
+    </div>
+
+    <!-- 4 — Laser Way Clinic -->
+    <div class="card c-gold" data-tags="clinica garanzia" data-name="laser way clinic dhi fue prima clinica albania 2004">
+      <div class="card-header"><div class="avatar av-gold">LW</div><div><p class="card-title">Laser Way Clinic</p><p class="card-type">Clinica albanese &middot; Tirana</p></div></div>
+      <span class="badge badge-gold">Dal 2004 &mdash; 15.000+ trapianti</span>
+      <p class="card-desc">Prima clinica DHI in Albania. 15.000+ trapianti eseguiti. Strumenti sterili monouso. Filiali a Tirana e Pristina. Follow-up WhatsApp post-intervento.</p>
+      <div class="tags"><span class="tag">DHI</span><span class="tag">FUE</span><span class="tag">Standard EU</span><span class="tag">2 filiali</span></div>
+      <div class="card-footer"><span class="contact">laserway.al</span><a class="visit-link" href="https://laserway.al/it/" target="_blank">Visita &rarr;</a></div>
+    </div>
+
+    <!-- 5 — Advanced FUE Clinic -->
+    <div class="card c-teal" data-tags="clinica garanzia" data-name="advanced fue clinic tirana solo capelli analisi gratuita">
+      <div class="card-header"><div class="avatar av-teal">AF</div><div><p class="card-title">Advanced FUE Clinic</p><p class="card-type">Clinica albanese &middot; Tirana</p></div></div>
+      <span class="badge badge-teal">Premio Camera Commercio Tirana</span>
+      <p class="card-desc">Specializzata esclusivamente in capelli. 10 anni di esperienza. Analisi del cuoio capelluto gratuita. Chirurghi aggiornati ogni anno a conferenze globali.</p>
+      <div class="tags"><span class="tag">Solo capelli</span><span class="tag">FUE</span><span class="tag">Analisi gratuita</span><span class="tag">Norme EU</span></div>
+      <div class="card-footer"><span class="contact">advancedfueclinic.com</span><a class="visit-link" href="https://advancedfueclinic.com/it/" target="_blank">Visita &rarr;</a></div>
+    </div>
+
+    <!-- 6 — Trapianto Capelli Tirana -->
+    <div class="card c-gold" data-tags="clinica garanzia italiano" data-name="trapianto capelli tirana 2390 volo incluso garanzia vita">
+      <div class="card-header"><div class="avatar av-gold">TCT</div><div><p class="card-title">Trapianto Capelli Tirana</p><p class="card-type">Clinica albanese &middot; Tirana</p></div></div>
+      <span class="badge badge-gold">Garanzia a vita scritta</span>
+      <p class="card-desc">All-inclusive da &euro;2.390 con volo A/R. Solo 2 trapianti al giorno per massima cura. Staff invariato da 10+ anni. Garanzia a vita scritta, timbrata e firmata.</p>
+      <div class="tags"><span class="tag">FUE</span><span class="tag">Volo incluso</span><span class="tag">Garanzia vita</span></div>
+      <div class="card-footer"><span class="contact">+39 388 169 0206</span><a class="visit-link" href="https://www.trapiantocapellitirana.eu/" target="_blank">Visita &rarr;</a></div>
+    </div>
+
+    <!-- 7 — Nobi Hair Clinic -->
+    <div class="card c-blue" data-tags="clinica italiano" data-name="nobi hair clinic turco albanese rimborso volo dhi sapphire">
+      <div class="card-header"><div class="avatar av-blue">NH</div><div><p class="card-title">Nobi Hair Clinic</p><p class="card-type">Clinica albanese &middot; Tirana</p></div></div>
+      <span class="badge badge-blue">Rimborso biglietto aereo</span>
+      <p class="card-desc">Team turco-albanese con 20+ anni esperienza. Per pazienti dall'estero: volo rimborsato, autista privato all'aeroporto e hotel con colazione inclusi.</p>
+      <div class="tags"><span class="tag">DHI</span><span class="tag">FUE Sapphire</span><span class="tag">Volo rimborsato</span><span class="tag">Hotel incluso</span></div>
+      <div class="card-footer"><span class="contact">nobihair.com</span><a class="visit-link" href="https://nobihair.com/it" target="_blank">Visita &rarr;</a></div>
+    </div>
+
+    <!-- 8 — Albania Hair Clinic -->
+    <div class="card c-teal" data-tags="clinica italiano" data-name="albania hair clinic italiano chirurghi multilingue sapphire fue dhi hotel lusso">
+      <div class="card-header"><div class="avatar av-teal">AH</div><div><p class="card-title">Albania Hair Clinic</p><p class="card-type">Clinica albanese &middot; Tirana</p></div></div>
+      <span class="badge badge-teal">Chirurghi parlano italiano</span>
+      <p class="card-desc">Chirurghi multilingue fluenti in italiano, inglese, tedesco. FUE, DHI e Sapphire. Hotel 4&ndash;5 stelle incluso. Analisi gratuita del cuoio capelluto.</p>
+      <div class="tags"><span class="tag">Sapphire FUE</span><span class="tag">Hotel lusso</span><span class="tag">Multilingue</span></div>
+      <div class="card-footer"><span class="contact">albaniahairclinic.com</span><a class="visit-link" href="https://albaniahairclinic.com/" target="_blank">Visita &rarr;</a></div>
+    </div>
+
+    <!-- 9 — Turismo Medico Albania -->
+    <div class="card c-dim" data-tags="clinica" data-name="turismo medico albania fue 2020 percorsi personalizzati">
+      <div class="card-header"><div class="avatar av-dim">TMA</div><div><p class="card-title">Turismo Medico Albania</p><p class="card-type">Clinica albanese &middot; Tirana</p></div></div>
+      <span class="badge badge-dim">Fondata 2020</span>
+      <p class="card-desc">Specializzata esclusivamente in FUE. Percorsi su misura per pazienti internazionali. Standard medici internazionali. Punto di riferimento per italiani.</p>
+      <div class="tags"><span class="tag">FUE esclusiva</span><span class="tag">Personalizzato</span></div>
+      <div class="card-footer"><span class="contact">t-medi.co</span><a class="visit-link" href="https://www.t-medi.co" target="_blank">Visita &rarr;</a></div>
+    </div>
+
+    <!-- 10 — Estemoon -->
+    <div class="card c-gold" data-tags="clinica" data-name="estemoon neograft fue dhi sapphire prezzi chiari 1200 2500">
+      <div class="card-header"><div class="avatar av-gold">ES</div><div><p class="card-title">Estemoon</p><p class="card-type">Clinica albanese &middot; Tirana</p></div></div>
+      <span class="badge badge-gold">NeoGraft disponibile</span>
+      <p class="card-desc">FUE, DHI, Sapphire FUE e NeoGraft. Prezzi tra &euro;1.200 e &euro;2.500. Trasparenza totale senza costi nascosti. Hotel spesso incluso nel pacchetto.</p>
+      <div class="tags"><span class="tag">NeoGraft</span><span class="tag">Sapphire FUE</span><span class="tag">Da &euro;1.200</span></div>
+      <div class="card-footer"><span class="contact">estemoon.com</span><a class="visit-link" href="https://estemoon.com/it/trapianto-di-capelli-tirana-albania-estemoon/" target="_blank">Visita &rarr;</a></div>
+    </div>
+
+    <!-- 11 — Clinica KEIT -->
+    <div class="card c-teal" data-tags="clinica italiano garanzia" data-name="keit clinica chirurghi italiani 22000 interventi follow-up italia hotel">
+      <div class="card-header"><div class="avatar av-teal">KE</div><div><p class="card-title">Clinica KEIT</p><p class="card-type">Clinica albanese &middot; Tirana</p></div></div>
+      <span class="badge badge-teal">30+ chirurghi italiani</span>
+      <p class="card-desc">La pi&ugrave; grande clinica estetica in Albania dal 2011. 22.000+ interventi eseguiti. Unica a offrire controlli post-op direttamente in Italia. Hotel di propriet&agrave; a 2 minuti.</p>
+      <div class="tags"><span class="tag">FUE</span><span class="tag">DHI</span><span class="tag">Follow-up Italia</span><span class="tag">Hotel KEIT</span></div>
+      <div class="card-footer"><span class="contact">keit.al</span><a class="visit-link" href="https://www.keit.al/it/trapianto-capelli-albania/" target="_blank">Visita &rarr;</a></div>
+    </div>
+
+    <!-- 12 — Blue Agency -->
+    <div class="card c-blue" data-tags="agenzia italiano garanzia" data-name="blue agency diego marziali 1900 albania turchia vip whatsapp">
+      <div class="card-header"><div class="avatar av-blue">BA</div><div><p class="card-title">Blue Agency</p><p class="card-type">Agenzia italiana</p></div></div>
+      <span class="badge badge-blue">Da &euro;1.900</span>
+      <p class="card-desc">Agenzia italiana (Diego Marziali). Assistenza completa in italiano h24 WhatsApp. Monitoraggio post-op al rientro. Pacchetti Albania e Turchia. Opzione hotel 5&#9733; VIP.</p>
+      <div class="tags"><span class="tag">Intermediario IT</span><span class="tag">VIP hotel 5&#9733;</span><span class="tag">Garanzia opzionale</span></div>
+      <div class="card-footer"><span class="contact">347 369 6775</span><a class="visit-link" href="https://www.blueagency.it/trapianto-capelli/" target="_blank">Visita &rarr;</a></div>
+    </div>
+
+    <!-- 13 — Mirror Estemed -->
+    <div class="card c-gold" data-tags="agenzia italiano" data-name="mirror estemed turismo estetico medicale albania turchia fatmir lela">
+      <div class="card-header"><div class="avatar av-gold">MI</div><div><p class="card-title">Mirror Estemed</p><p class="card-type">Agenzia italiana</p></div></div>
+      <span class="badge badge-gold">Leader turismo estetico</span>
+      <p class="card-desc">Agenzia italiana con medici internazionali. Pacchetti all-inclusive per Albania e Turchia. Prof. Dott. Fatmir Lela per Albania, Dott. &Uuml;st&uuml;nda&#287; per Turchia.</p>
+      <div class="tags"><span class="tag">All-inclusive</span><span class="tag">Albania + Turchia</span></div>
+      <div class="card-footer"><span class="contact">mirrorestemed.it</span><a class="visit-link" href="https://mirrorestemed.it/" target="_blank">Visita &rarr;</a></div>
+    </div>
+
+    <!-- 14 — Medical Tourism Albania -->
+    <div class="card c-dim" data-tags="clinica garanzia" data-name="medical tourism albania 20 anni chirurghi certificati laser fue">
+      <div class="card-header"><div class="avatar av-dim">MT</div><div><p class="card-title">Medical Tourism Albania</p><p class="card-type">Clinica albanese &middot; Tirana</p></div></div>
+      <span class="badge badge-dim">20+ anni esperienza</span>
+      <p class="card-desc">Oltre 20 anni di attivit&agrave;. Chirurghi certificati e laser all'avanguardia. Risultati visibili da 3 mesi, completi entro 12&ndash;18 mesi dall'intervento.</p>
+      <div class="tags"><span class="tag">FUE</span><span class="tag">Laser</span><span class="tag">Lunga esperienza</span></div>
+      <div class="card-footer"><span class="contact">medicaltourisminalbania.com</span><a class="visit-link" href="https://medicaltourisminalbania.com/it/trapianto-capelli-albania/" target="_blank">Visita &rarr;</a></div>
+    </div>
+
+    <!-- 15 — Hair Solution Clinic -->
+    <div class="card c-teal" data-tags="clinica italiano garanzia" data-name="hair solution clinic dhi pro fue sapphire prp 2190 volo hotel 12 mesi">
+      <div class="card-header"><div class="avatar av-teal">HS</div><div><p class="card-title">Hair Solution Clinic</p><p class="card-type">Clinica albanese &middot; Tirana</p></div></div>
+      <span class="badge badge-teal">Partner di Trav Med</span>
+      <p class="card-desc">All-inclusive &euro;2.190: volo A/R, hotel 4&#9733;, PRP post-trapianto, vitamine, shampoo, spray e assistenza mensile per 12 mesi. Prenotabile anche direttamente.</p>
+      <div class="tags"><span class="tag">DHI Pro</span><span class="tag">PRP incluso</span><span class="tag">12 mesi follow-up</span></div>
+      <div class="card-footer"><span class="contact">hairsolutionclinic.com</span><a class="visit-link" href="https://hairsolutionclinic.com/" target="_blank">Visita &rarr;</a></div>
+    </div>
+
+    <!-- 16 — Clinica DaVINCI -->
+    <div class="card c-blue" data-tags="clinica" data-name="clinica davinci micro fue 0.8mm medici turchi 4500 follicoli garanzia">
+      <div class="card-header"><div class="avatar av-blue">DV</div><div><p class="card-title">Clinica DaVINCI</p><p class="card-type">Clinica albanese &middot; Tirana</p></div></div>
+      <span class="badge badge-blue">Micro FUE 0.8mm</span>
+      <p class="card-desc">Medici turchi specializzati. Solo Micro FUE con strumenti da 0.8mm, zero cicatrici visibili. Fino a 4.500 follicoli in un'unica seduta. Garanzia sul risultato.</p>
+      <div class="tags"><span class="tag">Micro FUE</span><span class="tag">Zero cicatrici</span><span class="tag">4.500 follicoli max</span></div>
+      <div class="card-footer"><span class="contact">davinci.al</span><a class="visit-link" href="https://davinci.al/it/servizi/trapianto-di-capelli/" target="_blank">Visita &rarr;</a></div>
+    </div>
+
+    <!-- 17 — Medicalba -->
+    <div class="card c-gold" data-tags="clinica italiano" data-name="medicalba tirana sito italiano dhi prp barba sopracciglia visita gratuita">
+      <div class="card-header"><div class="avatar av-gold">MB</div><div><p class="card-title">Medicalba</p><p class="card-type">Clinica albanese &middot; Tirana</p></div></div>
+      <span class="badge badge-gold">Sito 100% in italiano</span>
+      <p class="card-desc">Comunicazione interamente in italiano. FUE, DHI, PRP, trapianto barba e sopracciglia. Visita gratuita senza impegno. Molte recensioni da pazienti italiani.</p>
+      <div class="tags"><span class="tag">DHI</span><span class="tag">PRP</span><span class="tag">Barba &amp; sopracciglia</span></div>
+      <div class="card-footer"><span class="contact">medicalba.it</span><a class="visit-link" href="https://medicalba.it/trapianto-capelli/" target="_blank">Visita &rarr;</a></div>
+    </div>
+
+    <!-- 18 — Dermolife Hair Clinic -->
+    <div class="card c-teal" data-tags="clinica garanzia" data-name="dermolife hair clinic 2002 12400 trapianti dhi sapphire analisi online">
+      <div class="card-header"><div class="avatar av-teal">DL</div><div><p class="card-title">Dermolife Hair Clinic</p><p class="card-type">Clinica albanese &middot; Tirana</p></div></div>
+      <span class="badge badge-teal">Dal 2002 &mdash; 12.400 trapianti</span>
+      <p class="card-desc">Una delle pi&ugrave; longeve in Albania. DHI e Sapphire FUE. Analisi dei capelli online gratuita prima dell'arrivo. Risparmio dichiarato 50%+ rispetto all'Europa.</p>
+      <div class="tags"><span class="tag">DHI</span><span class="tag">Sapphire FUE</span><span class="tag">Analisi online gratis</span></div>
+      <div class="card-footer"><span class="contact">hairdermolife.com</span><a class="visit-link" href="https://hairdermolife.com/it" target="_blank">Visita &rarr;</a></div>
+    </div>
+
+    <!-- 19 — New Hair Clinic -->
+    <div class="card c-blue" data-tags="clinica italiano garanzia" data-name="new hair clinic nhclinic hotel stesso edificio dottori italiano gerard">
+      <div class="card-header"><div class="avatar av-blue">NHC</div><div><p class="card-title">New Hair Clinic</p><p class="card-type">Clinica albanese &middot; Tirana</p></div></div>
+      <span class="badge badge-blue">Hotel nello stesso edificio</span>
+      <p class="card-desc">Clinica integrata in un hotel 4&#9733; con terrazza panoramica nel cuore di Tirana. Maggior parte dei dottori parla italiano. Partner ufficiale di Albania Medical Tour.</p>
+      <div class="tags"><span class="tag">Hotel 4&#9733; annesso</span><span class="tag">Staff italiano</span><span class="tag">Team turco</span></div>
+      <div class="card-footer"><span class="contact">nhclinic.it</span><a class="visit-link" href="https://nhclinic.it/" target="_blank">Visita &rarr;</a></div>
+    </div>
+
+    <!-- 20 — Queen Clinic -->
+    <div class="card c-gold" data-tags="agenzia italiano garanzia" data-name="queen clinic agenzia italiana garanzia vita personale italiano supporto">
+      <div class="card-header"><div class="avatar av-gold">QC</div><div><p class="card-title">Queen Clinic</p><p class="card-type">Agenzia italiana</p></div></div>
+      <span class="badge badge-gold">Garanzia a vita completa</span>
+      <p class="card-desc">Agenzia italiana con personale italiano. Garanzia a vita. Consulenza e assistenza in italiano, supporto per volo e hotel, follow-up continuo anche dopo il rientro.</p>
+      <div class="tags"><span class="tag">Staff italiano</span><span class="tag">Garanzia vita</span><span class="tag">Supporto totale</span></div>
+      <div class="card-footer"><span class="contact">queenclinic.it</span><a class="visit-link" href="https://queenclinic.it/trapianto-capelli-in-albania/" target="_blank">Visita &rarr;</a></div>
+    </div>
+
+    <!-- 21 — Doctor Plastic Surgery -->
+    <div class="card c-teal" data-tags="agenzia italiano garanzia" data-name="doctor plastic surgery luigi catania hygeia 1990 finanziamento">
+      <div class="card-header"><div class="avatar av-teal">DP</div><div><p class="card-title">Doctor Plastic Surgery</p><p class="card-type">Agenzia italiana</p></div></div>
+      <span class="badge badge-teal">Prezzo fisso &euro;1.990</span>
+      <p class="card-desc">Agenzia italiana con Clinica Hygeia (certificazioni internazionali). &Eacute;quipe diretta dal Dott. Luigi Catania. &euro;1.990 fissi per tutti i follicoli. Finanziamento disponibile.</p>
+      <div class="tags"><span class="tag">Prezzo fisso</span><span class="tag">Clinica Hygeia</span><span class="tag">Finanziamento</span></div>
+      <div class="card-footer"><span class="contact">doctorplasticsurgery.it</span><a class="visit-link" href="https://www.doctorplasticsurgery.it/trapianto-capelli/trapianto-capelli-albania/" target="_blank">Visita &rarr;</a></div>
+    </div>
+
+    <!-- 22 — Akel Hair Clinic -->
+    <div class="card c-blue" data-tags="clinica" data-name="akel hair clinic gonul kiraci turca dhi no rasatura prp mesoterapia 2021">
+      <div class="card-header"><div class="avatar av-blue">AK</div><div><p class="card-title">Akel Hair Clinic</p><p class="card-type">Clinica albanese &middot; Tirana</p></div></div>
+      <span class="badge badge-blue">20+ anni esperienza turca</span>
+      <p class="card-desc">Fondata dal Dott. G&ouml;n&uuml;l Kirac&#305; nel 2021. DHI senza rasatura (mantieni la lunghezza). FUE, PRP, mesoterapia, laser, trattamenti cellule staminali per capelli.</p>
+      <div class="tags"><span class="tag">DHI no rasatura</span><span class="tag">PRP</span><span class="tag">Mesoterapia</span><span class="tag">Laser</span></div>
+      <div class="card-footer"><span class="contact">akelhairtransplant.com</span><a class="visit-link" href="https://www.akelhairtransplant.com/it/" target="_blank">Visita &rarr;</a></div>
+    </div>
+
+    <!-- 23 — TrapiantoCapelliTirana.it -->
+    <div class="card c-gold" data-tags="clinica italiano garanzia" data-name="trapianto capelli tirana it 2025 promozioni garanzia vita due al giorno">
+      <div class="card-header"><div class="avatar av-gold">TCI</div><div><p class="card-title">TrapiantoCapelliTirana.it</p><p class="card-type">Clinica albanese &middot; Tirana</p></div></div>
+      <span class="badge badge-gold">Sito aggiornato 2025</span>
+      <p class="card-desc">Versione aggiornata con promozioni attive. Stessa struttura solida: garanzia a vita, solo 2 trapianti al giorno, staff invariato da oltre 10 anni.</p>
+      <div class="tags"><span class="tag">FUE</span><span class="tag">Garanzia vita</span><span class="tag">Promozioni 2025</span></div>
+      <div class="card-footer"><span class="contact">+39 388 169 0206</span><a class="visit-link" href="https://trapiantocapellitirana.it/" target="_blank">Visita &rarr;</a></div>
+    </div>
+
+    <!-- 24 — NHClinic / New Hair Tirana -->
+    <div class="card c-teal" data-tags="clinica italiano" data-name="nhclinic new hair tirana partner albania medical tour hotel turco italiano">
+      <div class="card-header"><div class="avatar av-teal">NH2</div><div><p class="card-title">NHClinic / New Hair Tirana</p><p class="card-type">Clinica albanese &middot; Tirana</p></div></div>
+      <span class="badge badge-teal">Partner Albania Med. Tour</span>
+      <p class="card-desc">Clinica all'avanguardia al piano terra di un hotel 4&#9733;. Staff medico turco esperto coordinato dal Dott. Gerald Buda. Consulenze e assistenza post-operatoria in italiano.</p>
+      <div class="tags"><span class="tag">Hotel 4&#9733; annesso</span><span class="tag">Team turco</span><span class="tag">Dott. Buda</span></div>
+      <div class="card-footer"><span class="contact">albmedtour.it/partner</span><a class="visit-link" href="https://albmedtour.it/it/i-nostri-partner-medici" target="_blank">Visita &rarr;</a></div>
+    </div>
+
+    <!-- 25 — Nouvelle Clinique -->
+    <div class="card c-blue" data-tags="clinica italiano" data-name="nouvelle clinique albania dhi fue sapphire prp barba sopracciglia 15 anni pacchetto allinclusivo multilingue">
+      <div class="card-header"><div class="avatar av-blue">NC</div><div><p class="card-title">Nouvelle Clinique</p><p class="card-type">Clinica albanese &middot; Tirana</p></div></div>
+      <span class="badge badge-blue">Sito 100% in italiano</span>
+      <p class="card-desc">Team di specialisti con 15+ anni di esperienza. DHI, FUE Sapphire, trapianto barba e sopracciglia, PRP. Pacchetti all-inclusive con alloggio e trasferimenti aeroportuali. Staff multilingue.</p>
+      <div class="tags"><span class="tag">DHI</span><span class="tag">FUE Sapphire</span><span class="tag">PRP</span><span class="tag">All-inclusive</span></div>
+      <div class="card-footer"><span class="contact">nouvelleclinique.com</span><a class="visit-link" href="https://www.nouvelleclinique.com/it/" target="_blank">Visita &rarr;</a></div>
+    </div>
+
+    <!-- ═══════════════════════════════════════ -->
+    <!-- NUOVE TROVATE (14)                      -->
+    <!-- ═══════════════════════════════════════ -->
+
+    <!-- 26 — VatanMed Clinic -->
+    <div class="card c-green" data-tags="clinica italiano garanzia nuova" data-name="vatanmed clinic napoli tirana 40000 pazienti dermojet anestesia indolore 1600 sapphire fue dhi">
+      <span class="new-tag">Nuova</span>
+      <div class="card-header"><div class="avatar av-green">VM</div><div><p class="card-title">VatanMed Clinic</p><p class="card-type">Clinica internazionale &middot; Tirana + Napoli</p></div></div>
+      <span class="badge badge-green">40.000+ pazienti &middot; Filiale a Napoli</span>
+      <p class="card-desc">Fondata nel 2007, 23 sedi nel mondo. 40.000+ pazienti trattati, rating 4.86/5. Filiale italiana a Napoli (Vomero) per follow-up. Anestesia indolore con tecnologia Dermojet. Pacchetto con hotel 5&#9733; e transfer VIP.</p>
+      <div class="tags"><span class="tag">FUE</span><span class="tag">DHI</span><span class="tag">Sapphire FUE</span><span class="tag">Da &euro;1.600</span><span class="tag">Dermojet</span></div>
+      <div class="card-footer"><span class="contact">+39 331 780 7017</span><a class="visit-link" href="https://vatanmed.com/" target="_blank">Visita &rarr;</a></div>
+    </div>
+
+    <!-- 27 — Major Clinic -->
+    <div class="card c-green" data-tags="agenzia italiano garanzia nuova" data-name="major clinic foggia tirana prima clinica tricologica italiana albania mario nucci dhi premium prgf exosome">
+      <span class="new-tag">Nuova</span>
+      <div class="card-header"><div class="avatar av-green">MC</div><div><p class="card-title">Major Clinic</p><p class="card-type">Clinica italiana &middot; Foggia + Tirana</p></div></div>
+      <span class="badge badge-green">Prima clinica IT in Albania &middot; Sede Foggia</span>
+      <p class="card-desc">Prima clinica tricologica italiana in Albania. Sede operativa a Foggia per controlli post-op. DHI Premium, PRP, PRGF, Exosome, LLLT. Follow-up fino a 24 mesi. Fondata dal chirurgo Mario Nucci.</p>
+      <div class="tags"><span class="tag">DHI Premium</span><span class="tag">PRGF</span><span class="tag">Exosome</span><span class="tag">Follow-up 24 mesi</span></div>
+      <div class="card-footer"><span class="contact">+39 329 838 0445</span><a class="visit-link" href="https://majorclinic.it/" target="_blank">Visita &rarr;</a></div>
+    </div>
+
+    <!-- 28 — American Hospital Tirana -->
+    <div class="card c-purple" data-tags="clinica garanzia nuova" data-name="american hospital tirana jci accreditamento ospedale fue dhi sapphire 1800 3500 sicurezza">
+      <span class="new-tag">Nuova</span>
+      <div class="card-header"><div class="avatar av-purple">AHT</div><div><p class="card-title">American Hospital Tirana</p><p class="card-type">Ospedale privato &middot; Tirana</p></div></div>
+      <span class="badge badge-purple">Unico accreditamento JCI in Albania</span>
+      <p class="card-desc">L'unica struttura in Albania con accreditamento JCI (standard oro globale). 5.000+ procedure, 98% soddisfazione. Chirurghi formati in USA, UK e Turchia. Follow-up a vita. Camere 5&#9733; e assistenza ospedaliera 24/7.</p>
+      <div class="tags"><span class="tag">FUE</span><span class="tag">DHI</span><span class="tag">Sapphire</span><span class="tag">$1.800&ndash;$3.500</span><span class="tag">JCI</span></div>
+      <div class="card-footer"><span class="contact">+355 68 4000 990</span><a class="visit-link" href="https://al.spitaliamerikan.com/plastic-surgery-albania/hair-transplant-in-albania/" target="_blank">Visita &rarr;</a></div>
+    </div>
+
+    <!-- 29 — European Hair Clinic -->
+    <div class="card c-orange" data-tags="clinica garanzia nuova" data-name="european hair clinic 30000 clienti dhi penna choi prp garanzia vita hotel 5 stelle">
+      <span class="new-tag">Nuova</span>
+      <div class="card-header"><div class="avatar av-orange">EH</div><div><p class="card-title">European Hair Clinic</p><p class="card-type">Clinica albanese &middot; Tirana</p></div></div>
+      <span class="badge badge-orange">30.000+ clienti &middot; Garanzia a vita</span>
+      <p class="card-desc">15+ anni di esperienza, oltre 30.000 clienti trattati, 10+ medici certificati. DHI con Penna Choi e PRP incluso gratuitamente. Hotel 5&#9733; incluso nel pacchetto. Garanzia a vita su tutte le procedure.</p>
+      <div class="tags"><span class="tag">DHI Penna Choi</span><span class="tag">PRP gratis</span><span class="tag">Hotel 5&#9733;</span><span class="tag">Garanzia vita</span></div>
+      <div class="card-footer"><span class="contact">+355 692 071 551</span><a class="visit-link" href="https://www.europeanhairclinic.com" target="_blank">Visita &rarr;</a></div>
+    </div>
+
+    <!-- 30 — ProDental & ProEstetik -->
+    <div class="card c-cyan" data-tags="clinica italiano nuova" data-name="prodental proestetik tirana 1900 allinclusivo guida italiana 100 trapianti mese fue prp">
+      <span class="new-tag">Nuova</span>
+      <div class="card-header"><div class="avatar av-cyan">PP</div><div><p class="card-title">ProDental &amp; ProEstetik</p><p class="card-type">Clinica albanese &middot; Tirana</p></div></div>
+      <span class="badge badge-cyan">&euro;1.900 all-inclusive con guida IT</span>
+      <p class="card-desc">100+ trapianti al mese, quasi 20 anni di esperienza. Pacchetto &euro;1.900 tutto incluso: transfer con guida italiana, 3 notti hotel, analisi cliniche, intervento FUE 4&ndash;8h, tour citt&agrave;, pasti e PRP.</p>
+      <div class="tags"><span class="tag">FUE</span><span class="tag">PRP incluso</span><span class="tag">Guida italiana</span><span class="tag">&euro;1.900 fisso</span></div>
+      <div class="card-footer"><span class="contact">+355 68 22 54 440</span><a class="visit-link" href="https://prodentalclinic.it/trapianto-capelli/" target="_blank">Visita &rarr;</a></div>
+    </div>
+
+    <!-- 31 — Dental & Beauty Tirana -->
+    <div class="card c-gold" data-tags="clinica italiano nuova" data-name="dental beauty tirana 2000 2290 allinclusivo voli italia hotel staff turco multidisciplinare">
+      <span class="new-tag">Nuova</span>
+      <div class="card-header"><div class="avatar av-gold">DB</div><div><p class="card-title">Dental &amp; Beauty Tirana</p><p class="card-type">Clinica albanese &middot; Tirana</p></div></div>
+      <span class="badge badge-gold">&euro;2.290 con voli dall'Italia</span>
+      <p class="card-desc">100+ trapianti al mese. Pacchetto all-inclusive 4 giorni da &euro;2.290 con voli dall'Italia, hotel 3&#9733;, transfer. Staff medico turco con specializzazioni internazionali. Guide di lingua italiana disponibili.</p>
+      <div class="tags"><span class="tag">FUE</span><span class="tag">DHI</span><span class="tag">PRP incluso</span><span class="tag">Voli inclusi</span></div>
+      <div class="card-footer"><span class="contact">+355 69 58 50 555</span><a class="visit-link" href="https://dentalandbeauty.it/en/hair-transplant/" target="_blank">Visita &rarr;</a></div>
+    </div>
+
+    <!-- 32 — International Hair Clinic -->
+    <div class="card c-teal" data-tags="clinica garanzia nuova" data-name="international hair clinic tirana pristina garanzia certificata vip interprete fue dhi micro">
+      <span class="new-tag">Nuova</span>
+      <div class="card-header"><div class="avatar av-teal">IH</div><div><p class="card-title">International Hair Clinic</p><p class="card-type">Clinica albanese &middot; Tirana + Pristina</p></div></div>
+      <span class="badge badge-teal">Garanzia con certificato firmato</span>
+      <p class="card-desc">FUE, DHI e Micro-FUE. 500+ procedure completate. Chirurghi formati in Turchia. Certificato di garanzia firmato e timbrato. Pacchetto VIP con interprete 24/7, hotel lusso e kit medicinali 6 mesi.</p>
+      <div class="tags"><span class="tag">FUE</span><span class="tag">DHI</span><span class="tag">Micro-FUE</span><span class="tag">2 sedi</span><span class="tag">Pacchetto VIP</span></div>
+      <div class="card-footer"><span class="contact">+355 688 060 800</span><a class="visit-link" href="https://internationalhairclinic.com/" target="_blank">Visita &rarr;</a></div>
+    </div>
+
+    <!-- 33 — Istanbul Care Albania -->
+    <div class="card c-blue" data-tags="clinica italiano nuova" data-name="istanbul care albania fue 1490 dhi 1790 sapphire prezzi bassi donna afro barba">
+      <span class="new-tag">Nuova</span>
+      <div class="card-header"><div class="avatar av-blue">IC</div><div><p class="card-title">Istanbul Care</p><p class="card-type">Clinica internazionale &middot; Tirana</p></div></div>
+      <span class="badge badge-blue">FUE da &euro;1.490 &middot; DHI da &euro;1.790</span>
+      <p class="card-desc">Brand globale con 3 sedi nel mondo. Prezzi tra i pi&ugrave; competitivi del mercato albanese. Sapphire FUE con lame in zaffiro per incisioni pi&ugrave; fini. Anche trapianto capelli donna, Afro e barba. Sito in italiano.</p>
+      <div class="tags"><span class="tag">FUE da &euro;1.490</span><span class="tag">DHI</span><span class="tag">Sapphire</span><span class="tag">Donna &amp; Afro</span></div>
+      <div class="card-footer"><span class="contact">istanbul-care.com</span><a class="visit-link" href="https://istanbul-care.com/hair-transplant-albania/" target="_blank">Visita &rarr;</a></div>
+    </div>
+
+    <!-- 34 — Albania Doctor -->
+    <div class="card c-gold" data-tags="agenzia italiano nuova" data-name="albania doctor family hospital tirana fue micro dhi 5500 follicoli numero italiano assistenza post rientro">
+      <span class="new-tag">Nuova</span>
+      <div class="card-header"><div class="avatar av-gold">AD</div><div><p class="card-title">Albania Doctor</p><p class="card-type">Agenzia &middot; Tirana (Family Hospital)</p></div></div>
+      <span class="badge badge-gold">Numero italiano &middot; Assistenza post-rientro</span>
+      <p class="card-desc">Opera presso il Family Hospital di Tirana con specialisti turchi. Fino a 5.500 follicoli per sessione. Consulenza pre-visita online dall'Italia. Assistenza telefonica ed elettronica anche dopo il rientro in Italia.</p>
+      <div class="tags"><span class="tag">FUE</span><span class="tag">Micro-FUE</span><span class="tag">DHI</span><span class="tag">5.500 follicoli</span></div>
+      <div class="card-footer"><span class="contact">+39 339 370 0297</span><a class="visit-link" href="https://www.albaniadoctor.net/en/trapianto-capelli" target="_blank">Visita &rarr;</a></div>
+    </div>
+
+    <!-- 35 — Royal Hair Istanbul Albania -->
+    <div class="card c-dim" data-tags="clinica italiano nuova" data-name="royal hair istanbul albania fue dhi sapphire 1500 3500 sito italiano donna barba sopracciglia">
+      <span class="new-tag">Nuova</span>
+      <div class="card-header"><div class="avatar av-dim">RH</div><div><p class="card-title">Royal Hair Istanbul</p><p class="card-type">Clinica internazionale &middot; Tirana</p></div></div>
+      <span class="badge badge-dim">&euro;1.500&ndash;&euro;3.500 &middot; Sito italiano</span>
+      <p class="card-desc">Clinica turca con sede operativa a Tirana. 20+ anni di esperienza, 98% soddisfazione dichiarata. FUE, DHI e Sapphire FUE. Anche trapianto barba, sopracciglia e capelli donna. Sito interamente in italiano.</p>
+      <div class="tags"><span class="tag">FUE</span><span class="tag">DHI</span><span class="tag">Sapphire</span><span class="tag">Sito IT</span></div>
+      <div class="card-footer"><span class="contact">+90 501 007 0686</span><a class="visit-link" href="https://royalhairistanbul.com/it/trapianto-di-capelli-albania/" target="_blank">Visita &rarr;</a></div>
+    </div>
+
+    <!-- 36 — Family Beauty Hospital -->
+    <div class="card c-teal" data-tags="clinica italiano nuova" data-name="family beauty hospital tirana ospedale sicurezza fue dhi hotel 4 stelle transfer multilingue">
+      <span class="new-tag">Nuova</span>
+      <div class="card-header"><div class="avatar av-teal">FB</div><div><p class="card-title">Family Beauty Hospital</p><p class="card-type">Ospedale privato &middot; Tirana</p></div></div>
+      <span class="badge badge-teal">Struttura ospedaliera &middot; Staff italiano</span>
+      <p class="card-desc">Ospedale privato specializzato in chirurgia estetica a Tirana. FUE e DHI in ambiente ospedaliero con standard di sicurezza elevati. Pacchetti all-inclusive con hotel 4&#9733; e transfer aeroporto. Staff multilingue (italiano, inglese).</p>
+      <div class="tags"><span class="tag">FUE</span><span class="tag">DHI</span><span class="tag">Hotel 4&#9733;</span><span class="tag">Ospedale</span></div>
+      <div class="card-footer"><span class="contact">+355 69 606 0620</span><a class="visit-link" href="https://familybeautyal.com/hair-transplant/" target="_blank">Visita &rarr;</a></div>
+    </div>
+
+    <!-- 37 — Este Medical Group Albania -->
+    <div class="card c-blue" data-tags="clinica nuova" data-name="este medical group albania blloku tirana gruppo internazionale uk istanbul new york fue prp hydrafacial laser">
+      <span class="new-tag">Nuova</span>
+      <div class="card-header"><div class="avatar av-blue">EM</div><div><p class="card-title">Este Medical Group Albania</p><p class="card-type">Clinica internazionale &middot; Tirana (Blloku)</p></div></div>
+      <span class="badge badge-blue">Gruppo internazionale UK</span>
+      <p class="card-desc">Filiale albanese del gruppo Este Medical (UK). Sedi a Istanbul, New York, Dubai, Kenya. Nel quartiere esclusivo Blloku di Tirana. FUE, PRP, Laser Hair Regrowth, HydraFacial e microneedling.</p>
+      <div class="tags"><span class="tag">FUE</span><span class="tag">PRP</span><span class="tag">Laser</span><span class="tag">HydraFacial</span></div>
+      <div class="card-footer"><span class="contact">+355 69 277 7760</span><a class="visit-link" href="https://estemedicalgroup.al" target="_blank">Visita &rarr;</a></div>
+    </div>
+
+    <!-- 38 — Hair Transplants Albania -->
+    <div class="card c-cyan" data-tags="clinica nuova" data-name="hair transplants albania 1290 prezzo basso fue dhi penna choi prp barba sopracciglia follow-up 12 mesi">
+      <span class="new-tag">Nuova</span>
+      <div class="card-header"><div class="avatar av-cyan">HTA</div><div><p class="card-title">Hair Transplants Albania</p><p class="card-type">Clinica albanese &middot; Tirana</p></div></div>
+      <span class="badge badge-cyan">Da &euro;1.290 &middot; Prezzo pi&ugrave; basso</span>
+      <p class="card-desc">Uno dei prezzi pi&ugrave; bassi del mercato albanese (da &euro;1.290). 1.000+ procedure completate. Chirurghi formati in Europa. Pacchetto include anestesia, PRP, farmaci post-op, kit aftercare e follow-up 12 mesi.</p>
+      <div class="tags"><span class="tag">FUE</span><span class="tag">DHI</span><span class="tag">Da &euro;1.290</span><span class="tag">Follow-up 12 mesi</span></div>
+      <div class="card-footer"><span class="contact">+355 67 644 1606</span><a class="visit-link" href="https://hairtransplantsalbania.com/" target="_blank">Visita &rarr;</a></div>
+    </div>
+
+    <!-- 39 — Tirana Health Clinic -->
+    <div class="card c-orange" data-tags="clinica nuova" data-name="tirana health clinic fue dhi fut strip method unica albania 95 sopravvivenza innesti">
+      <span class="new-tag">Nuova</span>
+      <div class="card-header"><div class="avatar av-orange">TH</div><div><p class="card-title">Tirana Health Clinic</p><p class="card-type">Clinica albanese &middot; Tirana</p></div></div>
+      <span class="badge badge-orange">Unica con tecnica FUT in Albania</span>
+      <p class="card-desc">Si distingue per offrire anche la tecnica FUT (Strip Method), rara nel panorama albanese, ideale per chi necessita di molti innesti in singola sessione. 95%+ tasso di sopravvivenza innesti. Risparmio fino al 70%.</p>
+      <div class="tags"><span class="tag">FUE</span><span class="tag">DHI</span><span class="tag">FUT</span><span class="tag">Risparmio 70%</span></div>
+      <div class="card-footer"><span class="contact">tiranahealthclinic.com</span><a class="visit-link" href="https://tiranahealthclinic.com/hair-transplant/" target="_blank">Visita &rarr;</a></div>
+    </div>
+
+    <div class="empty" id="emptyMsg">Nessun risultato trovato. Prova con un altro termine.</div>
+  </div>
+
+  <footer class="footer">
+    <span>39 strutture verificate</span> &middot; Guida al turismo tricologico Italia &rarr; Albania &middot; 2025
+  </footer>
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+<script>
+  const SB_BASE='https://zzyjuhbxwsrgttlizlkv.supabase.co';
+  const SB_KEY='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Inp6eWp1aGJ4d3NyZ3R0bGl6bGt2Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzU1NjQxMjcsImV4cCI6MjA5MTE0MDEyN30.NIqYoN_8t8M9WCwB4OcVwL2K2YtEAeOFJKZKab4RhZo';
+  const DASH='trico_albania';
+  const _sb=window.supabase.createClient(SB_BASE,SB_KEY);
+  let _data={},currentFilter='all',currentSearch='',csf='';
+  async function sbLoad(){try{const{data:rows,error}=await _sb.from('ext_dashboard_status').select('card_id,status,note').eq('dashboard',DASH);if(error)throw error;rows.forEach(function(row){const o={};if(row.status&&row.status!=='none')o.status=row.status;if(row.note)o.note=row.note;if(o.status||o.note)_data[row.card_id]=o})}catch(e){console.error('Supabase load:',e)}}
+  function ld(){return _data}
+  function svCard(id,card){_data[id]=card;if(!card||(!card.status&&!card.note)){delete _data[id];card={}}
+    _sb.from('ext_dashboard_status').upsert({dashboard:DASH,card_id:id,status:card.status||'none',note:card.note||'',updated_at:new Date().toISOString()},{onConflict:'dashboard,card_id'}).then(function(r){if(r.error)console.error('Save error:',r.error)});
+  }
+  function gid(c){const n=c.querySelector('.card-title');return n?n.textContent.trim().replace(/[^a-zA-Z0-9]/g,'_').substring(0,40):'';}
+
+  function initCards(){
+    const data=ld();
+    document.querySelectorAll('.card').forEach(function(c){
+      const id=gid(c);if(!id)return;
+      c.setAttribute('data-id',id);
+      const s=data[id]||{};
+      const sd=document.createElement('div');sd.className='cc-status';
+      sd.innerHTML='<button class="cc-lvl'+(s.status==='0'?' on-0':'')+'" title="Livello 0 — Scartare" onclick="tl(event,\'0\')">0</button>'+
+        '<button class="cc-lvl'+(s.status==='1'?' on-1':'')+'" title="Livello 1 — Basso" onclick="tl(event,\'1\')">1</button>'+
+        '<button class="cc-lvl'+(s.status==='2'?' on-2':'')+'" title="Livello 2 — Medio" onclick="tl(event,\'2\')">2</button>'+
+        '<button class="cc-lvl'+(s.status==='3'?' on-3':'')+'" title="Livello 3 — Alto" onclick="tl(event,\'3\')">3</button>'+
+        '<span class="cc-star'+(s.status==='star'?' on':'')+'" title="Top!" onclick="tstar(event)">'+(s.status==='star'?'&#9733;':'&#9734;')+'</span>';
+      c.appendChild(sd);
+      const nb=document.createElement('button');nb.className='cc-note-btn'+(s.note?' has-note':'');nb.title='Appunti';nb.innerHTML='&#9998;';nb.onclick=function(e){e.stopPropagation();const np=c.querySelector('.cc-notes');np.classList.toggle('open');if(np.classList.contains('open'))np.querySelector('textarea').focus()};c.appendChild(nb);
+      const np=document.createElement('div');np.className='cc-notes';np.innerHTML='<textarea placeholder="Scrivi appunti...">'+(s.note||'')+'</textarea><button class="cc-note-save" onclick="saveNote(this)">Salva</button>';
+      np.querySelector('textarea').addEventListener('input',function(){var me=this;clearTimeout(me._t);me._t=setTimeout(function(){var cur2=(_data[id]||{});if(me.value.trim()){cur2.note=me.value;c.querySelector('.cc-note-btn').classList.add('has-note');c.classList.add('has-note-card')}else{delete cur2.note;c.querySelector('.cc-note-btn').classList.remove('has-note');c.classList.remove('has-note-card')}svCard(id,cur2)},800)});
+      c.appendChild(np);
+      if(s.status)c.classList.add('stato-'+s.status);
+      if(s.note)c.classList.add('has-note-card');
+    });
+  }
+  function saveNote(btn){
+    btn.blur();var card=btn.closest('.card'),id=card.getAttribute('data-id'),cur=(_data[id]||{}),ta=card.querySelector('.cc-notes textarea'),val=ta.value,nb=card.querySelector('.cc-note-btn');
+    if(val.trim()){cur.note=val;nb.classList.add('has-note');card.classList.add('has-note-card')}else{delete cur.note;nb.classList.remove('has-note');card.classList.remove('has-note-card')}
+    svCard(id,cur);btn.textContent='\u2713 Salvato!';btn.classList.add('saved');setTimeout(function(){btn.textContent='Salva';btn.classList.remove('saved')},1500);
+  }
+  function tl(e,level){
+    e.stopPropagation();const btn=e.target,card=btn.closest('.card'),id=card.getAttribute('data-id'),cur=(_data[id]||{});
+    card.classList.remove('stato-0','stato-1','stato-2','stato-3','stato-star');
+    card.querySelectorAll('.cc-lvl').forEach(function(b){b.className='cc-lvl'});
+    const star=card.querySelector('.cc-star');if(star){star.classList.remove('on');star.innerHTML='&#9734;'}
+    if(cur.status===level){delete cur.status}else{cur.status=level;btn.classList.add('on-'+level);card.classList.add('stato-'+level)}
+    svCard(id,cur);updateStatusCounts();
+  }
+  function tstar(e){
+    e.stopPropagation();const star=e.target.closest('.cc-star'),card=star.closest('.card'),id=card.getAttribute('data-id'),cur=(_data[id]||{});
+    card.classList.remove('stato-0','stato-1','stato-2','stato-3','stato-star');
+    card.querySelectorAll('.cc-lvl').forEach(function(b){b.className='cc-lvl'});
+    if(cur.status==='star'){delete cur.status;star.classList.remove('on');star.innerHTML='&#9734;'}
+    else{cur.status='star';star.classList.add('on');star.innerHTML='&#9733;';card.classList.add('stato-star')}
+    svCard(id,cur);updateStatusCounts();
+  }
+
+  function updateCount(){const v=document.querySelectorAll('.card:not(.hidden)').length;document.getElementById('count').textContent='('+v+')';document.getElementById('emptyMsg').style.display=v===0?'block':'none'}
+  function applyFilters(){const data=ld();document.querySelectorAll('.card').forEach(function(card){const tags=card.getAttribute('data-tags')||'';const name=card.getAttribute('data-name')||'';const title=card.querySelector('.card-title');const titleText=title?title.textContent.toLowerCase():'';const id=card.getAttribute('data-id')||'';const saved=data[id]||{};const matchFilter=currentFilter==='all'||tags.includes(currentFilter);const matchSearch=currentSearch===''||name.includes(currentSearch)||titleText.includes(currentSearch);const matchStatus=csf===''||saved.status===csf;if(matchFilter&&matchSearch&&matchStatus){card.classList.remove('hidden')}else{card.classList.add('hidden')}});updateCount()}
+  function setFilter(type,btn){currentFilter=type;csf='';document.querySelectorAll('.btn:not(.btn-status)').forEach(function(b){b.classList.remove('active')});document.querySelectorAll('.btn-status').forEach(function(b){b.classList.remove('active')});btn.classList.add('active');applyFilters()}
+  function fs(status,b){if(csf===status){csf='';b.classList.remove('active')}else{csf=status;document.querySelectorAll('.btn-status').forEach(function(x){x.classList.remove('active')});b.classList.add('active')}applyFilters()}
+  function doSearch(){currentSearch=document.getElementById('searchInput').value.toLowerCase().trim();applyFilters()}
+  function updateStatusCounts(){const data=ld();let c0=0,c1=0,c2=0,c3=0,cs=0;Object.values(data).forEach(function(d){if(d.status==='0')c0++;if(d.status==='1')c1++;if(d.status==='2')c2++;if(d.status==='3')c3++;if(d.status==='star')cs++});document.getElementById('cnt-0').textContent=c0;document.getElementById('cnt-1').textContent=c1;document.getElementById('cnt-2').textContent=c2;document.getElementById('cnt-3').textContent=c3;document.getElementById('cnt-star').textContent=cs}
+  function refreshCard(cid){
+    var card=document.querySelector('[data-id="'+cid+'"]');if(!card)return;var s=_data[cid]||{};
+    card.classList.remove('stato-0','stato-1','stato-2','stato-3','stato-star');
+    card.querySelectorAll('.cc-lvl').forEach(function(b){b.className='cc-lvl'});
+    var star=card.querySelector('.cc-star');if(star){star.classList.remove('on');star.innerHTML='&#9734;'}
+    if(s.status){card.classList.add('stato-'+s.status);if(s.status==='star'){if(star){star.classList.add('on');star.innerHTML='&#9733;'}}else{var lvls=card.querySelectorAll('.cc-lvl');var idx=parseInt(s.status);if(lvls[idx])lvls[idx].classList.add('on-'+s.status)}}
+    var nb=card.querySelector('.cc-note-btn'),ta=card.querySelector('.cc-notes textarea');
+    if(s.note){if(nb)nb.classList.add('has-note');card.classList.add('has-note-card');if(ta&&!ta.matches(':focus'))ta.value=s.note}
+    else{if(nb)nb.classList.remove('has-note');card.classList.remove('has-note-card');if(ta&&!ta.matches(':focus'))ta.value=''}
+  }
+  sbLoad().then(function(){initCards();updateStatusCounts();updateCount();
+    _sb.channel('dash-'+DASH).on('postgres_changes',{event:'*',schema:'public',table:'ext_dashboard_status',filter:'dashboard=eq.'+DASH},function(p){
+      var row=p.new||{};var cid=row.card_id;if(!cid)return;
+      var o={};if(row.status&&row.status!=='none')o.status=row.status;if(row.note)o.note=row.note;
+      if(o.status||o.note)_data[cid]=o;else delete _data[cid];
+      refreshCard(cid);updateStatusCounts();
+    }).subscribe();
+  });
+</script>
+</body>
+</html>

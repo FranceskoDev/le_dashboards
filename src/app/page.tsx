@@ -1,65 +1,138 @@
-import Image from "next/image";
+import DashboardCard from "./dashboard-card";
+
+const dashboards = [
+  {
+    title: "Turismo Tricologico Albania",
+    desc: "39 cliniche trapianto capelli — Agenzie italiane e cliniche albanesi",
+    href: "/dashboard-TURISMO-TRICOLOGICO-ALBANIA.html",
+    cards: 39,
+    accent: "#d4a017",
+    icon: "🇦🇱",
+  },
+  {
+    title: "Turismo Tricologico Turchia",
+    desc: "70 cliniche trapianto capelli — Istanbul, Ankara, Antalya",
+    href: "/dashboard-TURISMO-TRICOLOGICO-TURCHIA.html",
+    cards: 70,
+    accent: "#e23e3e",
+    icon: "🇹🇷",
+  },
+  {
+    title: "Top Cliniche Mondo",
+    desc: "302 cliniche in 52 paesi — Escluse Turchia e Albania",
+    href: "/dashboard-CLINICHE-MONDO-200.html",
+    cards: 302,
+    accent: "#6366f1",
+    icon: "🌍",
+  },
+  {
+    title: "Turismo Medico Albania",
+    desc: "219 strutture — Dentale, estetica, IVF, bariatrica, oculistica",
+    href: "/dashboard-TURISMO-MEDICO-ALBANIA.html",
+    cards: 219,
+    accent: "#14b8a6",
+    icon: "🏥",
+  },
+];
 
 export default function Home() {
+  const total = dashboards.reduce((sum, d) => sum + d.cards, 0);
+
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+    <div className="min-h-screen relative">
+      {/* Background grid */}
+      <div
+        className="fixed inset-0 pointer-events-none"
+        style={{
+          backgroundImage:
+            "linear-gradient(rgba(99,102,241,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(99,102,241,0.03) 1px, transparent 1px)",
+          backgroundSize: "60px 60px",
+        }}
+      />
+      <div
+        className="fixed -top-48 -right-48 w-[600px] h-[600px] pointer-events-none opacity-60"
+        style={{
+          background:
+            "radial-gradient(circle, rgba(99,102,241,0.08), transparent 70%)",
+        }}
+      />
+
+      <div className="relative z-10 max-w-5xl mx-auto px-6 py-16">
+        {/* Hero */}
+        <header className="text-center mb-16">
+          <div
+            className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-semibold tracking-wide mb-6"
+            style={{
+              background: "rgba(99,102,241,0.12)",
+              color: "#818cf8",
+              border: "1px solid rgba(99,102,241,0.3)",
+            }}
           >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
+            <span
+              className="w-2 h-2 rounded-full animate-pulse"
+              style={{ background: "#818cf8" }}
             />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+            Dashboard Hub
+          </div>
+          <h1 className="text-4xl md:text-5xl font-extrabold tracking-tight mb-4">
+            Turismo Medico &{" "}
+            <span
+              className="bg-clip-text text-transparent"
+              style={{
+                backgroundImage: "linear-gradient(135deg, #6366f1, #14b8a6)",
+              }}
+            >
+              Tricologico
+            </span>
+          </h1>
+          <p className="text-[#8892a8] text-lg max-w-xl mx-auto">
+            Centro di controllo per tutte le dashboard di ricerca. Livelli,
+            note e filtri salvati su Supabase in tempo reale.
+          </p>
+
+          <div className="flex justify-center gap-4 mt-8 flex-wrap">
+            <Stat value={dashboards.length} label="Dashboard" color="#6366f1" />
+            <Stat value={total} label="Card totali" color="#14b8a6" />
+            <Stat value={52} label="Paesi" color="#d4a017" />
+          </div>
+        </header>
+
+        {/* Dashboard grid */}
+        <div className="grid gap-6 md:grid-cols-2">
+          {dashboards.map((d) => (
+            <DashboardCard key={d.href} {...d} />
+          ))}
         </div>
-      </main>
+
+        {/* Footer */}
+        <footer className="text-center mt-16 pt-8 border-t border-[#252b3b] text-[#5a6478] text-sm">
+          {total} strutture verificate &middot; Supabase Realtime &middot; 2025
+        </footer>
+      </div>
+    </div>
+  );
+}
+
+function Stat({
+  value,
+  label,
+  color,
+}: {
+  value: number;
+  label: string;
+  color: string;
+}) {
+  return (
+    <div
+      className="text-center px-6 py-3 rounded-lg min-w-[100px]"
+      style={{ background: "#131720", border: "1px solid #252b3b" }}
+    >
+      <div className="text-2xl font-extrabold" style={{ color }}>
+        {value}
+      </div>
+      <div className="text-[10px] uppercase tracking-wider text-[#5a6478]">
+        {label}
+      </div>
     </div>
   );
 }
