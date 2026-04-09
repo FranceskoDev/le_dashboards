@@ -33,6 +33,14 @@ const dashboards = [
     accent: "#14b8a6",
     icon: "🏥",
   },
+  {
+    title: "Turismo Medico Mondo",
+    desc: "102 agenzie, piattaforme, network ospedalieri e facilitatori globali in 35+ paesi",
+    href: "/dashboard-TURISMO-MEDICO-MONDO.html",
+    cards: 102,
+    accent: "#f97316",
+    icon: "🌐",
+  },
 ];
 
 export default function Home() {

@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>102 Agenzie Turismo Medico nel Mondo</title>
+<style>
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  :root{
+    --bg:#0b0e14;--surface:#131720;--surface2:#1a1f2e;
+    --border:#252b3b;--border-hl:#3a4260;
+    --text:#e2e8f0;--text-dim:#8892a8;--text-muted:#5a6478;
+    --accent:#f97316;--accent-glow:rgba(249,115,22,.18);
+    --green:#22c55e;--green-bg:rgba(34,197,94,.12);--green-border:rgba(34,197,94,.3);
+    --blue:#3b82f6;--blue-bg:rgba(59,130,246,.1);--blue-border:rgba(59,130,246,.3);
+    --purple:#a855f7;--purple-bg:rgba(168,85,247,.1);--purple-border:rgba(168,85,247,.3);
+    --cyan:#06b6d4;--cyan-bg:rgba(6,182,212,.1);--cyan-border:rgba(6,182,212,.3);
+    --orange:#f97316;--orange-bg:rgba(249,115,22,.1);--orange-border:rgba(249,115,22,.3);
+    --gold:#d4a017;--gold-bg:rgba(212,160,23,.12);--gold-border:rgba(212,160,23,.3);
+    --teal:#14b8a6;--teal-bg:rgba(20,184,166,.12);--teal-border:rgba(20,184,166,.3);
+    --crimson:#e23e3e;--crimson-bg:rgba(226,62,62,.12);--crimson-border:rgba(226,62,62,.3);
+    --red:#ef4444;--red-bg:rgba(239,68,68,.1);--red-border:rgba(239,68,68,.3);
+    --yellow:#eab308;--yellow-bg:rgba(234,179,8,.1);--yellow-border:rgba(234,179,8,.3);
+    --radius:12px;--radius-sm:8px;
+    --shadow:0 4px 24px rgba(0,0,0,.35);--transition:.25s cubic-bezier(.4,0,.2,1);
+  }
+  html{scroll-behavior:smooth}
+  body{font-family:'Segoe UI',system-ui,-apple-system,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;min-height:100vh}
+  a{color:var(--accent);text-decoration:none}
+
+  .bg-grid{position:fixed;inset:0;z-index:0;pointer-events:none;background-image:linear-gradient(rgba(249,115,22,.025) 1px,transparent 1px),linear-gradient(90deg,rgba(249,115,22,.025) 1px,transparent 1px);background-size:60px 60px}
+  .bg-glow{position:fixed;top:-200px;right:-200px;width:600px;height:600px;background:radial-gradient(circle,rgba(249,115,22,.06),transparent 70%);z-index:0;pointer-events:none;animation:pulse 8s ease-in-out infinite alternate}
+  .bg-glow-2{position:fixed;bottom:-200px;left:-200px;width:500px;height:500px;background:radial-gradient(circle,rgba(6,182,212,.05),transparent 70%);z-index:0;pointer-events:none;animation:pulse 10s ease-in-out infinite alternate-reverse}
+  @keyframes pulse{from{opacity:.6;transform:scale(1)}to{opacity:1;transform:scale(1.15)}}
+  @keyframes blink{0%,100%{opacity:1}50%{opacity:.3}}
+
+  .container{max-width:1320px;margin:0 auto;padding:0 24px;position:relative;z-index:1}
+
+  .hero{padding:56px 0 40px;text-align:center;border-bottom:1px solid var(--border);margin-bottom:0}
+  .hero-badge{display:inline-flex;align-items:center;gap:8px;background:var(--accent-glow);color:var(--accent);padding:6px 16px;border-radius:20px;font-size:.82em;font-weight:600;letter-spacing:.5px;margin-bottom:16px;border:1px solid rgba(249,115,22,.3)}
+  .hero-badge .dot{width:8px;height:8px;border-radius:50%;background:var(--accent);animation:blink 2s infinite}
+  .hero h1{font-size:2.4em;font-weight:800;letter-spacing:-.02em;margin-bottom:8px}
+  .hero h1 span{background:linear-gradient(135deg,var(--accent),var(--cyan));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+  .hero p{color:var(--text-dim);font-size:1.05em;max-width:750px;margin:0 auto}
+  .stats-bar{display:flex;justify-content:center;gap:12px;flex-wrap:wrap;margin-top:28px}
+  .stat{text-align:center;padding:14px 22px;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-sm);min-width:110px}
+  .stat-num{font-size:2em;font-weight:800}
+  .stat-label{font-size:.72em;color:var(--text-muted);text-transform:uppercase;letter-spacing:.5px}
+
+  .controls{padding:24px 0;display:flex;align-items:center;gap:10px;flex-wrap:wrap;border-bottom:1px solid var(--border);margin-bottom:32px}
+  .controls-label{font-size:.72em;letter-spacing:2px;text-transform:uppercase;color:var(--text-muted);margin-right:4px}
+  .btn{font-family:'Segoe UI',system-ui,sans-serif;font-size:.78em;font-weight:500;padding:6px 14px;border-radius:20px;border:1px solid var(--border);background:transparent;color:var(--text-dim);cursor:pointer;transition:var(--transition);letter-spacing:.3px}
+  .btn:hover{border-color:var(--accent);color:var(--accent)}
+  .btn.active{background:var(--accent-glow);border-color:rgba(249,115,22,.3);color:var(--accent)}
+  .search-wrap{margin-left:auto;position:relative}
+  .search-wrap input{font-family:'Segoe UI',system-ui,sans-serif;font-size:.82em;background:var(--surface);border:1px solid var(--border);color:var(--text);padding:7px 14px 7px 34px;border-radius:20px;width:240px;outline:none;transition:border-color .2s}
+  .search-wrap input:focus{border-color:var(--accent)}
+  .search-wrap input::placeholder{color:var(--text-muted)}
+  .search-icon{position:absolute;left:12px;top:50%;transform:translateY(-50%);color:var(--text-muted);font-size:.82em;pointer-events:none}
+  #count{font-size:.78em;color:var(--text-muted);margin-left:2px}
+
+  /* REGION SECTIONS */
+  .region{margin-bottom:40px}
+  .region-header{display:flex;align-items:center;gap:12px;margin-bottom:16px;padding-bottom:10px;border-bottom:1px solid var(--border)}
+  .region-icon{font-size:1.3em}
+  .region-title{font-size:1.15em;font-weight:700}
+  .region-count{font-size:.70em;font-weight:600;padding:3px 10px;border-radius:12px;text-transform:uppercase;letter-spacing:.5px}
+
+  /* COMPACT GRID */
+  .cgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:10px}
+
+  /* COMPACT CARD */
+  .cc{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-sm);padding:12px 14px;display:flex;align-items:center;gap:10px;transition:var(--transition);position:relative;overflow:hidden}
+  .cc:hover{border-color:var(--border-hl);transform:translateY(-1px);box-shadow:var(--shadow)}
+  .cc::before{content:'';position:absolute;top:0;left:0;bottom:0;width:3px}
+  .cc.t-piattaforma::before{background:var(--orange)}
+  .cc.t-facilitatore::before{background:var(--blue)}
+  .cc.t-ospedale::before{background:var(--green)}
+  .cc.t-specializzato::before{background:var(--purple)}
+  .cc.t-accreditamento::before{background:var(--gold)}
+  .cc.hidden{display:none}
+  .cc-info{flex:1;min-width:0}
+  .cc-name{font-size:.88em;font-weight:600;color:var(--text);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .cc-city{font-size:.72em;color:var(--text-muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .cc-tag{font-size:.58em;display:inline-block;padding:1px 6px;border-radius:3px;font-weight:600;letter-spacing:.3px;margin-top:2px}
+  .cc-tag.tg-piattaforma{background:var(--orange-bg);color:var(--orange);border:1px solid var(--orange-border)}
+  .cc-tag.tg-facilitatore{background:var(--blue-bg);color:var(--blue);border:1px solid var(--blue-border)}
+  .cc-tag.tg-ospedale{background:var(--green-bg);color:var(--green);border:1px solid var(--green-border)}
+  .cc-tag.tg-specializzato{background:var(--purple-bg);color:var(--purple);border:1px solid var(--purple-border)}
+  .cc-tag.tg-accreditamento{background:var(--gold-bg);color:var(--gold);border:1px solid var(--gold-border)}
+  .cc-link{display:flex;align-items:center;justify-content:center;width:40px;height:40px;min-width:40px;border-radius:10px;background:var(--surface2);border:1px solid var(--border);color:var(--accent);font-size:1.2em;font-weight:700;flex-shrink:0;transition:var(--transition);text-decoration:none}
+  .cc-link:hover{background:var(--accent);color:#fff;border-color:var(--accent);transform:scale(1.1)}
+
+  .cc{position:relative;flex-wrap:wrap}
+  /* STATUS & NOTES */
+  .cc-status{position:absolute;top:4px;right:4px;display:flex;gap:3px;align-items:center;background:rgba(0,0,0,.45);padding:3px 6px;border-radius:16px;z-index:2}
+  .cc-lvl{width:18px;height:18px;border-radius:50%;border:2px solid var(--border);cursor:pointer;transition:.2s;font-size:10px;font-weight:700;color:var(--text-muted);display:flex;align-items:center;justify-content:center;background:transparent;padding:0;line-height:1;font-family:inherit}
+  .cc-lvl:hover{transform:scale(1.25);border-color:var(--text-dim);color:var(--text)}
+  .cc-lvl.on-0{background:rgba(239,68,68,.25);border-color:var(--red);color:var(--red)}
+  .cc-lvl.on-1{background:rgba(234,179,8,.15);border-color:var(--yellow);color:var(--yellow)}
+  .cc-lvl.on-2{background:rgba(59,130,246,.25);border-color:var(--blue);color:var(--blue);box-shadow:0 0 5px rgba(59,130,246,.4)}
+  .cc-lvl.on-3{background:rgba(34,197,94,.3);border-color:var(--green);color:var(--green);box-shadow:0 0 7px rgba(34,197,94,.5)}
+  .cc.stato-0{opacity:.35;border-color:rgba(239,68,68,.3) !important}
+  .cc.stato-1{opacity:.55;border-color:rgba(234,179,8,.3) !important}
+  .cc.stato-2{border-color:rgba(59,130,246,.4) !important;box-shadow:0 0 8px rgba(59,130,246,.2),0 0 20px rgba(59,130,246,.08)}
+  .cc.stato-3{border-color:var(--green) !important;box-shadow:0 0 12px rgba(34,197,94,.4),0 0 30px rgba(34,197,94,.15),inset 0 0 12px rgba(34,197,94,.06)}
+  .cc-star{width:20px;height:20px;cursor:pointer;transition:.2s;font-size:18px;line-height:1;color:var(--border);display:flex;align-items:center;justify-content:center;margin-left:3px}
+  .cc-star:hover{transform:scale(1.3);color:#fbbf24}
+  .cc-star.on{color:#fbbf24;filter:drop-shadow(0 0 8px #fbbf24) drop-shadow(0 0 16px rgba(251,191,36,.5))}
+  .cc.stato-star{border-color:#fbbf24 !important;box-shadow:0 0 16px rgba(251,191,36,.5),0 0 40px rgba(251,191,36,.2),inset 0 0 16px rgba(251,191,36,.08)}
+  .cc-note-btn{position:absolute;bottom:4px;right:4px;width:18px;height:18px;border-radius:4px;background:transparent;border:1px solid var(--border);color:var(--text-muted);font-size:.6em;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:.2s;z-index:2}
+  .cc-note-btn:hover{border-color:var(--accent);color:var(--accent)}
+  .cc-note-btn.has-note{background:rgba(249,115,22,.35);border-color:var(--accent);color:#fb923c;box-shadow:0 0 10px rgba(249,115,22,.5),0 0 20px rgba(249,115,22,.25);animation:noteGlow 2s ease-in-out infinite alternate;font-size:.7em}
+  @keyframes noteGlow{from{box-shadow:0 0 8px rgba(249,115,22,.4),0 0 16px rgba(249,115,22,.2)}to{box-shadow:0 0 14px rgba(249,115,22,.6),0 0 28px rgba(249,115,22,.3)}}
+  .cc.has-note-card{border-bottom:3px solid rgba(249,115,22,.5) !important}
+  .cc.has-note-card .cc-note-btn.has-note{width:22px;height:22px;font-size:.75em}
+  .cc.stato-0 .cc-note-btn.has-note{box-shadow:0 0 28px rgba(249,115,22,1),0 0 56px rgba(249,115,22,.7);width:24px;height:24px;font-size:.85em}
+  .cc.stato-1 .cc-note-btn.has-note{box-shadow:0 0 20px rgba(249,115,22,.85),0 0 40px rgba(249,115,22,.5);width:22px;height:22px;font-size:.8em}
+  .cc-notes{display:none;width:100%;margin-top:6px}
+  .cc-notes.open{display:block}
+  .cc-notes textarea{width:100%;background:var(--surface2);border:1px solid var(--border);border-radius:6px;color:var(--text);font-family:inherit;font-size:.75em;padding:6px 8px;resize:vertical;min-height:32px;max-height:120px;outline:none}
+  .cc-notes textarea:focus{border-color:var(--accent)}
+  .cc-notes textarea::placeholder{color:var(--text-muted)}
+  .cc-note-save{margin-top:4px;padding:4px 14px;background:var(--accent);color:#fff;border:none;border-radius:6px;font-size:.75em;font-weight:700;cursor:pointer;transition:.2s;font-family:inherit;letter-spacing:.5px}
+  .cc-note-save:hover{filter:brightness(1.2);transform:scale(1.03)}
+  .cc-note-save.saved{background:var(--green);pointer-events:none}
+
+  .btn-status{font-size:.72em;padding:4px 10px}
+  .empty{text-align:center;padding:60px 20px;color:var(--text-muted);font-size:.9em;display:none}
+  .footer{text-align:center;padding:40px 0 32px;border-top:1px solid var(--border);color:var(--text-muted);font-size:.82em}
+  .footer span{color:var(--accent)}
+
+  @media(max-width:768px){.hero h1{font-size:1.6em}.cgrid{grid-template-columns:1fr}.stats-bar{gap:8px}.stat{min-width:80px;padding:10px 14px}.stat-num{font-size:1.5em}.controls{gap:6px}.search-wrap{margin-left:0;width:100%}.search-wrap input{width:100%}}
+</style>
+</head>
+<body>
+<div class="bg-grid"></div>
+<div class="bg-glow"></div>
+<div class="bg-glow-2"></div>
+<div class="container">
+
+<header class="hero">
+  <div class="hero-badge"><span class="dot"></span> Guida mondiale verificata 2025</div>
+  <h1>102 Agenzie &amp; Facilitatori<br><span>Turismo Medico nel Mondo</span></h1>
+  <p>Mappa globale delle migliori agenzie, piattaforme, facilitatori e network ospedalieri per il turismo medico internazionale.</p>
+  <div class="stats-bar">
+    <div class="stat"><div class="stat-num" style="color:var(--accent)">102</div><div class="stat-label">Entit&agrave;</div></div>
+    <div class="stat"><div class="stat-num" style="color:var(--cyan)">30+</div><div class="stat-label">Paesi</div></div>
+    <div class="stat"><div class="stat-num" style="color:var(--blue)">20</div><div class="stat-label">Categorie</div></div>
+  </div>
+</header>
+
+<div class="controls">
+  <span class="controls-label">Filtra</span>
+  <button class="btn active" onclick="f('all',this)">Tutte <span id="count">(102)</span></button>
+  <button class="btn" onclick="f('piattaforma',this)">Piattaforme</button>
+  <button class="btn" onclick="f('facilitatore',this)">Facilitatori</button>
+  <button class="btn" onclick="f('ospedale',this)">Ospedali</button>
+  <button class="btn" onclick="f('specializzato',this)">Specializzati</button>
+  <button class="btn" onclick="f('accreditamento',this)">Accreditamento</button>
+  <span class="controls-label" style="margin-left:12px">Stato</span>
+  <button class="btn btn-status" onclick="fs('0',this)" style="color:var(--red);border-color:var(--red-border)"><span style="color:#5a6478">Lv.0 -</span> <span id="cnt-0">0</span></button>
+  <button class="btn btn-status" onclick="fs('1',this)" style="color:var(--yellow);border-color:rgba(234,179,8,.3)"><span style="color:#5a6478">Lv.1 -</span> <span id="cnt-1">0</span></button>
+  <button class="btn btn-status" onclick="fs('2',this)" style="color:var(--blue);border-color:rgba(59,130,246,.3)"><span style="color:#5a6478">Lv.2 -</span> <span id="cnt-2">0</span></button>
+  <button class="btn btn-status" onclick="fs('3',this)" style="color:var(--green);border-color:var(--green-border)"><span style="color:#5a6478">Lv.3 -</span> <span id="cnt-3">0</span></button>
+  <button class="btn btn-status" onclick="fs('star',this)" style="color:#fbbf24;border-color:rgba(251,191,36,.3)"><span style="color:#5a6478">&#9733; Top -</span> <span id="cnt-star">0</span></button>
+  <div class="search-wrap">
+    <span class="search-icon">&#128269;</span>
+    <input type="text" id="si" placeholder="Cerca agenzia, citt&agrave; o paese..." oninput="s()">
+  </div>
+</div>
+
+<div id="main">
+
+<!-- ══════ 1. PIATTAFORME GLOBALI (17) ══════ -->
+<section class="region" data-r="piattaforma">
+<div class="region-header"><span class="region-icon">&#127760;</span><span class="region-title">Piattaforme Globali</span><span class="region-count" style="background:var(--orange-bg);color:var(--orange);border:1px solid var(--orange-border)">17 entit&agrave;</span></div>
+<div class="cgrid">
+<div class="cc t-piattaforma" data-t="piattaforma" data-s="placidway englewood colorado usa marketplace globale dentale oncologia trapianti estetica"><div class="cc-info"><div class="cc-name">PlacidWay</div><div class="cc-city">Englewood, Colorado, USA &middot; 50+ paesi, 1.500+ strutture</div><span class="cc-tag tg-piattaforma">Piattaforma</span></div><a class="cc-link" href="https://www.placidway.com" target="_blank">&rarr;</a></div>
+<div class="cc t-piattaforma" data-t="piattaforma" data-s="bookimed ucraina globale plastica oncologia ortopedia dentale"><div class="cc-info"><div class="cc-name">Bookimed</div><div class="cc-city">Ucraina &middot; 1.590+ cliniche, 900K+ pazienti</div><span class="cc-tag tg-piattaforma">Piattaforma</span></div><a class="cc-link" href="https://us-uk.bookimed.com" target="_blank">&rarr;</a></div>
+<div class="cc t-piattaforma" data-t="piattaforma" data-s="qunomedical berlino germania europa sud-est asiatico qunoscore"><div class="cc-info"><div class="cc-name">Qunomedical</div><div class="cc-city">Berlino, Germania &middot; Qunoscore rating system</div><span class="cc-tag tg-piattaforma">Piattaforma</span></div><a class="cc-link" href="https://www.qunomedical.com" target="_blank">&rarr;</a></div>
+<div class="cc t-piattaforma" data-t="piattaforma" data-s="patients beyond borders usa globale guida turismo medico"><div class="cc-info"><div class="cc-name">Patients Beyond Borders</div><div class="cc-city">USA &middot; Risorsa informativa autorevole, guide-libro</div><span class="cc-tag tg-piattaforma">Piattaforma</span></div><a class="cc-link" href="https://www.patientsbeyondborders.com" target="_blank">&rarr;</a></div>
+<div class="cc t-piattaforma" data-t="piattaforma" data-s="medical tourism association mta usa globale no-profit edelheit"><div class="cc-info"><div class="cc-name">Medical Tourism Association (MTA)</div><div class="cc-city">USA &middot; No-profit, 1.2M healthcare seekers</div><span class="cc-tag tg-piattaforma">Piattaforma</span></div><a class="cc-link" href="https://www.medicaltourismassociation.com" target="_blank">&rarr;</a></div>
+<div class="cc t-piattaforma" data-t="piattaforma" data-s="flymedi istanbul turchia messico thailandia europa dentale capelli bariatrica estetica"><div class="cc-info"><div class="cc-name">Flymedi</div><div class="cc-city">Istanbul, Turchia &middot; Comparatore prezzi, partner JCI/ISO</div><span class="cc-tag tg-piattaforma">Piattaforma</span></div><a class="cc-link" href="https://www.flymedi.com" target="_blank">&rarr;</a></div>
+<div class="cc t-piattaforma" data-t="piattaforma" data-s="medigo berlino germania europa lasik impianti dentali"><div class="cc-info"><div class="cc-name">Medigo</div><div class="cc-city">Berlino, Germania &middot; Scelta top per pazienti UK/UE</div><span class="cc-tag tg-piattaforma">Piattaforma</span></div><a class="cc-link" href="https://www.medigo.com" target="_blank">&rarr;</a></div>
+<div class="cc t-piattaforma" data-t="piattaforma" data-s="health-tourism.com globale database ospedali jci"><div class="cc-info"><div class="cc-name">Health-Tourism.com</div><div class="cc-city">Globale &middot; Database completo ospedali JCI</div><span class="cc-tag tg-piattaforma">Piattaforma</span></div><a class="cc-link" href="https://www.health-tourism.com" target="_blank">&rarr;</a></div>
+<div class="cc t-piattaforma" data-t="piattaforma" data-s="medicaltourism.com usa globale healthcare abroad"><div class="cc-info"><div class="cc-name">MedicalTourism.com</div><div class="cc-city">USA &middot; Digital Destination for Healthcare Abroad</div><span class="cc-tag tg-piattaforma">Piattaforma</span></div><a class="cc-link" href="https://www.medicaltourism.com" target="_blank">&rarr;</a></div>
+<div class="cc t-piattaforma" data-t="piattaforma" data-s="treatmentabroad uk globale chirurgia dentale estetica"><div class="cc-info"><div class="cc-name">TreatmentAbroad</div><div class="cc-city">UK &middot; Directory provider verificati</div><span class="cc-tag tg-piattaforma">Piattaforma</span></div><a class="cc-link" href="https://www.treatmentabroad.com" target="_blank">&rarr;</a></div>
+<div class="cc t-piattaforma" data-t="piattaforma" data-s="bookinghealth dusseldorf germania oncologia neurologia ortopedia cardiologia"><div class="cc-info"><div class="cc-name">BookingHealth</div><div class="cc-city">D&uuml;sseldorf, Germania &middot; 3.000+ ospedali, 11 lingue</div><span class="cc-tag tg-piattaforma">Piattaforma</span></div><a class="cc-link" href="https://bookinghealth.com" target="_blank">&rarr;</a></div>
+<div class="cc t-piattaforma" data-t="piattaforma" data-s="airomedical globale 589 ospedali 5823 medici"><div class="cc-info"><div class="cc-name">Airomedical</div><div class="cc-city">Globale &middot; 589 ospedali, 5.823 medici</div><span class="cc-tag tg-piattaforma">Piattaforma</span></div><a class="cc-link" href="https://airomedical.com" target="_blank">&rarr;</a></div>
+<div class="cc t-piattaforma" data-t="piattaforma" data-s="mymeditravel asia turchia europa guide costi procedure"><div class="cc-info"><div class="cc-name">MyMediTravel</div><div class="cc-city">Asia, Turchia, Europa &middot; Guide dettagliate</div><span class="cc-tag tg-piattaforma">Piattaforma</span></div><a class="cc-link" href="https://www.mymeditravel.com" target="_blank">&rarr;</a></div>
+<div class="cc t-piattaforma" data-t="piattaforma" data-s="whatclinic irlanda uk europa estetica dentale fertilita"><div class="cc-info"><div class="cc-name">WhatClinic</div><div class="cc-city">Irlanda &middot; Messaggistica diretta con cliniche</div><span class="cc-tag tg-piattaforma">Piattaforma</span></div><a class="cc-link" href="https://www.whatclinic.com" target="_blank">&rarr;</a></div>
+<div class="cc t-piattaforma" data-t="piattaforma" data-s="bestclinicabroad europa matching paziente clinica"><div class="cc-info"><div class="cc-name">BestClinicAbroad</div><div class="cc-city">Europa &middot; Matching paziente-clinica personalizzato</div><span class="cc-tag tg-piattaforma">Piattaforma</span></div><a class="cc-link" href="https://bestclinicabroad.com" target="_blank">&rarr;</a></div>
+<div class="cc t-piattaforma" data-t="piattaforma" data-s="docplanner varsavia polonia brasile messico spagna italia prenotazione medici"><div class="cc-info"><div class="cc-name">Docplanner</div><div class="cc-city">Varsavia, Polonia &middot; 13 paesi, prenotazione medici</div><span class="cc-tag tg-piattaforma">Piattaforma</span></div><a class="cc-link" href="https://www.docplanner.com" target="_blank">&rarr;</a></div>
+<div class="cc t-piattaforma" data-t="piattaforma" data-s="practo india internazionale telemedicina ricerca medico"><div class="cc-info"><div class="cc-name">Practo</div><div class="cc-city">India &middot; Piattaforma onnicomprensiva, telemedicina</div><span class="cc-tag tg-piattaforma">Piattaforma</span></div><a class="cc-link" href="https://www.practo.com" target="_blank">&rarr;</a></div>
+</div>
+</section>
+
+<!-- ══════ 2. FACILITATORI USA (6) ══════ -->
+<section class="region" data-r="facilitatore">
+<div class="region-header"><span class="region-icon">&#127482;&#127480;</span><span class="region-title">Facilitatori USA</span><span class="region-count" style="background:var(--blue-bg);color:var(--blue);border:1px solid var(--blue-border)">6 entit&agrave;</span></div>
+<div class="cgrid">
+<div class="cc t-facilitatore" data-t="facilitatore" data-s="medical tourism corporation mtc texas usa messico costa rica india thailandia bariatrica dentale estetica"><div class="cc-info"><div class="cc-name">Medical Tourism Corporation (MTC)</div><div class="cc-city">Texas, USA &middot; BBB A+, 12+ anni</div><span class="cc-tag tg-facilitatore">Facilitatore</span></div><a class="cc-link" href="https://www.medicaltourismco.com" target="_blank">&rarr;</a></div>
+<div class="cc t-facilitatore" data-t="facilitatore" data-s="medretreat usa network ultra-qualificato"><div class="cc-info"><div class="cc-name">MedRetreat</div><div class="cc-city">USA &middot; America's most trusted MT company</div><span class="cc-tag tg-facilitatore">Facilitatore</span></div><a class="cc-link" href="https://www.medretreat.com" target="_blank">&rarr;</a></div>
+<div class="cc t-facilitatore" data-t="facilitatore" data-s="mymeditour usa vip concierge mta gold member"><div class="cc-info"><div class="cc-name">MyMediTour</div><div class="cc-city">USA &middot; VIP concierge, MTA Gold Member</div><span class="cc-tag tg-facilitatore">Facilitatore</span></div><a class="cc-link" href="https://mymeditour.com" target="_blank">&rarr;</a></div>
+<div class="cc t-facilitatore" data-t="facilitatore" data-s="universal medical travel usa thailandia turchia colombia corea del sud messico india dubai"><div class="cc-info"><div class="cc-name">Universal Medical Travel</div><div class="cc-city">USA &middot; Pianificazione completa viaggio medico</div><span class="cc-tag tg-facilitatore">Facilitatore</span></div><a class="cc-link" href="https://universalmedicaltravel.com" target="_blank">&rarr;</a></div>
+<div class="cc t-facilitatore" data-t="facilitatore" data-s="healthbase usa strutture avanguardia"><div class="cc-info"><div class="cc-name">Healthbase</div><div class="cc-city">USA &middot; Strutture all'avanguardia</div><span class="cc-tag tg-facilitatore">Facilitatore</span></div><a class="cc-link" href="https://www.healthbase.com" target="_blank">&rarr;</a></div>
+<div class="cc t-facilitatore" data-t="facilitatore" data-s="my 1health singapore uae thailandia turchia india 45000 pazienti"><div class="cc-info"><div class="cc-name">My 1Health</div><div class="cc-city">Singapore, UAE, Thailandia &middot; 45.000+ pazienti</div><span class="cc-tag tg-facilitatore">Facilitatore</span></div><a class="cc-link" href="https://my1health.com" target="_blank">&rarr;</a></div>
+</div>
+</section>
+
+<!-- ══════ 3. FACILITATORI INDIA (10) ══════ -->
+<section class="region" data-r="facilitatore">
+<div class="region-header"><span class="region-icon">&#127470;&#127475;</span><span class="region-title">Facilitatori India</span><span class="region-count" style="background:var(--blue-bg);color:var(--blue);border:1px solid var(--blue-border)">10 entit&agrave;</span></div>
+<div class="cgrid">
+<div class="cc t-facilitatore" data-t="facilitatore" data-s="vaidam health gurugram haryana india turchia thailandia uae germania nabh iso"><div class="cc-info"><div class="cc-name">Vaidam Health</div><div class="cc-city">Gurugram, India &middot; 100.000+ pazienti, 125+ paesi</div><span class="cc-tag tg-facilitatore">Facilitatore</span></div><a class="cc-link" href="https://www.vaidam.com" target="_blank">&rarr;</a></div>
+<div class="cc t-facilitatore" data-t="facilitatore" data-s="medmonks new delhi india 1000 specialisti 500 ospedali"><div class="cc-info"><div class="cc-name">MedMonks</div><div class="cc-city">New Delhi, India &middot; 1.000+ specialisti</div><span class="cc-tag tg-facilitatore">Facilitatore</span></div><a class="cc-link" href="https://medmonks.com" target="_blank">&rarr;</a></div>
+<div class="cc t-facilitatore" data-t="facilitatore" data-s="indicure india apollo fortis max healthcare 25000 pazienti"><div class="cc-info"><div class="cc-name">IndiCure</div><div class="cc-city">India &middot; 25.000+ pazienti, partner Apollo/Fortis</div><span class="cc-tag tg-facilitatore">Facilitatore</span></div><a class="cc-link" href="https://www.indicure.com" target="_blank">&rarr;</a></div>
+<div class="cc t-facilitatore" data-t="facilitatore" data-s="medtoureasy new delhi india series a funding accessibilita globale"><div class="cc-info"><div class="cc-name">MedTourEasy</div><div class="cc-city">New Delhi, India &middot; $1.5M Series A funding</div><span class="cc-tag tg-facilitatore">Facilitatore</span></div><a class="cc-link" href="https://www.medtoureasy.com" target="_blank">&rarr;</a></div>
+<div class="cc t-facilitatore" data-t="facilitatore" data-s="edhacare india guida trattamento visti alloggi recupero"><div class="cc-info"><div class="cc-name">EdhaCare</div><div class="cc-city">India &middot; Guida trattamento, visti, alloggi</div><span class="cc-tag tg-facilitatore">Facilitatore</span></div><a class="cc-link" href="https://www.edhacare.com" target="_blank">&rarr;</a></div>
+<div class="cc t-facilitatore" data-t="facilitatore" data-s="getwellgo gurugram india 1000 esperti 80 specialita nigeria sudafrica iraq"><div class="cc-info"><div class="cc-name">GetWellGo</div><div class="cc-city">Gurugram, India &middot; 1.000+ esperti, 80+ specialit&agrave;</div><span class="cc-tag tg-facilitatore">Facilitatore</span></div><a class="cc-link" href="https://getwellgo.com" target="_blank">&rarr;</a></div>
+<div class="cc t-facilitatore" data-t="facilitatore" data-s="lyfboat india cardiologia ortopedia oncologia estetica"><div class="cc-info"><div class="cc-name">Lyfboat</div><div class="cc-city">India &middot; Cardiologia, ortopedia, oncologia</div><span class="cc-tag tg-facilitatore">Facilitatore</span></div><a class="cc-link" href="https://www.lyfboat.com" target="_blank">&rarr;</a></div>
+<div class="cc t-facilitatore" data-t="facilitatore" data-s="karetrip india medical tourism planner personalizzati"><div class="cc-info"><div class="cc-name">KareTrip</div><div class="cc-city">India &middot; Medical tourism planner personalizzato</div><span class="cc-tag tg-facilitatore">Facilitatore</span></div><a class="cc-link" href="https://karetrip.com" target="_blank">&rarr;</a></div>
+<div class="cc t-facilitatore" data-t="facilitatore" data-s="peace medical tourism india 15 anni esperienza"><div class="cc-info"><div class="cc-name">Peace Medical Tourism</div><div class="cc-city">India &middot; 15 anni di esperienza</div><span class="cc-tag tg-facilitatore">Facilitatore</span></div><a class="cc-link" href="https://peacemedicaltourism.com" target="_blank">&rarr;</a></div>
+<div class="cc t-facilitatore" data-t="facilitatore" data-s="shifam health india healthcare accessibile"><div class="cc-info"><div class="cc-name">Shifam Health</div><div class="cc-city">India &middot; Healthcare accessibile</div><span class="cc-tag tg-facilitatore">Facilitatore</span></div><a class="cc-link" href="https://shifamhealth.com" target="_blank">&rarr;</a></div>
+</div>
+</section>
+
+<!-- ══════ 4. FACILITATORI TURCHIA (6) ══════ -->
+<section class="region" data-r="facilitatore">
+<div class="region-header"><span class="region-icon">&#127481;&#127479;</span><span class="region-title">Facilitatori Turchia</span><span class="region-count" style="background:var(--blue-bg);color:var(--blue);border:1px solid var(--blue-border)">6 entit&agrave;</span></div>
+<div class="cgrid">
+<div class="cc t-facilitatore" data-t="facilitatore" data-s="imperium health group turchia canada usa uae uk estetica dentale capelli ivf ortopedia"><div class="cc-info"><div class="cc-name">Imperium Health Group</div><div class="cc-city">Turchia &middot; 60+ ospedali, uffici in 4 paesi</div><span class="cc-tag tg-facilitatore">Facilitatore</span></div><a class="cc-link" href="https://www.imperiumhealthgroup.com" target="_blank">&rarr;</a></div>
+<div class="cc t-facilitatore" data-t="facilitatore" data-s="tursium turchia ministero salute licenza agenzia turistica classe a"><div class="cc-info"><div class="cc-name">Tursium</div><div class="cc-city">Turchia &middot; Doppia certificazione sanit&agrave;-turismo</div><span class="cc-tag tg-facilitatore">Facilitatore</span></div><a class="cc-link" href="https://tursium.com" target="_blank">&rarr;</a></div>
+<div class="cc t-facilitatore" data-t="facilitatore" data-s="travelmedi turchia expert medical care"><div class="cc-info"><div class="cc-name">TravelMedi</div><div class="cc-city">Turchia &middot; Expert Medical Care, Tailored to You</div><span class="cc-tag tg-facilitatore">Facilitatore</span></div><a class="cc-link" href="https://travelmedi.com" target="_blank">&rarr;</a></div>
+<div class="cc t-facilitatore" data-t="facilitatore" data-s="clinic center istanbul turchia uk estetica dentale aftercare"><div class="cc-info"><div class="cc-name">Clinic Center</div><div class="cc-city">Istanbul &middot; Aftercare basato in UK</div><span class="cc-tag tg-facilitatore">Facilitatore</span></div><a class="cc-link" href="https://www.cliniccenter.co.uk" target="_blank">&rarr;</a></div>
+<div class="cc t-facilitatore" data-t="facilitatore" data-s="asthetica turchia uk australia chirurgia estetica"><div class="cc-info"><div class="cc-name">Asthetica</div><div class="cc-city">Turchia &middot; Proprietari UK/Australia, leader estetica</div><span class="cc-tag tg-facilitatore">Facilitatore</span></div><a class="cc-link" href="https://asthetica.com" target="_blank">&rarr;</a></div>
+<div class="cc t-facilitatore" data-t="facilitatore" data-s="hayatmed istanbul turchia chirurgia plastica medical tourism risparmio 60-80%"><div class="cc-info"><div class="cc-name">HayatMed</div><div class="cc-city">Istanbul &middot; Risparmio 60-80% su procedure estetiche</div><span class="cc-tag tg-facilitatore">Facilitatore</span></div><a class="cc-link" href="https://www.hayatmed.com" target="_blank">&rarr;</a></div>
+</div>
+</section>
+
+<!-- ══════ 5. FACILITATORI MESSICO (5) ══════ -->
+<section class="region" data-r="facilitatore">
+<div class="region-header"><span class="region-icon">&#127474;&#127485;</span><span class="region-title">Facilitatori Messico</span><span class="region-count" style="background:var(--blue-bg);color:var(--blue);border:1px solid var(--blue-border)">5 entit&agrave;</span></div>
+<div class="cgrid">
+<div class="cc t-facilitatore" data-t="facilitatore" data-s="medicalmex tijuana messico bariatrica dentale estetica angeles hospital"><div class="cc-info"><div class="cc-name">MedicalMex</div><div class="cc-city">Tijuana, Messico &middot; #1 MT Facilitator in Messico</div><span class="cc-tag tg-facilitatore">Facilitatore</span></div><a class="cc-link" href="https://www.medicalmex.com" target="_blank">&rarr;</a></div>
+<div class="cc t-facilitatore" data-t="facilitatore" data-s="mexico bariatric center messico chirurgia bariatrica aftercare"><div class="cc-info"><div class="cc-name">Mexico Bariatric Center</div><div class="cc-city">Messico &middot; Leader bariatrico, aftercare top</div><span class="cc-tag tg-facilitatore">Facilitatore</span></div><a class="cc-link" href="https://mexicobariatriccenter.com" target="_blank">&rarr;</a></div>
+<div class="cc t-facilitatore" data-t="facilitatore" data-s="alo bariatrics tijuana guadalajara puerto vallarta messico chirurgia bariatrica peso"><div class="cc-info"><div class="cc-name">ALO Bariatrics</div><div class="cc-city">Tijuana, Guadalajara, PV &middot; Chirurghi internazionali</div><span class="cc-tag tg-facilitatore">Facilitatore</span></div><a class="cc-link" href="https://www.alobariatrics.com" target="_blank">&rarr;</a></div>
+<div class="cc t-facilitatore" data-t="facilitatore" data-s="medicaltourismex messico bilingue tecnologia avanzata"><div class="cc-info"><div class="cc-name">MedicalTourismEx</div><div class="cc-city">Messico &middot; Attenzione bilingue, tecnologia avanzata</div><span class="cc-tag tg-facilitatore">Facilitatore</span></div><a class="cc-link" href="https://www.medicaltourismex.com" target="_blank">&rarr;</a></div>
+<div class="cc t-facilitatore" data-t="facilitatore" data-s="dentavacation messico costa rica india thailandia dentale"><div class="cc-info"><div class="cc-name">DentaVacation</div><div class="cc-city">Messico, Costa Rica, India &middot; Brand MTC Group</div><span class="cc-tag tg-facilitatore">Facilitatore</span></div><a class="cc-link" href="https://www.dentavacation.com" target="_blank">&rarr;</a></div>
+</div>
+</section>
+
+<!-- ══════ 6. FACILITATORI COLOMBIA/COSTA RICA (3) ══════ -->
+<section class="region" data-r="facilitatore">
+<div class="region-header"><span class="region-icon">&#127758;</span><span class="region-title">Facilitatori Colombia / Costa Rica</span><span class="region-count" style="background:var(--blue-bg);color:var(--blue);border:1px solid var(--blue-border)">3 entit&agrave;</span></div>
+<div class="cgrid">
+<div class="cc t-facilitatore" data-t="facilitatore" data-s="mde care medellin colombia facilitatore gestione completa"><div class="cc-info"><div class="cc-name">MDE Care</div><div class="cc-city">Medellin, Colombia &middot; Gestione completa</div><span class="cc-tag tg-facilitatore">Facilitatore</span></div><a class="cc-link" href="https://mdecare.co" target="_blank">&rarr;</a></div>
+<div class="cc t-facilitatore" data-t="facilitatore" data-s="absolute medical tourism colombia leading facilitator"><div class="cc-info"><div class="cc-name">Absolute Medical Tourism</div><div class="cc-city">Colombia &middot; Leading facilitator colombiano</div><span class="cc-tag tg-facilitatore">Facilitatore</span></div><a class="cc-link" href="https://absolutemedicaltourism.com" target="_blank">&rarr;</a></div>
+<div class="cc t-facilitatore" data-t="facilitatore" data-s="health traveler consultant colombia consulente salute viaggio"><div class="cc-info"><div class="cc-name">Health Traveler Consultant</div><div class="cc-city">Colombia &middot; Consulente salute-viaggio</div><span class="cc-tag tg-facilitatore">Facilitatore</span></div><a class="cc-link" href="https://healthtravelerconsultant.com" target="_blank">&rarr;</a></div>
+</div>
+</section>
+
+<!-- ══════ 7. FACILITATORI COREA DEL SUD (4) ══════ -->
+<section class="region" data-r="facilitatore">
+<div class="region-header"><span class="region-icon">&#127472;&#127479;</span><span class="region-title">Facilitatori Corea del Sud</span><span class="region-count" style="background:var(--blue-bg);color:var(--blue);border:1px solid var(--blue-border)">4 entit&agrave;</span></div>
+<div class="cgrid">
+<div class="cc t-facilitatore" data-t="facilitatore" data-s="seoul guide medical seoul corea del sud forbes top company"><div class="cc-info"><div class="cc-name">Seoul Guide Medical</div><div class="cc-city">Seoul &middot; Scelto da Forbes, top su 1.700 aziende</div><span class="cc-tag tg-facilitatore">Facilitatore</span></div><a class="cc-link" href="https://seoulguidemedical.com" target="_blank">&rarr;</a></div>
+<div class="cc t-facilitatore" data-t="facilitatore" data-s="k-medical tours seoul corea del sud mou 20 ospedali coreani"><div class="cc-info"><div class="cc-name">K-Medical Tours</div><div class="cc-city">Seoul &middot; MOU con 20+ ospedali coreani</div><span class="cc-tag tg-facilitatore">Facilitatore</span></div><a class="cc-link" href="https://www.kmedicaltours.net" target="_blank">&rarr;</a></div>
+<div class="cc t-facilitatore" data-t="facilitatore" data-s="medical avenue korea corea del sud ospitalita esperienza"><div class="cc-info"><div class="cc-name">Medical Avenue Korea</div><div class="cc-city">Corea del Sud &middot; Collaborazione con ospitalit&agrave;</div><span class="cc-tag tg-facilitatore">Facilitatore</span></div><a class="cc-link" href="https://www.medicalavenuekorea.com" target="_blank">&rarr;</a></div>
+<div class="cc t-facilitatore" data-t="facilitatore" data-s="medictel corea del sud chirurgia plastica estetica coreana"><div class="cc-info"><div class="cc-name">Medictel</div><div class="cc-city">Corea del Sud &middot; Specializzato chirurgia estetica</div><span class="cc-tag tg-facilitatore">Facilitatore</span></div><a class="cc-link" href="https://www.medictel.org" target="_blank">&rarr;</a></div>
+</div>
+</section>
+
+<!-- ══════ 8. FACILITATORI EUROPA (3) ══════ -->
+<section class="region" data-r="facilitatore">
+<div class="region-header"><span class="region-icon">&#127466;&#127482;</span><span class="region-title">Facilitatori Europa</span><span class="region-count" style="background:var(--blue-bg);color:var(--blue);border:1px solid var(--blue-border)">3 entit&agrave;</span></div>
+<div class="cgrid">
+<div class="cc t-facilitatore" data-t="facilitatore" data-s="kreativ dental budapest ungheria impianti dentali chirurgia orale turismo dentale europa"><div class="cc-info"><div class="cc-name">Kreativ Dental</div><div class="cc-city">Budapest, Ungheria &middot; Ha creato il turismo dentale EU</div><span class="cc-tag tg-facilitatore">Facilitatore</span></div><a class="cc-link" href="https://kreativdentalclinic.eu" target="_blank">&rarr;</a></div>
+<div class="cc t-facilitatore" data-t="facilitatore" data-s="elite medical tourism atene grecia sanita alloggio intrattenimento"><div class="cc-info"><div class="cc-name">Elite Medical Tourism</div><div class="cc-city">Atene, Grecia &middot; Sanit&agrave; + alloggio + intrattenimento</div><span class="cc-tag tg-facilitatore">Facilitatore</span></div><a class="cc-link" href="https://www.elitemedicaltourism.com" target="_blank">&rarr;</a></div>
+<div class="cc t-facilitatore" data-t="facilitatore" data-s="bay parker consulting spagna consulenza pazienti internazionali"><div class="cc-info"><div class="cc-name">Bay Parker Consulting</div><div class="cc-city">Spagna &middot; Consulenza pazienti internazionali</div><span class="cc-tag tg-facilitatore">Facilitatore</span></div><a class="cc-link" href="https://bayparkerconsulting.com" target="_blank">&rarr;</a></div>
+</div>
+</section>
+
+<!-- ══════ 9. FACILITATORI MEDIO ORIENTE (1) ══════ -->
+<section class="region" data-r="facilitatore">
+<div class="region-header"><span class="region-icon">&#127975;</span><span class="region-title">Facilitatori Medio Oriente</span><span class="region-count" style="background:var(--blue-bg);color:var(--blue);border:1px solid var(--blue-border)">1 entit&agrave;</span></div>
+<div class="cgrid">
+<div class="cc t-facilitatore" data-t="facilitatore" data-s="negar medical tourism iran cardiologia ortopedia facilitatore iraniano"><div class="cc-info"><div class="cc-name">Negar Medical Tourism</div><div class="cc-city">Iran &middot; Facilitatore iraniano leader</div><span class="cc-tag tg-facilitatore">Facilitatore</span></div><a class="cc-link" href="https://negarmed.com" target="_blank">&rarr;</a></div>
+</div>
+</section>
+
+<!-- ══════ 10. NETWORK OSPEDALIERI ASIA (10) ══════ -->
+<section class="region" data-r="ospedale">
+<div class="region-header"><span class="region-icon">&#127975;</span><span class="region-title">Network Ospedalieri Asia</span><span class="region-count" style="background:var(--green-bg);color:var(--green);border:1px solid var(--green-border)">10 entit&agrave;</span></div>
+<div class="cgrid">
+<div class="cc t-ospedale" data-t="ospedale" data-s="bumrungrad international hospital bangkok thailandia jci 1.1m pazienti 190 paesi"><div class="cc-info"><div class="cc-name">Bumrungrad International Hospital</div><div class="cc-city">Bangkok, Thailandia &middot; JCI, 1.1M pazienti/anno</div><span class="cc-tag tg-ospedale">Ospedale</span></div><a class="cc-link" href="https://www.bumrungrad.com" target="_blank">&rarr;</a></div>
+<div class="cc t-ospedale" data-t="ospedale" data-s="bangkok hospital bdms thailandia jci 58 ospedali market leader"><div class="cc-info"><div class="cc-name">Bangkok Hospital / BDMS</div><div class="cc-city">Bangkok, Thailandia &middot; JCI, 58 ospedali</div><span class="cc-tag tg-ospedale">Ospedale</span></div><a class="cc-link" href="https://www.bangkokhospital.com" target="_blank">&rarr;</a></div>
+<div class="cc t-ospedale" data-t="ospedale" data-s="samitivej hospital bangkok thailandia bdms jci pediatria chirurgia robotica"><div class="cc-info"><div class="cc-name">Samitivej Hospital</div><div class="cc-city">Bangkok, Thailandia &middot; JCI, parte BDMS</div><span class="cc-tag tg-ospedale">Ospedale</span></div><a class="cc-link" href="https://www.samitivejhospitals.com" target="_blank">&rarr;</a></div>
+<div class="cc t-ospedale" data-t="ospedale" data-s="apollo hospitals india jci 71 strutture telemedicina 140 paesi"><div class="cc-info"><div class="cc-name">Apollo Hospitals</div><div class="cc-city">India &middot; JCI, 71 strutture, il pi&ugrave; grande in Asia</div><span class="cc-tag tg-ospedale">Ospedale</span></div><a class="cc-link" href="https://www.apollohospitals.com" target="_blank">&rarr;</a></div>
+<div class="cc t-ospedale" data-t="ospedale" data-s="fortis healthcare india jci 28 strutture 4600 letti"><div class="cc-info"><div class="cc-name">Fortis Healthcare</div><div class="cc-city">India &middot; JCI, 28+ strutture, 4.600+ letti</div><span class="cc-tag tg-ospedale">Ospedale</span></div><a class="cc-link" href="https://www.fortishealthcare.com" target="_blank">&rarr;</a></div>
+<div class="cc t-ospedale" data-t="ospedale" data-s="ihh healthcare gleneagles pantai mount elizabeth kuala lumpur malesia singapore turchia india cina"><div class="cc-info"><div class="cc-name">IHH Healthcare (Gleneagles)</div><div class="cc-city">Kuala Lumpur, Malesia &middot; Pi&ugrave; grande gruppo Asia</div><span class="cc-tag tg-ospedale">Ospedale</span></div><a class="cc-link" href="https://www.ihhhealthcare.com" target="_blank">&rarr;</a></div>
+<div class="cc t-ospedale" data-t="ospedale" data-s="mount elizabeth hospitals parkway pantai singapore ihh jci 1500 specialisti 120 paesi"><div class="cc-info"><div class="cc-name">Mount Elizabeth Hospitals</div><div class="cc-city">Singapore &middot; JCI, 1.500+ specialisti</div><span class="cc-tag tg-ospedale">Ospedale</span></div><a class="cc-link" href="https://www.mountelizabeth.com.sg" target="_blank">&rarr;</a></div>
+<div class="cc t-ospedale" data-t="ospedale" data-s="raffles medical group singapore network cliniche ospedali"><div class="cc-info"><div class="cc-name">Raffles Medical Group</div><div class="cc-city">Singapore &middot; Network completo cliniche</div><span class="cc-tag tg-ospedale">Ospedale</span></div><a class="cc-link" href="https://www.rafflesmedicalgroup.com" target="_blank">&rarr;</a></div>
+<div class="cc t-ospedale" data-t="ospedale" data-s="kpj healthcare berhad kuala lumpur malesia 27 ospedali indonesia thailandia bangladesh"><div class="cc-info"><div class="cc-name">KPJ Healthcare Berhad</div><div class="cc-city">Kuala Lumpur, Malesia &middot; 27+ ospedali</div><span class="cc-tag tg-ospedale">Ospedale</span></div><a class="cc-link" href="https://www.kpjhealth.com.my" target="_blank">&rarr;</a></div>
+<div class="cc t-ospedale" data-t="ospedale" data-s="prince court medical centre kuala lumpur malesia ihh 140 paesi award"><div class="cc-info"><div class="cc-name">Prince Court Medical Centre</div><div class="cc-city">Kuala Lumpur, Malesia &middot; MT Hospital of the Year</div><span class="cc-tag tg-ospedale">Ospedale</span></div><a class="cc-link" href="https://princecourt.com" target="_blank">&rarr;</a></div>
+</div>
+</section>
+
+<!-- ══════ 11. NETWORK OSPEDALIERI MEDIO ORIENTE (2) ══════ -->
+<section class="region" data-r="ospedale">
+<div class="region-header"><span class="region-icon">&#127975;</span><span class="region-title">Network Ospedalieri Medio Oriente</span><span class="region-count" style="background:var(--green-bg);color:var(--green);border:1px solid var(--green-border)">2 entit&agrave;</span></div>
+<div class="cgrid">
+<div class="cc t-ospedale" data-t="ospedale" data-s="cleveland clinic abu dhabi uae jci 10000 incontri internazionali cleveland clinic usa"><div class="cc-info"><div class="cc-name">Cleveland Clinic Abu Dhabi</div><div class="cc-city">Abu Dhabi, UAE &middot; JCI, filiale Cleveland Clinic USA</div><span class="cc-tag tg-ospedale">Ospedale</span></div><a class="cc-link" href="https://www.clevelandclinicabudhabi.ae" target="_blank">&rarr;</a></div>
+<div class="cc t-ospedale" data-t="ospedale" data-s="mediclinic middle east dubai abu dhabi uae jci team lingua cinese"><div class="cc-info"><div class="cc-name">Mediclinic Middle East</div><div class="cc-city">Dubai, Abu Dhabi, UAE &middot; JCI, team multilingue</div><span class="cc-tag tg-ospedale">Ospedale</span></div><a class="cc-link" href="https://www.mediclinic.ae" target="_blank">&rarr;</a></div>
+</div>
+</section>
+
+<!-- ══════ 12. NETWORK OSPEDALIERI AMERICAS (3) ══════ -->
+<section class="region" data-r="ospedale">
+<div class="region-header"><span class="region-icon">&#127975;</span><span class="region-title">Network Ospedalieri Americas</span><span class="region-count" style="background:var(--green-bg);color:var(--green);border:1px solid var(--green-border)">3 entit&agrave;</span></div>
+<div class="cgrid">
+<div class="cc t-ospedale" data-t="ospedale" data-s="christus muguerza messico jci 6 ospedali 21 centri ambulatoriali 74 anni"><div class="cc-info"><div class="cc-name">Christus Muguerza</div><div class="cc-city">Messico &middot; JCI, 6 ospedali, 74+ anni</div><span class="cc-tag tg-ospedale">Ospedale</span></div><a class="cc-link" href="https://www.christusmuguerza.com" target="_blank">&rarr;</a></div>
+<div class="cc t-ospedale" data-t="ospedale" data-s="hospital clinica biblica san jose costa rica jci tulane ochsner 80 specialita"><div class="cc-info"><div class="cc-name">Hospital Cl&iacute;nica B&iacute;blica</div><div class="cc-city">San Jos&eacute;, Costa Rica &middot; JCI, 80+ specialit&agrave;</div><span class="cc-tag tg-ospedale">Ospedale</span></div><a class="cc-link" href="https://www.clinicabiblica.com" target="_blank">&rarr;</a></div>
+<div class="cc t-ospedale" data-t="ospedale" data-s="hospital cima san jose costa rica jci gruppo texano nordamericani"><div class="cc-info"><div class="cc-name">Hospital CIMA</div><div class="cc-city">San Jos&eacute;, Costa Rica &middot; JCI, parte gruppo texano</div><span class="cc-tag tg-ospedale">Ospedale</span></div><a class="cc-link" href="https://www.hospitalcima.com" target="_blank">&rarr;</a></div>
+</div>
+</section>
+
+<!-- ══════ 13. NETWORK OSPEDALIERI EUROPA (3) ══════ -->
+<section class="region" data-r="ospedale">
+<div class="region-header"><span class="region-icon">&#127975;</span><span class="region-title">Network Ospedalieri Europa</span><span class="region-count" style="background:var(--green-bg);color:var(--green);border:1px solid var(--green-border)">3 entit&agrave;</span></div>
+<div class="cgrid">
+<div class="cc t-ospedale" data-t="ospedale" data-s="quironsalud spagna 58 ospedali 160 centri fresenius helios piu grande europa"><div class="cc-info"><div class="cc-name">Quironsalud</div><div class="cc-city">Spagna &middot; 58 ospedali, pi&ugrave; grande in Europa</div><span class="cc-tag tg-ospedale">Ospedale</span></div><a class="cc-link" href="https://international.quironsalud.com" target="_blank">&rarr;</a></div>
+<div class="cc t-ospedale" data-t="ospedale" data-s="charite universitatsmedizin berlin berlino germania 100 dipartimenti numero 1"><div class="cc-info"><div class="cc-name">Charit&eacute; Berlin</div><div class="cc-city">Berlino, Germania &middot; #1 ospedale in Germania</div><span class="cc-tag tg-ospedale">Ospedale</span></div><a class="cc-link" href="https://www.charite.de" target="_blank">&rarr;</a></div>
+<div class="cc t-ospedale" data-t="ospedale" data-s="heidelberg university hospital heidelberg germania top 5 14 mondo"><div class="cc-info"><div class="cc-name">Heidelberg University Hospital</div><div class="cc-city">Heidelberg, Germania &middot; Top 5 Germania, 14&deg; mondo</div><span class="cc-tag tg-ospedale">Ospedale</span></div><a class="cc-link" href="https://www.heidelberg-university-hospital.com" target="_blank">&rarr;</a></div>
+</div>
+</section>
+
+<!-- ══════ 14. SPECIALIZZATI CAPELLI (5) ══════ -->
+<section class="region" data-r="specializzato">
+<div class="region-header"><span class="region-icon">&#128135;</span><span class="region-title">Specializzati Capelli</span><span class="region-count" style="background:var(--purple-bg);color:var(--purple);border:1px solid var(--purple-border)">5 entit&agrave;</span></div>
+<div class="cgrid">
+<div class="cc t-specializzato" data-t="specializzato" data-s="elithair clinic istanbul turchia trapianto capelli 150000 procedure 250 staff"><div class="cc-info"><div class="cc-name">Elithair Clinic</div><div class="cc-city">Istanbul &middot; Pi&ugrave; grande al mondo, 150.000+ procedure</div><span class="cc-tag tg-specializzato">Specializzato</span></div><a class="cc-link" href="https://www.elithairtransplant.com" target="_blank">&rarr;</a></div>
+<div class="cc t-specializzato" data-t="specializzato" data-s="dr serkan aygin clinic istanbul turchia dhi 25 anni esperienza capelli"><div class="cc-info"><div class="cc-name">Dr. Serkan Aygin Clinic</div><div class="cc-city">Istanbul &middot; DHI, 25+ anni esperienza</div><span class="cc-tag tg-specializzato">Specializzato</span></div><a class="cc-link" href="https://www.drserkanaygin.com" target="_blank">&rarr;</a></div>
+<div class="cc t-specializzato" data-t="specializzato" data-s="cosmedica dr levent acar istanbul turchia trapianto capelli 20000 interventi"><div class="cc-info"><div class="cc-name">Cosmedica (Dr. Levent Acar)</div><div class="cc-city">Istanbul &middot; 20.000+ interventi, chirurgo rinomato</div><span class="cc-tag tg-specializzato">Specializzato</span></div><a class="cc-link" href="https://cosmedica.com" target="_blank">&rarr;</a></div>
+<div class="cc t-specializzato" data-t="specializzato" data-s="smile hair clinic istanbul turchia 90-95% successo capelli"><div class="cc-info"><div class="cc-name">Smile Hair Clinic</div><div class="cc-city">Istanbul &middot; 90-95% tasso successo</div><span class="cc-tag tg-specializzato">Specializzato</span></div><a class="cc-link" href="https://www.smilehairclinic.com" target="_blank">&rarr;</a></div>
+<div class="cc t-specializzato" data-t="specializzato" data-s="veraclinic istanbul turchia capelli pubblicizzata"><div class="cc-info"><div class="cc-name">VeraClinic</div><div class="cc-city">Istanbul &middot; Tra le pi&ugrave; pubblicizzate</div><span class="cc-tag tg-specializzato">Specializzato</span></div><a class="cc-link" href="https://www.veraclinic.net" target="_blank">&rarr;</a></div>
+</div>
+</section>
+
+<!-- ══════ 15. SPECIALIZZATI IVF (4) ══════ -->
+<section class="region" data-r="specializzato">
+<div class="region-header"><span class="region-icon">&#128118;</span><span class="region-title">Specializzati IVF / Fertilit&agrave;</span><span class="region-count" style="background:var(--purple-bg);color:var(--purple);border:1px solid var(--purple-border)">4 entit&agrave;</span></div>
+<div class="cgrid">
+<div class="cc t-specializzato" data-t="specializzato" data-s="world fertility services 21 paesi ivf donazione ovociti maternita surrogata"><div class="cc-info"><div class="cc-name">World Fertility Services</div><div class="cc-city">21+ paesi &middot; Network pi&ugrave; ampio per fertilit&agrave;</div><span class="cc-tag tg-specializzato">Specializzato</span></div><a class="cc-link" href="https://worldfertilityservices.com" target="_blank">&rarr;</a></div>
+<div class="cc t-specializzato" data-t="specializzato" data-s="eggdonationfriends europa spagna rep ceca grecia ivf donazione ovociti"><div class="cc-info"><div class="cc-name">EggDonationFriends</div><div class="cc-city">Europa &middot; Clinic Matching Test, partner Fertility UK</div><span class="cc-tag tg-specializzato">Specializzato</span></div><a class="cc-link" href="https://www.eggdonationfriends.com" target="_blank">&rarr;</a></div>
+<div class="cc t-specializzato" data-t="specializzato" data-s="nova ivf india fertilita leader mercato indiano"><div class="cc-info"><div class="cc-name">Nova IVF</div><div class="cc-city">India &middot; Leader di mercato indiano fertilit&agrave;</div><span class="cc-tag tg-specializzato">Specializzato</span></div><a class="cc-link" href="https://www.novaivf.com" target="_blank">&rarr;</a></div>
+<div class="cc t-specializzato" data-t="specializzato" data-s="apollo fertility india apollo hospitals fertilita network asiatico"><div class="cc-info"><div class="cc-name">Apollo Fertility</div><div class="cc-city">India &middot; Parte Apollo Hospitals network</div><span class="cc-tag tg-specializzato">Specializzato</span></div><a class="cc-link" href="https://www.apollofertility.com" target="_blank">&rarr;</a></div>
+</div>
+</section>
+
+<!-- ══════ 16. SPECIALIZZATI DENTALE (2) ══════ -->
+<section class="region" data-r="specializzato">
+<div class="region-header"><span class="region-icon">&#129463;</span><span class="region-title">Specializzati Dentale</span><span class="region-count" style="background:var(--purple-bg);color:var(--purple);border:1px solid var(--purple-border)">2 entit&agrave;</span></div>
+<div class="cgrid">
+<div class="cc t-specializzato" data-t="specializzato" data-s="dental departures globale turismo dentale review verificate garanzia prezzo"><div class="cc-info"><div class="cc-name">Dental Departures</div><div class="cc-city">Globale &middot; Pi&ugrave; grande piattaforma turismo dentale</div><span class="cc-tag tg-specializzato">Specializzato</span></div><a class="cc-link" href="https://www.dentaldepartures.com" target="_blank">&rarr;</a></div>
+<div class="cc t-specializzato" data-t="specializzato" data-s="dental tourism association globale turchia thailandia ungheria directory provider"><div class="cc-info"><div class="cc-name">Dental Tourism Association</div><div class="cc-city">Globale &middot; Guida turismo dentale, directory verificata</div><span class="cc-tag tg-specializzato">Specializzato</span></div><a class="cc-link" href="https://dentaltourismassociation.com" target="_blank">&rarr;</a></div>
+</div>
+</section>
+
+<!-- ══════ 17. SPECIALIZZATI BARIATRICA (2) ══════ -->
+<section class="region" data-r="specializzato">
+<div class="region-header"><span class="region-icon">&#9877;&#65039;</span><span class="region-title">Specializzati Bariatrica</span><span class="region-count" style="background:var(--purple-bg);color:var(--purple);border:1px solid var(--purple-border)">2 entit&agrave;</span></div>
+<div class="cgrid">
+<div class="cc t-specializzato" data-t="specializzato" data-s="mexico bariatric center messico bariatrica leader aftercare settore"><div class="cc-info"><div class="cc-name">Mexico Bariatric Center</div><div class="cc-city">Messico &middot; Leader bariatrico, aftercare top</div><span class="cc-tag tg-specializzato">Specializzato</span></div><a class="cc-link" href="https://mexicobariatriccenter.com" target="_blank">&rarr;</a></div>
+<div class="cc t-specializzato" data-t="specializzato" data-s="alo bariatrics tijuana guadalajara puerto vallarta messico bariatrica chirurghi internazionali"><div class="cc-info"><div class="cc-name">ALO Bariatrics</div><div class="cc-city">Tijuana, Guadalajara, PV &middot; Chirurghi internazionali</div><span class="cc-tag tg-specializzato">Specializzato</span></div><a class="cc-link" href="https://www.alobariatrics.com" target="_blank">&rarr;</a></div>
+</div>
+</section>
+
+<!-- ══════ 18. FACILITATORI THAILANDIA (2) ══════ -->
+<section class="region" data-r="facilitatore">
+<div class="region-header"><span class="region-icon">&#127481;&#127469;</span><span class="region-title">Facilitatori Thailandia</span><span class="region-count" style="background:var(--blue-bg);color:var(--blue);border:1px solid var(--blue-border)">2 entit&agrave;</span></div>
+<div class="cgrid">
+<div class="cc t-facilitatore" data-t="facilitatore" data-s="thaimedics thailandia consulenza turismo medico"><div class="cc-info"><div class="cc-name">ThaiMedics</div><div class="cc-city">Thailandia &middot; Consulenza specializzata MT</div><span class="cc-tag tg-facilitatore">Facilitatore</span></div><a class="cc-link" href="https://thaimedics.com" target="_blank">&rarr;</a></div>
+<div class="cc t-facilitatore" data-t="facilitatore" data-s="thai medicure thailandia bangladesh ufficio dedicato sud asia"><div class="cc-info"><div class="cc-name">Thai Medicure</div><div class="cc-city">Thailandia &middot; Ufficio dedicato Bangladesh</div><span class="cc-tag tg-facilitatore">Facilitatore</span></div><a class="cc-link" href="https://www.thaimedicure.com" target="_blank">&rarr;</a></div>
+</div>
+</section>
+
+<!-- ══════ 19. ENTI ACCREDITAMENTO (4) ══════ -->
+<section class="region" data-r="accreditamento">
+<div class="region-header"><span class="region-icon">&#127941;</span><span class="region-title">Enti di Accreditamento</span><span class="region-count" style="background:var(--gold-bg);color:var(--gold);border:1px solid var(--gold-border)">4 entit&agrave;</span></div>
+<div class="cgrid">
+<div class="cc t-accreditamento" data-t="accreditamento" data-s="jci joint commission international usa standard oro 1000 programmi 70 paesi"><div class="cc-info"><div class="cc-name">JCI (Joint Commission International)</div><div class="cc-city">USA &middot; Standard d'oro, 1.000+ in 70+ paesi</div><span class="cc-tag tg-accreditamento">Accreditamento</span></div><a class="cc-link" href="https://www.jointcommissioninternational.org" target="_blank">&rarr;</a></div>
+<div class="cc t-accreditamento" data-t="accreditamento" data-s="global healthcare accreditation gha usa medical travel 180% crescita"><div class="cc-info"><div class="cc-name">Global Healthcare Accreditation (GHA)</div><div class="cc-city">USA &middot; Specifico per medical travel</div><span class="cc-tag tg-accreditamento">Accreditamento</span></div><a class="cc-link" href="https://www.globalhealthcareaccreditation.com" target="_blank">&rarr;</a></div>
+<div class="cc t-accreditamento" data-t="accreditamento" data-s="mtqua medical travel quality alliance usa esperienza paziente centrata"><div class="cc-info"><div class="cc-name">MTQUA</div><div class="cc-city">USA &middot; Certifica esperienza paziente</div><span class="cc-tag tg-accreditamento">Accreditamento</span></div><a class="cc-link" href="https://mtqua.org" target="_blank">&rarr;</a></div>
+<div class="cc t-accreditamento" data-t="accreditamento" data-s="temos international colonia germania 75 provider 6 continenti ospedali cliniche dentali ivf"><div class="cc-info"><div class="cc-name">Temos International</div><div class="cc-city">Colonia, Germania &middot; 75+ provider, 6 continenti</div><span class="cc-tag tg-accreditamento">Accreditamento</span></div><a class="cc-link" href="https://temos-worldwide.com" target="_blank">&rarr;</a></div>
+</div>
+</section>
+
+<!-- ══════ 20. ALTRI NOTEVOLI (10) ══════ -->
+<section class="region" data-r="facilitatore">
+<div class="region-header"><span class="region-icon">&#128203;</span><span class="region-title">Altri Notevoli</span><span class="region-count" style="background:var(--blue-bg);color:var(--blue);border:1px solid var(--blue-border)">10 entit&agrave;</span></div>
+<div class="cgrid">
+<div class="cc t-facilitatore" data-t="facilitatore" data-s="medicabroad ortopedia cardiologia estetica"><div class="cc-info"><div class="cc-name">MedicAbroad</div><div class="cc-city">Globale &middot; Ortopedia, cardiologia, estetica</div><span class="cc-tag tg-facilitatore">Facilitatore</span></div><a class="cc-link" href="https://www.medicabroad.com" target="_blank">&rarr;</a></div>
+<div class="cc t-facilitatore" data-t="facilitatore" data-s="medtravelconnect procedure cardiache estero"><div class="cc-info"><div class="cc-name">MedTravelConnect</div><div class="cc-city">Globale &middot; Procedure cardiache all'estero</div><span class="cc-tag tg-facilitatore">Facilitatore</span></div><a class="cc-link" href="https://medtravelconnect.com" target="_blank">&rarr;</a></div>
+<div class="cc t-facilitatore" data-t="facilitatore" data-s="eternity life tourism el clinics cardiologia procedure cardiache accessibili"><div class="cc-info"><div class="cc-name">Eternity Life Tourism (EL Clinics)</div><div class="cc-city">Globale &middot; Procedure cardiache accessibili</div><span class="cc-tag tg-facilitatore">Facilitatore</span></div><a class="cc-link" href="https://elclinics.com" target="_blank">&rarr;</a></div>
+<div class="cc t-facilitatore" data-t="facilitatore" data-s="medical tourism council guide informative migliori paesi"><div class="cc-info"><div class="cc-name">Medical Tourism Council</div><div class="cc-city">Globale &middot; Guide informative, migliori paesi</div><span class="cc-tag tg-facilitatore">Facilitatore</span></div><a class="cc-link" href="https://www.medicaltourismcouncil.org" target="_blank">&rarr;</a></div>
+<div class="cc t-facilitatore" data-t="facilitatore" data-s="medicaltourism.review directory indipendente listing paese"><div class="cc-info"><div class="cc-name">MedicalTourism.Review</div><div class="cc-city">Globale &middot; Directory indipendente per paese</div><span class="cc-tag tg-facilitatore">Facilitatore</span></div><a class="cc-link" href="https://medicaltourism.review" target="_blank">&rarr;</a></div>
+<div class="cc t-facilitatore" data-t="facilitatore" data-s="world medical tourism guide destinazioni top approfondite"><div class="cc-info"><div class="cc-name">World Medical Tourism</div><div class="cc-city">Globale &middot; Guide approfondite destinazioni top</div><span class="cc-tag tg-facilitatore">Facilitatore</span></div><a class="cc-link" href="https://wmedtour.com" target="_blank">&rarr;</a></div>
+<div class="cc t-facilitatore" data-t="facilitatore" data-s="medical tourism alliance alleanza settore best practice"><div class="cc-info"><div class="cc-name">Medical Tourism Alliance</div><div class="cc-city">Globale &middot; Alleanza di settore, best practice</div><span class="cc-tag tg-facilitatore">Facilitatore</span></div><a class="cc-link" href="https://themedicaltourismalliance.com" target="_blank">&rarr;</a></div>
+<div class="cc t-facilitatore" data-t="facilitatore" data-s="medical tourism business mtb europa programmi facilitatore professionale"><div class="cc-info"><div class="cc-name">Medical Tourism Business (MTB)</div><div class="cc-city">Europa &middot; Programmi per diventare facilitatore</div><span class="cc-tag tg-facilitatore">Facilitatore</span></div><a class="cc-link" href="https://medicaltourismbusiness.com" target="_blank">&rarr;</a></div>
+<div class="cc t-facilitatore" data-t="facilitatore" data-s="medicaltourismpackages.com america latina pacchetti"><div class="cc-info"><div class="cc-name">MedicalTourismPackages.com</div><div class="cc-city">Globale &middot; Pacchetti per America Latina</div><span class="cc-tag tg-facilitatore">Facilitatore</span></div><a class="cc-link" href="https://www.medicaltourismpackages.com" target="_blank">&rarr;</a></div>
+<div class="cc t-facilitatore" data-t="facilitatore" data-s="hip knee center filippine protesi anca ginocchio sostituzione articolare"><div class="cc-info"><div class="cc-name">Hip Knee Center</div><div class="cc-city">Filippine &middot; Ultra-specializzato protesi anca/ginocchio</div><span class="cc-tag tg-facilitatore">Facilitatore</span></div><a class="cc-link" href="https://hipkneecenter.com" target="_blank">&rarr;</a></div>
+</div>
+</section>
+
+</div>
+
+<div class="empty" id="emptyMsg">Nessun risultato trovato. Prova con un altro termine.</div>
+
+<footer class="footer">
+  <span>102 entit&agrave; verificate</span> &middot; Turismo medico mondiale &middot; 2025
+</footer>
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+<script>
+const SB_BASE='https://zzyjuhbxwsrgttlizlkv.supabase.co';
+const SB_KEY='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Inp6eWp1aGJ4d3NyZ3R0bGl6bGt2Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzU1NjQxMjcsImV4cCI6MjA5MTE0MDEyN30.NIqYoN_8t8M9WCwB4OcVwL2K2YtEAeOFJKZKab4RhZo';
+const DASH='turmed_mondo';
+const _sb=window.supabase.createClient(SB_BASE,SB_KEY);
+let _data={},cf='all',cs='',csf='';
+async function sbLoad(){try{const{data:rows,error}=await _sb.from('ext_dashboard_status').select('card_id,status,note').eq('dashboard',DASH);if(error)throw error;rows.forEach(function(row){const o={};if(row.status&&row.status!=='none')o.status=row.status;if(row.note)o.note=row.note;if(o.status||o.note)_data[row.card_id]=o})}catch(e){console.error('Supabase load:',e)}}
+function ld(){return _data}
+function svCard(id,card){_data[id]=card;if(!card||(!card.status&&!card.note)){delete _data[id];card={}}
+  _sb.from('ext_dashboard_status').upsert({dashboard:DASH,card_id:id,status:card.status||'none',note:card.note||'',updated_at:new Date().toISOString()},{onConflict:'dashboard,card_id'}).then(function(r){if(r.error)console.error('Save error:',r.error)});
+}
+function gid(c){const n=c.querySelector('.cc-name');return n?n.textContent.trim().replace(/[^a-zA-Z0-9]/g,'_').substring(0,40):'';}
+
+function initCards(){
+  const data=ld();
+  document.querySelectorAll('.cc').forEach(function(c){
+    const id=gid(c);if(!id)return;
+    c.setAttribute('data-id',id);
+    const s=data[id]||{};
+    const sd=document.createElement('div');sd.className='cc-status';
+    sd.innerHTML='<button class="cc-lvl'+(s.status==='0'?' on-0':'')+'" title="Livello 0 — Scartare" onclick="tl(event,\'0\')">0</button>'+
+      '<button class="cc-lvl'+(s.status==='1'?' on-1':'')+'" title="Livello 1 — Basso" onclick="tl(event,\'1\')">1</button>'+
+      '<button class="cc-lvl'+(s.status==='2'?' on-2':'')+'" title="Livello 2 — Medio" onclick="tl(event,\'2\')">2</button>'+
+      '<button class="cc-lvl'+(s.status==='3'?' on-3':'')+'" title="Livello 3 — Alto" onclick="tl(event,\'3\')">3</button>'+
+      '<span class="cc-star'+(s.status==='star'?' on':'')+'" title="Top!" onclick="tstar(event)">'+(s.status==='star'?'&#9733;':'&#9734;')+'</span>';
+    c.appendChild(sd);
+    const nb=document.createElement('button');nb.className='cc-note-btn'+(s.note?' has-note':'');nb.title='Appunti';nb.innerHTML='&#9998;';nb.onclick=function(e){e.stopPropagation();const np=c.querySelector('.cc-notes');np.classList.toggle('open');if(np.classList.contains('open'))np.querySelector('textarea').focus()};c.appendChild(nb);
+    const np=document.createElement('div');np.className='cc-notes';np.innerHTML='<textarea placeholder="Scrivi appunti...">'+(s.note||'')+'</textarea><button class="cc-note-save" onclick="saveNote(this)">Salva</button>';
+    np.querySelector('textarea').addEventListener('input',function(){var me=this;clearTimeout(me._t);me._t=setTimeout(function(){var cur2=(_data[id]||{});if(me.value.trim()){cur2.note=me.value;c.querySelector('.cc-note-btn').classList.add('has-note');c.classList.add('has-note-card')}else{delete cur2.note;c.querySelector('.cc-note-btn').classList.remove('has-note');c.classList.remove('has-note-card')}svCard(id,cur2)},800)});
+    c.appendChild(np);
+    if(s.status)c.classList.add('stato-'+s.status);
+    if(s.note)c.classList.add('has-note-card');
+  });
+}
+function saveNote(btn){
+  btn.blur();var card=btn.closest('.cc'),id=card.getAttribute('data-id'),cur=(_data[id]||{}),ta=card.querySelector('.cc-notes textarea'),val=ta.value,nb=card.querySelector('.cc-note-btn');
+  if(val.trim()){cur.note=val;nb.classList.add('has-note');card.classList.add('has-note-card')}else{delete cur.note;nb.classList.remove('has-note');card.classList.remove('has-note-card')}
+  svCard(id,cur);btn.textContent='\u2713 Salvato!';btn.classList.add('saved');setTimeout(function(){btn.textContent='Salva';btn.classList.remove('saved')},1500);
+}
+function tl(e,level){
+  e.stopPropagation();const btn=e.target,card=btn.closest('.cc'),id=card.getAttribute('data-id'),cur=(_data[id]||{});
+  card.classList.remove('stato-0','stato-1','stato-2','stato-3','stato-star');
+  card.querySelectorAll('.cc-lvl').forEach(function(b){b.className='cc-lvl'});
+  const star=card.querySelector('.cc-star');if(star){star.classList.remove('on');star.innerHTML='&#9734;'}
+  if(cur.status===level){delete cur.status}else{cur.status=level;btn.classList.add('on-'+level);card.classList.add('stato-'+level)}
+  svCard(id,cur);updateStatusCounts();
+}
+function tstar(e){
+  e.stopPropagation();const star=e.target.closest('.cc-star'),card=star.closest('.cc'),id=card.getAttribute('data-id'),cur=(_data[id]||{});
+  card.classList.remove('stato-0','stato-1','stato-2','stato-3','stato-star');
+  card.querySelectorAll('.cc-lvl').forEach(function(b){b.className='cc-lvl'});
+  if(cur.status==='star'){delete cur.status;star.classList.remove('on');star.innerHTML='&#9734;'}
+  else{cur.status='star';star.classList.add('on');star.innerHTML='&#9733;';card.classList.add('stato-star')}
+  svCard(id,cur);updateStatusCounts();
+}
+
+function uc(){
+  const v=document.querySelectorAll('.cc:not(.hidden)').length;
+  document.getElementById('count').textContent='('+v+')';
+  document.getElementById('emptyMsg').style.display=v===0?'block':'none';
+  document.querySelectorAll('.region').forEach(function(r){const vis=r.querySelectorAll('.cc:not(.hidden)');r.style.display=vis.length===0?'none':''});
+}
+function af(){
+  const data=ld();
+  document.querySelectorAll('.cc').forEach(function(c){
+    const t=c.getAttribute('data-t')||'';const d=c.getAttribute('data-s')||'';const n=c.querySelector('.cc-name');const nt=n?n.textContent.toLowerCase():'';
+    const id=c.getAttribute('data-id')||'';const saved=data[id]||{};
+    const mf=cf==='all'||t.includes(cf);const ms=cs===''||d.includes(cs)||nt.includes(cs);
+    const msf=csf===''||saved.status===csf;
+    if(mf&&ms&&msf){c.classList.remove('hidden')}else{c.classList.add('hidden')}
+  });
+  uc();
+}
+function f(t,b){cf=t;csf='';document.querySelectorAll('.btn:not(.btn-status)').forEach(function(x){x.classList.remove('active')});document.querySelectorAll('.btn-status').forEach(function(x){x.classList.remove('active')});b.classList.add('active');af()}
+function fs(status,b){if(csf===status){csf='';b.classList.remove('active')}else{csf=status;document.querySelectorAll('.btn-status').forEach(function(x){x.classList.remove('active')});b.classList.add('active')}af()}
+function updateStatusCounts(){const data=ld();let c0=0,c1=0,c2=0,c3=0,cst=0;Object.values(data).forEach(function(d){if(d.status==='0')c0++;if(d.status==='1')c1++;if(d.status==='2')c2++;if(d.status==='3')c3++;if(d.status==='star')cst++});document.getElementById('cnt-0').textContent=c0;document.getElementById('cnt-1').textContent=c1;document.getElementById('cnt-2').textContent=c2;document.getElementById('cnt-3').textContent=c3;document.getElementById('cnt-star').textContent=cst}
+function s(){cs=document.getElementById('si').value.toLowerCase().trim();af()}
+function refreshCard(cid){
+  var card=document.querySelector('[data-id="'+cid+'"]');if(!card)return;var s=_data[cid]||{};
+  card.classList.remove('stato-0','stato-1','stato-2','stato-3','stato-star');
+  card.querySelectorAll('.cc-lvl').forEach(function(b){b.className='cc-lvl'});
+  var star=card.querySelector('.cc-star');if(star){star.classList.remove('on');star.innerHTML='&#9734;'}
+  if(s.status){card.classList.add('stato-'+s.status);if(s.status==='star'){if(star){star.classList.add('on');star.innerHTML='&#9733;'}}else{var lvls=card.querySelectorAll('.cc-lvl');var idx=parseInt(s.status);if(lvls[idx])lvls[idx].classList.add('on-'+s.status)}}
+  var nb=card.querySelector('.cc-note-btn'),ta=card.querySelector('.cc-notes textarea');
+  if(s.note){if(nb)nb.classList.add('has-note');card.classList.add('has-note-card');if(ta&&!ta.matches(':focus'))ta.value=s.note}
+  else{if(nb)nb.classList.remove('has-note');card.classList.remove('has-note-card');if(ta&&!ta.matches(':focus'))ta.value=''}
+}
+sbLoad().then(function(){initCards();updateStatusCounts();uc();
+  _sb.channel('dash-'+DASH).on('postgres_changes',{event:'*',schema:'public',table:'ext_dashboard_status',filter:'dashboard=eq.'+DASH},function(p){
+    var row=p.new||{};var cid=row.card_id;if(!cid)return;
+    var o={};if(row.status&&row.status!=='none')o.status=row.status;if(row.note)o.note=row.note;
+    if(o.status||o.note)_data[cid]=o;else delete _data[cid];
+    refreshCard(cid);updateStatusCounts();
+  }).subscribe();
+});
+</script>
+</body>
+</html>
