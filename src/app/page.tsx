@@ -35,9 +35,9 @@ const dashboards = [
   },
   {
     title: "Turismo Medico Mondo",
-    desc: "102 agenzie, piattaforme, network ospedalieri e facilitatori globali in 35+ paesi",
+    desc: "162 agenzie, piattaforme, network ospedalieri e facilitatori globali in 45+ paesi",
     href: "/dashboard-TURISMO-MEDICO-MONDO.html",
-    cards: 102,
+    cards: 162,
     accent: "#f97316",
     icon: "🌐",
   },
